@@ -103,6 +103,26 @@ horário).
 → Salvar. Depois de alguns minutos, o link do seu dashboard vai aparecer
 nessa mesma tela (algo como `https://seuusuario.github.io/seurepositorio/`).
 
+## Seletor de período
+
+O dashboard agora deixa trocar o período direto no navegador, sem precisar
+rodar nada de novo: **Últimos 7 dias, 30 dias, 90 dias, Mês atual e Mês
+anterior**. O script já calcula todos eles de uma vez a cada execução.
+
+Duas coisas ficam de fora da troca de período (mostram sempre os últimos
+30 dias, independente do que estiver selecionado):
+- **Alertas do período** (topo da página)
+- **Tráfego pago (Meta Ads)** e **CAC**, porque buscar o investimento em
+  anúncios para vários períodos ao mesmo tempo exigiria multiplicar as
+  chamadas à API do Meta
+
+## Margem considerando descontos
+
+Antes, a margem calculava o "preço de tabela" do produto, sem considerar
+descontos dados na hora da venda. Agora, se uma peça de R$79,90 foi vendida
+por R$59,90, é esse valor de R$59,90 que entra na conta da margem — bem
+mais fiel ao lucro real.
+
 ## Margem de lucro (opcional)
 
 A Shopify não guarda o preço de custo em nenhum lugar acessível
@@ -159,9 +179,12 @@ já recalcula a margem.
 
 - **Estoque parado**: um produto é considerado parado se tem estoque
   disponível mas não aparece em nenhum pedido dos últimos 180 dias.
-- **Clientes novos vs. recompra**: usa o campo `orders_count` do cliente na
-  Shopify (total histórico de pedidos). Pedidos de convidados sem cadastro
-  de cliente não entram nessa contagem.
+- **Clientes novos vs. recompra**: usa o histórico **completo** de pedidos
+  da loja (mesma definição que a própria Shopify usa: cliente recorrente é
+  quem já teve qualquer pedido antes, não importa há quanto tempo). Como
+  isso exige buscar todos os pedidos já feitos na loja, a atualização pode
+  demorar um pouco mais em lojas com muito histórico. Pedidos de convidados
+  sem cadastro de cliente não entram nessa contagem.
 - **CAC**: investimento total em Meta Ads no período ÷ número de clientes
   novos no mesmo período. É uma aproximação simples — não separa por
   campanha nem considera outros canais de aquisição.

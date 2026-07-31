@@ -115,11 +115,20 @@
         <h1>Dashboard Shopify</h1>
         <div class="subtitle">Resumo executivo</div>
       </div>
-      <div class="period-pill" id="periodPill">carregando período…</div>
+      <div class="period-pill" id="periodPill" style="display:flex; align-items:center; gap:8px;">
+        <select id="periodSelect" style="border:none; background:transparent; font-size:12px; font-weight:600; cursor:pointer;">
+          <option value="7d">Últimos 7 dias</option>
+          <option value="30d" selected>Últimos 30 dias</option>
+          <option value="90d">Últimos 90 dias</option>
+          <option value="current_month">Mês atual</option>
+          <option value="previous_month">Mês anterior</option>
+        </select>
+        <span id="periodRange" style="color:var(--muted);"></span>
+      </div>
     </header>
 
     <section class="card" style="margin-bottom:16px;">
-      <div class="section-title">Alertas do período</div>
+      <div class="section-title">Alertas do período (últimos 30 dias)</div>
       <div class="alerts-list" id="alertsList"></div>
     </section>
 
@@ -143,7 +152,7 @@
 
     <section class="grid-2">
       <div class="card">
-        <div class="section-title">Evolução da receita (30 dias)</div>
+        <div class="section-title" id="chartTitle">Evolução da receita</div>
         <svg class="chart" id="chart" viewBox="0 0 600 160" preserveAspectRatio="none"></svg>
       </div>
       <div class="card">
@@ -203,7 +212,7 @@
           </div>
           <div class="stock-box">
             <div class="val small" id="custCac">—</div>
-            <div class="lbl">CAC</div>
+            <div class="lbl">CAC (30 dias)</div>
           </div>
         </div>
       </div>
@@ -310,12 +319,12 @@ function renderTopProducts(list) {
   }
 }
 
-function renderInventory(inv) {
+function renderInventory(inv, invStats) {
   document.getElementById("stockTotal").textContent = (inv.totalUnits ?? 0).toLocaleString("pt-BR");
-  document.getElementById("stockCoverage").textContent = inv.coverageDays !== null && inv.coverageDays !== undefined
-    ? inv.coverageDays + " dias" : "—";
-  document.getElementById("stockTurnover").textContent = inv.turnoverRate !== null && inv.turnoverRate !== undefined
-    ? inv.turnoverRate.toFixed(1) + "x" : "—";
+  document.getElementById("stockCoverage").textContent = invStats?.coverageDays !== null && invStats?.coverageDays !== undefined
+    ? invStats.coverageDays + " dias" : "—";
+  document.getElementById("stockTurnover").textContent = invStats?.turnoverRate !== null && invStats?.turnoverRate !== undefined
+    ? invStats.turnoverRate.toFixed(1) + "x" : "—";
   document.getElementById("stockStalled").textContent = `${inv.stalledSkuCount ?? 0} variações (${inv.stalledUnits ?? 0} pçs)`;
   document.getElementById("stockStockout").textContent = `${inv.stockoutSkuCount ?? 0} variações`;
 }
@@ -392,26 +401,53 @@ function renderMargin(margin) {
   note.textContent = `Calculado sobre ${margin.costCoveragePct?.toFixed(0) ?? 0}% da receita (produtos com custo cadastrado).`;
 }
 
+const PERIOD_LABELS = {
+  "7d": "Últimos 7 dias",
+  "30d": "Últimos 30 dias",
+  "90d": "Últimos 90 dias",
+  "current_month": "Mês atual",
+  "previous_month": "Mês anterior",
+};
+
+let DASHBOARD_DATA = null;
+
+function renderPeriod(periodKey) {
+  const data = DASHBOARD_DATA;
+  const p = data.periods[periodKey];
+  if (!p) return;
+
+  document.getElementById("periodRange").textContent = `${p.period.start} — ${p.period.end}`;
+  document.getElementById("chartTitle").textContent = `Evolução da receita (${PERIOD_LABELS[periodKey].toLowerCase()})`;
+
+  document.getElementById("kpiRevenue").textContent = BRL(p.kpis.revenue.value);
+  renderDelta(document.getElementById("kpiRevenueDelta"), p.kpis.revenue.changePct);
+
+  document.getElementById("kpiOrders").textContent = p.kpis.orders.value;
+  renderDelta(document.getElementById("kpiOrdersDelta"), p.kpis.orders.changePct);
+
+  document.getElementById("kpiAov").textContent = BRL(p.kpis.aov.value);
+  renderDelta(document.getElementById("kpiAovDelta"), p.kpis.aov.changePct);
+
+  renderChart(p.revenueSeries);
+  renderTopProducts(p.topProducts);
+  renderInventory(data.inventory || {}, p.inventoryStats);
+  renderCustomers(p.customers);
+  renderMargin(p.margin);
+}
+
 async function load() {
   const res = await fetch("data.json", { cache: "no-store" });
   const data = await res.json();
+  DASHBOARD_DATA = data;
 
-  document.getElementById("periodPill").textContent = `${data.period.start} — ${data.period.end}`;
+  const select = document.getElementById("periodSelect");
+  const defaultPeriod = data.defaultPeriod || "30d";
+  select.value = defaultPeriod;
+  select.addEventListener("change", () => renderPeriod(select.value));
 
-  document.getElementById("kpiRevenue").textContent = BRL(data.kpis.revenue.value);
-  renderDelta(document.getElementById("kpiRevenueDelta"), data.kpis.revenue.changePct);
+  renderPeriod(defaultPeriod);
 
-  document.getElementById("kpiOrders").textContent = data.kpis.orders.value;
-  renderDelta(document.getElementById("kpiOrdersDelta"), data.kpis.orders.changePct);
-
-  document.getElementById("kpiAov").textContent = BRL(data.kpis.aov.value);
-  renderDelta(document.getElementById("kpiAovDelta"), data.kpis.aov.changePct);
-
-  renderChart(data.revenueSeries);
-  renderTopProducts(data.topProducts);
-  renderInventory(data.inventory || {});
-  renderCustomers(data.customers);
-  renderMargin(data.margin);
+  // Estes não variam por período selecionado no dashboard hoje:
   renderCac(data.marketing);
   renderMarketing(data.marketing);
   renderAlerts(data.alerts);

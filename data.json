@@ -1,188 +1,128 @@
 {
-  "updatedAt": "2026-07-31T22:26:37.987Z",
-  "period": {
-    "start": "2026-07-01",
-    "end": "2026-07-31"
-  },
-  "kpis": {
-    "revenue": {
-      "value": 10021.99,
-      "changePct": 56.141758536235756
+  "updatedAt": "2026-07-31T19:00:00.000Z",
+  "defaultPeriod": "30d",
+  "periods": {
+    "7d": {
+      "period": { "start": "2026-07-24", "end": "2026-07-31" },
+      "kpis": {
+        "revenue": { "value": 2680.0, "changePct": 12.0 },
+        "orders": { "value": 14, "changePct": 8.0 },
+        "aov": { "value": 191.43, "changePct": 3.5 }
+      },
+      "revenueSeries": [
+        { "date": "2026-07-25", "revenue": 300 },
+        { "date": "2026-07-27", "revenue": 520 },
+        { "date": "2026-07-29", "revenue": 610 },
+        { "date": "2026-07-31", "revenue": 700 }
+      ],
+      "topProducts": [
+        { "name": "Blusa Modal Preta", "revenue": 890, "pct": 33.2, "units": 15, "marginPct": 38.0 }
+      ],
+      "margin": { "overallMarginPct": 38.0, "grossProfit": 1018.4, "costCoveragePct": 100 },
+      "customers": { "newCustomers": 9, "returningCustomers": 5, "recompraPct": 35.7 },
+      "inventoryStats": { "coverageDays": 40, "turnoverRate": 0.7 }
     },
-    "orders": {
-      "value": 49,
-      "changePct": 81.48148148148148
+    "30d": {
+      "period": { "start": "2026-07-01", "end": "2026-07-31" },
+      "kpis": {
+        "revenue": { "value": 13948.9, "changePct": 15.0 },
+        "orders": { "value": 61, "changePct": 9.0 },
+        "aov": { "value": 228.67, "changePct": -1.5 }
+      },
+      "revenueSeries": [
+        { "date": "2026-07-01", "revenue": 900 },
+        { "date": "2026-07-08", "revenue": 1300 },
+        { "date": "2026-07-15", "revenue": 1900 },
+        { "date": "2026-07-22", "revenue": 2400 },
+        { "date": "2026-07-31", "revenue": 2100 }
+      ],
+      "topProducts": [
+        { "name": "Blusa Modal Preta", "revenue": 3200, "pct": 22.9, "units": 54, "marginPct": 36.5 },
+        { "name": "Calça Algodão Premium", "revenue": 2600, "pct": 18.6, "units": 40, "marginPct": 41.2 },
+        { "name": "Vestido Pima", "revenue": 2100, "pct": 15.1, "units": 22, "marginPct": null }
+      ],
+      "margin": { "overallMarginPct": 38.9, "grossProfit": 4180.5, "costCoveragePct": 62.4 },
+      "customers": { "newCustomers": 37, "returningCustomers": 12, "recompraPct": 24.5 },
+      "inventoryStats": { "coverageDays": 34, "turnoverRate": 0.62 }
     },
-    "aov": {
-      "value": 204.53,
-      "changePct": -13.962704480033366
+    "90d": {
+      "period": { "start": "2026-05-03", "end": "2026-07-31" },
+      "kpis": {
+        "revenue": { "value": 34200.0, "changePct": 22.0 },
+        "orders": { "value": 168, "changePct": 14.0 },
+        "aov": { "value": 203.57, "changePct": 3.0 }
+      },
+      "revenueSeries": [],
+      "topProducts": [],
+      "margin": { "overallMarginPct": 39.4, "grossProfit": 10120.0, "costCoveragePct": 60.1 },
+      "customers": { "newCustomers": 98, "returningCustomers": 41, "recompraPct": 29.5 },
+      "inventoryStats": { "coverageDays": 48, "turnoverRate": 1.4 }
+    },
+    "current_month": {
+      "period": { "start": "2026-07-01", "end": "2026-07-31" },
+      "kpis": {
+        "revenue": { "value": 13948.9, "changePct": 5.2 },
+        "orders": { "value": 61, "changePct": 4.0 },
+        "aov": { "value": 228.67, "changePct": 1.1 }
+      },
+      "revenueSeries": [],
+      "topProducts": [],
+      "margin": { "overallMarginPct": 38.9, "grossProfit": 4180.5, "costCoveragePct": 62.4 },
+      "customers": { "newCustomers": 37, "returningCustomers": 12, "recompraPct": 24.5 },
+      "inventoryStats": { "coverageDays": 34, "turnoverRate": 0.62 }
+    },
+    "previous_month": {
+      "period": { "start": "2026-06-01", "end": "2026-07-01" },
+      "kpis": {
+        "revenue": { "value": 13260.0, "changePct": 8.0 },
+        "orders": { "value": 59, "changePct": 6.0 },
+        "aov": { "value": 224.75, "changePct": 1.9 }
+      },
+      "revenueSeries": [],
+      "topProducts": [],
+      "margin": { "overallMarginPct": 37.5, "grossProfit": 3820.0, "costCoveragePct": 58.0 },
+      "customers": { "newCustomers": 34, "returningCustomers": 10, "recompraPct": 22.7 },
+      "inventoryStats": { "coverageDays": 31, "turnoverRate": 0.59 }
     }
   },
-  "revenueSeries": [
-    {
-      "date": "2026-07-01",
-      "revenue": 149
-    },
-    {
-      "date": "2026-07-02",
-      "revenue": 62.91
-    },
-    {
-      "date": "2026-07-04",
-      "revenue": 971.8
-    },
-    {
-      "date": "2026-07-06",
-      "revenue": 441.5
-    },
-    {
-      "date": "2026-07-08",
-      "revenue": 359
-    },
-    {
-      "date": "2026-07-09",
-      "revenue": 92.61
-    },
-    {
-      "date": "2026-07-11",
-      "revenue": 176.14
-    },
-    {
-      "date": "2026-07-12",
-      "revenue": 114.87
-    },
-    {
-      "date": "2026-07-15",
-      "revenue": 199.32
-    },
-    {
-      "date": "2026-07-18",
-      "revenue": 56.9
-    },
-    {
-      "date": "2026-07-19",
-      "revenue": 149
-    },
-    {
-      "date": "2026-07-20",
-      "revenue": 359
-    },
-    {
-      "date": "2026-07-23",
-      "revenue": 1956.39
-    },
-    {
-      "date": "2026-07-24",
-      "revenue": 1931.5
-    },
-    {
-      "date": "2026-07-25",
-      "revenue": 338.7
-    },
-    {
-      "date": "2026-07-26",
-      "revenue": 299.65
-    },
-    {
-      "date": "2026-07-27",
-      "revenue": 54.95
-    },
-    {
-      "date": "2026-07-28",
-      "revenue": 69.95
-    },
-    {
-      "date": "2026-07-29",
-      "revenue": 539.2
-    },
-    {
-      "date": "2026-07-30",
-      "revenue": 1006
-    },
-    {
-      "date": "2026-07-31",
-      "revenue": 693.6
-    }
-  ],
-  "topProducts": [
-    {
-      "name": "CAMISETA PIMA | GOIABA",
-      "revenue": 2098.5,
-      "pct": 20.9,
-      "units": 15,
-      "marginPct": 72.8
-    },
-    {
-      "name": "CAMISETA PIMA | AREIA",
-      "revenue": 1259.1,
-      "pct": 12.6,
-      "units": 9,
-      "marginPct": 72.8
-    },
-    {
-      "name": "CAMISETA PIMA | CREME",
-      "revenue": 979.3,
-      "pct": 9.8,
-      "units": 7,
-      "marginPct": 72.8
-    },
-    {
-      "name": "CAMISETA MODAL TECH | CINZA",
-      "revenue": 879.2,
-      "pct": 8.8,
-      "units": 8,
-      "marginPct": 77.3
-    },
-    {
-      "name": "CAMISETA MODAL TECH | BEGE BOSQUE",
-      "revenue": 769.3,
-      "pct": 7.7,
-      "units": 7,
-      "marginPct": 77.3
-    }
-  ],
   "inventory": {
-    "totalUnits": 1869,
+    "totalUnits": 1028,
     "stalledSkuCount": 206,
     "stalledUnits": 1173,
-    "stockoutSkuCount": 138,
-    "coverageDays": 362,
-    "turnoverRate": 0.08
+    "stockoutSkuCount": 138
   },
-  "customers": {
-    "newCustomers": 37,
-    "returningCustomers": 6,
-    "recompraPct": 14
+  "kpis": {
+    "revenue": { "value": 13948.9, "changePct": 15.0 },
+    "orders": { "value": 61, "changePct": 9.0 },
+    "aov": { "value": 228.67, "changePct": -1.5 }
   },
-  "margin": {
-    "overallMarginPct": 71.2,
-    "grossProfit": 11132.5,
-    "costCoveragePct": 100
+  "revenueSeries": [
+    { "date": "2026-07-01", "revenue": 900 },
+    { "date": "2026-07-08", "revenue": 1300 },
+    { "date": "2026-07-15", "revenue": 1900 },
+    { "date": "2026-07-22", "revenue": 2400 },
+    { "date": "2026-07-31", "revenue": 2100 }
+  ],
+  "topProducts": [
+    { "name": "Blusa Modal Preta", "revenue": 3200, "pct": 22.9, "units": 54, "marginPct": 36.5 },
+    { "name": "Calça Algodão Premium", "revenue": 2600, "pct": 18.6, "units": 40, "marginPct": 41.2 },
+    { "name": "Vestido Pima", "revenue": 2100, "pct": 15.1, "units": 22, "marginPct": null }
+  ],
+  "customers": { "newCustomers": 37, "returningCustomers": 12, "recompraPct": 24.5 },
+  "margin": { "overallMarginPct": 38.9, "grossProfit": 4180.5, "costCoveragePct": 62.4 },
+  "marketing": {
+    "spend": 10940.0,
+    "roas": 1.27,
+    "cac": 295.7,
+    "activeCampaigns": [
+      { "name": "Conversão | Coleção Inverno", "spend": 5900.0 },
+      { "name": "Remarketing | Carrinho abandonado", "spend": 3320.0 },
+      { "name": "Prospecção | Lookalike 1%", "spend": 1720.0 }
+    ]
   },
   "alerts": [
-    {
-      "type": "good",
-      "text": "Receita subiu 56,1% em relação ao período anterior."
-    },
-    {
-      "type": "bad",
-      "text": "Ticket médio caiu 14,0% em relação ao período anterior."
-    },
-    {
-      "type": "warning",
-      "text": "206 produto(s) parado(s) há mais de 180 dias sem vender (1173 peças)."
-    },
-    {
-      "type": "warning",
-      "text": "138 produto(s) em ruptura de estoque."
-    },
-    {
-      "type": "warning",
-      "text": "Taxa de recompra baixa: só 14,0% dos pedidos são de clientes recorrentes."
-    },
-    {
-      "type": "good",
-      "text": "Boa margem bruta: 71,2%."
-    }
+    { "type": "bad", "text": "Ticket médio caiu 1,5% em relação ao período anterior." },
+    { "type": "warning", "text": "206 variação(ões) de produto parada(s) há mais de 180 dias sem vender (1173 peças)." },
+    { "type": "warning", "text": "138 variação(ões) de produto em ruptura de estoque." }
   ]
 }
