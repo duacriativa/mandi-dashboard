@@ -1,0 +1,47 @@
+name: Atualizar dados do Shopify
+
+on:
+  schedule:
+    # Todos os dias às 08:00 (horário de Brasília = UTC-3 -> 11:00 UTC)
+    - cron: "0 11 * * *"
+  workflow_dispatch: {} # permite rodar manualmente pela aba Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Buscar dados do Shopify
+        env:
+          SHOPIFY_STORE_DOMAIN: ${{ secrets.SHOPIFY_STORE_DOMAIN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: node scripts/fetch-shopify.mjs
+
+      - name: Buscar dados da Meta Ads
+        if: ${{ secrets.META_ACCESS_TOKEN != '' && secrets.META_AD_ACCOUNT_ID != '' }}
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID: ${{ secrets.META_AD_ACCOUNT_ID }}
+        run: node scripts/fetch-meta-ads.mjs
+
+      - name: Calcular alertas automáticos
+        run: node scripts/compute-alerts.mjs
+
+      - name: Publicar data.json atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet || git commit -m "Atualiza dados do Shopify"
+          git push
