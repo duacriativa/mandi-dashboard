@@ -276,8 +276,17 @@ async function main() {
   }
 
   // Clientes novos vs recompra (dentro do período atual)
-  // Aproximação: customer.orders_count é o total histórico de pedidos do
-  // cliente até agora. Se for 1, esse pedido é o único/primeiro dele.
+  // Não usamos o campo `orders_count` do cliente: a Shopify pode restringir
+  // esse dado sem uma aprovação extra de "Protected Customer Data", vindo
+  // sempre zerado. Em vez disso, contamos nós mesmos quantos pedidos cada
+  // cliente tem dentro da janela de STALLED_DAYS dias que já buscamos.
+  const ordersPerCustomer = {};
+  for (const o of validOrders) {
+    const c = o.customer;
+    if (!c || !c.id) continue;
+    ordersPerCustomer[c.id] = (ordersPerCustomer[c.id] || 0) + 1;
+  }
+
   let newCustomers = 0;
   let returningCustomers = 0;
   const seenCustomerIds = new Set();
@@ -286,7 +295,7 @@ async function main() {
     if (!c || !c.id) continue; // pedido sem cliente identificado (guest sem cadastro)
     if (seenCustomerIds.has(c.id)) continue; // conta o cliente 1x no período
     seenCustomerIds.add(c.id);
-    if ((c.orders_count || 0) <= 1) newCustomers += 1;
+    if ((ordersPerCustomer[c.id] || 0) <= 1) newCustomers += 1;
     else returningCustomers += 1;
   }
   const totalIdentifiedCustomers = newCustomers + returningCustomers;
