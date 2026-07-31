@@ -180,16 +180,37 @@ async function main() {
   console.log("Buscando pedidos (histórico completo)...");
   const allOrders = await fetchOrdersSince(ALL_TIME_START);
 
-  // Considera apenas pedidos não cancelados
-  const validOrders = allOrders.filter((o) => !o.cancelled_at);
+  // Calculamos os números de DUAS formas, e o dashboard deixa escolher:
+  //
+  // "total"     -> Total em vendas: todo pedido que não foi 100% reembolsado
+  //                (current_total_price > 0). É a mesma definição que a
+  //                própria aba "Vendas" da Shopify usa no relatório
+  //                "Total de vendas" — inclui pedidos cancelados que nunca
+  //                chegaram a ser pagos, contanto que não tenham sido
+  //                estornados (porque não tem o que estornar).
+  //
+  // "confirmed" -> Pagamentos confirmados: dinheiro que REALMENTE entrou no
+  //                caixa, baseado no status de pagamento (financial_status).
+  //                Exclui pedidos com pagamento pendente/expirado/anulado,
+  //                mesmo que não tenham sido formalmente cancelados.
+  const allSalesOrders = allOrders.filter(
+    (o) => parseFloat(o.current_total_price ?? o.total_price ?? "0") > 0
+  );
+  const PAID_STATUSES = new Set(["paid", "partially_paid", "partially_refunded"]);
+  const confirmedOrders = allOrders.filter((o) => PAID_STATUSES.has(o.financial_status));
 
   const orderRevenue = (o) => parseFloat(o.current_total_price || o.total_price || "0");
 
+  console.log(
+    `[info] pedidos: ${allOrders.length} no total | ${allSalesOrders.length} em "total de vendas" | ${confirmedOrders.length} com pagamento confirmado`
+  );
+
   // Clientes: quantos pedidos cada um tem no histórico completo (não usamos
   // o campo `orders_count` do cliente porque a Shopify pode restringir esse
-  // dado sem uma aprovação extra de "Protected Customer Data").
+  // dado sem uma aprovação extra de "Protected Customer Data"). Baseado em
+  // pagamentos confirmados — é o que reflete cliente que realmente comprou.
   const ordersPerCustomer = {};
-  for (const o of validOrders) {
+  for (const o of confirmedOrders) {
     const c = o.customer;
     if (!c || !c.id) continue;
     ordersPerCustomer[c.id] = (ordersPerCustomer[c.id] || 0) + 1;
@@ -202,7 +223,7 @@ async function main() {
 
   const stalledWindowStart = daysAgo(now, STALLED_DAYS);
   const soldVariantIdsRecently = new Set();
-  for (const o of validOrders) {
+  for (const o of confirmedOrders) {
     if (new Date(o.created_at) < stalledWindowStart) continue;
     for (const li of o.line_items || []) {
       if (li.variant_id) soldVariantIdsRecently.add(li.variant_id);
@@ -258,10 +279,11 @@ async function main() {
   };
 
   // Calcula todas as métricas de um período específico (start/end) comparado
-  // com um período anterior (prevStart/prevEnd) de mesma duração.
-  function computePeriod({ start, end, prevStart, prevEnd }) {
-    const currentOrders = validOrders.filter((o) => inPeriod(o, start, end));
-    const previousOrders = validOrders.filter((o) => inPeriod(o, prevStart, prevEnd));
+  // com um período anterior (prevStart/prevEnd) de mesma duração, sobre um
+  // conjunto de pedidos (total de vendas OU pagamentos confirmados).
+  function computePeriod(orderSet, { start, end, prevStart, prevEnd }) {
+    const currentOrders = orderSet.filter((o) => inPeriod(o, start, end));
+    const previousOrders = orderSet.filter((o) => inPeriod(o, prevStart, prevEnd));
 
     const currentRevenue = sum(currentOrders, orderRevenue);
     const previousRevenue = sum(previousOrders, orderRevenue);
@@ -396,14 +418,23 @@ async function main() {
     periodsConfig["previous_month"] = { start: cur.start, end: cur.end, prevStart: prev.start, prevEnd: prev.end };
   }
 
-  const periods = {};
+  // Gera todos os períodos nos DOIS modos: "total" (total em vendas, igual
+  // ao relatório da Shopify) e "confirmed" (só pagamentos confirmados).
+  const periodsByMode = { total: {}, confirmed: {} };
   for (const [key, cfg] of Object.entries(periodsConfig)) {
-    periods[key] = computePeriod(cfg);
+    periodsByMode.total[key] = computePeriod(allSalesOrders, cfg);
+    periodsByMode.confirmed[key] = computePeriod(confirmedOrders, cfg);
   }
+  // `periods` mantém o formato antigo (compatibilidade): aponta pro modo "total".
+  const periods = periodsByMode.total;
 
   const output = {
     updatedAt: now.toISOString(),
     defaultPeriod: "30d",
+    defaultRevenueMode: "confirmed",
+    // periodsByMode.total     -> "Total em vendas" (mesma lógica do relatório da Shopify)
+    // periodsByMode.confirmed -> "Pagamentos confirmados" (dinheiro que realmente entrou)
+    periodsByMode,
     periods,
     inventory: {
       totalUnits,
