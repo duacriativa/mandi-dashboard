@@ -34,6 +34,11 @@ if (!STORE_DOMAIN || (!STATIC_TOKEN && (!CLIENT_ID || !CLIENT_SECRET))) {
 
 const BASE_URL = `https://${STORE_DOMAIN}/admin/api/${API_VERSION}`;
 const STALLED_DAYS = 180; // "estoque parado" = sem vender há mais de 180 dias
+// Para "cliente novo vs. recompra" usamos o HISTÓRICO COMPLETO da loja (sem
+// limite de dias) — é a mesma definição que a própria Shopify usa na
+// métrica returning_customer_rate: recorrente = já teve QUALQUER pedido
+// antes, não importa há quanto tempo.
+const ALL_TIME_START = "2000-01-01T00:00:00Z";
 
 // Troca Client ID + Client secret por um Admin API access token válido por 24h.
 async function getAccessTokenViaClientCredentials() {
@@ -147,13 +152,12 @@ async function main() {
   const prevPeriodStart = new Date(periodStart);
   prevPeriodStart.setDate(prevPeriodStart.getDate() - periodDays);
 
-  // Busca pedidos cobrindo os últimos STALLED_DAYS dias: precisamos desse
-  // histórico maior para saber quais produtos não vendem há mais de 180 dias.
-  const historyWindowStart = new Date(now);
-  historyWindowStart.setDate(historyWindowStart.getDate() - STALLED_DAYS);
-
-  console.log("Buscando pedidos...");
-  const allOrders = await fetchOrdersSince(historyWindowStart.toISOString());
+  // Busca TODO o histórico de pedidos da loja. É mais dados que o
+  // necessário só pra receita/estoque, mas é o que garante que "cliente
+  // recorrente" seja calculado certo (qualquer pedido anterior conta,
+  // não só os últimos X dias).
+  console.log("Buscando pedidos (histórico completo)...");
+  const allOrders = await fetchOrdersSince(ALL_TIME_START);
 
   // Considera apenas pedidos não cancelados
   const validOrders = allOrders.filter((o) => !o.cancelled_at);
@@ -242,6 +246,11 @@ async function main() {
     });
 
   // Margem bruta geral do período (só considera produtos com custo cadastrado em custos.json)
+  // Importante: usamos a soma dos itens (productRevenue) como base de "receita
+  // total" aqui, não o total dos pedidos (currentRevenue) — o total do pedido
+  // já inclui descontos aplicados, então comparar com o preço de tabela dos
+  // itens poderia gerar uma cobertura maior que 100%.
+  const totalLineItemsRevenue = sum(Object.values(productRevenue), (v) => v);
   let revenueWithKnownCost = 0;
   let costOfKnownProducts = 0;
   for (const [name, revenue] of Object.entries(productRevenue)) {
@@ -255,8 +264,8 @@ async function main() {
   const overallMarginPct = revenueWithKnownCost
     ? Math.round((grossProfitKnown / revenueWithKnownCost) * 1000) / 10
     : null;
-  const costCoveragePct = currentRevenue
-    ? Math.round((revenueWithKnownCost / currentRevenue) * 1000) / 10
+  const costCoveragePct = totalLineItemsRevenue
+    ? Math.round((revenueWithKnownCost / totalLineItemsRevenue) * 1000) / 10
     : 0;
 
   // Unidades vendidas no período (para giro/cobertura de estoque)
@@ -268,8 +277,11 @@ async function main() {
   }
 
   // Variantes vendidas nos últimos STALLED_DAYS dias (para achar "estoque parado")
+  const stalledWindowStart = new Date(now);
+  stalledWindowStart.setDate(stalledWindowStart.getDate() - STALLED_DAYS);
   const soldVariantIds = new Set();
   for (const o of validOrders) {
+    if (new Date(o.created_at) < stalledWindowStart) continue;
     for (const li of o.line_items || []) {
       if (li.variant_id) soldVariantIds.add(li.variant_id);
     }
@@ -279,7 +291,8 @@ async function main() {
   // Não usamos o campo `orders_count` do cliente: a Shopify pode restringir
   // esse dado sem uma aprovação extra de "Protected Customer Data", vindo
   // sempre zerado. Em vez disso, contamos nós mesmos quantos pedidos cada
-  // cliente tem dentro da janela de STALLED_DAYS dias que já buscamos.
+  // cliente tem no histórico completo (mesma lógica da métrica oficial da
+  // Shopify: recorrente = já teve QUALQUER pedido antes).
   const ordersPerCustomer = {};
   for (const o of validOrders) {
     const c = o.customer;
@@ -306,6 +319,21 @@ async function main() {
   // Estoque: total de peças, parado (sem venda há 180+ dias) e em ruptura
   console.log("Buscando produtos/estoque...");
   const products = await fetchAllProducts();
+
+  // --- DIAGNÓSTICO TEMPORÁRIO (remover depois de confirmar os números) ---
+  const productIds = products.map((p) => p.id);
+  const uniqueProductIds = new Set(productIds);
+  console.log(`[diag] produtos retornados pela API: ${products.length}`);
+  console.log(`[diag] produtos únicos (por id): ${uniqueProductIds.size}`);
+  const activeProducts = products.filter((p) => p.status === "active");
+  console.log(`[diag] produtos com status=active: ${activeProducts.length}`);
+  const activeVariantIds = [];
+  for (const p of activeProducts) {
+    for (const v of p.variants || []) activeVariantIds.push(v.id);
+  }
+  console.log(`[diag] variantes em produtos ativos: ${activeVariantIds.length}`);
+  console.log(`[diag] variantes únicas (por id): ${new Set(activeVariantIds).size}`);
+  // --- FIM DO DIAGNÓSTICO ---
 
   let totalUnits = 0;
   let stalledSkuCount = 0;
