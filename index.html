@@ -97,4 +97,333 @@
     .grid-2, .grid-2.even, .grid-3 { grid-template-columns: 1fr; }
     nav.sidebar { display: none; }
   }
-<
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="brand">LOJA</div>
+    <div class="navitem active">Visão geral</div>
+    <div class="navitem">Financeiro</div>
+    <div class="navitem">Comercial</div>
+    <div class="navitem">Estoque</div>
+  </nav>
+
+  <main>
+    <header class="top">
+      <div>
+        <h1>Dashboard Shopify</h1>
+        <div class="subtitle">Resumo executivo</div>
+      </div>
+      <div class="period-pill" id="periodPill">carregando período…</div>
+    </header>
+
+    <section class="card" style="margin-bottom:16px;">
+      <div class="section-title">Alertas do período</div>
+      <div class="alerts-list" id="alertsList"></div>
+    </section>
+
+    <section class="kpi-grid">
+      <div class="card">
+        <div class="kpi-label">Receita</div>
+        <div class="kpi-value" id="kpiRevenue">—</div>
+        <div class="delta" id="kpiRevenueDelta"></div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Pedidos</div>
+        <div class="kpi-value" id="kpiOrders">—</div>
+        <div class="delta" id="kpiOrdersDelta"></div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Ticket médio</div>
+        <div class="kpi-value" id="kpiAov">—</div>
+        <div class="delta" id="kpiAovDelta"></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="section-title">Evolução da receita (30 dias)</div>
+        <svg class="chart" id="chart" viewBox="0 0 600 160" preserveAspectRatio="none"></svg>
+      </div>
+      <div class="card">
+        <div class="section-title">Top produtos por receita</div>
+        <table id="topProductsTable">
+          <thead><tr><th>Produto</th><th>Receita</th><th>Margem</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid-3">
+      <div class="card">
+        <div class="section-title">Estoque</div>
+        <div class="stock-grid">
+          <div class="stock-box">
+            <div class="val" id="stockTotal">—</div>
+            <div class="lbl">Total de peças</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="stockCoverage">—</div>
+            <div class="lbl">Cobertura (dias)</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="stockTurnover">—</div>
+            <div class="lbl">Giro no período</div>
+          </div>
+        </div>
+        <div class="stock-grid cols-2" style="margin-top:10px;">
+          <div class="stock-box">
+            <div class="val small" id="stockStalled">—</div>
+            <div class="lbl">Variações paradas (180d+)</div>
+          </div>
+          <div class="stock-box">
+            <div class="val small" id="stockStockout">—</div>
+            <div class="lbl">Variações em ruptura</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Clientes</div>
+        <div class="stock-grid cols-2">
+          <div class="stock-box">
+            <div class="val" id="custNew">—</div>
+            <div class="lbl">Novos</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="custReturning">—</div>
+            <div class="lbl">Recompra</div>
+          </div>
+        </div>
+        <div class="stock-grid cols-2" style="margin-top:10px;">
+          <div class="stock-box">
+            <div class="val" id="custRecompraPct">—</div>
+            <div class="lbl">% recompra</div>
+          </div>
+          <div class="stock-box">
+            <div class="val small" id="custCac">—</div>
+            <div class="lbl">CAC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Margem</div>
+        <div class="stock-grid cols-2">
+          <div class="stock-box">
+            <div class="val" id="marginPct">—</div>
+            <div class="lbl">Margem bruta</div>
+          </div>
+          <div class="stock-box">
+            <div class="val small" id="marginProfit">—</div>
+            <div class="lbl">Lucro bruto</div>
+          </div>
+        </div>
+        <div id="marginCoverageNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="section-title">Tráfego pago (Meta Ads)</div>
+        <div class="stock-grid">
+          <div class="stock-box">
+            <div class="val" id="marketingSpend">—</div>
+            <div class="lbl">Investido (30 dias)</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="marketingRoas">—</div>
+            <div class="lbl">ROAS</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="section-title" style="margin-bottom:8px;">Campanhas ativas</div>
+          <table id="campaignsTable">
+            <thead><tr><th>Campanha</th><th>Investido</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div id="noCampaigns" style="display:none;color:var(--muted);font-size:12px;">Nenhuma campanha ativa no momento.</div>
+        </div>
+      </div>
+      <div></div>
+    </section>
+
+    <div class="updated" id="updatedAt"></div>
+  </main>
+</div>
+
+<script>
+const BRL = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+function renderDelta(el, pct) {
+  if (pct === null || pct === undefined || isNaN(pct)) {
+    el.textContent = "";
+    return;
+  }
+  const up = pct >= 0;
+  el.className = "delta " + (up ? "up" : "down");
+  el.innerHTML = `${up ? "▲" : "▼"} ${Math.abs(pct).toFixed(1)}%<span class="delta-context"> vs período anterior</span>`;
+}
+
+function renderChart(series) {
+  const svg = document.getElementById("chart");
+  if (!series || series.length === 0) return;
+  const w = 600, h = 160, pad = 10;
+  const values = series.map(p => p.revenue);
+  const max = Math.max(...values, 1);
+  const min = Math.min(...values, 0);
+  const stepX = (w - pad * 2) / Math.max(series.length - 1, 1);
+
+  const points = series.map((p, i) => {
+    const x = pad + i * stepX;
+    const y = h - pad - ((p.revenue - min) / (max - min || 1)) * (h - pad * 2);
+    return [x, y];
+  });
+
+  const linePath = points.map((p, i) => (i === 0 ? "M" : "L") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
+  const areaPath = linePath + ` L${points[points.length-1][0]},${h-pad} L${points[0][0]},${h-pad} Z`;
+
+  svg.innerHTML = `
+    <path d="${areaPath}" fill="#0a0a0a" opacity="0.05"></path>
+    <path d="${linePath}" fill="none" stroke="#0a0a0a" stroke-width="2"></path>
+    ${points.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#0a0a0a"></circle>`).join("")}
+  `;
+}
+
+function renderTopProducts(list) {
+  const tbody = document.querySelector("#topProductsTable tbody");
+  tbody.innerHTML = "";
+  const max = Math.max(...list.map(p => p.pct), 1);
+  for (const p of list) {
+    const tr = document.createElement("tr");
+    const marginLabel = p.marginPct !== null && p.marginPct !== undefined
+      ? p.marginPct.toFixed(0) + "%"
+      : "<span style=\"color:var(--muted);\">—</span>";
+    tr.innerHTML = `
+      <td>${p.name}</td>
+      <td>${BRL(p.revenue)}</td>
+      <td>${marginLabel}</td>
+      <td><span class="bar-bg"><span class="bar-fill" style="width:${(p.pct/max*100).toFixed(0)}%"></span></span></td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+function renderInventory(inv) {
+  document.getElementById("stockTotal").textContent = (inv.totalUnits ?? 0).toLocaleString("pt-BR");
+  document.getElementById("stockCoverage").textContent = inv.coverageDays !== null && inv.coverageDays !== undefined
+    ? inv.coverageDays + " dias" : "—";
+  document.getElementById("stockTurnover").textContent = inv.turnoverRate !== null && inv.turnoverRate !== undefined
+    ? inv.turnoverRate.toFixed(1) + "x" : "—";
+  document.getElementById("stockStalled").textContent = `${inv.stalledSkuCount ?? 0} variações (${inv.stalledUnits ?? 0} pçs)`;
+  document.getElementById("stockStockout").textContent = `${inv.stockoutSkuCount ?? 0} variações`;
+}
+
+function renderCustomers(cust) {
+  if (!cust) return;
+  document.getElementById("custNew").textContent = cust.newCustomers ?? "—";
+  document.getElementById("custReturning").textContent = cust.returningCustomers ?? "—";
+  document.getElementById("custRecompraPct").textContent = cust.recompraPct !== null && cust.recompraPct !== undefined
+    ? cust.recompraPct.toFixed(1) + "%" : "—";
+}
+
+function renderCac(marketing) {
+  const el = document.getElementById("custCac");
+  if (marketing && marketing.cac !== null && marketing.cac !== undefined) {
+    el.textContent = BRL(marketing.cac);
+  } else {
+    el.textContent = "—";
+  }
+}
+
+function renderMarketing(marketing) {
+  if (!marketing) {
+    document.getElementById("marketingSpend").textContent = "—";
+    document.getElementById("marketingRoas").textContent = "—";
+    return;
+  }
+  document.getElementById("marketingSpend").textContent = BRL(marketing.spend || 0);
+  document.getElementById("marketingRoas").textContent = marketing.roas !== null && marketing.roas !== undefined
+    ? marketing.roas.toFixed(1) + "x"
+    : "—";
+
+  const tbody = document.querySelector("#campaignsTable tbody");
+  tbody.innerHTML = "";
+  const campaigns = marketing.activeCampaigns || [];
+  if (campaigns.length === 0) {
+    document.getElementById("noCampaigns").style.display = "block";
+  } else {
+    document.getElementById("noCampaigns").style.display = "none";
+    for (const c of campaigns) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${c.name}</td><td>${BRL(c.spend)}</td>`;
+      tbody.appendChild(tr);
+    }
+  }
+}
+
+function renderAlerts(alerts) {
+  const list = document.getElementById("alertsList");
+  list.innerHTML = "";
+  if (!alerts || alerts.length === 0) {
+    list.innerHTML = `<div class="alert-item good"><span>Nenhum alerta disponível ainda.</span></div>`;
+    return;
+  }
+  const icon = { good: "✓", bad: "✕", warning: "!" };
+  for (const a of alerts) {
+    const div = document.createElement("div");
+    div.className = "alert-item " + a.type;
+    div.innerHTML = `<span class="alert-dot">${icon[a.type] || "•"}</span><span>${a.text}</span>`;
+    list.appendChild(div);
+  }
+}
+
+function renderMargin(margin) {
+  const note = document.getElementById("marginCoverageNote");
+  if (!margin || margin.overallMarginPct === null || margin.overallMarginPct === undefined) {
+    document.getElementById("marginPct").textContent = "—";
+    document.getElementById("marginProfit").textContent = "—";
+    note.textContent = "Cadastre os custos em custos.json para calcular a margem.";
+    return;
+  }
+  document.getElementById("marginPct").textContent = margin.overallMarginPct.toFixed(1) + "%";
+  document.getElementById("marginProfit").textContent = BRL(margin.grossProfit || 0);
+  note.textContent = `Calculado sobre ${margin.costCoveragePct?.toFixed(0) ?? 0}% da receita (produtos com custo cadastrado).`;
+}
+
+async function load() {
+  const res = await fetch("data.json", { cache: "no-store" });
+  const data = await res.json();
+
+  document.getElementById("periodPill").textContent = `${data.period.start} — ${data.period.end}`;
+
+  document.getElementById("kpiRevenue").textContent = BRL(data.kpis.revenue.value);
+  renderDelta(document.getElementById("kpiRevenueDelta"), data.kpis.revenue.changePct);
+
+  document.getElementById("kpiOrders").textContent = data.kpis.orders.value;
+  renderDelta(document.getElementById("kpiOrdersDelta"), data.kpis.orders.changePct);
+
+  document.getElementById("kpiAov").textContent = BRL(data.kpis.aov.value);
+  renderDelta(document.getElementById("kpiAovDelta"), data.kpis.aov.changePct);
+
+  renderChart(data.revenueSeries);
+  renderTopProducts(data.topProducts);
+  renderInventory(data.inventory || {});
+  renderCustomers(data.customers);
+  renderMargin(data.margin);
+  renderCac(data.marketing);
+  renderMarketing(data.marketing);
+  renderAlerts(data.alerts);
+
+  const updated = new Date(data.updatedAt);
+  document.getElementById("updatedAt").textContent = "Atualizado em: " + updated.toLocaleString("pt-BR");
+}
+
+load().catch(err => {
+  document.querySelector("main").insertAdjacentHTML("afterbegin",
+    `<div class="card" style="border-color:#c1382b;color:#c1382b;margin-bottom:16px;">Erro ao carregar data.json: ${err.message}</div>`);
+});
+</script>
+</body>
+</html>
