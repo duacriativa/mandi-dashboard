@@ -12,6 +12,8 @@ permissions:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    env:
+      HAS_META: ${{ secrets.META_ACCESS_TOKEN != '' && secrets.META_AD_ACCOUNT_ID != '' }}
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
@@ -29,7 +31,7 @@ jobs:
         run: node scripts/fetch-shopify.mjs
 
       - name: Buscar dados da Meta Ads
-        if: ${{ secrets.META_ACCESS_TOKEN != '' && secrets.META_AD_ACCOUNT_ID != '' }}
+        if: ${{ env.HAS_META == 'true' }}
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           META_AD_ACCOUNT_ID: ${{ secrets.META_AD_ACCOUNT_ID }}
