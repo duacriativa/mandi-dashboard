@@ -1,63 +1,188 @@
 {
-  "updatedAt": "2026-07-31T11:00:00.000Z",
-  "period": { "start": "2026-07-01", "end": "2026-07-31" },
+  "updatedAt": "2026-07-31T21:43:43.112Z",
+  "period": {
+    "start": "2026-07-01",
+    "end": "2026-07-31"
+  },
   "kpis": {
-    "revenue": { "value": 37200.0, "changePct": 15.0 },
-    "orders": { "value": 486, "changePct": 9.0 },
-    "aov": { "value": 76.54, "changePct": -1.5 }
+    "revenue": {
+      "value": 10021.99,
+      "changePct": 56.141758536235756
+    },
+    "orders": {
+      "value": 49,
+      "changePct": 81.48148148148148
+    },
+    "aov": {
+      "value": 204.53,
+      "changePct": -13.962704480033366
+    }
   },
   "revenueSeries": [
-    { "date": "2026-07-01", "revenue": 900 },
-    { "date": "2026-07-04", "revenue": 1050 },
-    { "date": "2026-07-07", "revenue": 1200 },
-    { "date": "2026-07-10", "revenue": 1100 },
-    { "date": "2026-07-13", "revenue": 1400 },
-    { "date": "2026-07-16", "revenue": 1250 },
-    { "date": "2026-07-19", "revenue": 1600 },
-    { "date": "2026-07-22", "revenue": 1500 },
-    { "date": "2026-07-25", "revenue": 1800 },
-    { "date": "2026-07-28", "revenue": 1750 },
-    { "date": "2026-07-31", "revenue": 1900 }
+    {
+      "date": "2026-07-01",
+      "revenue": 149
+    },
+    {
+      "date": "2026-07-02",
+      "revenue": 62.91
+    },
+    {
+      "date": "2026-07-04",
+      "revenue": 971.8
+    },
+    {
+      "date": "2026-07-06",
+      "revenue": 441.5
+    },
+    {
+      "date": "2026-07-08",
+      "revenue": 359
+    },
+    {
+      "date": "2026-07-09",
+      "revenue": 92.61
+    },
+    {
+      "date": "2026-07-11",
+      "revenue": 176.14
+    },
+    {
+      "date": "2026-07-12",
+      "revenue": 114.87
+    },
+    {
+      "date": "2026-07-15",
+      "revenue": 199.32
+    },
+    {
+      "date": "2026-07-18",
+      "revenue": 56.9
+    },
+    {
+      "date": "2026-07-19",
+      "revenue": 149
+    },
+    {
+      "date": "2026-07-20",
+      "revenue": 359
+    },
+    {
+      "date": "2026-07-23",
+      "revenue": 1956.39
+    },
+    {
+      "date": "2026-07-24",
+      "revenue": 1931.5
+    },
+    {
+      "date": "2026-07-25",
+      "revenue": 338.7
+    },
+    {
+      "date": "2026-07-26",
+      "revenue": 299.65
+    },
+    {
+      "date": "2026-07-27",
+      "revenue": 54.95
+    },
+    {
+      "date": "2026-07-28",
+      "revenue": 69.95
+    },
+    {
+      "date": "2026-07-29",
+      "revenue": 539.2
+    },
+    {
+      "date": "2026-07-30",
+      "revenue": 1006
+    },
+    {
+      "date": "2026-07-31",
+      "revenue": 693.6
+    }
   ],
   "topProducts": [
-    { "name": "Algodão Preto", "revenue": 8900, "pct": 23.9, "units": 178, "marginPct": 42.1 },
-    { "name": "Modal Branco", "revenue": 7200, "pct": 19.4, "units": 160, "marginPct": 38.7 },
-    { "name": "Pima Preta", "revenue": 6100, "pct": 16.4, "units": 122, "marginPct": 40.0 },
-    { "name": "Kit Algodão", "revenue": 4300, "pct": 11.6, "units": 43, "marginPct": null },
-    { "name": "Infantil", "revenue": 3100, "pct": 8.3, "units": 62, "marginPct": 45.5 }
+    {
+      "name": "CAMISETA PIMA | GOIABA",
+      "revenue": 2098.5,
+      "pct": 20.9,
+      "units": 15,
+      "marginPct": 72.8
+    },
+    {
+      "name": "CAMISETA PIMA | AREIA",
+      "revenue": 1259.1,
+      "pct": 12.6,
+      "units": 9,
+      "marginPct": 72.8
+    },
+    {
+      "name": "CAMISETA PIMA | CREME",
+      "revenue": 979.3,
+      "pct": 9.8,
+      "units": 7,
+      "marginPct": 72.8
+    },
+    {
+      "name": "CAMISETA MODAL TECH | CINZA",
+      "revenue": 879.2,
+      "pct": 8.8,
+      "units": 8,
+      "marginPct": 77.3
+    },
+    {
+      "name": "CAMISETA MODAL TECH | BEGE BOSQUE",
+      "revenue": 769.3,
+      "pct": 7.7,
+      "units": 7,
+      "marginPct": 77.3
+    }
   ],
   "inventory": {
-    "totalUnits": 1028,
-    "stalledSkuCount": 6,
-    "stalledUnits": 214,
-    "stockoutSkuCount": 2,
-    "coverageDays": 45,
-    "turnoverRate": 0.62
+    "totalUnits": 1869,
+    "stalledSkuCount": 206,
+    "stalledUnits": 1173,
+    "stockoutSkuCount": 138,
+    "coverageDays": 362,
+    "turnoverRate": 0.08
   },
   "customers": {
-    "newCustomers": 318,
-    "returningCustomers": 123,
-    "recompraPct": 27.9
+    "newCustomers": 43,
+    "returningCustomers": 0,
+    "recompraPct": 0
   },
   "margin": {
-    "overallMarginPct": 40.3,
-    "grossProfit": 12280.5,
-    "costCoveragePct": 88.4
-  },
-  "marketing": {
-    "spend": 10940.0,
-    "roas": 3.4,
-    "cac": 34.4,
-    "activeCampaigns": [
-      { "name": "Conversão | Coleção Inverno", "spend": 5900.0 },
-      { "name": "Remarketing | Carrinho abandonado", "spend": 3320.0 },
-      { "name": "Prospecção | Lookalike 1%", "spend": 1720.0 }
-    ]
+    "overallMarginPct": 71.2,
+    "grossProfit": 11132.5,
+    "costCoveragePct": 156
   },
   "alerts": [
-    { "type": "bad", "text": "Ticket médio caiu 1,5% em relação ao período anterior." },
-    { "type": "warning", "text": "6 produto(s) parado(s) há mais de 180 dias sem vender (214 peças)." },
-    { "type": "warning", "text": "2 produto(s) em ruptura de estoque." },
-    { "type": "good", "text": "ROAS de 3,4x nos últimos 30 dias." }
+    {
+      "type": "good",
+      "text": "Receita subiu 56,1% em relação ao período anterior."
+    },
+    {
+      "type": "bad",
+      "text": "Ticket médio caiu 14,0% em relação ao período anterior."
+    },
+    {
+      "type": "warning",
+      "text": "206 produto(s) parado(s) há mais de 180 dias sem vender (1173 peças)."
+    },
+    {
+      "type": "warning",
+      "text": "138 produto(s) em ruptura de estoque."
+    },
+    {
+      "type": "warning",
+      "text": "Taxa de recompra baixa: só 0,0% dos pedidos são de clientes recorrentes."
+    },
+    {
+      "type": "good",
+      "text": "Boa margem bruta: 71,2%."
+    }
   ]
 }
