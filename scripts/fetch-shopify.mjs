@@ -1,7 +1,8 @@
 // scripts/fetch-shopify.mjs
 //
 // Busca pedidos e produtos da Shopify Admin API e gera /data.json
-// com os números usados no dashboard (index.html).
+// com os números usados no dashboard (index.html), para VÁRIOS períodos
+// de uma vez (o dashboard deixa trocar entre eles sem precisar rodar de novo).
 //
 // Duas formas de autenticar (o script detecta sozinho qual usar):
 //
@@ -69,7 +70,6 @@ let ACCESS_TOKEN = null;
 function authHeaders() {
   return {
     "X-Shopify-Access-Token": ACCESS_TOKEN,
-
     "Content-Type": "application/json",
   };
 }
@@ -137,69 +137,95 @@ function round2(n) {
   return Math.round(n * 100) / 100;
 }
 
+// Receita LÍQUIDA de um item de pedido: preço de tabela × quantidade, menos
+// o desconto aplicado naquele item especificamente (ex: blusa de R$79,90
+// vendida por R$59,90 entra como R$59,90, não R$79,90).
+function lineItemNetRevenue(li) {
+  const gross = parseFloat(li.price || "0") * (li.quantity || 1);
+  const discount = parseFloat(li.total_discount || "0");
+  return Math.max(gross - discount, 0);
+}
+
+function daysAgo(baseDate, days) {
+  const d = new Date(baseDate);
+  d.setDate(d.getDate() - days);
+  return d;
+}
+
+function monthStartUTC(year, monthIndex) {
+  return new Date(Date.UTC(year, monthIndex, 1, 0, 0, 0));
+}
+
+// offset 0 = do dia 1 do mês atual até agora; -1 = mês passado inteiro; -2 = dois meses atrás inteiro
+function calendarMonthRange(now, offset) {
+  const y = now.getUTCFullYear();
+  const m = now.getUTCMonth() + offset;
+  const normM = ((m % 12) + 12) % 12;
+  const yearAdjust = Math.floor(m / 12) - (m < 0 && m % 12 !== 0 ? 1 : 0);
+  const start = monthStartUTC(y + yearAdjust, normM);
+  const end = offset === 0 ? now : monthStartUTC(y + yearAdjust, normM + 1);
+  return { start, end };
+}
+
 async function main() {
   console.log("Autenticando com a Shopify...");
   ACCESS_TOKEN = await getAccessToken();
 
   const now = new Date();
-  const periodDays = 30;
-
-  const periodEnd = new Date(now);
-  const periodStart = new Date(now);
-  periodStart.setDate(periodStart.getDate() - periodDays);
-
-  const prevPeriodEnd = new Date(periodStart);
-  const prevPeriodStart = new Date(periodStart);
-  prevPeriodStart.setDate(prevPeriodStart.getDate() - periodDays);
 
   // Busca TODO o histórico de pedidos da loja. É mais dados que o
-  // necessário só pra receita/estoque, mas é o que garante que "cliente
-  // recorrente" seja calculado certo (qualquer pedido anterior conta,
-  // não só os últimos X dias).
+  // necessário só pra um período, mas é o que garante que "cliente
+  // recorrente" seja calculado certo (qualquer pedido anterior conta) e
+  // permite montar vários períodos sem buscar de novo.
   console.log("Buscando pedidos (histórico completo)...");
   const allOrders = await fetchOrdersSince(ALL_TIME_START);
 
   // Considera apenas pedidos não cancelados
   const validOrders = allOrders.filter((o) => !o.cancelled_at);
 
-  const inPeriod = (o, start, end) => {
-    const d = new Date(o.created_at);
-    return d >= start && d < end;
-  };
-
-  const currentOrders = validOrders.filter((o) => inPeriod(o, periodStart, periodEnd));
-  const previousOrders = validOrders.filter((o) => inPeriod(o, prevPeriodStart, prevPeriodEnd));
-
   const orderRevenue = (o) => parseFloat(o.current_total_price || o.total_price || "0");
 
-  const currentRevenue = sum(currentOrders, orderRevenue);
-  const previousRevenue = sum(previousOrders, orderRevenue);
-
-  const currentCount = currentOrders.length;
-  const previousCount = previousOrders.length;
-
-  const currentAOV = currentCount ? currentRevenue / currentCount : 0;
-  const previousAOV = previousCount ? previousRevenue / previousCount : 0;
-
-  // Série diária de receita (mesmo período do KPI) para o gráfico de evolução
-  const revenueByDay = {};
-  for (const o of currentOrders) {
-    const key = dayKey(o.created_at);
-    revenueByDay[key] = (revenueByDay[key] || 0) + orderRevenue(o);
+  // Clientes: quantos pedidos cada um tem no histórico completo (não usamos
+  // o campo `orders_count` do cliente porque a Shopify pode restringir esse
+  // dado sem uma aprovação extra de "Protected Customer Data").
+  const ordersPerCustomer = {};
+  for (const o of validOrders) {
+    const c = o.customer;
+    if (!c || !c.id) continue;
+    ordersPerCustomer[c.id] = (ordersPerCustomer[c.id] || 0) + 1;
   }
-  const revenueSeries = Object.keys(revenueByDay)
-    .sort()
-    .map((date) => ({ date, revenue: round2(revenueByDay[date]) }));
 
-  // Top produtos por receita (dentro do período atual) + unidades vendidas (para margem)
-  const productRevenue = {};
-  const productUnits = {};
-  for (const o of currentOrders) {
+  // Estoque: total de peças, parado (sem venda há 180+ dias) e em ruptura.
+  // Isso não depende do período selecionado no dashboard, é sempre "agora".
+  console.log("Buscando produtos/estoque...");
+  const products = await fetchAllProducts();
+
+  const stalledWindowStart = daysAgo(now, STALLED_DAYS);
+  const soldVariantIdsRecently = new Set();
+  for (const o of validOrders) {
+    if (new Date(o.created_at) < stalledWindowStart) continue;
     for (const li of o.line_items || []) {
-      const name = li.title || li.name || "Produto";
-      const lineTotal = parseFloat(li.price || "0") * (li.quantity || 1);
-      productRevenue[name] = (productRevenue[name] || 0) + lineTotal;
-      productUnits[name] = (productUnits[name] || 0) + (li.quantity || 0);
+      if (li.variant_id) soldVariantIdsRecently.add(li.variant_id);
+    }
+  }
+
+  let totalUnits = 0;
+  let stalledSkuCount = 0;
+  let stalledUnits = 0;
+  let stockoutSkuCount = 0;
+  for (const p of products) {
+    if (p.status !== "active") continue;
+    for (const v of p.variants || []) {
+      const qty = v.inventory_quantity || 0;
+      totalUnits += qty;
+      if (qty <= 0) {
+        stockoutSkuCount += 1;
+        continue;
+      }
+      if (!soldVariantIdsRecently.has(v.id)) {
+        stalledSkuCount += 1;
+        stalledUnits += qty;
+      }
     }
   }
 
@@ -226,181 +252,173 @@ async function main() {
     return match ? match.cost : null;
   }
 
-  const topProducts = Object.entries(productRevenue)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([name, revenue]) => {
-      const units = productUnits[name] || 0;
+  const inPeriod = (o, start, end) => {
+    const d = new Date(o.created_at);
+    return d >= start && d < end;
+  };
+
+  // Calcula todas as métricas de um período específico (start/end) comparado
+  // com um período anterior (prevStart/prevEnd) de mesma duração.
+  function computePeriod({ start, end, prevStart, prevEnd }) {
+    const currentOrders = validOrders.filter((o) => inPeriod(o, start, end));
+    const previousOrders = validOrders.filter((o) => inPeriod(o, prevStart, prevEnd));
+
+    const currentRevenue = sum(currentOrders, orderRevenue);
+    const previousRevenue = sum(previousOrders, orderRevenue);
+    const currentCount = currentOrders.length;
+    const previousCount = previousOrders.length;
+    const currentAOV = currentCount ? currentRevenue / currentCount : 0;
+    const previousAOV = previousCount ? previousRevenue / previousCount : 0;
+
+    // Série diária de receita (para o gráfico de evolução)
+    const revenueByDay = {};
+    for (const o of currentOrders) {
+      const key = dayKey(o.created_at);
+      revenueByDay[key] = (revenueByDay[key] || 0) + orderRevenue(o);
+    }
+    const revenueSeries = Object.keys(revenueByDay)
+      .sort()
+      .map((date) => ({ date, revenue: round2(revenueByDay[date]) }));
+
+    // Receita e unidades por produto — já com desconto aplicado no item
+    const productRevenue = {};
+    const productUnits = {};
+    let unitsSoldInPeriod = 0;
+    for (const o of currentOrders) {
+      for (const li of o.line_items || []) {
+        const name = li.title || li.name || "Produto";
+        const net = lineItemNetRevenue(li);
+        productRevenue[name] = (productRevenue[name] || 0) + net;
+        productUnits[name] = (productUnits[name] || 0) + (li.quantity || 0);
+        unitsSoldInPeriod += li.quantity || 0;
+      }
+    }
+
+    const topProducts = Object.entries(productRevenue)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([name, revenue]) => {
+        const units = productUnits[name] || 0;
+        const unitCost = findUnitCost(name);
+        const hasCost = typeof unitCost === "number";
+        const cost = hasCost ? unitCost * units : null;
+        const profit = hasCost ? revenue - cost : null;
+        const marginPct = hasCost && revenue ? Math.round((profit / revenue) * 1000) / 10 : null;
+        return {
+          name,
+          revenue: round2(revenue),
+          pct: currentRevenue ? Math.round((revenue / currentRevenue) * 1000) / 10 : 0,
+          units,
+          marginPct,
+        };
+      });
+
+    // Margem bruta do período, já considerando desconto por item.
+    // Base de "receita total" = soma líquida dos itens (não o total do
+    // pedido, que inclui frete e pode ter outras diferenças).
+    const totalLineItemsRevenue = sum(Object.values(productRevenue), (v) => v);
+    let revenueWithKnownCost = 0;
+    let costOfKnownProducts = 0;
+    for (const [name, revenue] of Object.entries(productRevenue)) {
       const unitCost = findUnitCost(name);
-      const hasCost = typeof unitCost === "number";
-      const cost = hasCost ? unitCost * units : null;
-      const profit = hasCost ? revenue - cost : null;
-      const marginPct = hasCost && revenue ? Math.round((profit / revenue) * 1000) / 10 : null;
-      return {
-        name,
-        revenue: round2(revenue),
-        pct: currentRevenue ? Math.round((revenue / currentRevenue) * 1000) / 10 : 0,
-        units,
-        marginPct,
-      };
-    });
-
-  // Margem bruta geral do período (só considera produtos com custo cadastrado em custos.json)
-  // Importante: usamos a soma dos itens (productRevenue) como base de "receita
-  // total" aqui, não o total dos pedidos (currentRevenue) — o total do pedido
-  // já inclui descontos aplicados, então comparar com o preço de tabela dos
-  // itens poderia gerar uma cobertura maior que 100%.
-  const totalLineItemsRevenue = sum(Object.values(productRevenue), (v) => v);
-  let revenueWithKnownCost = 0;
-  let costOfKnownProducts = 0;
-  for (const [name, revenue] of Object.entries(productRevenue)) {
-    const unitCost = findUnitCost(name);
-    if (typeof unitCost === "number") {
-      revenueWithKnownCost += revenue;
-      costOfKnownProducts += unitCost * (productUnits[name] || 0);
-    }
-  }
-  const grossProfitKnown = revenueWithKnownCost - costOfKnownProducts;
-  const overallMarginPct = revenueWithKnownCost
-    ? Math.round((grossProfitKnown / revenueWithKnownCost) * 1000) / 10
-    : null;
-  const costCoveragePct = totalLineItemsRevenue
-    ? Math.round((revenueWithKnownCost / totalLineItemsRevenue) * 1000) / 10
-    : 0;
-
-  // Unidades vendidas no período (para giro/cobertura de estoque)
-  let unitsSoldInPeriod = 0;
-  for (const o of currentOrders) {
-    for (const li of o.line_items || []) {
-      unitsSoldInPeriod += li.quantity || 0;
-    }
-  }
-
-  // Variantes vendidas nos últimos STALLED_DAYS dias (para achar "estoque parado")
-  const stalledWindowStart = new Date(now);
-  stalledWindowStart.setDate(stalledWindowStart.getDate() - STALLED_DAYS);
-  const soldVariantIds = new Set();
-  for (const o of validOrders) {
-    if (new Date(o.created_at) < stalledWindowStart) continue;
-    for (const li of o.line_items || []) {
-      if (li.variant_id) soldVariantIds.add(li.variant_id);
-    }
-  }
-
-  // Clientes novos vs recompra (dentro do período atual)
-  // Não usamos o campo `orders_count` do cliente: a Shopify pode restringir
-  // esse dado sem uma aprovação extra de "Protected Customer Data", vindo
-  // sempre zerado. Em vez disso, contamos nós mesmos quantos pedidos cada
-  // cliente tem no histórico completo (mesma lógica da métrica oficial da
-  // Shopify: recorrente = já teve QUALQUER pedido antes).
-  const ordersPerCustomer = {};
-  for (const o of validOrders) {
-    const c = o.customer;
-    if (!c || !c.id) continue;
-    ordersPerCustomer[c.id] = (ordersPerCustomer[c.id] || 0) + 1;
-  }
-
-  let newCustomers = 0;
-  let returningCustomers = 0;
-  const seenCustomerIds = new Set();
-  for (const o of currentOrders) {
-    const c = o.customer;
-    if (!c || !c.id) continue; // pedido sem cliente identificado (guest sem cadastro)
-    if (seenCustomerIds.has(c.id)) continue; // conta o cliente 1x no período
-    seenCustomerIds.add(c.id);
-    if ((ordersPerCustomer[c.id] || 0) <= 1) newCustomers += 1;
-    else returningCustomers += 1;
-  }
-  const totalIdentifiedCustomers = newCustomers + returningCustomers;
-  const recompraPct = totalIdentifiedCustomers
-    ? Math.round((returningCustomers / totalIdentifiedCustomers) * 1000) / 10
-    : null;
-
-  // Estoque: total de peças, parado (sem venda há 180+ dias) e em ruptura
-  console.log("Buscando produtos/estoque...");
-  const products = await fetchAllProducts();
-
-  // --- DIAGNÓSTICO TEMPORÁRIO (remover depois de confirmar os números) ---
-  const productIds = products.map((p) => p.id);
-  const uniqueProductIds = new Set(productIds);
-  console.log(`[diag] produtos retornados pela API: ${products.length}`);
-  console.log(`[diag] produtos únicos (por id): ${uniqueProductIds.size}`);
-  const activeProducts = products.filter((p) => p.status === "active");
-  console.log(`[diag] produtos com status=active: ${activeProducts.length}`);
-  const activeVariantIds = [];
-  for (const p of activeProducts) {
-    for (const v of p.variants || []) activeVariantIds.push(v.id);
-  }
-  console.log(`[diag] variantes em produtos ativos: ${activeVariantIds.length}`);
-  console.log(`[diag] variantes únicas (por id): ${new Set(activeVariantIds).size}`);
-  // --- FIM DO DIAGNÓSTICO ---
-
-  let totalUnits = 0;
-  let stalledSkuCount = 0;
-  let stalledUnits = 0;
-  let stockoutSkuCount = 0;
-
-  for (const p of products) {
-    if (p.status !== "active") continue;
-    for (const v of p.variants || []) {
-      const qty = v.inventory_quantity || 0;
-      totalUnits += qty;
-
-      if (qty <= 0) {
-        stockoutSkuCount += 1;
-        continue;
-      }
-      if (!soldVariantIds.has(v.id)) {
-        stalledSkuCount += 1;
-        stalledUnits += qty;
+      if (typeof unitCost === "number") {
+        revenueWithKnownCost += revenue;
+        costOfKnownProducts += unitCost * (productUnits[name] || 0);
       }
     }
+    const grossProfitKnown = revenueWithKnownCost - costOfKnownProducts;
+    const overallMarginPct = revenueWithKnownCost
+      ? Math.round((grossProfitKnown / revenueWithKnownCost) * 1000) / 10
+      : null;
+    const costCoveragePct = totalLineItemsRevenue
+      ? Math.round((revenueWithKnownCost / totalLineItemsRevenue) * 1000) / 10
+      : 0;
+
+    // Clientes novos vs recompra dentro deste período
+    let newCustomers = 0;
+    let returningCustomers = 0;
+    const seenCustomerIds = new Set();
+    for (const o of currentOrders) {
+      const c = o.customer;
+      if (!c || !c.id) continue;
+      if (seenCustomerIds.has(c.id)) continue;
+      seenCustomerIds.add(c.id);
+      if ((ordersPerCustomer[c.id] || 0) <= 1) newCustomers += 1;
+      else returningCustomers += 1;
+    }
+    const totalIdentifiedCustomers = newCustomers + returningCustomers;
+    const recompraPct = totalIdentifiedCustomers
+      ? Math.round((returningCustomers / totalIdentifiedCustomers) * 1000) / 10
+      : null;
+
+    // Cobertura/giro de estoque, considerando a duração real deste período
+    const periodDaysSpan = Math.max((end - start) / (1000 * 60 * 60 * 24), 1);
+    const avgDailyUnitsSold = unitsSoldInPeriod / periodDaysSpan;
+    const coverageDays = avgDailyUnitsSold > 0 ? Math.round(totalUnits / avgDailyUnitsSold) : null;
+    const turnoverRate = totalUnits > 0 ? Math.round((unitsSoldInPeriod / totalUnits) * 100) / 100 : null;
+
+    return {
+      period: {
+        start: start.toISOString().slice(0, 10),
+        end: end.toISOString().slice(0, 10),
+      },
+      kpis: {
+        revenue: { value: round2(currentRevenue), changePct: pctChange(currentRevenue, previousRevenue) },
+        orders: { value: currentCount, changePct: pctChange(currentCount, previousCount) },
+        aov: { value: round2(currentAOV), changePct: pctChange(currentAOV, previousAOV) },
+      },
+      revenueSeries,
+      topProducts,
+      margin: {
+        overallMarginPct,
+        grossProfit: round2(grossProfitKnown),
+        costCoveragePct,
+      },
+      customers: { newCustomers, returningCustomers, recompraPct },
+      inventoryStats: { coverageDays, turnoverRate },
+    };
   }
 
-  const avgDailyUnitsSold = unitsSoldInPeriod / periodDays;
-  const coverageDays = avgDailyUnitsSold > 0 ? Math.round(totalUnits / avgDailyUnitsSold) : null;
-  const turnoverRate = totalUnits > 0 ? Math.round((unitsSoldInPeriod / totalUnits) * 100) / 100 : null;
+  // Monta os períodos disponíveis no seletor do dashboard
+  const periodsConfig = {
+    "7d": { start: daysAgo(now, 7), end: now, prevStart: daysAgo(now, 14), prevEnd: daysAgo(now, 7) },
+    "30d": { start: daysAgo(now, 30), end: now, prevStart: daysAgo(now, 60), prevEnd: daysAgo(now, 30) },
+    "90d": { start: daysAgo(now, 90), end: now, prevStart: daysAgo(now, 180), prevEnd: daysAgo(now, 90) },
+  };
+  {
+    const cur = calendarMonthRange(now, 0);
+    const prev = calendarMonthRange(now, -1);
+    periodsConfig["current_month"] = { start: cur.start, end: cur.end, prevStart: prev.start, prevEnd: prev.end };
+  }
+  {
+    const cur = calendarMonthRange(now, -1);
+    const prev = calendarMonthRange(now, -2);
+    periodsConfig["previous_month"] = { start: cur.start, end: cur.end, prevStart: prev.start, prevEnd: prev.end };
+  }
+
+  const periods = {};
+  for (const [key, cfg] of Object.entries(periodsConfig)) {
+    periods[key] = computePeriod(cfg);
+  }
 
   const output = {
     updatedAt: now.toISOString(),
-    period: {
-      start: periodStart.toISOString().slice(0, 10),
-      end: periodEnd.toISOString().slice(0, 10),
-    },
-    kpis: {
-      revenue: {
-        value: round2(currentRevenue),
-        changePct: pctChange(currentRevenue, previousRevenue),
-      },
-      orders: {
-        value: currentCount,
-        changePct: pctChange(currentCount, previousCount),
-      },
-      aov: {
-        value: round2(currentAOV),
-        changePct: pctChange(currentAOV, previousAOV),
-      },
-    },
-    revenueSeries,
-    topProducts,
+    defaultPeriod: "30d",
+    periods,
     inventory: {
       totalUnits,
       stalledSkuCount,
       stalledUnits,
       stockoutSkuCount,
-      coverageDays,
-      turnoverRate,
     },
-    customers: {
-      newCustomers,
-      returningCustomers,
-      recompraPct,
-    },
-    margin: {
-      overallMarginPct,
-      grossProfit: round2(grossProfitKnown),
-      costCoveragePct,
-    },
+    // Espelhos de compatibilidade: os scripts fetch-meta-ads.mjs e
+    // compute-alerts.mjs (e qualquer versão antiga do dashboard) leem os
+    // dados do período de 30 dias direto na raiz do JSON.
+    kpis: periods["30d"].kpis,
+    revenueSeries: periods["30d"].revenueSeries,
+    topProducts: periods["30d"].topProducts,
+    customers: periods["30d"].customers,
+    margin: periods["30d"].margin,
   };
 
   const fs = await import("node:fs/promises");
