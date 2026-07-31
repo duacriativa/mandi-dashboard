@@ -3,29 +3,31 @@
 // Busca pedidos e produtos da Shopify Admin API e gera /data.json
 // com os números usados no dashboard (index.html).
 //
-// Desde 1º de janeiro de 2026 a Shopify mudou o fluxo de autenticação:
-// não existe mais um único "token" pra copiar. Agora o app é criado no
-// Dev Dashboard (dev.shopify.com/dashboard) e você usa um Client ID +
-// Client secret pra pedir um token novo a cada execução (client credentials
-// grant). Veja o passo a passo completo no README.
+// Duas formas de autenticar (o script detecta sozinho qual usar):
 //
-// Variáveis de ambiente necessárias:
-//   SHOPIFY_STORE_DOMAIN     -> ex: "minhaloja.myshopify.com"
-//   SHOPIFY_CLIENT_ID        -> Client ID do app no Dev Dashboard
-//   SHOPIFY_CLIENT_SECRET    -> Client secret do app no Dev Dashboard
+// 1) SHOPIFY_ACCESS_TOKEN direto — necessário quando quem configura o app
+//    é apenas colaborador da loja (não dono da organização no Dev
+//    Dashboard). É obtido uma vez, manualmente, via OAuth. Veja o README.
 //
-// Rodar localmente:
-//   SHOPIFY_STORE_DOMAIN=minhaloja.myshopify.com SHOPIFY_CLIENT_ID=xxx SHOPIFY_CLIENT_SECRET=xxx node scripts/fetch-shopify.mjs
+// 2) SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET — client credentials grant,
+//    mais simples, mas só funciona quando o app e a loja pertencem à MESMA
+//    organização no Dev Dashboard (dono da loja = dono da organização).
+//
+// Variáveis de ambiente:
+//   SHOPIFY_STORE_DOMAIN     -> ex: "minhaloja.myshopify.com" (sempre necessário)
+//   SHOPIFY_ACCESS_TOKEN     -> opção 1
+//   SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET -> opção 2
 
 const API_VERSION = "2024-10";
 
 const STORE_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
+const STATIC_TOKEN = process.env.SHOPIFY_ACCESS_TOKEN;
 const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET;
 
-if (!STORE_DOMAIN || !CLIENT_ID || !CLIENT_SECRET) {
+if (!STORE_DOMAIN || (!STATIC_TOKEN && (!CLIENT_ID || !CLIENT_SECRET))) {
   console.error(
-    "Faltam variáveis de ambiente: SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID e/ou SHOPIFY_CLIENT_SECRET"
+    "Faltam variáveis de ambiente: defina SHOPIFY_STORE_DOMAIN e, além dele, SHOPIFY_ACCESS_TOKEN OU (SHOPIFY_CLIENT_ID e SHOPIFY_CLIENT_SECRET)"
   );
   process.exit(1);
 }
@@ -34,7 +36,7 @@ const BASE_URL = `https://${STORE_DOMAIN}/admin/api/${API_VERSION}`;
 const STALLED_DAYS = 180; // "estoque parado" = sem vender há mais de 180 dias
 
 // Troca Client ID + Client secret por um Admin API access token válido por 24h.
-async function getAccessToken() {
+async function getAccessTokenViaClientCredentials() {
   const res = await fetch(`https://${STORE_DOMAIN}/admin/oauth/access_token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -50,6 +52,11 @@ async function getAccessToken() {
   }
   const data = await res.json();
   return data.access_token;
+}
+
+async function getAccessToken() {
+  if (STATIC_TOKEN) return STATIC_TOKEN;
+  return getAccessTokenViaClientCredentials();
 }
 
 let ACCESS_TOKEN = null;
