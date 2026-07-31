@@ -49,6 +49,14 @@
   .subtitle { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .period-pill { border: 1px solid var(--line); background: #fff; padding: 8px 14px; border-radius: 8px; font-size: 12px; }
 
+  .mode-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+  .mode-toggle button {
+    border: none; background: transparent; padding: 8px 12px; font-size: 12px;
+    cursor: pointer; color: var(--muted); font-weight: 600; font-family: inherit;
+  }
+  .mode-toggle button + button { border-left: 1px solid var(--line); }
+  .mode-toggle button.active { background: var(--ink); color: #fff; }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -115,15 +123,21 @@
         <h1>Dashboard Shopify</h1>
         <div class="subtitle">Resumo executivo</div>
       </div>
-      <div class="period-pill" id="periodPill" style="display:flex; align-items:center; gap:8px;">
-        <select id="periodSelect" style="border:none; background:transparent; font-size:12px; font-weight:600; cursor:pointer;">
-          <option value="7d">Últimos 7 dias</option>
-          <option value="30d" selected>Últimos 30 dias</option>
-          <option value="90d">Últimos 90 dias</option>
-          <option value="current_month">Mês atual</option>
-          <option value="previous_month">Mês anterior</option>
-        </select>
-        <span id="periodRange" style="color:var(--muted);"></span>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+        <div class="mode-toggle" id="modeToggle">
+          <button type="button" data-mode="total" title="Todos os pedidos não reembolsados — mesma lógica do relatório de vendas da Shopify (inclui pedidos com pagamento pendente ou expirado).">Total em vendas</button>
+          <button type="button" data-mode="confirmed" title="Somente pedidos com pagamento confirmado — o dinheiro que realmente entrou no caixa.">Pagamentos confirmados</button>
+        </div>
+        <div class="period-pill" id="periodPill" style="display:flex; align-items:center; gap:8px;">
+          <select id="periodSelect" style="border:none; background:transparent; font-size:12px; font-weight:600; cursor:pointer;">
+            <option value="7d">Últimos 7 dias</option>
+            <option value="30d" selected>Últimos 30 dias</option>
+            <option value="90d">Últimos 90 dias</option>
+            <option value="current_month">Mês atual</option>
+            <option value="previous_month">Mês anterior</option>
+          </select>
+          <span id="periodRange" style="color:var(--muted);"></span>
+        </div>
       </div>
     </header>
 
@@ -410,10 +424,33 @@ const PERIOD_LABELS = {
 };
 
 let DASHBOARD_DATA = null;
+let CURRENT_MODE = "confirmed"; // "total" | "confirmed"
+
+const MODE_SUBTITLES = {
+  total: "Inclui pedidos com pagamento pendente/expirado (lógica do relatório da Shopify).",
+  confirmed: "Somente pedidos com pagamento confirmado (dinheiro que entrou no caixa).",
+};
+
+function getPeriodsForMode(mode) {
+  const data = DASHBOARD_DATA;
+  // data.json novo tem periodsByMode; o antigo só tem periods (equivale ao "total")
+  if (data.periodsByMode && data.periodsByMode[mode]) return data.periodsByMode[mode];
+  return data.periods;
+}
+
+function setMode(mode) {
+  CURRENT_MODE = mode;
+  document.querySelectorAll("#modeToggle button").forEach((b) => {
+    b.classList.toggle("active", b.dataset.mode === mode);
+  });
+  const sub = document.querySelector(".subtitle");
+  if (sub) sub.textContent = MODE_SUBTITLES[mode] || "Resumo executivo";
+  renderPeriod(document.getElementById("periodSelect").value);
+}
 
 function renderPeriod(periodKey) {
   const data = DASHBOARD_DATA;
-  const p = data.periods[periodKey];
+  const p = getPeriodsForMode(CURRENT_MODE)[periodKey];
   if (!p) return;
 
   document.getElementById("periodRange").textContent = `${p.period.start} — ${p.period.end}`;
@@ -445,7 +482,20 @@ async function load() {
   select.value = defaultPeriod;
   select.addEventListener("change", () => renderPeriod(select.value));
 
-  renderPeriod(defaultPeriod);
+  // Toggle Total em vendas / Pagamentos confirmados
+  const hasModes = !!data.periodsByMode;
+  const toggle = document.getElementById("modeToggle");
+  if (hasModes) {
+    toggle.querySelectorAll("button").forEach((b) => {
+      b.addEventListener("click", () => setMode(b.dataset.mode));
+    });
+    setMode(data.defaultRevenueMode || "confirmed");
+  } else {
+    // data.json antigo (sem os dois modos): esconde o toggle e segue como antes
+    toggle.style.display = "none";
+    CURRENT_MODE = "total";
+    renderPeriod(defaultPeriod);
+  }
 
   // Estes não variam por período selecionado no dashboard hoje:
   renderCac(data.marketing);
