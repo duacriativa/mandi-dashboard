@@ -109,6 +109,13 @@
   .modal-body td.num, .modal-body th.num { text-align: right; }
   @media (max-width: 900px) { .modal-backdrop { padding: 10px; } .modal { padding: 14px; } }
 
+  .detail-section { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #333; margin-bottom: 8px; }
+  .detail-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+  .detail-empty { color: var(--muted); font-size: 12px; padding: 8px 0; }
+  .thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); flex-shrink: 0; background: #fafafa; }
+  .thumb-empty { display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--muted); text-align: center; line-height: 1.2; }
+  #campaignsTable tbody tr:hover { background: #fafafa; }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -344,12 +351,23 @@
         </div>
         <div id="marketingNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
         <div style="margin-top:14px;">
-          <div class="section-title" style="margin-bottom:8px;">Campanhas ativas</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px;">
+            <div class="section-title" style="margin:0;">Campanhas</div>
+            <div class="mode-toggle" id="campFilter" style="flex-shrink:0;">
+              <button type="button" data-camp="rodou">Rodaram</button>
+              <button type="button" data-camp="ativas">Ativas hoje</button>
+              <button type="button" data-camp="todas">Todas</button>
+            </div>
+          </div>
           <table id="campaignsTable">
-            <thead><tr><th>Campanha</th><th>Investido</th></tr></thead>
+            <thead><tr>
+              <th>Campanha</th><th class="num">Investido</th><th class="num">Compras</th>
+              <th class="num">Receita</th><th class="num">ROAS</th><th class="num">CPA</th>
+            </tr></thead>
             <tbody></tbody>
           </table>
-          <div id="noCampaigns" style="display:none;color:var(--muted);font-size:12px;">Nenhuma campanha ativa no momento.</div>
+          <div id="noCampaigns" style="display:none;color:var(--muted);font-size:12px;">Nenhuma campanha neste período.</div>
+          <div style="margin-top:8px;font-size:11px;color:var(--muted);">Clique numa campanha para ver os públicos e criativos.</div>
         </div>
       </div>
       <div></div>
@@ -373,6 +391,19 @@
     </div>
     <input type="search" id="modalSearch" placeholder="Filtrar…" />
     <div class="modal-body"><table id="modalTable"><thead></thead><tbody></tbody></table></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="detailBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="detailTitle"></div>
+        <div class="modal-sub" id="detailSub"></div>
+      </div>
+      <button type="button" class="btn-close" id="detailClose">✕</button>
+    </div>
+    <div class="modal-body" id="detailBody" style="margin-top:12px;"></div>
   </div>
 </div>
 
@@ -555,20 +586,159 @@ function renderMarketingForPeriod(period) {
     `A verdade fica entre os dois.`;
 }
 
-function renderCampaigns(marketing) {
+// ---- Campanhas, conjuntos e anúncios (Meta Ads) ----
+let CAMP_FILTER = "rodou"; // "rodou" | "ativas" | "todas"
+
+const STATUS_LABEL = {
+  ACTIVE: "Ativa", PAUSED: "Pausada", DELETED: "Excluída", ARCHIVED: "Arquivada",
+  CAMPAIGN_PAUSED: "Campanha pausada", ADSET_PAUSED: "Conjunto pausado",
+  IN_PROCESS: "Em processamento", WITH_ISSUES: "Com problemas", PENDING_REVIEW: "Em análise",
+  DISAPPROVED: "Reprovada",
+};
+const statusPt = (s) => STATUS_LABEL[s] || s || "—";
+
+// Soma as métricas de uma série diária (dailyByCampaign/Adset/Ad) dentro do
+// período selecionado, agrupando por id.
+function aggregateByIdForPeriod(serie, period) {
+  const out = {};
+  if (!serie || !period) return out;
+  const s = period.period.start, e = period.period.end;
+  for (const row of serie) {
+    if (row.d < s || row.d > e) continue;
+    if (!out[row.id]) out[row.id] = { spend: 0, revenue: 0, purchases: 0, impressions: 0, clicks: 0 };
+    const o = out[row.id];
+    o.spend += row.s || 0;
+    o.revenue += row.v || 0;
+    o.purchases += row.c || 0;
+    o.impressions += row.i || 0;
+    o.clicks += row.k || 0;
+  }
+  for (const o of Object.values(out)) {
+    o.spend = round2(o.spend);
+    o.revenue = round2(o.revenue);
+    o.roas = o.spend ? Math.round((o.revenue / o.spend) * 100) / 100 : null;
+    o.cpa = o.purchases ? round2(o.spend / o.purchases) : null;
+  }
+  return out;
+}
+
+function renderCampaigns(period) {
+  const m = DASHBOARD_DATA.marketing;
   const tbody = document.querySelector("#campaignsTable tbody");
+  const vazio = document.getElementById("noCampaigns");
   tbody.innerHTML = "";
-  const campaigns = marketing?.activeCampaigns || [];
-  if (!campaigns.length) {
-    document.getElementById("noCampaigns").style.display = "block";
+
+  document.querySelectorAll("#campFilter button").forEach(b =>
+    b.classList.toggle("active", b.dataset.camp === CAMP_FILTER));
+
+  if (!m || !m.campaigns) {
+    // data.json antigo, sem a hierarquia nova
+    vazio.textContent = "Rode o workflow para carregar os dados de campanha.";
+    vazio.style.display = "block";
     return;
   }
-  document.getElementById("noCampaigns").style.display = "none";
-  for (const c of campaigns) {
+
+  const stats = aggregateByIdForPeriod(m.dailyByCampaign, period);
+
+  let lista = m.campaigns.map(c => ({ ...c, ...(stats[c.id] || { spend: 0, revenue: 0, purchases: 0 }) }));
+  if (CAMP_FILTER === "rodou") lista = lista.filter(c => c.spend > 0);
+  else if (CAMP_FILTER === "ativas") lista = lista.filter(c => c.status === "ACTIVE");
+  lista.sort((a, b) => b.spend - a.spend);
+
+  if (!lista.length) {
+    vazio.textContent = CAMP_FILTER === "rodou"
+      ? "Nenhuma campanha teve investimento neste período."
+      : "Nenhuma campanha encontrada.";
+    vazio.style.display = "block";
+    return;
+  }
+  vazio.style.display = "none";
+
+  for (const c of lista) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${c.name}</td><td>${BRL(c.spend)}</td>`;
+    tr.style.cursor = "pointer";
+    const ativa = c.status === "ACTIVE";
+    tr.innerHTML = `
+      <td>${c.name}
+        <div style="font-size:10px;color:${ativa ? "var(--up)" : "var(--muted)"};">${statusPt(c.status)}</div>
+      </td>
+      <td class="num">${BRL(c.spend)}</td>
+      <td class="num">${c.purchases || "—"}</td>
+      <td class="num">${c.revenue ? BRL(c.revenue) : "—"}</td>
+      <td class="num">${c.roas ? c.roas.toFixed(2) + "x" : "—"}</td>
+      <td class="num">${c.cpa ? BRL(c.cpa) : "—"}</td>
+    `;
+    tr.addEventListener("click", () => openCampaignDetail(c.id));
     tbody.appendChild(tr);
   }
+}
+
+// Painel de detalhe: conjuntos (com público) e anúncios (com criativo)
+function openCampaignDetail(campaignId) {
+  const m = DASHBOARD_DATA.marketing;
+  const p = LAST_PERIOD;
+  const camp = m.campaigns.find(c => c.id === campaignId);
+  if (!camp) return;
+
+  const statsSets = aggregateByIdForPeriod(m.dailyByAdset, p);
+  const statsAds = aggregateByIdForPeriod(m.dailyByAd, p);
+
+  const conjuntos = (m.adsets || [])
+    .filter(a => a.campaignId === campaignId)
+    .map(a => ({ ...a, ...(statsSets[a.id] || { spend: 0, purchases: 0, revenue: 0 }) }))
+    .sort((a, b) => b.spend - a.spend);
+
+  const anuncios = (m.ads || [])
+    .filter(a => a.campaignId === campaignId)
+    .map(a => ({ ...a, ...(statsAds[a.id] || { spend: 0, purchases: 0, revenue: 0 }) }))
+    .sort((a, b) => b.spend - a.spend);
+
+  const total = statsSets && aggregateByIdForPeriod(m.dailyByCampaign, p)[campaignId];
+
+  const linhaConjunto = (a) => `
+    <div class="detail-row">
+      <div style="flex:1;">
+        <div style="font-weight:600;">${a.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">${a.publico?.resumo || "—"}</div>
+        ${a.publico?.interesses?.length
+          ? `<div style="font-size:11px;color:var(--muted);margin-top:3px;">Interesses: ${a.publico.interesses.join(", ")}</div>`
+          : ""}
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">${statusPt(a.status)}</div>
+      </div>
+      <div style="text-align:right;font-size:12px;white-space:nowrap;">
+        <div><b>${BRL(a.spend)}</b></div>
+        <div style="color:var(--muted);">${a.purchases || 0} compra(s)${a.roas ? ` · ${a.roas.toFixed(2)}x` : ""}</div>
+      </div>
+    </div>`;
+
+  const linhaAnuncio = (a) => `
+    <div class="detail-row">
+      ${a.thumb
+        ? `<img src="${a.thumb}" alt="" class="thumb" loading="lazy" onerror="this.style.display='none'">`
+        : `<div class="thumb thumb-empty">sem<br>imagem</div>`}
+      <div style="flex:1;">
+        <div style="font-weight:600;">${a.name}</div>
+        ${a.creativeName ? `<div style="font-size:11px;color:var(--muted);">${a.creativeName}</div>` : ""}
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">${statusPt(a.status)}</div>
+      </div>
+      <div style="text-align:right;font-size:12px;white-space:nowrap;">
+        <div><b>${BRL(a.spend)}</b></div>
+        <div style="color:var(--muted);">${a.purchases || 0} compra(s)${a.roas ? ` · ${a.roas.toFixed(2)}x` : ""}</div>
+      </div>
+    </div>`;
+
+  document.getElementById("detailTitle").textContent = camp.name;
+  document.getElementById("detailSub").innerHTML =
+    `${statusPt(camp.status)} · período ${p.period.start} a ${p.period.end}` +
+    (total ? ` · ${BRL(total.spend)} investido · ${total.purchases || 0} compra(s)${total.roas ? ` · ROAS ${total.roas.toFixed(2)}x` : ""}` : "");
+
+  document.getElementById("detailBody").innerHTML = `
+    <div class="detail-section">Conjuntos de anúncios / públicos</div>
+    ${conjuntos.length ? conjuntos.map(linhaConjunto).join("") : '<div class="detail-empty">Nenhum conjunto encontrado.</div>'}
+    <div class="detail-section" style="margin-top:18px;">Anúncios / criativos</div>
+    ${anuncios.length ? anuncios.map(linhaAnuncio).join("") : '<div class="detail-empty">Nenhum anúncio encontrado.</div>'}
+  `;
+  document.getElementById("detailBackdrop").classList.add("open");
 }
 
 function renderAlerts(alerts) {
@@ -955,6 +1125,7 @@ function renderPeriod(periodKey) {
   renderCustomers(p.customers);
   renderMargin(p.margin);
   renderMarketingForPeriod(p);
+  renderCampaigns(p);
 }
 
 async function load() {
@@ -1000,9 +1171,19 @@ async function load() {
     renderPeriod(defaultPeriod);
   }
 
-  // Campanhas não variam por período selecionado
-  renderCampaigns(data.marketing);
   renderAlerts(data.alerts);
+
+  // Filtro de campanhas + fechar painel de detalhe
+  document.querySelectorAll("#campFilter button").forEach((b) => {
+    b.addEventListener("click", () => {
+      CAMP_FILTER = b.dataset.camp;
+      if (LAST_PERIOD) renderCampaigns(LAST_PERIOD);
+    });
+  });
+  const detail = document.getElementById("detailBackdrop");
+  document.getElementById("detailClose").addEventListener("click", () => detail.classList.remove("open"));
+  detail.addEventListener("click", (e) => { if (e.target === detail) detail.classList.remove("open"); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") detail.classList.remove("open"); });
 
   const updated = new Date(data.updatedAt);
   document.getElementById("updatedAt").textContent = "Atualizado em: " + updated.toLocaleString("pt-BR");
