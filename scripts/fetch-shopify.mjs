@@ -35,6 +35,10 @@ if (!STORE_DOMAIN || (!STATIC_TOKEN && (!CLIENT_ID || !CLIENT_SECRET))) {
 
 const BASE_URL = `https://${STORE_DOMAIN}/admin/api/${API_VERSION}`;
 const STALLED_DAYS = 180; // "estoque parado" = sem vender há mais de 180 dias
+// "Estoque baixo" = variação que ainda tem peça, mas está acabando.
+// Só conta como alerta se a variação teve venda recente (senão seria só
+// uma peça encalhada com estoque baixo, que não precisa de reposição).
+const LOW_STOCK_THRESHOLD = 3;
 // Para "cliente novo vs. recompra" usamos o HISTÓRICO COMPLETO da loja (sem
 // limite de dias) — é a mesma definição que a própria Shopify usa na
 // métrica returning_customer_rate: recorrente = já teve QUALQUER pedido
@@ -146,6 +150,11 @@ function lineItemNetRevenue(li) {
   return Math.max(gross - discount, 0);
 }
 
+// Receita BRUTA do item: preço de tabela × quantidade, sem desconto.
+function lineItemGrossRevenue(li) {
+  return parseFloat(li.price || "0") * (li.quantity || 1);
+}
+
 function daysAgo(baseDate, days) {
   const d = new Date(baseDate);
   d.setDate(d.getDate() - days);
@@ -240,8 +249,12 @@ async function main() {
   let stockoutSkuCount = 0;
   const stalledList = [];  // detalhe das peças paradas (para decidir promoção)
   const stockoutList = []; // detalhe das variações zeradas (para repor)
+  const lowStockList = []; // vendendo, mas com poucas peças (repor logo)
+  const productStalledList = []; // PRODUTO inteiro parado (nenhuma variação vendeu)
   for (const p of products) {
     if (p.status !== "active") continue;
+    // Agregado do produto inteiro (para saber se NENHUMA variação vendeu)
+    let prodQty = 0, prodValue = 0, prodSoldRecently = false, prodLastSold = null, prodVariants = 0;
     for (const v of p.variants || []) {
       const qty = v.inventory_quantity || 0;
       totalUnits += qty;
@@ -250,6 +263,11 @@ async function main() {
         ? Math.floor((now - new Date(lastSold)) / 86400000)
         : null; // null = nunca vendeu
       const price = parseFloat(v.price || "0");
+      prodVariants += 1;
+      prodQty += Math.max(qty, 0);
+      prodValue += Math.max(qty, 0) * price;
+      if (soldVariantIdsRecently.has(v.id)) prodSoldRecently = true;
+      if (lastSold && (!prodLastSold || lastSold > prodLastSold)) prodLastSold = lastSold;
       const base = {
         produto: p.title,
         variacao: v.title && v.title !== "Default Title" ? v.title : "",
@@ -267,13 +285,34 @@ async function main() {
         stalledSkuCount += 1;
         stalledUnits += qty;
         stalledList.push({ ...base, qtd: qty, valorParado: round2(price * qty) });
+      } else if (qty <= LOW_STOCK_THRESHOLD) {
+        // Vendeu nos últimos 180 dias E está com pouca peça = repor
+        lowStockList.push({ ...base, qtd: qty });
       }
+    }
+
+    // Produto INTEIRO parado: nenhuma variação vendeu nos últimos 180 dias
+    // e ainda sobrou estoque. Candidato a queima/descontinuação.
+    if (!prodSoldRecently && prodQty > 0) {
+      productStalledList.push({
+        produto: p.title,
+        variacoes: prodVariants,
+        qtd: prodQty,
+        valorParado: round2(prodValue),
+        ultimaVenda: prodLastSold ? prodLastSold.slice(0, 10) : null,
+        diasSemVender: prodLastSold
+          ? Math.floor((now - new Date(prodLastSold)) / 86400000)
+          : null,
+      });
     }
   }
   // Mais dinheiro parado primeiro — é o que interessa pra decidir promoção
   stalledList.sort((a, b) => b.valorParado - a.valorParado);
   stockoutList.sort((a, b) => (a.diasSemVender ?? 99999) - (b.diasSemVender ?? 99999));
+  lowStockList.sort((a, b) => a.qtd - b.qtd || (a.diasSemVender ?? 99999) - (b.diasSemVender ?? 99999));
   const stalledValue = round2(stalledList.reduce((s, i) => s + i.valorParado, 0));
+  productStalledList.sort((a, b) => b.valorParado - a.valorParado);
+  const productStalledValue = round2(productStalledList.reduce((s, i) => s + i.valorParado, 0));
 
   // Custos unitários informados manualmente em custos.json (opcional).
   // Busca por PALAVRA-CHAVE: a chave do JSON só precisa aparecer em algum
@@ -329,6 +368,7 @@ async function main() {
 
     // Receita e unidades por produto — já com desconto aplicado no item
     const productRevenue = {};
+    const productGross = {};
     const productUnits = {};
     let unitsSoldInPeriod = 0;
     for (const o of currentOrders) {
@@ -336,6 +376,7 @@ async function main() {
         const name = li.title || li.name || "Produto";
         const net = lineItemNetRevenue(li);
         productRevenue[name] = (productRevenue[name] || 0) + net;
+        productGross[name] = (productGross[name] || 0) + lineItemGrossRevenue(li);
         productUnits[name] = (productUnits[name] || 0) + (li.quantity || 0);
         unitsSoldInPeriod += li.quantity || 0;
       }
@@ -360,6 +401,17 @@ async function main() {
         };
       });
 
+    // Mais vendidos por QUANTIDADE de peças (diferente do top por receita)
+    const topProductsByUnits = Object.entries(productUnits)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([name, units]) => ({
+        name,
+        units,
+        revenue: round2(productRevenue[name] || 0),
+        pct: unitsSoldInPeriod ? Math.round((units / unitsSoldInPeriod) * 1000) / 10 : 0,
+      }));
+
     // Margem bruta do período, já considerando desconto por item.
     // Base de "receita total" = soma líquida dos itens (não o total do
     // pedido, que inclui frete e pode ter outras diferenças).
@@ -380,6 +432,13 @@ async function main() {
     const costCoveragePct = totalLineItemsRevenue
       ? Math.round((revenueWithKnownCost / totalLineItemsRevenue) * 1000) / 10
       : 0;
+
+    // Detalhamento para mostrar a "conta" da margem no dashboard.
+    // Restrito aos produtos COM custo cadastrado, senão as linhas não fecham.
+    let grossWithKnownCost = 0;
+    for (const [name, g] of Object.entries(productGross)) {
+      if (typeof findUnitCost(name) === "number") grossWithKnownCost += g;
+    }
 
     // Clientes novos vs recompra dentro deste período
     let newCustomers = 0;
@@ -416,10 +475,19 @@ async function main() {
       },
       revenueSeries,
       topProducts,
+      topProductsByUnits,
       margin: {
         overallMarginPct,
         grossProfit: round2(grossProfitKnown),
         costCoveragePct,
+        // A conta, linha a linha (só produtos com custo cadastrado):
+        breakdown: {
+          grossSales: round2(grossWithKnownCost),
+          discounts: round2(grossWithKnownCost - revenueWithKnownCost),
+          netSales: round2(revenueWithKnownCost),
+          cost: round2(costOfKnownProducts),
+          profit: round2(grossProfitKnown),
+        },
       },
       customers: { newCustomers, returningCustomers, recompraPct },
       inventoryStats: { coverageDays, turnoverRate },
@@ -473,6 +541,7 @@ async function main() {
         return {
           n: name,
           v: round2(lineItemNetRevenue(li)),
+          g: round2(lineItemGrossRevenue(li)),
           q: li.quantity || 0,
           c: typeof unitCost === "number" ? unitCost : null,
         };
@@ -521,7 +590,13 @@ async function main() {
       stalledUnits,
       stalledValue,
       stockoutSkuCount,
+      lowStockThreshold: LOW_STOCK_THRESHOLD,
+      lowStockCount: lowStockList.length,
+      lowStockList,
       stalledList,
+      productStalledCount: productStalledList.length,
+      productStalledValue,
+      productStalledList,
       stockoutList,
     },
     // Espelhos de compatibilidade: os scripts fetch-meta-ads.mjs e
