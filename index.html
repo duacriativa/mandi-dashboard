@@ -74,6 +74,14 @@
 
   .stock-box.clickable { cursor: pointer; transition: background 0.12s, border-color 0.12s; }
   .stock-box.clickable:hover { background: #f0f0f0; border-color: #c9c9c9; }
+  .stock-box.alert { background: var(--warn-bg); border-color: #f0dcb4; }
+
+  .calc { margin-top: 12px; font-size: 12px; }
+  .calc-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+  .calc-row.total { border-bottom: none; border-top: 1px solid var(--line); margin-top: 3px; padding-top: 8px; font-weight: 700; font-size: 13px; }
+  .calc-row .lab { color: var(--muted); }
+  .calc-row.total .lab { color: var(--ink); }
+  .calc-row .neg { color: var(--down); }
 
   .modal-backdrop {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
@@ -223,9 +231,15 @@
         </div>
       </div>
       <div class="card">
-        <div class="section-title">Top produtos por receita</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:14px;">
+          <div class="section-title" style="margin:0;">Mais vendidos</div>
+          <div class="mode-toggle" id="topToggle" style="flex-shrink:0;">
+            <button type="button" data-top="revenue">Receita</button>
+            <button type="button" data-top="units">Peças</button>
+          </div>
+        </div>
         <table id="topProductsTable">
-          <thead><tr><th>Produto</th><th>Receita</th><th>Margem</th><th></th></tr></thead>
+          <thead><tr><th>Produto</th><th id="topCol2">Receita</th><th id="topCol3">Margem</th><th></th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -256,6 +270,16 @@
           <div class="stock-box clickable" data-list="stockout">
             <div class="val small" id="stockStockout">—</div>
             <div class="lbl">Produtos com variação zerada →</div>
+          </div>
+        </div>
+        <div class="stock-grid cols-2" style="margin-top:10px;">
+          <div class="stock-box clickable" data-list="prodstalled">
+            <div class="val small" id="stockProdStalled">—</div>
+            <div class="lbl">Produtos 100% parados →</div>
+          </div>
+          <div class="stock-box clickable" id="lowStockBox" data-list="lowstock">
+            <div class="val small" id="stockLow">—</div>
+            <div class="lbl" id="stockLowLabel">Estoque baixo — repor →</div>
           </div>
         </div>
       </div>
@@ -296,6 +320,7 @@
             <div class="lbl">Lucro bruto</div>
           </div>
         </div>
+        <div id="marginBreakdown" class="calc"></div>
         <div id="marginCoverageNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
       </div>
     </section>
@@ -412,20 +437,33 @@ function renderChart(series) {
   document.addEventListener("click", () => { tip.style.display = "none"; });
 }
 
-function renderTopProducts(list) {
+let TOP_BY = "revenue"; // "revenue" | "units"
+
+function renderTopProducts(period) {
   const tbody = document.querySelector("#topProductsTable tbody");
   tbody.innerHTML = "";
-  const max = Math.max(...list.map(p => p.pct), 1);
+  const byUnits = TOP_BY === "units";
+  const list = (byUnits ? period.topProductsByUnits : period.topProducts) || period.topProducts || [];
+
+  document.getElementById("topCol2").textContent = byUnits ? "Peças" : "Receita";
+  document.getElementById("topCol3").textContent = byUnits ? "Receita" : "Margem";
+  document.querySelectorAll("#topToggle button").forEach(b =>
+    b.classList.toggle("active", b.dataset.top === TOP_BY));
+
+  const max = Math.max(...list.map(p => p.pct || 0), 1);
   for (const p of list) {
     const tr = document.createElement("tr");
-    const marginLabel = p.marginPct !== null && p.marginPct !== undefined
-      ? p.marginPct.toFixed(0) + "%"
-      : "<span style=\"color:var(--muted);\">—</span>";
+    const col2 = byUnits ? `${p.units} pçs` : BRL(p.revenue);
+    const col3 = byUnits
+      ? BRL(p.revenue)
+      : (p.marginPct !== null && p.marginPct !== undefined
+          ? p.marginPct.toFixed(0) + "%"
+          : `<span style="color:var(--muted);">—</span>`);
     tr.innerHTML = `
       <td>${p.name}</td>
-      <td>${BRL(p.revenue)}</td>
-      <td>${marginLabel}</td>
-      <td><span class="bar-bg"><span class="bar-fill" style="width:${(p.pct/max*100).toFixed(0)}%"></span></span></td>
+      <td>${col2}</td>
+      <td>${col3}</td>
+      <td><span class="bar-bg"><span class="bar-fill" style="width:${((p.pct || 0)/max*100).toFixed(0)}%"></span></span></td>
     `;
     tbody.appendChild(tr);
   }
@@ -440,6 +478,17 @@ function renderInventory(inv, invStats) {
   const valor = inv.stalledValue ? ` · ${BRL(inv.stalledValue)}` : "";
   document.getElementById("stockStalled").textContent = `${inv.stalledUnits ?? 0} peças${valor}`;
   document.getElementById("stockStockout").textContent = `${inv.stockoutSkuCount ?? 0} variações`;
+
+  const prodStalled = inv.productStalledCount ?? 0;
+  const prodValor = inv.productStalledValue ? ` · ${BRL(inv.productStalledValue)}` : "";
+  document.getElementById("stockProdStalled").textContent = `${prodStalled} produtos${prodValor}`;
+
+  const low = inv.lowStockCount ?? 0;
+  const box = document.getElementById("lowStockBox");
+  document.getElementById("stockLow").textContent = `${low} variações`;
+  document.getElementById("stockLowLabel").textContent =
+    `Estoque baixo — ${inv.lowStockThreshold ?? 3} peças ou menos, ainda vendendo →`;
+  box.classList.toggle("alert", low > 0);
 }
 
 function renderCustomers(cust) {
@@ -503,15 +552,27 @@ function renderAlerts(alerts) {
 
 function renderMargin(margin) {
   const note = document.getElementById("marginCoverageNote");
+  const calc = document.getElementById("marginBreakdown");
   if (!margin || margin.overallMarginPct === null || margin.overallMarginPct === undefined) {
     document.getElementById("marginPct").textContent = "—";
     document.getElementById("marginProfit").textContent = "—";
+    calc.innerHTML = "";
     note.textContent = "Cadastre os custos em custos.json para calcular a margem.";
     return;
   }
   document.getElementById("marginPct").textContent = margin.overallMarginPct.toFixed(1) + "%";
   document.getElementById("marginProfit").textContent = BRL(margin.grossProfit || 0);
-  note.textContent = `Calculado sobre ${margin.costCoveragePct?.toFixed(0) ?? 0}% da receita (produtos com custo cadastrado).`;
+
+  const b = margin.breakdown;
+  calc.innerHTML = b ? `
+    <div class="calc-row"><span class="lab">Vendas (preço de tabela)</span><span>${BRL(b.grossSales)}</span></div>
+    <div class="calc-row"><span class="lab">Descontos dados</span><span class="neg">− ${BRL(b.discounts)}</span></div>
+    <div class="calc-row"><span class="lab">Vendas líquidas</span><span>${BRL(b.netSales)}</span></div>
+    <div class="calc-row"><span class="lab">Custo dos produtos</span><span class="neg">− ${BRL(b.cost)}</span></div>
+    <div class="calc-row total"><span class="lab">Lucro bruto</span><span>${BRL(b.profit)}</span></div>
+  ` : "";
+
+  note.textContent = `A conta acima considera ${margin.costCoveragePct?.toFixed(0) ?? 0}% da receita (só produtos com custo cadastrado em custos.json). Não inclui frete, taxas de pagamento nem impostos.`;
 }
 
 const PERIOD_LABELS = {
@@ -562,16 +623,22 @@ function computeCustom(startStr, endStr) {
   }
 
   // Produtos, margem e unidades vendidas
-  const pRev = {}, pUnits = {}, pCost = {};
+  const pRev = {}, pGross = {}, pUnits = {}, pCost = {};
   let unitsSold = 0;
   for (const o of cur) {
     for (const li of o.li || []) {
       pRev[li.n] = (pRev[li.n] || 0) + li.v;
+      pGross[li.n] = (pGross[li.n] || 0) + (li.g ?? li.v);
       pUnits[li.n] = (pUnits[li.n] || 0) + li.q;
       if (li.c !== null && li.c !== undefined) pCost[li.n] = li.c;
       unitsSold += li.q;
     }
   }
+  const topProductsByUnits = Object.entries(pUnits).sort((a, b) => b[1] - a[1]).slice(0, 5)
+    .map(([name, units]) => ({
+      name, units, revenue: round2(pRev[name] || 0),
+      pct: unitsSold ? Math.round((units / unitsSold) * 1000) / 10 : 0,
+    }));
   const totalLineRevenue = Object.values(pRev).reduce((s, v) => s + v, 0);
   const topProducts = Object.entries(pRev).sort((a, b) => b[1] - a[1]).slice(0, 5)
     .map(([name, rev]) => {
@@ -584,9 +651,13 @@ function computeCustom(startStr, endStr) {
         marginPct: has && rev ? Math.round((profit / rev) * 1000) / 10 : null,
       };
     });
-  let revKnown = 0, costKnown = 0;
+  let revKnown = 0, costKnown = 0, grossKnown = 0;
   for (const [name, rev] of Object.entries(pRev)) {
-    if (typeof pCost[name] === "number") { revKnown += rev; costKnown += pCost[name] * (pUnits[name] || 0); }
+    if (typeof pCost[name] === "number") {
+      revKnown += rev;
+      grossKnown += pGross[name] || 0;
+      costKnown += pCost[name] * (pUnits[name] || 0);
+    }
   }
 
   // Clientes únicos no intervalo
@@ -610,11 +681,18 @@ function computeCustom(startStr, endStr) {
       orders: { value: cur.length, changePct: pct(cur.length, prev.length) },
       aov: { value: round2(aov), changePct: pct(aov, prevAov) },
     },
-    revenueSeries, topProducts,
+    revenueSeries, topProducts, topProductsByUnits,
     margin: {
       overallMarginPct: revKnown ? Math.round(((revKnown - costKnown) / revKnown) * 1000) / 10 : null,
       grossProfit: round2(revKnown - costKnown),
       costCoveragePct: totalLineRevenue ? Math.round((revKnown / totalLineRevenue) * 1000) / 10 : 0,
+      breakdown: {
+        grossSales: round2(grossKnown),
+        discounts: round2(grossKnown - revKnown),
+        netSales: round2(revKnown),
+        cost: round2(costKnown),
+        profit: round2(revKnown - costKnown),
+      },
     },
     customers: {
       newCustomers: novos, returningCustomers: recorrentes,
@@ -689,6 +767,36 @@ const LIST_DEFS = {
       ...r,
       ultimaVenda: r.ultimaVenda || "nunca vendeu",
       diasSemVender: r.diasSemVender === null ? "—" : r.diasSemVender,
+    })),
+  },
+  prodstalled: {
+    title: "Produtos 100% parados (nenhuma variação vendeu em 180 dias)",
+    sub: "Aqui o produto inteiro morreu — nenhum tamanho/cor teve saída. Candidatos a queima ou descontinuação.",
+    cols: [
+      { k: "produto", t: "Produto" },
+      { k: "variacoes", t: "Variações", num: true },
+      { k: "qtd", t: "Peças", num: true },
+      { k: "valorParado", t: "Valor parado", num: true, brl: true },
+      { k: "ultimaVenda", t: "Última venda" },
+      { k: "diasSemVender", t: "Dias sem vender", num: true },
+    ],
+    rows: () => (DASHBOARD_DATA.inventory?.productStalledList || []).map(r => ({
+      ...r,
+      ultimaVenda: r.ultimaVenda || "nunca vendeu",
+      diasSemVender: r.diasSemVender === null ? "—" : r.diasSemVender,
+    })),
+  },
+  lowstock: {
+    title: "Estoque baixo — repor",
+    sub: "Variações que venderam nos últimos 180 dias e estão acabando. Estas sim precisam de reposição.",
+    cols: [
+      { k: "produto", t: "Produto" }, { k: "variacao", t: "Variação" }, { k: "sku", t: "SKU" },
+      { k: "qtd", t: "Restam", num: true },
+      { k: "preco", t: "Preço", num: true, brl: true },
+      { k: "ultimaVenda", t: "Última venda" },
+    ],
+    rows: () => (DASHBOARD_DATA.inventory?.lowStockList || []).map(r => ({
+      ...r, ultimaVenda: r.ultimaVenda || "—",
     })),
   },
   customers: {
@@ -805,7 +913,7 @@ function renderPeriod(periodKey) {
 
   renderChart(p.revenueSeries);
   LAST_PERIOD = p;
-  renderTopProducts(p.topProducts);
+  renderTopProducts(p);
   renderInventory(data.inventory || {}, p.inventoryStats);
   renderCustomers(p.customers);
   renderMargin(p.margin);
@@ -872,6 +980,14 @@ async function load() {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") backdrop.classList.remove("open"); });
   document.getElementById("modalSearch").addEventListener("input", (e) => renderModalTable(e.target.value));
   document.getElementById("btnCsv").addEventListener("click", downloadCsv);
+
+  // Toggle Receita / Peças nos mais vendidos
+  document.querySelectorAll("#topToggle button").forEach((b) => {
+    b.addEventListener("click", () => {
+      TOP_BY = b.dataset.top;
+      if (LAST_PERIOD) renderTopProducts(LAST_PERIOD);
+    });
+  });
 }
 
 load().catch(err => {
