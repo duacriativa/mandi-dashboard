@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T11:59:03.274Z",
+  "updatedAt": "2026-08-02T22:22:04.456Z",
   "defaultPeriod": "30d",
   "defaultRevenueMode": "confirmed",
   "periodsByMode": {
@@ -11,22 +11,22 @@
         },
         "kpis": {
           "revenue": {
-            "value": 4595.2,
-            "changePct": -28.895380954075684
+            "value": 4670,
+            "changePct": -29.171488414912517
           },
           "orders": {
-            "value": 21,
-            "changePct": -16
+            "value": 23,
+            "changePct": -8
           },
           "aov": {
-            "value": 218.82,
-            "changePct": -15.351643992947233
+            "value": 203.04,
+            "changePct": -23.012487407513603
           }
         },
         "revenueSeries": [
           {
             "date": "2026-07-26",
-            "revenue": 579.45
+            "revenue": 299.65
           },
           {
             "date": "2026-07-27",
@@ -51,57 +51,61 @@
           {
             "date": "2026-08-01",
             "revenue": 494.45
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 354.6
           }
         ],
         "topProducts": [
           {
-            "name": "CAMISETA PIMA | VERDE OLIVA",
-            "revenue": 559.6,
-            "pct": 12.2,
-            "units": 4,
-            "marginPct": 72.8
-          },
-          {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 559.6,
-            "pct": 12.2,
+            "pct": 12,
             "units": 4,
-            "marginPct": 72.8
-          },
-          {
-            "name": "CAMISETA PIMA | OFFWHITE",
-            "revenue": 419.7,
-            "pct": 9.1,
-            "units": 3,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 419.7,
-            "pct": 9.1,
-            "units": 6,
+            "revenue": 489.65,
+            "pct": 10.5,
+            "units": 7,
             "marginPct": 45.7
           },
           {
-            "name": "CAMISETA PIMA | PRETO",
+            "name": "CAMISETA PIMA | VERDE OLIVA",
+            "revenue": 419.7,
+            "pct": 9,
+            "units": 3,
+            "marginPct": 72.8
+          },
+          {
+            "name": "CAMISETA PIMA | AREIA",
+            "revenue": 349.75,
+            "pct": 7.5,
+            "units": 5,
+            "marginPct": 45.7
+          },
+          {
+            "name": "CAMISETA PIMA | OFFWHITE",
             "revenue": 279.8,
-            "pct": 6.1,
+            "pct": 6,
             "units": 2,
             "marginPct": 72.8
           }
         ],
         "margin": {
-          "overallMarginPct": 55.9,
-          "grossProfit": 2701.6,
+          "overallMarginPct": 53.5,
+          "grossProfit": 2622.4,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 16,
-          "returningCustomers": 4,
-          "recompraPct": 20
+          "newCustomers": 17,
+          "returningCustomers": 5,
+          "recompraPct": 22.7
         },
         "inventoryStats": {
-          "coverageDays": 182,
+          "coverageDays": 170,
           "turnoverRate": 0.04
         }
       },
@@ -112,16 +116,16 @@
         },
         "kpis": {
           "revenue": {
-            "value": 13704.71,
-            "changePct": 64.39799431402423
+            "value": 14059.31,
+            "changePct": 68.65168000191932
           },
           "orders": {
-            "value": 60,
-            "changePct": 76.47058823529412
+            "value": 63,
+            "changePct": 85.29411764705883
           },
           "aov": {
-            "value": 228.41,
-            "changePct": -6.841136555386261
+            "value": 223.16,
+            "changePct": -8.981633014837186
           }
         },
         "revenueSeries": [
@@ -208,58 +212,62 @@
           {
             "date": "2026-08-01",
             "revenue": 494.45
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 354.6
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1329.05,
-            "pct": 9.7,
-            "units": 16,
-            "marginPct": 54.3
+            "revenue": 1399,
+            "pct": 10,
+            "units": 17,
+            "marginPct": 53.8
           },
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 1259.1,
-            "pct": 9.2,
+            "pct": 9,
             "units": 9,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 979.3,
-            "pct": 7.1,
+            "pct": 7,
             "units": 7,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 839.4,
-            "pct": 6.1,
+            "pct": 6,
             "units": 6,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | AREIA",
-            "revenue": 699.5,
-            "pct": 5.1,
-            "units": 10,
+            "revenue": 769.45,
+            "pct": 5.5,
+            "units": 11,
             "marginPct": 45.7
           }
         ],
         "margin": {
-          "overallMarginPct": 59.7,
-          "grossProfit": 8554.05,
+          "overallMarginPct": 59.1,
+          "grossProfit": 8678.65,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 42,
-          "returningCustomers": 7,
-          "recompraPct": 14.3
+          "newCustomers": 43,
+          "returningCustomers": 8,
+          "recompraPct": 15.7
         },
         "inventoryStats": {
-          "coverageDays": 291,
-          "turnoverRate": 0.1
+          "coverageDays": 279,
+          "turnoverRate": 0.11
         }
       },
       "90d": {
@@ -269,15 +277,15 @@
         },
         "kpis": {
           "revenue": {
-            "value": 22041.01,
+            "value": 22395.61,
             "changePct": null
           },
           "orders": {
-            "value": 94,
+            "value": 97,
             "changePct": null
           },
           "aov": {
-            "value": 234.48,
+            "value": 230.88,
             "changePct": null
           }
         },
@@ -441,57 +449,61 @@
           {
             "date": "2026-08-01",
             "revenue": 494.45
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 354.6
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 1678.8,
-            "pct": 7.6,
+            "pct": 7.5,
             "units": 12,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 1678.8,
-            "pct": 7.6,
+            "pct": 7.5,
             "units": 12,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 1538.9,
-            "pct": 7,
+            "pct": 6.9,
             "units": 11,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA MODAL TECH | BRANCO",
             "revenue": 1454.9,
-            "pct": 6.6,
+            "pct": 6.5,
             "units": 16,
             "marginPct": 72.5
           },
           {
             "name": "CAMISETA MODAL TECH | PRETO",
             "revenue": 1405.7,
-            "pct": 6.4,
+            "pct": 6.3,
             "units": 15,
             "marginPct": 73.3
           }
         ],
         "margin": {
-          "overallMarginPct": 63.9,
-          "grossProfit": 14824.55,
+          "overallMarginPct": 63.4,
+          "grossProfit": 14949.15,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 68,
-          "returningCustomers": 8,
-          "recompraPct": 10.5
+          "newCustomers": 69,
+          "returningCustomers": 9,
+          "recompraPct": 11.5
         },
         "inventoryStats": {
-          "coverageDays": 580,
+          "coverageDays": 564,
           "turnoverRate": 0.16
         }
       },
@@ -502,74 +514,78 @@
         },
         "kpis": {
           "revenue": {
-            "value": 494.45,
-            "changePct": -96.45527604327222
+            "value": 849.05,
+            "changePct": -93.91314010423761
           },
           "orders": {
-            "value": 3,
-            "changePct": -95.08196721311475
+            "value": 6,
+            "changePct": -90.1639344262295
           },
           "aov": {
-            "value": 164.82,
-            "changePct": -27.923946213202004
+            "value": 141.51,
+            "changePct": -38.11692439308237
           }
         },
         "revenueSeries": [
           {
             "date": "2026-08-01",
             "revenue": 494.45
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 354.6
           }
         ],
         "topProducts": [
           {
+            "name": "CAMISETA PIMA | GOIABA",
+            "revenue": 139.9,
+            "pct": 16.5,
+            "units": 2,
+            "marginPct": 45.7
+          },
+          {
             "name": "CAMISETA MODAL TECH | GREENISH",
             "revenue": 109.9,
-            "pct": 22.2,
+            "pct": 12.9,
             "units": 2,
             "marginPct": 54.5
           },
           {
+            "name": "CAMISETA PIMA| KIDS | COBRE",
+            "revenue": 79.9,
+            "pct": 9.4,
+            "units": 2,
+            "marginPct": 4.9
+          },
+          {
+            "name": "CAMISETA PIMA | AREIA",
+            "revenue": 69.95,
+            "pct": 8.2,
+            "units": 1,
+            "marginPct": 45.7
+          },
+          {
             "name": "CAMISETA PIMA | CREME",
             "revenue": 69.95,
-            "pct": 14.1,
+            "pct": 8.2,
             "units": 1,
             "marginPct": 45.7
-          },
-          {
-            "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 69.95,
-            "pct": 14.1,
-            "units": 1,
-            "marginPct": 45.7
-          },
-          {
-            "name": "CAMISETA ALGODÃO PREMIUM | BLACK",
-            "revenue": 69.9,
-            "pct": 14.1,
-            "units": 1,
-            "marginPct": 71.4
-          },
-          {
-            "name": "CAMISETA MODAL TECH | VERDE ALVORADA",
-            "revenue": 54.95,
-            "pct": 11.1,
-            "units": 1,
-            "marginPct": 54.5
           }
         ],
         "margin": {
-          "overallMarginPct": 54.4,
-          "grossProfit": 263.55,
+          "overallMarginPct": 46.3,
+          "grossProfit": 388.15,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 2,
-          "returningCustomers": 1,
+          "newCustomers": 4,
+          "returningCustomers": 2,
           "recompraPct": 33.3
         },
         "inventoryStats": {
-          "coverageDays": 347,
-          "turnoverRate": 0
+          "coverageDays": 237,
+          "turnoverRate": 0.01
         }
       },
       "previous_month": {
@@ -724,12 +740,12 @@
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 44,
-          "returningCustomers": 6,
-          "recompraPct": 12
+          "newCustomers": 43,
+          "returningCustomers": 7,
+          "recompraPct": 14
         },
         "inventoryStats": {
-          "coverageDays": 297,
+          "coverageDays": 296,
           "turnoverRate": 0.1
         }
       }
@@ -742,16 +758,16 @@
         },
         "kpis": {
           "revenue": {
-            "value": 2743.2,
-            "changePct": -42.06045296424822
+            "value": 3027.9,
+            "changePct": -33.96923841861134
           },
           "orders": {
-            "value": 15,
-            "changePct": -28.57142857142857
+            "value": 17,
+            "changePct": -15
           },
           "aov": {
-            "value": 182.88,
-            "changePct": -18.884634149947498
+            "value": 178.11,
+            "changePct": -22.31675108071922
           }
         },
         "revenueSeries": [
@@ -782,57 +798,61 @@
           {
             "date": "2026-08-01",
             "revenue": 79.85
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 284.7
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 419.7,
-            "pct": 15.3,
-            "units": 6,
+            "revenue": 489.65,
+            "pct": 16.2,
+            "units": 7,
+            "marginPct": 45.7
+          },
+          {
+            "name": "CAMISETA PIMA | AREIA",
+            "revenue": 349.75,
+            "pct": 11.6,
+            "units": 5,
             "marginPct": 45.7
           },
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 279.8,
-            "pct": 10.2,
+            "pct": 9.2,
             "units": 2,
             "marginPct": 72.8
           },
           {
-            "name": "CAMISETA PIMA | AREIA",
-            "revenue": 279.8,
-            "pct": 10.2,
-            "units": 4,
-            "marginPct": 45.7
-          },
-          {
             "name": "CAMISETA MODAL TECH | CINZA",
             "revenue": 219.8,
-            "pct": 8,
+            "pct": 7.3,
             "units": 4,
             "marginPct": 54.5
           },
           {
             "name": "CAMISETA MODAL TECH | GREENISH",
             "revenue": 164.85,
-            "pct": 6,
+            "pct": 5.4,
             "units": 3,
             "marginPct": 54.5
           }
         ],
         "margin": {
-          "overallMarginPct": 50.5,
-          "grossProfit": 1443.2,
+          "overallMarginPct": 48.3,
+          "grossProfit": 1517.9,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 11,
-          "returningCustomers": 4,
-          "recompraPct": 26.7
+          "newCustomers": 12,
+          "returningCustomers": 5,
+          "recompraPct": 29.4
         },
         "inventoryStats": {
-          "coverageDays": 259,
+          "coverageDays": 230,
           "turnoverRate": 0.03
         }
       },
@@ -843,16 +863,16 @@
         },
         "kpis": {
           "revenue": {
-            "value": 9889.93,
-            "changePct": 49.15970759060874
+            "value": 10174.63,
+            "changePct": 53.45354675337801
           },
           "orders": {
-            "value": 48,
-            "changePct": 65.51724137931035
+            "value": 50,
+            "changePct": 72.41379310344827
           },
           "aov": {
-            "value": 206.04,
-            "changePct": -9.882676664007214
+            "value": 203.49,
+            "changePct": -10.996942883040756
           }
         },
         "revenueSeries": [
@@ -935,58 +955,62 @@
           {
             "date": "2026-08-01",
             "revenue": 79.85
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 284.7
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1329.05,
-            "pct": 13.4,
-            "units": 16,
-            "marginPct": 54.3
+            "revenue": 1399,
+            "pct": 13.7,
+            "units": 17,
+            "marginPct": 53.8
           },
           {
             "name": "CAMISETA PIMA | AREIA",
-            "revenue": 629.55,
-            "pct": 6.4,
-            "units": 9,
+            "revenue": 699.5,
+            "pct": 6.9,
+            "units": 10,
             "marginPct": 45.7
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 559.6,
-            "pct": 5.7,
+            "pct": 5.5,
             "units": 4,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 559.6,
-            "pct": 5.7,
+            "pct": 5.5,
             "units": 4,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | CREME",
             "revenue": 489.65,
-            "pct": 5,
+            "pct": 4.8,
             "units": 7,
             "marginPct": 45.7
           }
         ],
         "margin": {
-          "overallMarginPct": 56.9,
-          "grossProfit": 5887.05,
+          "overallMarginPct": 56.1,
+          "grossProfit": 5961.75,
           "costCoveragePct": 100
         },
         "customers": {
           "newCustomers": 35,
-          "returningCustomers": 7,
-          "recompraPct": 16.7
+          "returningCustomers": 8,
+          "recompraPct": 18.6
         },
         "inventoryStats": {
-          "coverageDays": 365,
-          "turnoverRate": 0.08
+          "coverageDays": 350,
+          "turnoverRate": 0.09
         }
       },
       "90d": {
@@ -996,15 +1020,15 @@
         },
         "kpis": {
           "revenue": {
-            "value": 16520.36,
+            "value": 16805.06,
             "changePct": null
           },
           "orders": {
-            "value": 77,
+            "value": 79,
             "changePct": null
           },
           "aov": {
-            "value": 214.55,
+            "value": 212.72,
             "changePct": null
           }
         },
@@ -1164,58 +1188,62 @@
           {
             "date": "2026-08-01",
             "revenue": 79.85
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 284.7
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1329.05,
-            "pct": 8,
-            "units": 16,
-            "marginPct": 54.3
+            "revenue": 1399,
+            "pct": 8.3,
+            "units": 17,
+            "marginPct": 53.8
           },
           {
             "name": "CAMISETA MODAL TECH | BRANCO",
             "revenue": 1148.2,
-            "pct": 7,
+            "pct": 6.8,
             "units": 11,
             "marginPct": 76
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 1119.2,
-            "pct": 6.8,
+            "pct": 6.7,
             "units": 8,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 1119.2,
-            "pct": 6.8,
+            "pct": 6.7,
             "units": 8,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 839.4,
-            "pct": 5.1,
+            "pct": 5,
             "units": 6,
             "marginPct": 72.8
           }
         ],
         "margin": {
-          "overallMarginPct": 62.3,
-          "grossProfit": 10881.85,
+          "overallMarginPct": 61.7,
+          "grossProfit": 10956.55,
           "costCoveragePct": 100
         },
         "customers": {
           "newCustomers": 60,
-          "returningCustomers": 8,
-          "recompraPct": 11.8
+          "returningCustomers": 9,
+          "recompraPct": 13
         },
         "inventoryStats": {
-          "coverageDays": 724,
-          "turnoverRate": 0.12
+          "coverageDays": 703,
+          "turnoverRate": 0.13
         }
       },
       "current_month": {
@@ -1225,45 +1253,77 @@
         },
         "kpis": {
           "revenue": {
-            "value": 79.85,
-            "changePct": -99.24303612191811
+            "value": 364.55,
+            "changePct": -96.54413047270191
           },
           "orders": {
-            "value": 1,
-            "changePct": -98.0392156862745
+            "value": 3,
+            "changePct": -94.11764705882352
           },
           "aov": {
-            "value": 79.85,
-            "changePct": -61.39484221782357
+            "value": 121.52,
+            "changePct": -41.25021803593231
           }
         },
         "revenueSeries": [
           {
             "date": "2026-08-01",
             "revenue": 79.85
+          },
+          {
+            "date": "2026-08-02",
+            "revenue": 284.7
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
+            "revenue": 139.9,
+            "pct": 38.4,
+            "units": 2,
+            "marginPct": 45.7
+          },
+          {
+            "name": "CAMISETA PIMA| KIDS | COBRE",
+            "revenue": 79.9,
+            "pct": 21.9,
+            "units": 2,
+            "marginPct": 4.9
+          },
+          {
+            "name": "CAMISETA PIMA | AREIA",
             "revenue": 69.95,
-            "pct": 87.6,
+            "pct": 19.2,
             "units": 1,
             "marginPct": 45.7
+          },
+          {
+            "name": "CAMISETA PIMA | KIDS | CREME",
+            "revenue": 39.95,
+            "pct": 11,
+            "units": 1,
+            "marginPct": 4.9
+          },
+          {
+            "name": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+            "revenue": 24.95,
+            "pct": 6.8,
+            "units": 1,
+            "marginPct": 19.8
           }
         ],
         "margin": {
-          "overallMarginPct": 45.7,
-          "grossProfit": 31.95,
+          "overallMarginPct": 30.1,
+          "grossProfit": 106.65,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 0,
-          "returningCustomers": 1,
-          "recompraPct": 100
+          "newCustomers": 1,
+          "returningCustomers": 2,
+          "recompraPct": 66.7
         },
         "inventoryStats": {
-          "coverageDays": 2774,
+          "coverageDays": 509,
           "turnoverRate": 0
         }
       },
@@ -1415,12 +1475,12 @@
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 39,
-          "returningCustomers": 6,
-          "recompraPct": 13.3
+          "newCustomers": 38,
+          "returningCustomers": 7,
+          "recompraPct": 15.6
         },
         "inventoryStats": {
-          "coverageDays": 356,
+          "coverageDays": 355,
           "turnoverRate": 0.09
         }
       }
@@ -1434,22 +1494,22 @@
       },
       "kpis": {
         "revenue": {
-          "value": 4595.2,
-          "changePct": -28.895380954075684
+          "value": 4670,
+          "changePct": -29.171488414912517
         },
         "orders": {
-          "value": 21,
-          "changePct": -16
+          "value": 23,
+          "changePct": -8
         },
         "aov": {
-          "value": 218.82,
-          "changePct": -15.351643992947233
+          "value": 203.04,
+          "changePct": -23.012487407513603
         }
       },
       "revenueSeries": [
         {
           "date": "2026-07-26",
-          "revenue": 579.45
+          "revenue": 299.65
         },
         {
           "date": "2026-07-27",
@@ -1474,57 +1534,61 @@
         {
           "date": "2026-08-01",
           "revenue": 494.45
+        },
+        {
+          "date": "2026-08-02",
+          "revenue": 354.6
         }
       ],
       "topProducts": [
         {
-          "name": "CAMISETA PIMA | VERDE OLIVA",
-          "revenue": 559.6,
-          "pct": 12.2,
-          "units": 4,
-          "marginPct": 72.8
-        },
-        {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 559.6,
-          "pct": 12.2,
+          "pct": 12,
           "units": 4,
-          "marginPct": 72.8
-        },
-        {
-          "name": "CAMISETA PIMA | OFFWHITE",
-          "revenue": 419.7,
-          "pct": 9.1,
-          "units": 3,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | GOIABA",
-          "revenue": 419.7,
-          "pct": 9.1,
-          "units": 6,
+          "revenue": 489.65,
+          "pct": 10.5,
+          "units": 7,
           "marginPct": 45.7
         },
         {
-          "name": "CAMISETA PIMA | PRETO",
+          "name": "CAMISETA PIMA | VERDE OLIVA",
+          "revenue": 419.7,
+          "pct": 9,
+          "units": 3,
+          "marginPct": 72.8
+        },
+        {
+          "name": "CAMISETA PIMA | AREIA",
+          "revenue": 349.75,
+          "pct": 7.5,
+          "units": 5,
+          "marginPct": 45.7
+        },
+        {
+          "name": "CAMISETA PIMA | OFFWHITE",
           "revenue": 279.8,
-          "pct": 6.1,
+          "pct": 6,
           "units": 2,
           "marginPct": 72.8
         }
       ],
       "margin": {
-        "overallMarginPct": 55.9,
-        "grossProfit": 2701.6,
+        "overallMarginPct": 53.5,
+        "grossProfit": 2622.4,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 16,
-        "returningCustomers": 4,
-        "recompraPct": 20
+        "newCustomers": 17,
+        "returningCustomers": 5,
+        "recompraPct": 22.7
       },
       "inventoryStats": {
-        "coverageDays": 182,
+        "coverageDays": 170,
         "turnoverRate": 0.04
       }
     },
@@ -1535,16 +1599,16 @@
       },
       "kpis": {
         "revenue": {
-          "value": 13704.71,
-          "changePct": 64.39799431402423
+          "value": 14059.31,
+          "changePct": 68.65168000191932
         },
         "orders": {
-          "value": 60,
-          "changePct": 76.47058823529412
+          "value": 63,
+          "changePct": 85.29411764705883
         },
         "aov": {
-          "value": 228.41,
-          "changePct": -6.841136555386261
+          "value": 223.16,
+          "changePct": -8.981633014837186
         }
       },
       "revenueSeries": [
@@ -1631,58 +1695,62 @@
         {
           "date": "2026-08-01",
           "revenue": 494.45
+        },
+        {
+          "date": "2026-08-02",
+          "revenue": 354.6
         }
       ],
       "topProducts": [
         {
           "name": "CAMISETA PIMA | GOIABA",
-          "revenue": 1329.05,
-          "pct": 9.7,
-          "units": 16,
-          "marginPct": 54.3
+          "revenue": 1399,
+          "pct": 10,
+          "units": 17,
+          "marginPct": 53.8
         },
         {
           "name": "CAMISETA PIMA | VERDE OLIVA",
           "revenue": 1259.1,
-          "pct": 9.2,
+          "pct": 9,
           "units": 9,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 979.3,
-          "pct": 7.1,
+          "pct": 7,
           "units": 7,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | WHITE",
           "revenue": 839.4,
-          "pct": 6.1,
+          "pct": 6,
           "units": 6,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | AREIA",
-          "revenue": 699.5,
-          "pct": 5.1,
-          "units": 10,
+          "revenue": 769.45,
+          "pct": 5.5,
+          "units": 11,
           "marginPct": 45.7
         }
       ],
       "margin": {
-        "overallMarginPct": 59.7,
-        "grossProfit": 8554.05,
+        "overallMarginPct": 59.1,
+        "grossProfit": 8678.65,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 42,
-        "returningCustomers": 7,
-        "recompraPct": 14.3
+        "newCustomers": 43,
+        "returningCustomers": 8,
+        "recompraPct": 15.7
       },
       "inventoryStats": {
-        "coverageDays": 291,
-        "turnoverRate": 0.1
+        "coverageDays": 279,
+        "turnoverRate": 0.11
       }
     },
     "90d": {
@@ -1692,15 +1760,15 @@
       },
       "kpis": {
         "revenue": {
-          "value": 22041.01,
+          "value": 22395.61,
           "changePct": null
         },
         "orders": {
-          "value": 94,
+          "value": 97,
           "changePct": null
         },
         "aov": {
-          "value": 234.48,
+          "value": 230.88,
           "changePct": null
         }
       },
@@ -1864,57 +1932,61 @@
         {
           "date": "2026-08-01",
           "revenue": 494.45
+        },
+        {
+          "date": "2026-08-02",
+          "revenue": 354.6
         }
       ],
       "topProducts": [
         {
           "name": "CAMISETA PIMA | VERDE OLIVA",
           "revenue": 1678.8,
-          "pct": 7.6,
+          "pct": 7.5,
           "units": 12,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 1678.8,
-          "pct": 7.6,
+          "pct": 7.5,
           "units": 12,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | WHITE",
           "revenue": 1538.9,
-          "pct": 7,
+          "pct": 6.9,
           "units": 11,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA MODAL TECH | BRANCO",
           "revenue": 1454.9,
-          "pct": 6.6,
+          "pct": 6.5,
           "units": 16,
           "marginPct": 72.5
         },
         {
           "name": "CAMISETA MODAL TECH | PRETO",
           "revenue": 1405.7,
-          "pct": 6.4,
+          "pct": 6.3,
           "units": 15,
           "marginPct": 73.3
         }
       ],
       "margin": {
-        "overallMarginPct": 63.9,
-        "grossProfit": 14824.55,
+        "overallMarginPct": 63.4,
+        "grossProfit": 14949.15,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 68,
-        "returningCustomers": 8,
-        "recompraPct": 10.5
+        "newCustomers": 69,
+        "returningCustomers": 9,
+        "recompraPct": 11.5
       },
       "inventoryStats": {
-        "coverageDays": 580,
+        "coverageDays": 564,
         "turnoverRate": 0.16
       }
     },
@@ -1925,74 +1997,78 @@
       },
       "kpis": {
         "revenue": {
-          "value": 494.45,
-          "changePct": -96.45527604327222
+          "value": 849.05,
+          "changePct": -93.91314010423761
         },
         "orders": {
-          "value": 3,
-          "changePct": -95.08196721311475
+          "value": 6,
+          "changePct": -90.1639344262295
         },
         "aov": {
-          "value": 164.82,
-          "changePct": -27.923946213202004
+          "value": 141.51,
+          "changePct": -38.11692439308237
         }
       },
       "revenueSeries": [
         {
           "date": "2026-08-01",
           "revenue": 494.45
+        },
+        {
+          "date": "2026-08-02",
+          "revenue": 354.6
         }
       ],
       "topProducts": [
         {
+          "name": "CAMISETA PIMA | GOIABA",
+          "revenue": 139.9,
+          "pct": 16.5,
+          "units": 2,
+          "marginPct": 45.7
+        },
+        {
           "name": "CAMISETA MODAL TECH | GREENISH",
           "revenue": 109.9,
-          "pct": 22.2,
+          "pct": 12.9,
           "units": 2,
           "marginPct": 54.5
         },
         {
+          "name": "CAMISETA PIMA| KIDS | COBRE",
+          "revenue": 79.9,
+          "pct": 9.4,
+          "units": 2,
+          "marginPct": 4.9
+        },
+        {
+          "name": "CAMISETA PIMA | AREIA",
+          "revenue": 69.95,
+          "pct": 8.2,
+          "units": 1,
+          "marginPct": 45.7
+        },
+        {
           "name": "CAMISETA PIMA | CREME",
           "revenue": 69.95,
-          "pct": 14.1,
+          "pct": 8.2,
           "units": 1,
           "marginPct": 45.7
-        },
-        {
-          "name": "CAMISETA PIMA | GOIABA",
-          "revenue": 69.95,
-          "pct": 14.1,
-          "units": 1,
-          "marginPct": 45.7
-        },
-        {
-          "name": "CAMISETA ALGODÃO PREMIUM | BLACK",
-          "revenue": 69.9,
-          "pct": 14.1,
-          "units": 1,
-          "marginPct": 71.4
-        },
-        {
-          "name": "CAMISETA MODAL TECH | VERDE ALVORADA",
-          "revenue": 54.95,
-          "pct": 11.1,
-          "units": 1,
-          "marginPct": 54.5
         }
       ],
       "margin": {
-        "overallMarginPct": 54.4,
-        "grossProfit": 263.55,
+        "overallMarginPct": 46.3,
+        "grossProfit": 388.15,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 2,
-        "returningCustomers": 1,
+        "newCustomers": 4,
+        "returningCustomers": 2,
         "recompraPct": 33.3
       },
       "inventoryStats": {
-        "coverageDays": 347,
-        "turnoverRate": 0
+        "coverageDays": 237,
+        "turnoverRate": 0.01
       }
     },
     "previous_month": {
@@ -2147,34 +2223,6179 @@
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 44,
-        "returningCustomers": 6,
-        "recompraPct": 12
+        "newCustomers": 43,
+        "returningCustomers": 7,
+        "recompraPct": 14
       },
       "inventoryStats": {
-        "coverageDays": 297,
+        "coverageDays": 296,
         "turnoverRate": 0.1
       }
     }
   },
+  "ordersFlat": [
+    {
+      "d": "2026-08-02T17:26:05-03:00",
+      "t": 69.95,
+      "p": 1,
+      "c": "9742404321537",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-08-02T15:57:22-03:00",
+      "t": 214.75,
+      "p": 1,
+      "c": "9759527043329",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | KIDS | CREME",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-08-02T10:59:36-03:00",
+      "t": 69.9,
+      "p": 0,
+      "c": "9743411609857",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // AREIA",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-08-01T16:26:31-03:00",
+      "t": 344.7,
+      "p": 0,
+      "c": "9757369827585",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | VERDE ALVORADA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | GREENISH",
+          "v": 109.9,
+          "q": 2,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-08-01T13:21:26-03:00",
+      "t": 79.85,
+      "p": 1,
+      "c": "8823482286337",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-08-01T06:01:49-03:00",
+      "t": 69.9,
+      "p": 0,
+      "c": "9756448981249",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-31T13:50:10-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9750663528705",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-31T10:57:01-03:00",
+      "t": 518.8,
+      "p": 0,
+      "c": "9738440311041",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | PRETO",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | BRANCO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | BRANCO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | SELVA",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | SELVA",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-31T09:43:12-03:00",
+      "t": 359,
+      "p": 0,
+      "c": "9750663528705",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-31T08:43:15-03:00",
+      "t": 154.75,
+      "p": 1,
+      "c": "8830197170433",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - BRANCO",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | MARINHO",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | PRETO",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-31T07:52:10-03:00",
+      "t": 179.85,
+      "p": 1,
+      "c": "9754587955457",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | GREENISH",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-30T22:50:41-03:00",
+      "t": 324.65,
+      "p": 1,
+      "c": "9665286209793",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS| PRETO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-30T21:26:52-03:00",
+      "t": 194.85,
+      "p": 1,
+      "c": "9753894355201",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH // SUNSET",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-30T11:12:00-03:00",
+      "t": 346.6,
+      "p": 1,
+      "c": "9057760411905",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | PRETO",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-30T09:15:58-03:00",
+      "t": 139.9,
+      "p": 1,
+      "c": "9740541985025",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-29T21:03:52-03:00",
+      "t": 279.8,
+      "p": 0,
+      "c": "9751809032449",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | STONE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-29T18:54:14-03:00",
+      "t": 129.8,
+      "p": 1,
+      "c": "9751655284993",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | GREENISH",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-29T15:41:49-03:00",
+      "t": 274.75,
+      "p": 1,
+      "c": "9735997686017",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 109.9,
+          "q": 2,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 109.9,
+          "q": 2,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-29T08:43:27-03:00",
+      "t": 134.65,
+      "p": 1,
+      "c": "9308706603265",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-28T09:44:58-03:00",
+      "t": 69.95,
+      "p": 1,
+      "c": "9748344406273",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-27T17:20:51-03:00",
+      "t": 54.95,
+      "p": 1,
+      "c": "9172513751297",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-26T22:45:51-03:00",
+      "t": 109.9,
+      "p": 1,
+      "c": "9502926340353",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | GREENISH",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-26T22:04:58-03:00",
+      "t": 189.75,
+      "p": 1,
+      "c": "9745571905793",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | PRETO",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-26T11:24:17-03:00",
+      "t": 279.8,
+      "p": 0,
+      "c": "9744544727297",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-25T19:47:46-03:00",
+      "t": 158.9,
+      "p": 1,
+      "c": "9059502358785",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-25T11:35:02-03:00",
+      "t": 139.9,
+      "p": 0,
+      "c": "9002539352321",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-25T09:46:05-03:00",
+      "t": 139.9,
+      "p": 0,
+      "c": "9002539352321",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-25T08:32:06-03:00",
+      "t": 179.8,
+      "p": 1,
+      "c": "9742404321537",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - CINZA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - CINZA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T22:46:11-03:00",
+      "t": 264.8,
+      "p": 1,
+      "c": "9741766590721",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T22:41:26-03:00",
+      "t": 459.65,
+      "p": 0,
+      "c": "9741766590721",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | AZUL CELESTE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T16:45:03-03:00",
+      "t": 354.55,
+      "p": 1,
+      "c": "8830197170433",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - AMETISTA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T16:13:18-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9741327794433",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | PRETO",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T15:23:53-03:00",
+      "t": 399.6,
+      "p": 1,
+      "c": "8820425752833",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - AMETISTA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - AMETISTA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 139.9,
+          "q": 2,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T09:35:32-03:00",
+      "t": 158.9,
+      "p": 1,
+      "c": "9740541985025",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T07:39:41-03:00",
+      "t": 254.75,
+      "p": 1,
+      "c": "9740243337473",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BORDÔ",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | PRETO",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-24T04:58:54-03:00",
+      "t": 139.9,
+      "p": 1,
+      "c": "9739373838593",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T22:04:02-03:00",
+      "t": 533.8,
+      "p": 1,
+      "c": "9739408638209",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS | CREME",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // SUNSET",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 139.9,
+          "q": 2,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | AREIA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T21:35:30-03:00",
+      "t": 988.55,
+      "p": 0,
+      "c": "9739373838593",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | PRETO",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | COBRE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | STONE",
+          "v": 279.8,
+          "q": 2,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 279.8,
+          "q": 2,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T19:52:24-03:00",
+      "t": 149.8,
+      "p": 1,
+      "c": "9739253678337",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T16:57:25-03:00",
+      "t": 124.8,
+      "p": 1,
+      "c": "9738789847297",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | KIDS| PRETO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - AMETISTA",
+          "v": 34.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+          "v": 24.95,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T14:46:20-03:00",
+      "t": 194.85,
+      "p": 1,
+      "c": "9738440311041",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T14:41:04-03:00",
+      "t": 199.75,
+      "p": 1,
+      "c": "9738428645633",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS | CREME",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | SELVA",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA KIDS | BRANCO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS| PRETO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T14:23:43-03:00",
+      "t": 329.7,
+      "p": 1,
+      "c": "9738142548225",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AZUL CELESTE",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AMETISTA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T14:17:34-03:00",
+      "t": 109.9,
+      "p": 1,
+      "c": "9738382704897",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BEGE BOSQUE",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | CINZA",
+          "v": 54.95,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T12:24:38-03:00",
+      "t": 69.95,
+      "p": 1,
+      "c": "9738093920513",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T12:07:57-03:00",
+      "t": 139.9,
+      "p": 1,
+      "c": "9738093920513",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | AREIA",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 69.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-23T11:27:04-03:00",
+      "t": 103.94,
+      "p": 1,
+      "c": "9738017833217",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA KIDS | BRANCO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS| PRETO",
+          "v": 39.95,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-20T09:34:39-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9731645997313",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-19T12:17:22-03:00",
+      "t": 149,
+      "p": 1,
+      "c": "9729418330369",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // CINZA",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-18T08:29:50-03:00",
+      "t": 56.9,
+      "p": 1,
+      "c": "9722078920961",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-15T21:01:59-03:00",
+      "t": 66.41,
+      "p": 1,
+      "c": "9722078920961",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-15T15:18:56-03:00",
+      "t": 132.91,
+      "p": 1,
+      "c": "9721670304001",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-15T09:17:43-03:00",
+      "t": 85.78,
+      "p": 0,
+      "c": "9463002595585",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-12T13:28:43-03:00",
+      "t": 114.87,
+      "p": 1,
+      "c": "9715873120513",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH // SUNSET",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-11T19:11:09-03:00",
+      "t": 82.24,
+      "p": 1,
+      "c": "9714671649025",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-11T07:44:48-03:00",
+      "t": 93.9,
+      "p": 1,
+      "c": "9502926340353",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH // AZUL CELESTE",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-09T12:25:13-03:00",
+      "t": 92.61,
+      "p": 1,
+      "c": "9709188317441",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-08T13:16:49-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9444132978945",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | PRETO",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-06T19:56:32-03:00",
+      "t": 441.5,
+      "p": 1,
+      "c": "9699311517953",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | COBRE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AZUL PETROLÉO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH // SUNSET",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-05T19:18:24-03:00",
+      "t": 149,
+      "p": 0,
+      "c": "9701309612289",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-04T18:16:18-03:00",
+      "t": 289.7,
+      "p": 1,
+      "c": "9699311517953",
+      "r": 1,
+      "li": [
+        {
+          "n": "MODAL TECH // FEMININO // AZUL CELESTE",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - SUNSET",
+          "v": 69.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AZUL CELESTE",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-07-04T13:22:44-03:00",
+      "t": 323.1,
+      "p": 1,
+      "c": "8944424419585",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA - FEM - AREIA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA - FEM - STONE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA - FEM - AZUL CELESTE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-04T00:44:40-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "8846822015233",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | GOIABA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-07-02T18:43:22-03:00",
+      "t": 62.91,
+      "p": 1,
+      "c": "9695235309825",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-01T19:53:05-03:00",
+      "t": 149,
+      "p": 1,
+      "c": "9693014622465",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-01T17:08:27-03:00",
+      "t": 149,
+      "p": 1,
+      "c": "9692815786241",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 139.8,
+          "q": 2,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-07-01T12:41:09-03:00",
+      "t": 377.73,
+      "p": 1,
+      "c": "8818273583361",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA - FEM - AZUL CELESTE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA FEMININA | VERDE SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-27T11:02:32-03:00",
+      "t": 323.1,
+      "p": 1,
+      "c": "9657815990529",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-26T16:32:45-03:00",
+      "t": 197.82,
+      "p": 1,
+      "c": "9656167203073",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-26T10:25:07-03:00",
+      "t": 242.1,
+      "p": 1,
+      "c": "9655413440769",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 219.8,
+          "q": 2,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-25T14:42:57-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9652918518017",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | SELVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-24T18:10:38-03:00",
+      "t": 158.9,
+      "p": 1,
+      "c": "9650384994561",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-23T09:28:45-03:00",
+      "t": 269,
+      "p": 1,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 219.8,
+          "q": 2,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-21T19:21:04-03:00",
+      "t": 389.6,
+      "p": 1,
+      "c": "9644257804545",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-20T07:36:25-03:00",
+      "t": 79.8,
+      "p": 1,
+      "c": "9604508254465",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-17T12:43:43-03:00",
+      "t": 502.11,
+      "p": 1,
+      "c": "9571728523521",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH // AZUL CELESTE",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH // SUNSET",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | BLACK",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | WHITE",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-16T13:04:25-03:00",
+      "t": 224.82,
+      "p": 1,
+      "c": "8823482286337",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-14T17:49:06-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9541967479041",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | COBRE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-14T13:56:15-03:00",
+      "t": 628,
+      "p": 0,
+      "c": "9540353687809",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | CREME",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 219.8,
+          "q": 2,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-13T09:33:19-03:00",
+      "t": 197.82,
+      "p": 1,
+      "c": "9528621891841",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "MODAL TECH // FEMININO // BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-12T15:25:16-03:00",
+      "t": 135.81,
+      "p": 1,
+      "c": "9522020778241",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-12T14:37:18-03:00",
+      "t": 144,
+      "p": 1,
+      "c": "9521065066753",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AZUL PETROLÉO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-12T09:44:02-03:00",
+      "t": 158.9,
+      "p": 1,
+      "c": "9520939958529",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+          "v": 9.2,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // CINZA",
+          "v": 69.9,
+          "q": 1,
+          "c": 20
+        }
+      ]
+    },
+    {
+      "d": "2026-06-11T15:22:08-03:00",
+      "t": 142.54,
+      "p": 1,
+      "c": "9519175205121",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | MARINHO",
+          "v": 69.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+          "v": 69.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-11T15:14:48-03:00",
+      "t": 359,
+      "p": 1,
+      "c": "9518986428673",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | DEEP BLUE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | VERDE OLIVA",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA | OFFWHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-11T09:31:14-03:00",
+      "t": 278.9,
+      "p": 1,
+      "c": "9518324613377",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T17:07:10-03:00",
+      "t": 112.9,
+      "p": 1,
+      "c": "8914764792065",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA | WHITE",
+          "v": 139.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T14:27:49-03:00",
+      "t": 242.1,
+      "p": 1,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T14:24:50-03:00",
+      "t": 269,
+      "p": 0,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T13:45:36-03:00",
+      "t": 269,
+      "p": 1,
+      "c": "9516008472833",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | GREENISH",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T11:22:22-03:00",
+      "t": 269,
+      "p": 0,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T10:55:34-03:00",
+      "t": 269,
+      "p": 0,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-10T10:37:17-03:00",
+      "t": 270.87,
+      "p": 0,
+      "c": "9516065849601",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 49.2,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | PRETO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-08T23:06:59-03:00",
+      "t": 98.91,
+      "p": 1,
+      "c": "9510624035073",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | MARINHO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-08T21:43:02-03:00",
+      "t": 429.3,
+      "p": 1,
+      "c": "9510067175681",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+          "v": 49.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+          "v": 49.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+          "v": 49.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+          "v": 49.9,
+          "q": 1,
+          "c": 20
+        },
+        {
+          "n": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+          "v": 69.9,
+          "q": 1,
+          "c": 25
+        },
+        {
+          "n": "CAMISETA PIMA | KIDS | CREME",
+          "v": 79.9,
+          "q": 1,
+          "c": 38
+        },
+        {
+          "n": "CAMISETA PIMA| KIDS | COBRE",
+          "v": 79.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    },
+    {
+      "d": "2026-06-06T11:52:18-03:00",
+      "t": 109.9,
+      "p": 1,
+      "c": "9502926340353",
+      "r": 1,
+      "li": [
+        {
+          "n": "CAMISETA MODAL TECH | BRANCO",
+          "v": 109.9,
+          "q": 1,
+          "c": 25
+        }
+      ]
+    },
+    {
+      "d": "2026-06-05T08:44:34-03:00",
+      "t": 107.46,
+      "p": 1,
+      "c": "9467580449025",
+      "r": 0,
+      "li": [
+        {
+          "n": "CAMISETA PIMA KIDS | BRANCO",
+          "v": 79.9,
+          "q": 1,
+          "c": 38
+        }
+      ]
+    }
+  ],
+  "customersMap": {
+    "9742404321537": {
+      "nome": "Clarissa G.",
+      "email": "cl******@gmail.com"
+    },
+    "9759527043329": {
+      "nome": "Paraskos D.",
+      "email": "pd**********@gmail.com"
+    },
+    "8823482286337": {
+      "nome": "Junior V.",
+      "email": "jr********@gmail.com"
+    },
+    "9750663528705": {
+      "nome": "Igor M.",
+      "email": "ig********@hotmail.com"
+    },
+    "8830197170433": {
+      "nome": "Clarissa C.",
+      "email": "cl*****************@gmail.com"
+    },
+    "9754587955457": {
+      "nome": "Daniel V.",
+      "email": "da*********@gmail.com"
+    },
+    "9665286209793": {
+      "nome": "Rodrigo N.",
+      "email": "ro**********@gmail.com"
+    },
+    "9753894355201": {
+      "nome": "Danilo F.",
+      "email": "co********@gmail.com"
+    },
+    "9057760411905": {
+      "nome": "Marcelo V.",
+      "email": "19*******@gmail.com"
+    },
+    "9740541985025": {
+      "nome": "DAN M.",
+      "email": "da*****@hotmail.com"
+    },
+    "9751655284993": {
+      "nome": "Natália S.",
+      "email": "na**********@gmail.com"
+    },
+    "9735997686017": {
+      "nome": "Luiz Eduardo S.",
+      "email": "lb*******@gmail.com"
+    },
+    "9308706603265": {
+      "nome": "Júlia d.",
+      "email": "ju*********@outlook.com"
+    },
+    "9748344406273": {
+      "nome": "Lucas A.",
+      "email": "lu************@gmail.com"
+    },
+    "9172513751297": {
+      "nome": "Bethania A.",
+      "email": "be*************@gmail.com"
+    },
+    "9502926340353": {
+      "nome": "Katiuce R.",
+      "email": "ka**********@gmail.com"
+    },
+    "9745571905793": {
+      "nome": "Vinicius D.",
+      "email": "vc******@live.com"
+    },
+    "9059502358785": {
+      "nome": "Ugo C.",
+      "email": "ug*********@gmail.com"
+    },
+    "9741766590721": {
+      "nome": "Víctor D.",
+      "email": "vi**********@hotmail.com"
+    },
+    "9741327794433": {
+      "nome": "Rafael Q.",
+      "email": "rq***********@gmail.com"
+    },
+    "8820425752833": {
+      "nome": "Rodrigo F.",
+      "email": "ro**************@gmail.com"
+    },
+    "9740243337473": {
+      "nome": "Nelson S.",
+      "email": "ne**********@gmail.com"
+    },
+    "9739373838593": {
+      "nome": "Diego M.",
+      "email": "di***@casaeloy.com.br"
+    },
+    "9739408638209": {
+      "nome": "Gabriel N.",
+      "email": "ga***********@gmail.com"
+    },
+    "9739253678337": {
+      "nome": "Lara V.",
+      "email": "pe**********@gmail.com"
+    },
+    "9738789847297": {
+      "nome": "Camila Cervino P.",
+      "email": "ce************@gmail.com"
+    },
+    "9738440311041": {
+      "nome": "Nicodemos s.",
+      "email": "ni*****@hotmail.com"
+    },
+    "9738428645633": {
+      "nome": "Daniela K.",
+      "email": "da***********@gmail.com"
+    },
+    "9738142548225": {
+      "nome": "Diego S.",
+      "email": "di************@gmail.com"
+    },
+    "9738382704897": {
+      "nome": "Rafael R.",
+      "email": "ra********@gmail.com"
+    },
+    "9738093920513": {
+      "nome": "Rafael A.",
+      "email": "ra************@gmail.com"
+    },
+    "9738017833217": {
+      "nome": "Ariela C.",
+      "email": "ar**********@gmail.com"
+    },
+    "9731645997313": {
+      "nome": "Caio d.",
+      "email": "ca******@gmail.com"
+    },
+    "9729418330369": {
+      "nome": "Carlos E.",
+      "email": "ce*******@hotmail.com"
+    },
+    "9722078920961": {
+      "nome": "Eduardo R.",
+      "email": "ed************@hotmail.com"
+    },
+    "9721670304001": {
+      "nome": "Fernanda d.",
+      "email": "fe**************@hotmail.com"
+    },
+    "9715873120513": {
+      "nome": "Rodrigo d.",
+      "email": "ro************@gmail.com"
+    },
+    "9714671649025": {
+      "nome": "Flavio S.",
+      "email": "fl********@gmail.com"
+    },
+    "9709188317441": {
+      "nome": "Luiz Eduarfo C.",
+      "email": "ca**********@contagem.mg.gov.br"
+    },
+    "9444132978945": {
+      "nome": "Luis F.",
+      "email": "lc********@gmail.com"
+    },
+    "9699311517953": {
+      "nome": "Paulo S.",
+      "email": "pc*******@gmail.com"
+    },
+    "8944424419585": {
+      "nome": "Caroline L.",
+      "email": "ca************@gmail.com"
+    },
+    "8846822015233": {
+      "nome": "Joel A.",
+      "email": "jo****@gmail.com"
+    },
+    "9695235309825": {
+      "nome": "Dalerson Q.",
+      "email": "da*******@gmail.com"
+    },
+    "9693014622465": {
+      "nome": "Sergio L.",
+      "email": "se*******@hotmail.com"
+    },
+    "9692815786241": {
+      "nome": "Marcelo P.",
+      "email": "ma***********@gmail.com"
+    },
+    "8818273583361": {
+      "nome": "DANIEL F.",
+      "email": "fr***********@gmail.com"
+    },
+    "9657815990529": {
+      "nome": "Rômulo B.",
+      "email": "ro*********@hotmail.com"
+    },
+    "9656167203073": {
+      "nome": "IVANETE G.",
+      "email": "im*******@gmail.com"
+    },
+    "9655413440769": {
+      "nome": "Gustavo D.",
+      "email": "gu******************@icloud.com"
+    },
+    "9652918518017": {
+      "nome": "Amana B.",
+      "email": "am******@yahoo.com.br"
+    },
+    "9650384994561": {
+      "nome": "Luiz P.",
+      "email": "ju*********@hotmail.com"
+    },
+    "9516065849601": {
+      "nome": "Walter F.",
+      "email": "wa*******@hotmail.com"
+    },
+    "9644257804545": {
+      "nome": "Allan M.",
+      "email": "al********@gmail.com"
+    },
+    "9604508254465": {
+      "nome": "Junivaldo B.",
+      "email": "jc********@yahoo.com.br"
+    },
+    "9571728523521": {
+      "nome": "Maurício R.",
+      "email": "ma*********@hotmail.com"
+    },
+    "9541967479041": {
+      "nome": "Vinícius C.",
+      "email": "vi**************@bol.com.br"
+    },
+    "9528621891841": {
+      "nome": "Leonardo R.",
+      "email": "le**********@gmail.com"
+    },
+    "9522020778241": {
+      "nome": "Catarina F.",
+      "email": "ca************@gmail.com"
+    },
+    "9521065066753": {
+      "nome": "Viviane S.",
+      "email": "vi***********@gmail.com"
+    },
+    "9520939958529": {
+      "nome": "Bruno d.",
+      "email": "br**************@gmail.com"
+    },
+    "9519175205121": {
+      "nome": "Célia R.",
+      "email": "ce**************@gmail.com"
+    },
+    "9518986428673": {
+      "nome": "Matheus R.",
+      "email": "ma***************@hotmail.com"
+    },
+    "9518324613377": {
+      "nome": "Ingrid G.",
+      "email": "in******************@icloud.com"
+    },
+    "8914764792065": {
+      "nome": "Manuela M.",
+      "email": "ma************@outlook.com.br"
+    },
+    "9516008472833": {
+      "nome": "Andrea L.",
+      "email": "an*********@gmail.com"
+    },
+    "9510624035073": {
+      "nome": "VICTOR A.",
+      "email": "vi****************@gmail.com"
+    },
+    "9510067175681": {
+      "nome": "Victoria M.",
+      "email": "vi**********@hotmail.com"
+    },
+    "9467580449025": {
+      "nome": "Joice G.",
+      "email": "jo*****************@gmail.com"
+    }
+  },
   "inventory": {
-    "totalUnits": 1850,
-    "stalledSkuCount": 205,
-    "stalledUnits": 1170,
-    "stockoutSkuCount": 141
+    "totalUnits": 1843,
+    "stalledSkuCount": 202,
+    "stalledUnits": 1158,
+    "stalledValue": 112460.45,
+    "stockoutSkuCount": 141,
+    "stalledList": [
+      {
+        "produto": "CAMISETA MODAL TECH | MARINHO",
+        "variacao": "Azul-marinho / GG",
+        "sku": "280",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 27,
+        "valorParado": 2967.3
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE ALVORADA",
+        "variacao": "GG / Verde Alvorada",
+        "sku": "490",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 26,
+        "valorParado": 2857.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | GREENISH",
+        "variacao": "GG / Verde Greenish",
+        "sku": "485",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 24,
+        "valorParado": 2637.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // CREME",
+        "variacao": "G / Modal Creme",
+        "sku": "788",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 23,
+        "valorParado": 2527.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | PRETO",
+        "variacao": "GG / Preto",
+        "sku": "228",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 22,
+        "valorParado": 2417.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE MILITAR",
+        "variacao": "Verde Militar / M",
+        "sku": "283",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 22,
+        "valorParado": 2417.8
+      },
+      {
+        "produto": "CAMISETA PIMA | DEEP BLUE",
+        "variacao": "Deep Blue / GG",
+        "sku": "208",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 17,
+        "valorParado": 2378.3
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // CREME",
+        "variacao": "M / Modal Creme",
+        "sku": "787",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 20,
+        "valorParado": 2198
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | AREIA",
+        "variacao": "GG / Bege Persa",
+        "sku": "480",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 19,
+        "valorParado": 2088.1
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE MILITAR",
+        "variacao": "Verde Militar / G",
+        "sku": "284",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 18,
+        "valorParado": 1978.2
+      },
+      {
+        "produto": "CAMISETA PIMA | COBRE",
+        "variacao": "GG / CAPPUCCINO",
+        "sku": "525",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 13,
+        "valorParado": 1818.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // AMETISTA",
+        "variacao": "M / Ametista",
+        "sku": "757",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 14,
+        "valorParado": 1538.6
+      },
+      {
+        "produto": "CAMISETA PIMA | AZUL CELESTE",
+        "variacao": "P / Azul Celeste",
+        "sku": "1040",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | AZUL CELESTE",
+        "variacao": "M / Azul Celeste",
+        "sku": "1041",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | AZUL CELESTE",
+        "variacao": "G / Azul Celeste",
+        "sku": "1042",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | AZUL CELESTE",
+        "variacao": "GG / Azul Celeste",
+        "sku": "",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | STONE",
+        "variacao": "P / stone",
+        "sku": "818",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | STONE",
+        "variacao": "M / stone",
+        "sku": "819",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | STONE",
+        "variacao": "G / stone",
+        "sku": "820",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA PIMA | STONE",
+        "variacao": "GG / stone",
+        "sku": "821",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1399
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BRANCO",
+        "variacao": "Branco / P",
+        "sku": "230",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 12,
+        "valorParado": 1318.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // AZUL CELESTE",
+        "variacao": "P / Azul Celeste",
+        "sku": "761",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 11,
+        "valorParado": 1208.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // CREME",
+        "variacao": "GG / Modal Creme",
+        "sku": "789",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 11,
+        "valorParado": 1208.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BEGE BOSQUE",
+        "variacao": "Bege / M",
+        "sku": "473",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1099
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | MARINHO",
+        "variacao": "Azul-marinho / P",
+        "sku": "277",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 1099
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // AREIA",
+        "variacao": "M / Areia",
+        "sku": "687",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 15,
+        "valorParado": 1048.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+        "variacao": "M / Organic",
+        "sku": "693",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 15,
+        "valorParado": 1048.5
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // AZUL CELESTE",
+        "variacao": "GG / Azul Celeste",
+        "sku": "764",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 9,
+        "valorParado": 989.1
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE ALVORADA",
+        "variacao": "G / Verde Alvorada",
+        "sku": "489",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 9,
+        "valorParado": 989.1
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | DEEP BLUE",
+        "variacao": "Azul-marinho / P",
+        "sku": "357",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 979.3
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | VERDE SELVA",
+        "variacao": "Verde Selva / G",
+        "sku": "348",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 979.3
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA |  GOIABA",
+        "variacao": "G / Goiaba",
+        "sku": "544",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 979.3
+      },
+      {
+        "produto": "CAMISETA PIMA | SELVA",
+        "variacao": "M / Verde Selva",
+        "sku": "252",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 979.3
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // CINZA",
+        "variacao": "M / Cinza",
+        "sku": "119",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 14,
+        "valorParado": 978.6
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | OCRE",
+        "variacao": "Ocre / G",
+        "sku": "394",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 949.5
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE MILITAR",
+        "variacao": "Verde Militar / GG",
+        "sku": "285",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 879.2
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - COFFEE",
+        "variacao": "G / Marrom",
+        "sku": "1009",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AZUL CELESTE",
+        "variacao": "M / Azul Celeste",
+        "sku": "987",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AZUL CELESTE",
+        "variacao": "G / Azul Celeste",
+        "sku": "988",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA |  OFFWHITE",
+        "variacao": "Off White / G",
+        "sku": "364",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | DEEP BLUE",
+        "variacao": "Azul-marinho / GG",
+        "sku": "360",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | VERDE SELVA",
+        "variacao": "Verde Selva / M",
+        "sku": "347",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA |  GOIABA",
+        "variacao": "GG / Goiaba",
+        "sku": "545",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 839.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE MILITAR",
+        "variacao": "Verde Militar / P",
+        "sku": "282",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 769.3
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AREIA",
+        "variacao": "M / Areia",
+        "sku": "1029",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AREIA",
+        "variacao": "G / Areia",
+        "sku": "1030",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | DEEP BLUE",
+        "variacao": "Azul-marinho / G",
+        "sku": "359",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | VERDE SELVA",
+        "variacao": "Verde Selva / GG",
+        "sku": "349",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | WHITE",
+        "variacao": "Branco / GG",
+        "sku": "344",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | PRETO",
+        "variacao": "GG / Preto",
+        "sku": "455",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA PIMA | WHITE",
+        "variacao": "Branco / P",
+        "sku": "158",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 699.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // AREIA",
+        "variacao": "GG / Areia",
+        "sku": "689",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 699
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // CINZA",
+        "variacao": "G / Cinza",
+        "sku": "120",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 699
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+        "variacao": "Azul-marinho / M",
+        "sku": "143",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 699
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | PRETO",
+        "variacao": "P / Preto",
+        "sku": "225",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 659.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE ALVORADA",
+        "variacao": "M / Verde Alvorada",
+        "sku": "488",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 659.4
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL MARINHO",
+        "variacao": "P / Azul-marinho",
+        "sku": "767",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 659.4
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // CINZA",
+        "variacao": "P / Cinza",
+        "sku": "118",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 9,
+        "valorParado": 629.1
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - COFFEE",
+        "variacao": "M / Marrom",
+        "sku": "1008",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - STONE",
+        "variacao": "M / Bege Médio",
+        "sku": "1013",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - STONE",
+        "variacao": "G / Bege Médio",
+        "sku": "1014",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AZUL CELESTE",
+        "variacao": "GG / Azul Celeste",
+        "sku": "989",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA |  OFFWHITE",
+        "variacao": "Off White / GG",
+        "sku": "365",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA |  GOIABA",
+        "variacao": "P / Goiaba",
+        "sku": "542",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA |  GOIABA",
+        "variacao": "M / Goiaba",
+        "sku": "543",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | PRETO",
+        "variacao": "G / Preto",
+        "sku": "454",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "CAMISETA PIMA | PRETO",
+        "variacao": "Preto / P",
+        "sku": "200",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 559.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // PRETO",
+        "variacao": "GG / Preto",
+        "sku": "942",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 549.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+        "variacao": "8 / Preto",
+        "sku": "622",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 499
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+        "variacao": "10 / Preto",
+        "sku": "623",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 10,
+        "valorParado": 499
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | BRANCO",
+        "variacao": "Branco / G",
+        "sku": "399",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 474.75
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+        "variacao": "2 / Preto",
+        "sku": "619",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 9,
+        "valorParado": 449.1
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+        "variacao": "2 / Atlântico",
+        "sku": "640",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 9,
+        "valorParado": 449.1
+      },
+      {
+        "produto": "CAMISETA MODAL TECH // CREME",
+        "variacao": "P / Modal Creme",
+        "sku": "786",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL CELESTE",
+        "variacao": "P / Azul Celeste",
+        "sku": "796",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL CELESTE",
+        "variacao": "M / Azul Celeste",
+        "sku": "797",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL CELESTE",
+        "variacao": "G / Azul Celeste",
+        "sku": "798",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // PRETO",
+        "variacao": "G / Preto",
+        "sku": "941",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // VERDE MILITAR",
+        "variacao": "M",
+        "sku": "859",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // VERDE MILITAR",
+        "variacao": "G",
+        "sku": "860",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 439.6
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - COFFEE",
+        "variacao": "P / Marrom",
+        "sku": "1007",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - COFFEE",
+        "variacao": "GG / Marrom",
+        "sku": "1010",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA - FEM - STONE",
+        "variacao": "GG / Bege Médio",
+        "sku": "1015",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AREIA",
+        "variacao": "GG / Areia",
+        "sku": "1031",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | WHITE",
+        "variacao": "Branco / G",
+        "sku": "343",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | CREME",
+        "variacao": "P / Creme",
+        "sku": "532",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | CREME",
+        "variacao": "GG / Creme",
+        "sku": "535",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | PRETO",
+        "variacao": "P / Preto",
+        "sku": "452",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | VERDE OLIVA",
+        "variacao": "Verde Oliva / G",
+        "sku": "369",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 419.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CÉU",
+        "variacao": "Azul Céu / G",
+        "sku": "289",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 419.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | MARINHO",
+        "variacao": "6 / Azul-marinho",
+        "sku": "579",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 419.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | PRETO",
+        "variacao": "10 / Preto",
+        "sku": "672",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 419.4
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | DEEP BLUE",
+        "variacao": "Deep Blue / 10",
+        "sku": "381",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 399.5
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | SELVA",
+        "variacao": "Verde Oliva / 6",
+        "sku": "387",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 399.5
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | SELVA",
+        "variacao": "Verde Oliva / 10",
+        "sku": "389",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 399.5
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS| PRETO",
+        "variacao": "6 / Preto",
+        "sku": "441",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 399.5
+      },
+      {
+        "produto": "CAMISETA PIMA| KIDS | COBRE",
+        "variacao": "10 / CAPPUCCINO",
+        "sku": "609",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 399.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+        "variacao": "6 / Branco",
+        "sku": "628",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+        "variacao": "6 / Preto",
+        "sku": "621",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+        "variacao": "6 / Atlântico",
+        "sku": "642",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+        "variacao": "10 / Atlântico",
+        "sku": "644",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+        "variacao": "2 / Creme",
+        "sku": "661",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+        "variacao": "6 / Creme",
+        "sku": "663",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+        "variacao": "10 / Creme",
+        "sku": "665",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+        "variacao": "6 / Verde Oliva",
+        "sku": "635",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+        "variacao": "8 / Verde Oliva",
+        "sku": "636",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+        "variacao": "10 / Verde Oliva",
+        "sku": "637",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 399.2
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | BRANCO",
+        "variacao": "Branco / GG",
+        "sku": "400",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 379.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+        "variacao": "Terra-Cota / M",
+        "sku": "426",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 349.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+        "variacao": "10 / Céu Antigo",
+        "sku": "651",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 349.3
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+        "variacao": "8 / Creme",
+        "sku": "664",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 349.3
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+        "variacao": "6 / Terra-Cota",
+        "sku": "656",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 349.3
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // PRETO",
+        "variacao": "P / Preto",
+        "sku": "939",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 329.7
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // VERDE MILITAR",
+        "variacao": "P",
+        "sku": "858",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 329.7
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // VERDE MILITAR",
+        "variacao": "GG",
+        "sku": "861",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 329.7
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | BRANCO",
+        "variacao": "Branco / 10",
+        "sku": "354",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 319.6
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | DEEP BLUE",
+        "variacao": "Deep Blue / 8",
+        "sku": "380",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 319.6
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS | CREME",
+        "variacao": "10 / Creme",
+        "sku": "616",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 319.6
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS| PRETO",
+        "variacao": "4 / Preto",
+        "sku": "440",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 319.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+        "variacao": "8 / Atlântico",
+        "sku": "643",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 299.4
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
+        "variacao": "12 / Atlântico",
+        "sku": "645",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 299.4
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CÉU ANTIGO",
+        "variacao": "6 / Céu Antigo",
+        "sku": "649",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 299.4
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | CREME",
+        "variacao": "12 / Creme",
+        "sku": "666",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 299.4
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+        "variacao": "8 / Terra-Cota",
+        "sku": "657",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 299.4
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | BRANCO",
+        "variacao": "Branco / M",
+        "sku": "398",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 284.85
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA |  OFFWHITE",
+        "variacao": "Off White / M",
+        "sku": "363",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 279.8
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | VERDE OLIVA",
+        "variacao": "Verde Oliva / GG",
+        "sku": "370",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 279.8
+      },
+      {
+        "produto": "CAMISETA PIMA | OFFWHITE",
+        "variacao": "Off White / GG",
+        "sku": "264",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 279.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // AREIA",
+        "variacao": "G / Areia",
+        "sku": "688",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+        "variacao": "Amarela / M",
+        "sku": "408",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "02",
+        "sku": "999",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - CINZA",
+        "variacao": "02 / Cinza / Unissex",
+        "sku": "779",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+        "variacao": "02",
+        "sku": "969",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+        "variacao": "04",
+        "sku": "970",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | MARINHO",
+        "variacao": "2 / Azul-marinho",
+        "sku": "577",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | MARINHO",
+        "variacao": "4 / Azul-marinho",
+        "sku": "578",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 279.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  PRETO",
+        "variacao": "12 / Preto",
+        "sku": "624",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 249.5
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | TERRACOTA",
+        "variacao": "2 / Terra-Cota",
+        "sku": "654",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 5,
+        "valorParado": 249.5
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | DEEP BLUE",
+        "variacao": "Deep Blue / 4",
+        "sku": "378",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 239.7
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL MARINHO",
+        "variacao": "G / Azul-marinho",
+        "sku": "769",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 219.8
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL MARINHO",
+        "variacao": "GG / Azul-marinho",
+        "sku": "770",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 219.8
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // BRANCO",
+        "variacao": "GG / Branco",
+        "sku": "937",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 219.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // AREIA",
+        "variacao": "P / Areia",
+        "sku": "686",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL PETROLÉO",
+        "variacao": "Azul Petroléo / P",
+        "sku": "419",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | BLACK",
+        "variacao": "Preto / P",
+        "sku": "110",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "08",
+        "sku": "994",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+        "variacao": "08",
+        "sku": "775",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - CINZA",
+        "variacao": "08 / Cinza / Unissex",
+        "sku": "782",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "02 / Sunset",
+        "sku": "806",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "06 / Sunset",
+        "sku": "808",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | MARINHO",
+        "variacao": "10 / Azul-marinho",
+        "sku": "581",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | PRETO",
+        "variacao": "4 / Preto",
+        "sku": "669",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 209.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "6 / Organic",
+        "sku": "734",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "10 / Organic",
+        "sku": "736",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+        "variacao": "2 / Areia",
+        "sku": "725",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+        "variacao": "8 / Areia",
+        "sku": "728",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+        "variacao": "10 / Areia",
+        "sku": "729",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
+        "variacao": "2 / Verde Oliva",
+        "sku": "633",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 199.6
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | OCRE",
+        "variacao": "Ocre / GG",
+        "sku": "395",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 189.9
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS| PRETO",
+        "variacao": "10 / Preto",
+        "sku": "443",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 159.8
+      },
+      {
+        "produto": "CAMISETA PIMA| KIDS | COBRE",
+        "variacao": "4 / CAPPUCCINO",
+        "sku": "606",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 159.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "8 / Organic",
+        "sku": "735",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 149.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "12 / Organic",
+        "sku": "737",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 149.7
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
+        "variacao": "6 / Areia",
+        "sku": "727",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 149.7
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA |  OFFWHITE",
+        "variacao": "Off White / P",
+        "sku": "362",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 139.9
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | CREME",
+        "variacao": "G / Creme",
+        "sku": "534",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 139.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+        "variacao": "P / Organic",
+        "sku": "692",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CÉU",
+        "variacao": "Azul Céu / M",
+        "sku": "288",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL PETROLÉO",
+        "variacao": "Azul Petroléo / GG",
+        "sku": "422",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | BLACK",
+        "variacao": "Preto / M",
+        "sku": "111",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | BLACK",
+        "variacao": "Preto / XG",
+        "sku": "114",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+        "variacao": "Dark Blue Grey / P",
+        "sku": "431",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+        "variacao": "Off White / M",
+        "sku": "414",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE FLORESTA",
+        "variacao": "M / Verde Floresta",
+        "sku": "135",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "06",
+        "sku": "1001",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+        "variacao": "06",
+        "sku": "971",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+        "variacao": "10",
+        "sku": "973",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "8 / Areia",
+        "sku": "566",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "8 / Verde Alvorada",
+        "sku": "587",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 139.8
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | AREIA",
+        "variacao": "M / Bege Persa",
+        "sku": "478",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 109.9
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // AZUL MARINHO",
+        "variacao": "M / Azul-marinho",
+        "sku": "768",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 109.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+        "variacao": "2 / Cinza",
+        "sku": "718",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 99.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+        "variacao": "6 / Cinza",
+        "sku": "720",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 99.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "2 / Organic",
+        "sku": "732",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 99.8
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | BRANCO",
+        "variacao": "Branco / XG",
+        "sku": "436",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 94.95
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS | CREME",
+        "variacao": "4 / Creme",
+        "sku": "613",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 79.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // CINZA",
+        "variacao": "XG / Cinza",
+        "sku": "122",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+        "variacao": "Amarela / P",
+        "sku": "407",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+        "variacao": "Off White / P",
+        "sku": "413",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "02",
+        "sku": "991",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+        "variacao": "04",
+        "sku": "773",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+        "variacao": "06",
+        "sku": "774",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+        "variacao": "10",
+        "sku": "776",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "08 / Sunset",
+        "sku": "809",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "6 / Bege Persa",
+        "sku": "572",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "10 / Bege Persa",
+        "sku": "574",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "4 / Areia",
+        "sku": "564",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | PRETO",
+        "variacao": "6 / Preto",
+        "sku": "670",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "10 / Verde Alvorada",
+        "sku": "588",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 69.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+        "variacao": "4 / Cinza",
+        "sku": "719",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 49.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+        "variacao": "6 / Off White",
+        "sku": "707",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 49.9
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+        "variacao": "10 / Off White",
+        "sku": "709",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 49.9
+      }
+    ],
+    "stockoutList": [
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | MARINHO",
+        "variacao": "12 / Azul-marinho",
+        "sku": "582",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-31",
+        "diasSemVender": 2,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS| PRETO",
+        "variacao": "12 / Preto",
+        "sku": "444",
+        "preco": 79.9,
+        "ultimaVenda": "2026-07-30",
+        "diasSemVender": 2,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+        "variacao": "4 / Off White",
+        "sku": "706",
+        "preco": 49.9,
+        "ultimaVenda": "2026-07-29",
+        "diasSemVender": 4,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | CINZA",
+        "variacao": "G",
+        "sku": "748",
+        "preco": 109.9,
+        "ultimaVenda": "2026-07-29",
+        "diasSemVender": 4,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+        "variacao": "Dark Blue Grey / GG",
+        "sku": "434",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-25",
+        "diasSemVender": 7,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - CINZA",
+        "variacao": "04 / Cinza / Unissex",
+        "sku": "780",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-25",
+        "diasSemVender": 8,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | CREME",
+        "variacao": "M / Creme",
+        "sku": "513",
+        "preco": 139.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 8,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+        "variacao": "Azul-marinho / G",
+        "sku": "144",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | WHITE",
+        "variacao": "Branco / G",
+        "sku": "128",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "06",
+        "sku": "993",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "10",
+        "sku": "995",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "12",
+        "sku": "996",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-24",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | AREIA",
+        "variacao": "G / Bege Persa",
+        "sku": "479",
+        "preco": 109.9,
+        "ultimaVenda": "2026-07-23",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS | CREME",
+        "variacao": "12 / Creme",
+        "sku": "617",
+        "preco": 79.9,
+        "ultimaVenda": "2026-07-23",
+        "diasSemVender": 9,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AMETISTA",
+        "variacao": "04",
+        "sku": "992",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-23",
+        "diasSemVender": 10,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+        "variacao": "Off White / GG",
+        "sku": "416",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-19",
+        "diasSemVender": 14,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | BLACK",
+        "variacao": "Preto / G",
+        "sku": "112",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-15",
+        "diasSemVender": 17,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+        "variacao": "Terra-Cota / P",
+        "sku": "425",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-09",
+        "diasSemVender": 24,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | PRETO",
+        "variacao": "Preto / M",
+        "sku": "201",
+        "preco": 139.9,
+        "ultimaVenda": "2026-07-08",
+        "diasSemVender": 25,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | WHITE",
+        "variacao": "Branco / M",
+        "sku": "159",
+        "preco": 139.9,
+        "ultimaVenda": "2026-07-08",
+        "diasSemVender": 25,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | COBRE",
+        "variacao": "M / CAPPUCCINO",
+        "sku": "523",
+        "preco": 139.9,
+        "ultimaVenda": "2026-07-06",
+        "diasSemVender": 26,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "04 / Sunset",
+        "sku": "807",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-04",
+        "diasSemVender": 29,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA - FEMININA - AZUL CELESTE",
+        "variacao": "P / Azul Celeste",
+        "sku": "986",
+        "preco": 139.9,
+        "ultimaVenda": "2026-07-04",
+        "diasSemVender": 29,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | WHITE",
+        "variacao": "Branco / GG",
+        "sku": "129",
+        "preco": 69.9,
+        "ultimaVenda": "2026-07-01",
+        "diasSemVender": 32,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | PRETO",
+        "variacao": "G / Preto",
+        "sku": "227",
+        "preco": 109.9,
+        "ultimaVenda": "2026-06-26",
+        "diasSemVender": 37,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // ORGANIC",
+        "variacao": "XG / Organic",
+        "sku": "696",
+        "preco": 69.9,
+        "ultimaVenda": "2026-06-12",
+        "diasSemVender": 51,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "12 / Verde Alvorada",
+        "sku": "589",
+        "preco": 69.9,
+        "ultimaVenda": "2026-06-08",
+        "diasSemVender": 54,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | BRANCO",
+        "variacao": "Branco / 12",
+        "sku": "355",
+        "preco": 79.9,
+        "ultimaVenda": "2026-06-05",
+        "diasSemVender": 58,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+        "variacao": "10 / Cinza",
+        "sku": "722",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM  // KIDS // CINZA",
+        "variacao": "12 / Cinza",
+        "sku": "723",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // AREIA",
+        "variacao": "XG / Areia",
+        "sku": "690",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+        "variacao": "P / Talco",
+        "sku": "712",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+        "variacao": "M / Talco",
+        "sku": "713",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+        "variacao": "G / Talco",
+        "sku": "714",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // BRANCO TALCO",
+        "variacao": "XG / Talco",
+        "sku": "716",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // ALVORADA",
+        "variacao": "4 / Organic",
+        "sku": "733",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+        "variacao": "2 / Off White",
+        "sku": "705",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM // KIDS // OFFWHITE",
+        "variacao": "8 / Off White",
+        "sku": "708",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+        "variacao": "Amarela / GG",
+        "sku": "410",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AMARELO",
+        "variacao": "Amarela / XG",
+        "sku": "411",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CELESTE",
+        "variacao": "Azul Celeste / P",
+        "sku": "320",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CELESTE",
+        "variacao": "Azul Celeste / M",
+        "sku": "321",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CELESTE",
+        "variacao": "Azul Celeste / G",
+        "sku": "322",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CELESTE",
+        "variacao": "Azul Celeste / GG",
+        "sku": "323",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CELESTE",
+        "variacao": "Azul Celeste / XG",
+        "sku": "324",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CÉU",
+        "variacao": "Azul Céu / P",
+        "sku": "287",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CÉU",
+        "variacao": "Azul Céu / GG",
+        "sku": "290",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL CÉU",
+        "variacao": "Azul Céu / XG",
+        "sku": "291",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL MARINHO",
+        "variacao": "Azul-marinho / XG",
+        "sku": "146",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | AZUL PETROLÉO",
+        "variacao": "Azul Petroléo / XG",
+        "sku": "423",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | CARAMELO",
+        "variacao": "Caramelo / P",
+        "sku": "150",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | CARAMELO",
+        "variacao": "Caramelo / M",
+        "sku": "151",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | CARAMELO",
+        "variacao": "Caramelo / G",
+        "sku": "152",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | CARAMELO",
+        "variacao": "Caramelo / GG",
+        "sku": "153",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | CARAMELO",
+        "variacao": "Caramelo / XG",
+        "sku": "154",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+        "variacao": "Dark Blue Grey / G",
+        "sku": "433",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | DARK BLUE GRAY",
+        "variacao": "Dark Blue Grey / XG",
+        "sku": "435",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
+        "variacao": "4 / Branco",
+        "sku": "627",
+        "preco": 49.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | MARROM MOGNO",
+        "variacao": "Marrom Mogno / P",
+        "sku": "299",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | MARROM MOGNO",
+        "variacao": "Marrom Mogno / M",
+        "sku": "300",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | MARROM MOGNO",
+        "variacao": "Marrom Mogno / G",
+        "sku": "301",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | MARROM MOGNO",
+        "variacao": "Marrom Mogno / XG",
+        "sku": "303",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | MARROM MOGNO",
+        "variacao": "Marrom Mogno / GG",
+        "sku": "302",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | OFF WHITE",
+        "variacao": "Off White / XG",
+        "sku": "417",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+        "variacao": "Terra-Cota / G",
+        "sku": "427",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+        "variacao": "Terra-Cota / GG",
+        "sku": "428",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | TERRACOTA",
+        "variacao": "Terra-Cota / XG",
+        "sku": "429",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE FLORESTA",
+        "variacao": "P / Verde Floresta",
+        "sku": "134",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE FLORESTA",
+        "variacao": "G / Verde Floresta",
+        "sku": "136",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE FLORESTA",
+        "variacao": "GG / Verde Floresta",
+        "sku": "137",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE FLORESTA",
+        "variacao": "XG / Verde Floresta",
+        "sku": "138",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE OLIVA",
+        "variacao": "Verde Oliva / P",
+        "sku": "293",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE OLIVA",
+        "variacao": "Verde Oliva / M",
+        "sku": "294",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE OLIVA",
+        "variacao": "Verde Oliva / G",
+        "sku": "295",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE OLIVA",
+        "variacao": "Verde Oliva / GG",
+        "sku": "296",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | VERDE OLIVA",
+        "variacao": "Verde Oliva / XG",
+        "sku": "297",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | WHITE",
+        "variacao": "Branco / P",
+        "sku": "126",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM | WHITE",
+        "variacao": "Branco / XG",
+        "sku": "130",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - AZUL CELESTE",
+        "variacao": "12",
+        "sku": "777",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "04",
+        "sku": "1000",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "10",
+        "sku": "1003",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "12",
+        "sku": "1004",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - CINZA",
+        "variacao": "06 / Cinza / Unissex",
+        "sku": "781",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - CINZA",
+        "variacao": "12 / Cinza / Unissex",
+        "sku": "784",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "10 / Sunset",
+        "sku": "810",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - SUNSET",
+        "variacao": "12 / Sunset",
+        "sku": "811",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - VERDE MILITAR",
+        "variacao": "12",
+        "sku": "974",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | AREIA",
+        "variacao": "P / Bege Persa",
+        "sku": "477",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BEGE BOSQUE",
+        "variacao": "Bege / P",
+        "sku": "472",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BORDÔ",
+        "variacao": "P / Bordô",
+        "sku": "272",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BORDÔ",
+        "variacao": "G / Bordô",
+        "sku": "274",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BORDÔ",
+        "variacao": "GG / Bordô",
+        "sku": "275",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BORDÔ",
+        "variacao": "XG / Bordô",
+        "sku": "",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | BRANCO",
+        "variacao": "Branco / XG",
+        "sku": "",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | GREENISH",
+        "variacao": "P / Verde Greenish",
+        "sku": "482",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "2 / Bege Persa",
+        "sku": "570",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "4 / Bege Persa",
+        "sku": "571",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "8 / Bege Persa",
+        "sku": "573",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | AREIA",
+        "variacao": "12 / Bege Persa",
+        "sku": "575",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "2 / Areia",
+        "sku": "563",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "6 / Areia",
+        "sku": "565",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "10 / Areia",
+        "sku": "567",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | BEGE BOSQUE",
+        "variacao": "12 / Areia",
+        "sku": "568",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | PRETO",
+        "variacao": "12 / Preto",
+        "sku": "673",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "2 / Verde Alvorada",
+        "sku": "584",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "4 / Verde Alvorada",
+        "sku": "585",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | KIDS | VERDE ALVORADA",
+        "variacao": "6 / Verde Alvorada",
+        "sku": "586",
+        "preco": 69.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | PRETO",
+        "variacao": "XG / Preto",
+        "sku": "",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE ALVORADA",
+        "variacao": "P / Verde Alvorada",
+        "sku": "487",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA MODAL TECH | VERDE MILITAR",
+        "variacao": "Verde Militar / XG",
+        "sku": "",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | BRANCO",
+        "variacao": "Branco / P",
+        "sku": "397",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | OCRE",
+        "variacao": "Ocre / P",
+        "sku": "392",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | OCRE",
+        "variacao": "Ocre / M",
+        "sku": "393",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | OCRE",
+        "variacao": "Ocre / XG",
+        "sku": "437",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | PRETO",
+        "variacao": "Preto / P",
+        "sku": "402",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | PRETO",
+        "variacao": "Preto / M",
+        "sku": "403",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | PRETO",
+        "variacao": "Preto / G",
+        "sku": "404",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | PRETO",
+        "variacao": "Preto / GG",
+        "sku": "405",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA OVERSIZED | PRETO",
+        "variacao": "Preto / XG",
+        "sku": "438",
+        "preco": 94.95,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | DEEP BLUE",
+        "variacao": "Azul-marinho / M",
+        "sku": "358",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | WHITE",
+        "variacao": "Branco / P",
+        "sku": "341",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA FEMININA | WHITE",
+        "variacao": "Branco / M",
+        "sku": "342",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | BRANCO",
+        "variacao": "Branco / 4",
+        "sku": "351",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | BRANCO",
+        "variacao": "Branco / 6",
+        "sku": "352",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | DEEP BLUE",
+        "variacao": "Deep Blue / 6",
+        "sku": "379",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | DEEP BLUE",
+        "variacao": "Deep Blue / 12",
+        "sku": "382",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | SELVA",
+        "variacao": "Verde Oliva / 4",
+        "sku": "386",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA KIDS | SELVA",
+        "variacao": "Verde Oliva / 12",
+        "sku": "390",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | COBRE",
+        "variacao": "P / CAPPUCCINO",
+        "sku": "522",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | CREME",
+        "variacao": "P / Creme",
+        "sku": "512",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | CREME",
+        "variacao": "M / Creme",
+        "sku": "533",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | PRETO",
+        "variacao": "M / Preto",
+        "sku": "453",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | VERDE OLIVA",
+        "variacao": "Verde Oliva / P",
+        "sku": "367",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | FEMININA | VERDE OLIVA",
+        "variacao": "Verde Oliva / M",
+        "sku": "368",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | KIDS | CREME",
+        "variacao": "2 / Creme",
+        "sku": "612",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | PRETO",
+        "variacao": "Preto / G",
+        "sku": "202",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA | SELVA",
+        "variacao": "P / Verde Selva",
+        "sku": "251",
+        "preco": 139.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA| KIDS | COBRE",
+        "variacao": "2 / CAPPUCCINO",
+        "sku": "605",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // BRANCO",
+        "variacao": "P / Branco",
+        "sku": "934",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // BRANCO",
+        "variacao": "G / Branco",
+        "sku": "936",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "MODAL TECH // FEMININO // PRETO",
+        "variacao": "M / Preto",
+        "sku": "940",
+        "preco": 109.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      }
+    ]
   },
   "kpis": {
     "revenue": {
-      "value": 13704.71,
-      "changePct": 64.39799431402423
+      "value": 14059.31,
+      "changePct": 68.65168000191932
     },
     "orders": {
-      "value": 60,
-      "changePct": 76.47058823529412
+      "value": 63,
+      "changePct": 85.29411764705883
     },
     "aov": {
-      "value": 228.41,
-      "changePct": -6.841136555386261
+      "value": 223.16,
+      "changePct": -8.981633014837186
     }
   },
   "revenueSeries": [
@@ -2261,79 +8482,79 @@
     {
       "date": "2026-08-01",
       "revenue": 494.45
+    },
+    {
+      "date": "2026-08-02",
+      "revenue": 354.6
     }
   ],
   "topProducts": [
     {
       "name": "CAMISETA PIMA | GOIABA",
-      "revenue": 1329.05,
-      "pct": 9.7,
-      "units": 16,
-      "marginPct": 54.3
+      "revenue": 1399,
+      "pct": 10,
+      "units": 17,
+      "marginPct": 53.8
     },
     {
       "name": "CAMISETA PIMA | VERDE OLIVA",
       "revenue": 1259.1,
-      "pct": 9.2,
+      "pct": 9,
       "units": 9,
       "marginPct": 72.8
     },
     {
       "name": "CAMISETA PIMA | DEEP BLUE",
       "revenue": 979.3,
-      "pct": 7.1,
+      "pct": 7,
       "units": 7,
       "marginPct": 72.8
     },
     {
       "name": "CAMISETA PIMA | WHITE",
       "revenue": 839.4,
-      "pct": 6.1,
+      "pct": 6,
       "units": 6,
       "marginPct": 72.8
     },
     {
       "name": "CAMISETA PIMA | AREIA",
-      "revenue": 699.5,
-      "pct": 5.1,
-      "units": 10,
+      "revenue": 769.45,
+      "pct": 5.5,
+      "units": 11,
       "marginPct": 45.7
     }
   ],
   "customers": {
-    "newCustomers": 42,
-    "returningCustomers": 7,
-    "recompraPct": 14.3
+    "newCustomers": 43,
+    "returningCustomers": 8,
+    "recompraPct": 15.7
   },
   "margin": {
-    "overallMarginPct": 59.7,
-    "grossProfit": 8554.05,
+    "overallMarginPct": 59.1,
+    "grossProfit": 8678.65,
     "costCoveragePct": 100
   },
   "alerts": [
     {
       "type": "good",
-      "text": "Receita subiu 64,4% em relação ao período anterior."
+      "text": "Receita subiu 68,7% em relação ao período anterior."
     },
     {
       "type": "bad",
-      "text": "Ticket médio caiu 6,8% em relação ao período anterior."
+      "text": "Ticket médio caiu 9,0% em relação ao período anterior."
     },
     {
       "type": "warning",
-      "text": "205 produto(s) parado(s) há mais de 180 dias sem vender (1170 peças)."
+      "text": "202 produto(s) parado(s) há mais de 180 dias sem vender (1158 peças)."
     },
     {
       "type": "warning",
       "text": "141 produto(s) em ruptura de estoque."
     },
     {
-      "type": "warning",
-      "text": "Taxa de recompra baixa: só 14,3% dos pedidos são de clientes recorrentes."
-    },
-    {
       "type": "good",
-      "text": "Boa margem bruta: 59,7%."
+      "text": "Boa margem bruta: 59,1%."
     }
   ]
 }
