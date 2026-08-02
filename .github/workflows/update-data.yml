@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+# Evita dois runs simultâneos brigando pelo mesmo commit no data.json
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
@@ -21,7 +26,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Buscar dados do Shopify
         env:
@@ -31,12 +36,22 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
         run: node scripts/fetch-shopify.mjs
 
+      # continue-on-error: se a Meta falhar (token expirado, versão da API
+      # descontinuada, instabilidade), o dashboard de VENDAS continua sendo
+      # atualizado normalmente. O run aparece com aviso, não com falha total.
       - name: Buscar dados da Meta Ads
+        id: meta
         if: ${{ env.HAS_META == 'true' }}
+        continue-on-error: true
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           META_AD_ACCOUNT_ID: ${{ secrets.META_AD_ACCOUNT_ID }}
         run: node scripts/fetch-meta-ads.mjs
+
+      - name: Avisar se a Meta falhou
+        if: ${{ steps.meta.outcome == 'failure' }}
+        run: |
+          echo "::warning::A busca de dados da Meta Ads falhou. Os dados de vendas foram atualizados normalmente, mas os números de anúncio estão desatualizados. Veja o log do step 'Buscar dados da Meta Ads'."
 
       - name: Calcular alertas automáticos
         run: node scripts/compute-alerts.mjs
@@ -46,5 +61,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet || git commit -m "Atualiza dados do Shopify"
+          git diff --staged --quiet && echo "Nada mudou, nada a commitar." && exit 0
+          git commit -m "Atualiza dados do Shopify"
+          # Se alguém commitou enquanto o job rodava, rebase antes de empurrar
+          git pull --rebase origin main
           git push
