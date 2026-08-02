@@ -428,6 +428,34 @@ async function main() {
   // `periods` mantém o formato antigo (compatibilidade): aponta pro modo "total".
   const periods = periodsByMode.total;
 
+  // Dataset compacto de pedidos. É isso que permite o dashboard calcular
+  // QUALQUER intervalo escolhido no calendário, sem rodar o workflow de novo.
+  // Nomes de campo curtos de propósito, pra não inchar o data.json:
+  //   d = data      t = total do pedido       p = pagamento confirmado (0/1)
+  //   c = id do cliente                       r = cliente recorrente (0/1)
+  //   li = itens: n = nome, v = receita líquida, q = qtd, c = custo unitário
+  const ordersFlat = allSalesOrders.map((o) => {
+    const cid = o.customer && o.customer.id ? String(o.customer.id) : null;
+    return {
+      d: o.created_at,
+      t: round2(orderRevenue(o)),
+      p: PAID_STATUSES.has(o.financial_status) ? 1 : 0,
+      c: cid,
+      r: cid && (ordersPerCustomer[cid] || 0) > 1 ? 1 : 0,
+      li: (o.line_items || []).map((li) => {
+        const name = li.title || li.name || "Produto";
+        const unitCost = findUnitCost(name);
+        return {
+          n: name,
+          v: round2(lineItemNetRevenue(li)),
+          q: li.quantity || 0,
+          c: typeof unitCost === "number" ? unitCost : null,
+        };
+      }),
+    };
+  });
+  console.log(`[info] ${ordersFlat.length} pedidos exportados para o seletor de datas personalizado.`);
+
   const output = {
     updatedAt: now.toISOString(),
     defaultPeriod: "30d",
@@ -436,6 +464,7 @@ async function main() {
     // periodsByMode.confirmed -> "Pagamentos confirmados" (dinheiro que realmente entrou)
     periodsByMode,
     periods,
+    ordersFlat,
     inventory: {
       totalUnits,
       stalledSkuCount,
