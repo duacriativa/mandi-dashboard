@@ -1,33 +1,29 @@
 {
-  "updatedAt": "2026-08-01T12:00:11.275Z",
+  "updatedAt": "2026-08-02T11:59:03.274Z",
   "defaultPeriod": "30d",
   "defaultRevenueMode": "confirmed",
   "periodsByMode": {
     "total": {
       "7d": {
         "period": {
-          "start": "2026-07-25",
-          "end": "2026-08-01"
+          "start": "2026-07-26",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 4609.35,
-            "changePct": -23.482168499092797
+            "value": 4595.2,
+            "changePct": -28.895380954075684
           },
           "orders": {
-            "value": 22,
-            "changePct": 0
+            "value": 21,
+            "changePct": -16
           },
           "aov": {
-            "value": 209.52,
-            "changePct": -23.482168499092804
+            "value": 218.82,
+            "changePct": -15.351643992947233
           }
         },
         "revenueSeries": [
-          {
-            "date": "2026-07-25",
-            "revenue": 438.7
-          },
           {
             "date": "2026-07-26",
             "revenue": 579.45
@@ -54,21 +50,21 @@
           },
           {
             "date": "2026-08-01",
-            "revenue": 69.9
+            "revenue": 494.45
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
-            "revenue": 839.4,
-            "pct": 18.2,
-            "units": 6,
+            "revenue": 559.6,
+            "pct": 12.2,
+            "units": 4,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 559.6,
-            "pct": 12.1,
+            "pct": 12.2,
             "units": 4,
             "marginPct": 72.8
           },
@@ -81,9 +77,9 @@
           },
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 349.75,
-            "pct": 7.6,
-            "units": 5,
+            "revenue": 419.7,
+            "pct": 9.1,
+            "units": 6,
             "marginPct": 45.7
           },
           {
@@ -95,44 +91,40 @@
           }
         ],
         "margin": {
-          "overallMarginPct": 57.4,
-          "grossProfit": 2780.75,
+          "overallMarginPct": 55.9,
+          "grossProfit": 2701.6,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 17,
-          "returningCustomers": 3,
-          "recompraPct": 15
+          "newCustomers": 16,
+          "returningCustomers": 4,
+          "recompraPct": 20
         },
         "inventoryStats": {
-          "coverageDays": 190,
+          "coverageDays": 182,
           "turnoverRate": 0.04
         }
       },
       "30d": {
         "period": {
-          "start": "2026-07-02",
-          "end": "2026-08-01"
+          "start": "2026-07-03",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 13343.07,
-            "changePct": 61.27693726513558
+            "value": 13704.71,
+            "changePct": 64.39799431402423
           },
           "orders": {
-            "value": 59,
-            "changePct": 78.78787878787878
+            "value": 60,
+            "changePct": 76.47058823529412
           },
           "aov": {
-            "value": 226.15,
-            "changePct": -9.79425542797501
+            "value": 228.41,
+            "changePct": -6.841136555386261
           }
         },
         "revenueSeries": [
-          {
-            "date": "2026-07-02",
-            "revenue": 62.91
-          },
           {
             "date": "2026-07-04",
             "revenue": 971.8
@@ -215,77 +207,77 @@
           },
           {
             "date": "2026-08-01",
-            "revenue": 69.9
+            "revenue": 494.45
           }
         ],
         "topProducts": [
           {
+            "name": "CAMISETA PIMA | GOIABA",
+            "revenue": 1329.05,
+            "pct": 9.7,
+            "units": 16,
+            "marginPct": 54.3
+          },
+          {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 1259.1,
-            "pct": 9.4,
+            "pct": 9.2,
             "units": 9,
             "marginPct": 72.8
           },
           {
-            "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1259.1,
-            "pct": 9.4,
-            "units": 15,
-            "marginPct": 54.7
-          },
-          {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 979.3,
-            "pct": 7.3,
+            "pct": 7.1,
             "units": 7,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 839.4,
-            "pct": 6.3,
+            "pct": 6.1,
             "units": 6,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | AREIA",
             "revenue": 699.5,
-            "pct": 5.2,
+            "pct": 5.1,
             "units": 10,
             "marginPct": 45.7
           }
         ],
         "margin": {
-          "overallMarginPct": 60,
-          "grossProfit": 8390.3,
+          "overallMarginPct": 59.7,
+          "grossProfit": 8554.05,
           "costCoveragePct": 100
         },
         "customers": {
           "newCustomers": 42,
-          "returningCustomers": 6,
-          "recompraPct": 12.5
+          "returningCustomers": 7,
+          "recompraPct": 14.3
         },
         "inventoryStats": {
-          "coverageDays": 303,
+          "coverageDays": 291,
           "turnoverRate": 0.1
         }
       },
       "90d": {
         "period": {
-          "start": "2026-05-03",
-          "end": "2026-08-01"
+          "start": "2026-05-04",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 21616.46,
+            "value": 22041.01,
             "changePct": null
           },
           "orders": {
-            "value": 92,
+            "value": 94,
             "changePct": null
           },
           "aov": {
-            "value": 234.96,
+            "value": 234.48,
             "changePct": null
           }
         },
@@ -448,107 +440,135 @@
           },
           {
             "date": "2026-08-01",
-            "revenue": 69.9
+            "revenue": 494.45
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 1678.8,
-            "pct": 7.8,
+            "pct": 7.6,
             "units": 12,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 1678.8,
-            "pct": 7.8,
+            "pct": 7.6,
             "units": 12,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | WHITE",
             "revenue": 1538.9,
-            "pct": 7.1,
+            "pct": 7,
             "units": 11,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA MODAL TECH | BRANCO",
             "revenue": 1454.9,
-            "pct": 6.7,
+            "pct": 6.6,
             "units": 16,
             "marginPct": 72.5
           },
           {
             "name": "CAMISETA MODAL TECH | PRETO",
             "revenue": 1405.7,
-            "pct": 6.5,
+            "pct": 6.4,
             "units": 15,
             "marginPct": 73.3
           }
         ],
         "margin": {
-          "overallMarginPct": 64.1,
-          "grossProfit": 14610.9,
+          "overallMarginPct": 63.9,
+          "grossProfit": 14824.55,
           "costCoveragePct": 100
         },
         "customers": {
           "newCustomers": 68,
-          "returningCustomers": 7,
-          "recompraPct": 9.3
+          "returningCustomers": 8,
+          "recompraPct": 10.5
         },
         "inventoryStats": {
-          "coverageDays": 601,
-          "turnoverRate": 0.15
+          "coverageDays": 580,
+          "turnoverRate": 0.16
         }
       },
       "current_month": {
         "period": {
           "start": "2026-08-01",
-          "end": "2026-08-01"
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 69.9,
-            "changePct": -99.49888521675545
+            "value": 494.45,
+            "changePct": -96.45527604327222
           },
           "orders": {
-            "value": 1,
-            "changePct": -98.36065573770492
+            "value": 3,
+            "changePct": -95.08196721311475
           },
           "aov": {
-            "value": 69.9,
-            "changePct": -69.43199822208203
+            "value": 164.82,
+            "changePct": -27.923946213202004
           }
         },
         "revenueSeries": [
           {
             "date": "2026-08-01",
-            "revenue": 69.9
+            "revenue": 494.45
           }
         ],
         "topProducts": [
           {
+            "name": "CAMISETA MODAL TECH | GREENISH",
+            "revenue": 109.9,
+            "pct": 22.2,
+            "units": 2,
+            "marginPct": 54.5
+          },
+          {
+            "name": "CAMISETA PIMA | CREME",
+            "revenue": 69.95,
+            "pct": 14.1,
+            "units": 1,
+            "marginPct": 45.7
+          },
+          {
+            "name": "CAMISETA PIMA | GOIABA",
+            "revenue": 69.95,
+            "pct": 14.1,
+            "units": 1,
+            "marginPct": 45.7
+          },
+          {
             "name": "CAMISETA ALGODÃO PREMIUM | BLACK",
             "revenue": 69.9,
-            "pct": 100,
+            "pct": 14.1,
             "units": 1,
             "marginPct": 71.4
+          },
+          {
+            "name": "CAMISETA MODAL TECH | VERDE ALVORADA",
+            "revenue": 54.95,
+            "pct": 11.1,
+            "units": 1,
+            "marginPct": 54.5
           }
         ],
         "margin": {
-          "overallMarginPct": 71.4,
-          "grossProfit": 49.9,
+          "overallMarginPct": 54.4,
+          "grossProfit": 263.55,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 1,
-          "returningCustomers": 0,
-          "recompraPct": 0
+          "newCustomers": 2,
+          "returningCustomers": 1,
+          "recompraPct": 33.3
         },
         "inventoryStats": {
-          "coverageDays": 1869,
+          "coverageDays": 347,
           "turnoverRate": 0
         }
       },
@@ -709,7 +729,7 @@
           "recompraPct": 12
         },
         "inventoryStats": {
-          "coverageDays": 300,
+          "coverageDays": 297,
           "turnoverRate": 0.1
         }
       }
@@ -717,28 +737,24 @@
     "confirmed": {
       "7d": {
         "period": {
-          "start": "2026-07-25",
-          "end": "2026-08-01"
+          "start": "2026-07-26",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 2822.25,
-            "changePct": -38.320777849898064
+            "value": 2743.2,
+            "changePct": -42.06045296424822
           },
           "orders": {
             "value": 15,
-            "changePct": -25
+            "changePct": -28.57142857142857
           },
           "aov": {
-            "value": 188.15,
-            "changePct": -17.761037133197423
+            "value": 182.88,
+            "changePct": -18.884634149947498
           }
         },
         "revenueSeries": [
-          {
-            "date": "2026-07-25",
-            "revenue": 158.9
-          },
           {
             "date": "2026-07-26",
             "revenue": 299.65
@@ -762,84 +778,84 @@
           {
             "date": "2026-07-31",
             "revenue": 693.6
+          },
+          {
+            "date": "2026-08-01",
+            "revenue": 79.85
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 349.75,
-            "pct": 12.4,
-            "units": 5,
+            "revenue": 419.7,
+            "pct": 15.3,
+            "units": 6,
             "marginPct": 45.7
           },
           {
             "name": "CAMISETA PIMA | VERDE OLIVA",
             "revenue": 279.8,
-            "pct": 9.9,
+            "pct": 10.2,
             "units": 2,
             "marginPct": 72.8
           },
           {
             "name": "CAMISETA PIMA | AREIA",
             "revenue": 279.8,
-            "pct": 9.9,
+            "pct": 10.2,
             "units": 4,
             "marginPct": 45.7
           },
           {
             "name": "CAMISETA MODAL TECH | CINZA",
             "revenue": 219.8,
-            "pct": 7.8,
+            "pct": 8,
             "units": 4,
             "marginPct": 54.5
           },
           {
             "name": "CAMISETA MODAL TECH | GREENISH",
             "revenue": 164.85,
-            "pct": 5.8,
+            "pct": 6,
             "units": 3,
             "marginPct": 54.5
           }
         ],
         "margin": {
-          "overallMarginPct": 51.1,
-          "grossProfit": 1500.25,
+          "overallMarginPct": 50.5,
+          "grossProfit": 1443.2,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 12,
-          "returningCustomers": 3,
-          "recompraPct": 20
+          "newCustomers": 11,
+          "returningCustomers": 4,
+          "recompraPct": 26.7
         },
         "inventoryStats": {
-          "coverageDays": 252,
+          "coverageDays": 259,
           "turnoverRate": 0.03
         }
       },
       "30d": {
         "period": {
-          "start": "2026-07-02",
-          "end": "2026-08-01"
+          "start": "2026-07-03",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 9872.99,
-            "changePct": 50.330566180232395
+            "value": 9889.93,
+            "changePct": 49.15970759060874
           },
           "orders": {
             "value": 48,
-            "changePct": 71.42857142857143
+            "changePct": 65.51724137931035
           },
           "aov": {
-            "value": 205.69,
-            "changePct": -12.307169728197769
+            "value": 206.04,
+            "changePct": -9.882676664007214
           }
         },
         "revenueSeries": [
-          {
-            "date": "2026-07-02",
-            "revenue": 62.91
-          },
           {
             "date": "2026-07-04",
             "revenue": 971.8
@@ -915,15 +931,19 @@
           {
             "date": "2026-07-31",
             "revenue": 693.6
+          },
+          {
+            "date": "2026-08-01",
+            "revenue": 79.85
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1259.1,
-            "pct": 12.8,
-            "units": 15,
-            "marginPct": 54.7
+            "revenue": 1329.05,
+            "pct": 13.4,
+            "units": 16,
+            "marginPct": 54.3
           },
           {
             "name": "CAMISETA PIMA | AREIA",
@@ -955,36 +975,36 @@
           }
         ],
         "margin": {
-          "overallMarginPct": 57.1,
-          "grossProfit": 5905,
+          "overallMarginPct": 56.9,
+          "grossProfit": 5887.05,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 36,
-          "returningCustomers": 6,
-          "recompraPct": 14.3
+          "newCustomers": 35,
+          "returningCustomers": 7,
+          "recompraPct": 16.7
         },
         "inventoryStats": {
-          "coverageDays": 369,
+          "coverageDays": 365,
           "turnoverRate": 0.08
         }
       },
       "90d": {
         "period": {
-          "start": "2026-05-03",
-          "end": "2026-08-01"
+          "start": "2026-05-04",
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 16440.51,
+            "value": 16520.36,
             "changePct": null
           },
           "orders": {
-            "value": 76,
+            "value": 77,
             "changePct": null
           },
           "aov": {
-            "value": 216.32,
+            "value": 214.55,
             "changePct": null
           }
         },
@@ -1140,15 +1160,19 @@
           {
             "date": "2026-07-31",
             "revenue": 693.6
+          },
+          {
+            "date": "2026-08-01",
+            "revenue": 79.85
           }
         ],
         "topProducts": [
           {
             "name": "CAMISETA PIMA | GOIABA",
-            "revenue": 1259.1,
-            "pct": 7.7,
-            "units": 15,
-            "marginPct": 54.7
+            "revenue": 1329.05,
+            "pct": 8,
+            "units": 16,
+            "marginPct": 54.3
           },
           {
             "name": "CAMISETA MODAL TECH | BRANCO",
@@ -1180,53 +1204,66 @@
           }
         ],
         "margin": {
-          "overallMarginPct": 62.4,
-          "grossProfit": 10849.9,
+          "overallMarginPct": 62.3,
+          "grossProfit": 10881.85,
           "costCoveragePct": 100
         },
         "customers": {
-          "newCustomers": 61,
-          "returningCustomers": 7,
-          "recompraPct": 10.3
+          "newCustomers": 60,
+          "returningCustomers": 8,
+          "recompraPct": 11.8
         },
         "inventoryStats": {
-          "coverageDays": 735,
+          "coverageDays": 724,
           "turnoverRate": 0.12
         }
       },
       "current_month": {
         "period": {
           "start": "2026-08-01",
-          "end": "2026-08-01"
+          "end": "2026-08-02"
         },
         "kpis": {
           "revenue": {
-            "value": 0,
-            "changePct": -100
+            "value": 79.85,
+            "changePct": -99.24303612191811
           },
           "orders": {
-            "value": 0,
-            "changePct": -100
+            "value": 1,
+            "changePct": -98.0392156862745
           },
           "aov": {
-            "value": 0,
-            "changePct": -100
+            "value": 79.85,
+            "changePct": -61.39484221782357
           }
         },
-        "revenueSeries": [],
-        "topProducts": [],
+        "revenueSeries": [
+          {
+            "date": "2026-08-01",
+            "revenue": 79.85
+          }
+        ],
+        "topProducts": [
+          {
+            "name": "CAMISETA PIMA | GOIABA",
+            "revenue": 69.95,
+            "pct": 87.6,
+            "units": 1,
+            "marginPct": 45.7
+          }
+        ],
         "margin": {
-          "overallMarginPct": null,
-          "grossProfit": 0,
-          "costCoveragePct": 0
+          "overallMarginPct": 45.7,
+          "grossProfit": 31.95,
+          "costCoveragePct": 100
         },
         "customers": {
           "newCustomers": 0,
-          "returningCustomers": 0,
-          "recompraPct": null
+          "returningCustomers": 1,
+          "recompraPct": 100
         },
         "inventoryStats": {
-          "coverageDays": null,
+          "coverageDays": 2774,
           "turnoverRate": 0
         }
       },
@@ -1383,7 +1420,7 @@
           "recompraPct": 13.3
         },
         "inventoryStats": {
-          "coverageDays": 360,
+          "coverageDays": 356,
           "turnoverRate": 0.09
         }
       }
@@ -1392,28 +1429,24 @@
   "periods": {
     "7d": {
       "period": {
-        "start": "2026-07-25",
-        "end": "2026-08-01"
+        "start": "2026-07-26",
+        "end": "2026-08-02"
       },
       "kpis": {
         "revenue": {
-          "value": 4609.35,
-          "changePct": -23.482168499092797
+          "value": 4595.2,
+          "changePct": -28.895380954075684
         },
         "orders": {
-          "value": 22,
-          "changePct": 0
+          "value": 21,
+          "changePct": -16
         },
         "aov": {
-          "value": 209.52,
-          "changePct": -23.482168499092804
+          "value": 218.82,
+          "changePct": -15.351643992947233
         }
       },
       "revenueSeries": [
-        {
-          "date": "2026-07-25",
-          "revenue": 438.7
-        },
         {
           "date": "2026-07-26",
           "revenue": 579.45
@@ -1440,21 +1473,21 @@
         },
         {
           "date": "2026-08-01",
-          "revenue": 69.9
+          "revenue": 494.45
         }
       ],
       "topProducts": [
         {
           "name": "CAMISETA PIMA | VERDE OLIVA",
-          "revenue": 839.4,
-          "pct": 18.2,
-          "units": 6,
+          "revenue": 559.6,
+          "pct": 12.2,
+          "units": 4,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 559.6,
-          "pct": 12.1,
+          "pct": 12.2,
           "units": 4,
           "marginPct": 72.8
         },
@@ -1467,9 +1500,9 @@
         },
         {
           "name": "CAMISETA PIMA | GOIABA",
-          "revenue": 349.75,
-          "pct": 7.6,
-          "units": 5,
+          "revenue": 419.7,
+          "pct": 9.1,
+          "units": 6,
           "marginPct": 45.7
         },
         {
@@ -1481,44 +1514,40 @@
         }
       ],
       "margin": {
-        "overallMarginPct": 57.4,
-        "grossProfit": 2780.75,
+        "overallMarginPct": 55.9,
+        "grossProfit": 2701.6,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 17,
-        "returningCustomers": 3,
-        "recompraPct": 15
+        "newCustomers": 16,
+        "returningCustomers": 4,
+        "recompraPct": 20
       },
       "inventoryStats": {
-        "coverageDays": 190,
+        "coverageDays": 182,
         "turnoverRate": 0.04
       }
     },
     "30d": {
       "period": {
-        "start": "2026-07-02",
-        "end": "2026-08-01"
+        "start": "2026-07-03",
+        "end": "2026-08-02"
       },
       "kpis": {
         "revenue": {
-          "value": 13343.07,
-          "changePct": 61.27693726513558
+          "value": 13704.71,
+          "changePct": 64.39799431402423
         },
         "orders": {
-          "value": 59,
-          "changePct": 78.78787878787878
+          "value": 60,
+          "changePct": 76.47058823529412
         },
         "aov": {
-          "value": 226.15,
-          "changePct": -9.79425542797501
+          "value": 228.41,
+          "changePct": -6.841136555386261
         }
       },
       "revenueSeries": [
-        {
-          "date": "2026-07-02",
-          "revenue": 62.91
-        },
         {
           "date": "2026-07-04",
           "revenue": 971.8
@@ -1601,77 +1630,77 @@
         },
         {
           "date": "2026-08-01",
-          "revenue": 69.9
+          "revenue": 494.45
         }
       ],
       "topProducts": [
         {
+          "name": "CAMISETA PIMA | GOIABA",
+          "revenue": 1329.05,
+          "pct": 9.7,
+          "units": 16,
+          "marginPct": 54.3
+        },
+        {
           "name": "CAMISETA PIMA | VERDE OLIVA",
           "revenue": 1259.1,
-          "pct": 9.4,
+          "pct": 9.2,
           "units": 9,
           "marginPct": 72.8
         },
         {
-          "name": "CAMISETA PIMA | GOIABA",
-          "revenue": 1259.1,
-          "pct": 9.4,
-          "units": 15,
-          "marginPct": 54.7
-        },
-        {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 979.3,
-          "pct": 7.3,
+          "pct": 7.1,
           "units": 7,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | WHITE",
           "revenue": 839.4,
-          "pct": 6.3,
+          "pct": 6.1,
           "units": 6,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | AREIA",
           "revenue": 699.5,
-          "pct": 5.2,
+          "pct": 5.1,
           "units": 10,
           "marginPct": 45.7
         }
       ],
       "margin": {
-        "overallMarginPct": 60,
-        "grossProfit": 8390.3,
+        "overallMarginPct": 59.7,
+        "grossProfit": 8554.05,
         "costCoveragePct": 100
       },
       "customers": {
         "newCustomers": 42,
-        "returningCustomers": 6,
-        "recompraPct": 12.5
+        "returningCustomers": 7,
+        "recompraPct": 14.3
       },
       "inventoryStats": {
-        "coverageDays": 303,
+        "coverageDays": 291,
         "turnoverRate": 0.1
       }
     },
     "90d": {
       "period": {
-        "start": "2026-05-03",
-        "end": "2026-08-01"
+        "start": "2026-05-04",
+        "end": "2026-08-02"
       },
       "kpis": {
         "revenue": {
-          "value": 21616.46,
+          "value": 22041.01,
           "changePct": null
         },
         "orders": {
-          "value": 92,
+          "value": 94,
           "changePct": null
         },
         "aov": {
-          "value": 234.96,
+          "value": 234.48,
           "changePct": null
         }
       },
@@ -1834,107 +1863,135 @@
         },
         {
           "date": "2026-08-01",
-          "revenue": 69.9
+          "revenue": 494.45
         }
       ],
       "topProducts": [
         {
           "name": "CAMISETA PIMA | VERDE OLIVA",
           "revenue": 1678.8,
-          "pct": 7.8,
+          "pct": 7.6,
           "units": 12,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | DEEP BLUE",
           "revenue": 1678.8,
-          "pct": 7.8,
+          "pct": 7.6,
           "units": 12,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA PIMA | WHITE",
           "revenue": 1538.9,
-          "pct": 7.1,
+          "pct": 7,
           "units": 11,
           "marginPct": 72.8
         },
         {
           "name": "CAMISETA MODAL TECH | BRANCO",
           "revenue": 1454.9,
-          "pct": 6.7,
+          "pct": 6.6,
           "units": 16,
           "marginPct": 72.5
         },
         {
           "name": "CAMISETA MODAL TECH | PRETO",
           "revenue": 1405.7,
-          "pct": 6.5,
+          "pct": 6.4,
           "units": 15,
           "marginPct": 73.3
         }
       ],
       "margin": {
-        "overallMarginPct": 64.1,
-        "grossProfit": 14610.9,
+        "overallMarginPct": 63.9,
+        "grossProfit": 14824.55,
         "costCoveragePct": 100
       },
       "customers": {
         "newCustomers": 68,
-        "returningCustomers": 7,
-        "recompraPct": 9.3
+        "returningCustomers": 8,
+        "recompraPct": 10.5
       },
       "inventoryStats": {
-        "coverageDays": 601,
-        "turnoverRate": 0.15
+        "coverageDays": 580,
+        "turnoverRate": 0.16
       }
     },
     "current_month": {
       "period": {
         "start": "2026-08-01",
-        "end": "2026-08-01"
+        "end": "2026-08-02"
       },
       "kpis": {
         "revenue": {
-          "value": 69.9,
-          "changePct": -99.49888521675545
+          "value": 494.45,
+          "changePct": -96.45527604327222
         },
         "orders": {
-          "value": 1,
-          "changePct": -98.36065573770492
+          "value": 3,
+          "changePct": -95.08196721311475
         },
         "aov": {
-          "value": 69.9,
-          "changePct": -69.43199822208203
+          "value": 164.82,
+          "changePct": -27.923946213202004
         }
       },
       "revenueSeries": [
         {
           "date": "2026-08-01",
-          "revenue": 69.9
+          "revenue": 494.45
         }
       ],
       "topProducts": [
         {
+          "name": "CAMISETA MODAL TECH | GREENISH",
+          "revenue": 109.9,
+          "pct": 22.2,
+          "units": 2,
+          "marginPct": 54.5
+        },
+        {
+          "name": "CAMISETA PIMA | CREME",
+          "revenue": 69.95,
+          "pct": 14.1,
+          "units": 1,
+          "marginPct": 45.7
+        },
+        {
+          "name": "CAMISETA PIMA | GOIABA",
+          "revenue": 69.95,
+          "pct": 14.1,
+          "units": 1,
+          "marginPct": 45.7
+        },
+        {
           "name": "CAMISETA ALGODÃO PREMIUM | BLACK",
           "revenue": 69.9,
-          "pct": 100,
+          "pct": 14.1,
           "units": 1,
           "marginPct": 71.4
+        },
+        {
+          "name": "CAMISETA MODAL TECH | VERDE ALVORADA",
+          "revenue": 54.95,
+          "pct": 11.1,
+          "units": 1,
+          "marginPct": 54.5
         }
       ],
       "margin": {
-        "overallMarginPct": 71.4,
-        "grossProfit": 49.9,
+        "overallMarginPct": 54.4,
+        "grossProfit": 263.55,
         "costCoveragePct": 100
       },
       "customers": {
-        "newCustomers": 1,
-        "returningCustomers": 0,
-        "recompraPct": 0
+        "newCustomers": 2,
+        "returningCustomers": 1,
+        "recompraPct": 33.3
       },
       "inventoryStats": {
-        "coverageDays": 1869,
+        "coverageDays": 347,
         "turnoverRate": 0
       }
     },
@@ -2095,36 +2152,32 @@
         "recompraPct": 12
       },
       "inventoryStats": {
-        "coverageDays": 300,
+        "coverageDays": 297,
         "turnoverRate": 0.1
       }
     }
   },
   "inventory": {
-    "totalUnits": 1869,
-    "stalledSkuCount": 206,
-    "stalledUnits": 1173,
-    "stockoutSkuCount": 138
+    "totalUnits": 1850,
+    "stalledSkuCount": 205,
+    "stalledUnits": 1170,
+    "stockoutSkuCount": 141
   },
   "kpis": {
     "revenue": {
-      "value": 13343.07,
-      "changePct": 61.27693726513558
+      "value": 13704.71,
+      "changePct": 64.39799431402423
     },
     "orders": {
-      "value": 59,
-      "changePct": 78.78787878787878
+      "value": 60,
+      "changePct": 76.47058823529412
     },
     "aov": {
-      "value": 226.15,
-      "changePct": -9.79425542797501
+      "value": 228.41,
+      "changePct": -6.841136555386261
     }
   },
   "revenueSeries": [
-    {
-      "date": "2026-07-02",
-      "revenue": 62.91
-    },
     {
       "date": "2026-07-04",
       "revenue": 971.8
@@ -2207,80 +2260,80 @@
     },
     {
       "date": "2026-08-01",
-      "revenue": 69.9
+      "revenue": 494.45
     }
   ],
   "topProducts": [
     {
+      "name": "CAMISETA PIMA | GOIABA",
+      "revenue": 1329.05,
+      "pct": 9.7,
+      "units": 16,
+      "marginPct": 54.3
+    },
+    {
       "name": "CAMISETA PIMA | VERDE OLIVA",
       "revenue": 1259.1,
-      "pct": 9.4,
+      "pct": 9.2,
       "units": 9,
       "marginPct": 72.8
     },
     {
-      "name": "CAMISETA PIMA | GOIABA",
-      "revenue": 1259.1,
-      "pct": 9.4,
-      "units": 15,
-      "marginPct": 54.7
-    },
-    {
       "name": "CAMISETA PIMA | DEEP BLUE",
       "revenue": 979.3,
-      "pct": 7.3,
+      "pct": 7.1,
       "units": 7,
       "marginPct": 72.8
     },
     {
       "name": "CAMISETA PIMA | WHITE",
       "revenue": 839.4,
-      "pct": 6.3,
+      "pct": 6.1,
       "units": 6,
       "marginPct": 72.8
     },
     {
       "name": "CAMISETA PIMA | AREIA",
       "revenue": 699.5,
-      "pct": 5.2,
+      "pct": 5.1,
       "units": 10,
       "marginPct": 45.7
     }
   ],
   "customers": {
     "newCustomers": 42,
-    "returningCustomers": 6,
-    "recompraPct": 12.5
+    "returningCustomers": 7,
+    "recompraPct": 14.3
   },
   "margin": {
-    "overallMarginPct": 60,
-    "grossProfit": 8390.3,
+    "overallMarginPct": 59.7,
+    "grossProfit": 8554.05,
     "costCoveragePct": 100
   },
   "alerts": [
     {
       "type": "good",
-      "text": "Receita subiu 61,3% em relação ao período anterior."
+      "text": "Receita subiu 64,4% em relação ao período anterior."
     },
     {
       "type": "bad",
-      "text": "Ticket médio caiu 9,8% em relação ao período anterior."
+      "text": "Ticket médio caiu 6,8% em relação ao período anterior."
     },
     {
       "type": "warning",
-      "text": "206 produto(s) parado(s) há mais de 180 dias sem vender (1173 peças)."
+      "text": "205 produto(s) parado(s) há mais de 180 dias sem vender (1170 peças)."
     },
     {
       "type": "warning",
-      "text": "138 produto(s) em ruptura de estoque."
+      "text": "141 produto(s) em ruptura de estoque."
     },
     {
       "type": "warning",
-      "text": "Taxa de recompra baixa: só 12,5% dos pedidos são de clientes recorrentes."
+      "text": "Taxa de recompra baixa: só 14,3% dos pedidos são de clientes recorrentes."
     },
     {
       "type": "good",
-      "text": "Boa margem bruta: 60,0%."
+      "text": "Boa margem bruta: 59,7%."
     }
   ]
 }
