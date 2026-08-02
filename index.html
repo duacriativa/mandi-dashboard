@@ -331,13 +331,18 @@
         <div class="stock-grid">
           <div class="stock-box">
             <div class="val" id="marketingSpend">—</div>
-            <div class="lbl">Investido (30 dias)</div>
+            <div class="lbl" id="marketingSpendLabel">Investido</div>
           </div>
           <div class="stock-box">
             <div class="val" id="marketingRoas">—</div>
-            <div class="lbl">ROAS</div>
+            <div class="lbl">ROAS (receita Shopify)</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="marketingRoasMeta">—</div>
+            <div class="lbl">ROAS (atribuído Meta)</div>
           </div>
         </div>
+        <div id="marketingNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
         <div style="margin-top:14px;">
           <div class="section-title" style="margin-bottom:8px;">Campanhas ativas</div>
           <table id="campaignsTable">
@@ -499,38 +504,70 @@ function renderCustomers(cust) {
     ? cust.recompraPct.toFixed(1) + "%" : "—";
 }
 
-function renderCac(marketing) {
-  const el = document.getElementById("custCac");
-  if (marketing && marketing.cac !== null && marketing.cac !== undefined) {
-    el.textContent = BRL(marketing.cac);
-  } else {
-    el.textContent = "—";
+// Soma o investimento em anúncios dentro do período selecionado, usando a
+// série diária vinda da Meta. Retorna null se não houver dados de Ads.
+function adsForPeriod(period) {
+  const m = DASHBOARD_DATA.marketing;
+  if (!m || !Array.isArray(m.dailyAds) || !m.dailyAds.length) return null;
+  const s = period.period.start, e = period.period.end;
+  let spend = 0, metaRevenue = 0, dias = 0;
+  for (const d of m.dailyAds) {
+    if (d.date < s || d.date > e) continue;
+    spend += d.spend || 0;
+    metaRevenue += d.metaRevenue || 0;
+    dias += 1;
   }
+  return { spend: round2(spend), metaRevenue: round2(metaRevenue), dias };
 }
 
-function renderMarketing(marketing) {
-  if (!marketing) {
-    document.getElementById("marketingSpend").textContent = "—";
-    document.getElementById("marketingRoas").textContent = "—";
+function renderMarketingForPeriod(period) {
+  const spendEl = document.getElementById("marketingSpend");
+  const roasEl = document.getElementById("marketingRoas");
+  const roasMetaEl = document.getElementById("marketingRoasMeta");
+  const cacEl = document.getElementById("custCac");
+  const note = document.getElementById("marketingNote");
+  const label = document.getElementById("marketingSpendLabel");
+
+  const ads = adsForPeriod(period);
+  const m = DASHBOARD_DATA.marketing;
+
+  if (!ads) {
+    spendEl.textContent = roasEl.textContent = roasMetaEl.textContent = "—";
+    cacEl.textContent = "—";
+    note.textContent = m
+      ? "Sem dados de anúncio para este período."
+      : "Meta Ads ainda não configurado (faltam os secrets META_ACCESS_TOKEN e META_AD_ACCOUNT_ID).";
     return;
   }
-  document.getElementById("marketingSpend").textContent = BRL(marketing.spend || 0);
-  document.getElementById("marketingRoas").textContent = marketing.roas !== null && marketing.roas !== undefined
-    ? marketing.roas.toFixed(1) + "x"
-    : "—";
 
+  const receita = period.kpis.revenue.value || 0;
+  const novos = period.customers?.newCustomers || 0;
+
+  label.textContent = "Investido no período";
+  spendEl.textContent = BRL(ads.spend);
+  roasEl.textContent = ads.spend ? (receita / ads.spend).toFixed(2) + "x" : "—";
+  roasMetaEl.textContent = ads.spend ? (ads.metaRevenue / ads.spend).toFixed(2) + "x" : "—";
+  cacEl.textContent = ads.spend && novos ? BRL(ads.spend / novos) : "—";
+
+  note.textContent =
+    `ROAS "Shopify" = receita total da loja ÷ investimento (inclui vendas orgânicas, então superestima o anúncio). ` +
+    `ROAS "Meta" = o que o pixel atribui aos anúncios (a Meta tende a se creditar vendas que viriam de qualquer forma). ` +
+    `A verdade fica entre os dois.`;
+}
+
+function renderCampaigns(marketing) {
   const tbody = document.querySelector("#campaignsTable tbody");
   tbody.innerHTML = "";
-  const campaigns = marketing.activeCampaigns || [];
-  if (campaigns.length === 0) {
+  const campaigns = marketing?.activeCampaigns || [];
+  if (!campaigns.length) {
     document.getElementById("noCampaigns").style.display = "block";
-  } else {
-    document.getElementById("noCampaigns").style.display = "none";
-    for (const c of campaigns) {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${c.name}</td><td>${BRL(c.spend)}</td>`;
-      tbody.appendChild(tr);
-    }
+    return;
+  }
+  document.getElementById("noCampaigns").style.display = "none";
+  for (const c of campaigns) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${c.name}</td><td>${BRL(c.spend)}</td>`;
+    tbody.appendChild(tr);
   }
 }
 
@@ -917,6 +954,7 @@ function renderPeriod(periodKey) {
   renderInventory(data.inventory || {}, p.inventoryStats);
   renderCustomers(p.customers);
   renderMargin(p.margin);
+  renderMarketingForPeriod(p);
 }
 
 async function load() {
@@ -962,9 +1000,8 @@ async function load() {
     renderPeriod(defaultPeriod);
   }
 
-  // Estes não variam por período selecionado no dashboard hoje:
-  renderCac(data.marketing);
-  renderMarketing(data.marketing);
+  // Campanhas não variam por período selecionado
+  renderCampaigns(data.marketing);
   renderAlerts(data.alerts);
 
   const updated = new Date(data.updatedAt);
