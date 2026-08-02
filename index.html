@@ -57,6 +57,21 @@
   .mode-toggle button + button { border-left: 1px solid var(--line); }
   .mode-toggle button.active { background: var(--ink); color: #fff; }
 
+  #customRange input[type="date"] {
+    border: none; background: transparent; font-family: inherit;
+    font-size: 12px; font-weight: 600; color: var(--ink); cursor: pointer;
+  }
+
+  .chart-wrap { position: relative; }
+  .chart-tip {
+    position: absolute; display: none; pointer-events: none;
+    background: var(--ink); color: #fff; font-size: 11px; line-height: 1.35;
+    padding: 6px 9px; border-radius: 6px; white-space: nowrap;
+    transform: translate(-50%, -130%); z-index: 5;
+  }
+  .chart-tip b { font-size: 12px; }
+  svg.chart circle { cursor: pointer; }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -135,8 +150,14 @@
             <option value="90d">Últimos 90 dias</option>
             <option value="current_month">Mês atual</option>
             <option value="previous_month">Mês anterior</option>
+            <option value="custom">Personalizado…</option>
           </select>
           <span id="periodRange" style="color:var(--muted);"></span>
+        </div>
+        <div class="period-pill" id="customRange" style="display:none; align-items:center; gap:6px;">
+          <input type="date" id="customStart" />
+          <span style="color:var(--muted);">até</span>
+          <input type="date" id="customEnd" />
         </div>
       </div>
     </header>
@@ -167,7 +188,10 @@
     <section class="grid-2">
       <div class="card">
         <div class="section-title" id="chartTitle">Evolução da receita</div>
-        <svg class="chart" id="chart" viewBox="0 0 600 160" preserveAspectRatio="none"></svg>
+        <div class="chart-wrap">
+          <svg class="chart" id="chart" viewBox="0 0 600 160" preserveAspectRatio="none"></svg>
+          <div class="chart-tip" id="chartTip"></div>
+        </div>
       </div>
       <div class="card">
         <div class="section-title">Top produtos por receita</div>
@@ -291,7 +315,12 @@ function renderDelta(el, pct) {
 
 function renderChart(series) {
   const svg = document.getElementById("chart");
+  const tip = document.getElementById("chartTip");
+  const wrap = svg.parentElement;
+  tip.style.display = "none";
+  svg.innerHTML = "";
   if (!series || series.length === 0) return;
+
   const w = 600, h = 160, pad = 10;
   const values = series.map(p => p.revenue);
   const max = Math.max(...values, 1);
@@ -307,11 +336,34 @@ function renderChart(series) {
   const linePath = points.map((p, i) => (i === 0 ? "M" : "L") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
   const areaPath = linePath + ` L${points[points.length-1][0]},${h-pad} L${points[0][0]},${h-pad} Z`;
 
+  // Raio de toque maior (invisível) pra facilitar clicar/tocar no celular
   svg.innerHTML = `
     <path d="${areaPath}" fill="#0a0a0a" opacity="0.05"></path>
     <path d="${linePath}" fill="none" stroke="#0a0a0a" stroke-width="2"></path>
-    ${points.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#0a0a0a"></circle>`).join("")}
+    ${points.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="#0a0a0a"></circle>
+      <circle cx="${p[0]}" cy="${p[1]}" r="9" fill="transparent" data-i="${i}"></circle>`).join("")}
   `;
+
+  const showTip = (i, target) => {
+    const p = series[i];
+    if (!p) return;
+    const [y, m, d] = p.date.split("-");
+    const orders = p.orders !== undefined ? `<br>${p.orders} pedido${p.orders === 1 ? "" : "s"}` : "";
+    tip.innerHTML = `${d}/${m}/${y}<br><b>${BRL(p.revenue)}</b>${orders}`;
+    const r = target.getBoundingClientRect();
+    const wr = wrap.getBoundingClientRect();
+    tip.style.left = (r.left - wr.left + r.width / 2) + "px";
+    tip.style.top = (r.top - wr.top) + "px";
+    tip.style.display = "block";
+  };
+
+  svg.querySelectorAll("circle[data-i]").forEach((c) => {
+    const i = Number(c.dataset.i);
+    c.addEventListener("mouseenter", () => showTip(i, c));
+    c.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+    c.addEventListener("click", (e) => { e.stopPropagation(); showTip(i, c); });
+  });
+  document.addEventListener("click", () => { tip.style.display = "none"; });
 }
 
 function renderTopProducts(list) {
@@ -423,6 +475,111 @@ const PERIOD_LABELS = {
   "previous_month": "Mês anterior",
 };
 
+const round2 = (n) => Math.round(n * 100) / 100;
+
+// Calcula as mesmas métricas do script, mas no navegador, para um intervalo
+// de datas qualquer escolhido no calendário. Usa data.ordersFlat.
+function computeCustom(startStr, endStr) {
+  const data = DASHBOARD_DATA;
+  const all = data.ordersFlat || [];
+  const start = new Date(startStr + "T00:00:00Z");
+  const endExcl = new Date(endStr + "T00:00:00Z");
+  endExcl.setUTCDate(endExcl.getUTCDate() + 1); // fim inclusivo para o usuário
+  const spanMs = endExcl - start;
+  const prevStart = new Date(start.getTime() - spanMs);
+
+  const pool = CURRENT_MODE === "confirmed" ? all.filter(o => o.p === 1) : all;
+  const inRange = (o, a, b) => { const d = new Date(o.d); return d >= a && d < b; };
+
+  const cur = pool.filter(o => inRange(o, start, endExcl));
+  const prev = pool.filter(o => inRange(o, prevStart, start));
+
+  const revenue = cur.reduce((s, o) => s + o.t, 0);
+  const prevRevenue = prev.reduce((s, o) => s + o.t, 0);
+  const aov = cur.length ? revenue / cur.length : 0;
+  const prevAov = prev.length ? prevRevenue / prev.length : 0;
+  const pct = (a, b) => (!b ? null : ((a - b) / b) * 100);
+
+  // Série diária preenchendo dias sem venda com zero
+  const byDay = {};
+  for (const o of cur) {
+    const k = o.d.slice(0, 10);
+    if (!byDay[k]) byDay[k] = { revenue: 0, orders: 0 };
+    byDay[k].revenue += o.t;
+    byDay[k].orders += 1;
+  }
+  const revenueSeries = [];
+  for (let d = new Date(start); d < endExcl; d.setUTCDate(d.getUTCDate() + 1)) {
+    const k = d.toISOString().slice(0, 10);
+    revenueSeries.push({ date: k, revenue: round2(byDay[k]?.revenue || 0), orders: byDay[k]?.orders || 0 });
+  }
+
+  // Produtos, margem e unidades vendidas
+  const pRev = {}, pUnits = {}, pCost = {};
+  let unitsSold = 0;
+  for (const o of cur) {
+    for (const li of o.li || []) {
+      pRev[li.n] = (pRev[li.n] || 0) + li.v;
+      pUnits[li.n] = (pUnits[li.n] || 0) + li.q;
+      if (li.c !== null && li.c !== undefined) pCost[li.n] = li.c;
+      unitsSold += li.q;
+    }
+  }
+  const totalLineRevenue = Object.values(pRev).reduce((s, v) => s + v, 0);
+  const topProducts = Object.entries(pRev).sort((a, b) => b[1] - a[1]).slice(0, 5)
+    .map(([name, rev]) => {
+      const unitCost = pCost[name];
+      const has = typeof unitCost === "number";
+      const profit = has ? rev - unitCost * (pUnits[name] || 0) : null;
+      return {
+        name, revenue: round2(rev), units: pUnits[name] || 0,
+        pct: revenue ? Math.round((rev / revenue) * 1000) / 10 : 0,
+        marginPct: has && rev ? Math.round((profit / rev) * 1000) / 10 : null,
+      };
+    });
+  let revKnown = 0, costKnown = 0;
+  for (const [name, rev] of Object.entries(pRev)) {
+    if (typeof pCost[name] === "number") { revKnown += rev; costKnown += pCost[name] * (pUnits[name] || 0); }
+  }
+
+  // Clientes únicos no intervalo
+  const seen = new Set();
+  let novos = 0, recorrentes = 0;
+  for (const o of cur) {
+    if (!o.c || seen.has(o.c)) continue;
+    seen.add(o.c);
+    if (o.r) recorrentes += 1; else novos += 1;
+  }
+  const totalCust = novos + recorrentes;
+
+  const totalUnits = data.inventory?.totalUnits || 0;
+  const days = Math.max(spanMs / 86400000, 1);
+  const avgDaily = unitsSold / days;
+
+  return {
+    period: { start: startStr, end: endStr },
+    kpis: {
+      revenue: { value: round2(revenue), changePct: pct(revenue, prevRevenue) },
+      orders: { value: cur.length, changePct: pct(cur.length, prev.length) },
+      aov: { value: round2(aov), changePct: pct(aov, prevAov) },
+    },
+    revenueSeries, topProducts,
+    margin: {
+      overallMarginPct: revKnown ? Math.round(((revKnown - costKnown) / revKnown) * 1000) / 10 : null,
+      grossProfit: round2(revKnown - costKnown),
+      costCoveragePct: totalLineRevenue ? Math.round((revKnown / totalLineRevenue) * 1000) / 10 : 0,
+    },
+    customers: {
+      newCustomers: novos, returningCustomers: recorrentes,
+      recompraPct: totalCust ? Math.round((recorrentes / totalCust) * 1000) / 10 : null,
+    },
+    inventoryStats: {
+      coverageDays: avgDaily > 0 ? Math.round(totalUnits / avgDaily) : null,
+      turnoverRate: totalUnits > 0 ? Math.round((unitsSold / totalUnits) * 100) / 100 : null,
+    },
+  };
+}
+
 let DASHBOARD_DATA = null;
 let CURRENT_MODE = "confirmed"; // "total" | "confirmed"
 
@@ -450,11 +607,25 @@ function setMode(mode) {
 
 function renderPeriod(periodKey) {
   const data = DASHBOARD_DATA;
-  const p = getPeriodsForMode(CURRENT_MODE)[periodKey];
-  if (!p) return;
+  const customBox = document.getElementById("customRange");
+  let p;
 
-  document.getElementById("periodRange").textContent = `${p.period.start} — ${p.period.end}`;
-  document.getElementById("chartTitle").textContent = `Evolução da receita (${PERIOD_LABELS[periodKey].toLowerCase()})`;
+  if (periodKey === "custom") {
+    customBox.style.display = "flex";
+    const s = document.getElementById("customStart").value;
+    const e = document.getElementById("customEnd").value;
+    if (!s || !e) return;
+    if (s > e) { document.getElementById("periodRange").textContent = "data inicial maior que a final"; return; }
+    p = computeCustom(s, e);
+    document.getElementById("periodRange").textContent = "";
+    document.getElementById("chartTitle").textContent = "Evolução da receita (período personalizado)";
+  } else {
+    customBox.style.display = "none";
+    p = getPeriodsForMode(CURRENT_MODE)[periodKey];
+    if (!p) return;
+    document.getElementById("periodRange").textContent = `${p.period.start} — ${p.period.end}`;
+    document.getElementById("chartTitle").textContent = `Evolução da receita (${PERIOD_LABELS[periodKey].toLowerCase()})`;
+  }
 
   document.getElementById("kpiRevenue").textContent = BRL(p.kpis.revenue.value);
   renderDelta(document.getElementById("kpiRevenueDelta"), p.kpis.revenue.changePct);
@@ -481,6 +652,24 @@ async function load() {
   const defaultPeriod = data.defaultPeriod || "30d";
   select.value = defaultPeriod;
   select.addEventListener("change", () => renderPeriod(select.value));
+
+  // Intervalo personalizado (só disponível se o data.json trouxer ordersFlat)
+  const startInput = document.getElementById("customStart");
+  const endInput = document.getElementById("customEnd");
+  if (data.ordersFlat && data.ordersFlat.length) {
+    const dates = data.ordersFlat.map(o => o.d.slice(0, 10)).sort();
+    const hoje = new Date().toISOString().slice(0, 10);
+    startInput.min = endInput.min = dates[0];
+    startInput.max = endInput.max = hoje;
+    // Pré-preenche com o mês corrente
+    startInput.value = hoje.slice(0, 8) + "01";
+    endInput.value = hoje;
+    startInput.addEventListener("change", () => renderPeriod("custom"));
+    endInput.addEventListener("change", () => renderPeriod("custom"));
+  } else {
+    const opt = select.querySelector('option[value="custom"]');
+    if (opt) opt.remove();
+  }
 
   // Toggle Total em vendas / Pagamentos confirmados
   const hasModes = !!data.periodsByMode;
