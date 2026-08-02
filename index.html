@@ -72,6 +72,35 @@
   .chart-tip b { font-size: 12px; }
   svg.chart circle { cursor: pointer; }
 
+  .stock-box.clickable { cursor: pointer; transition: background 0.12s, border-color 0.12s; }
+  .stock-box.clickable:hover { background: #f0f0f0; border-color: #c9c9c9; }
+
+  .modal-backdrop {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    z-index: 50; padding: 24px; align-items: center; justify-content: center;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: #fff; border-radius: 12px; width: 100%; max-width: 860px;
+    max-height: 85vh; display: flex; flex-direction: column; padding: 20px;
+  }
+  .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .modal-title { font-size: 16px; font-weight: 700; }
+  .modal-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .btn-close, .btn-csv {
+    border: 1px solid var(--line); background: #fff; border-radius: 8px;
+    padding: 6px 10px; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600;
+  }
+  .btn-close { padding: 6px 9px; }
+  #modalSearch {
+    width: 100%; margin: 12px 0 8px; padding: 8px 10px; font-size: 13px;
+    border: 1px solid var(--line); border-radius: 8px; font-family: inherit;
+  }
+  .modal-body { overflow: auto; }
+  .modal-body th { position: sticky; top: 0; background: #fff; }
+  .modal-body td.num, .modal-body th.num { text-align: right; }
+  @media (max-width: 900px) { .modal-backdrop { padding: 10px; } .modal { padding: 14px; } }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -220,13 +249,13 @@
           </div>
         </div>
         <div class="stock-grid cols-2" style="margin-top:10px;">
-          <div class="stock-box">
+          <div class="stock-box clickable" data-list="stalled">
             <div class="val small" id="stockStalled">—</div>
-            <div class="lbl">Variações paradas (180d+)</div>
+            <div class="lbl">Peças paradas (180d+) →</div>
           </div>
-          <div class="stock-box">
+          <div class="stock-box clickable" data-list="stockout">
             <div class="val small" id="stockStockout">—</div>
-            <div class="lbl">Variações em ruptura</div>
+            <div class="lbl">Produtos com variação zerada →</div>
           </div>
         </div>
       </div>
@@ -234,13 +263,13 @@
       <div class="card">
         <div class="section-title">Clientes</div>
         <div class="stock-grid cols-2">
-          <div class="stock-box">
+          <div class="stock-box clickable" data-list="customers">
             <div class="val" id="custNew">—</div>
-            <div class="lbl">Novos</div>
+            <div class="lbl">Novos →</div>
           </div>
-          <div class="stock-box">
+          <div class="stock-box clickable" data-list="customers">
             <div class="val" id="custReturning">—</div>
-            <div class="lbl">Recompra</div>
+            <div class="lbl">Recompra →</div>
           </div>
         </div>
         <div class="stock-grid cols-2" style="margin-top:10px;">
@@ -298,6 +327,23 @@
 
     <div class="updated" id="updatedAt"></div>
   </main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-sub" id="modalSub"></div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button type="button" class="btn-csv" id="btnCsv">Baixar CSV</button>
+        <button type="button" class="btn-close" id="modalClose">✕</button>
+      </div>
+    </div>
+    <input type="search" id="modalSearch" placeholder="Filtrar…" />
+    <div class="modal-body"><table id="modalTable"><thead></thead><tbody></tbody></table></div>
+  </div>
 </div>
 
 <script>
@@ -391,7 +437,8 @@ function renderInventory(inv, invStats) {
     ? invStats.coverageDays + " dias" : "—";
   document.getElementById("stockTurnover").textContent = invStats?.turnoverRate !== null && invStats?.turnoverRate !== undefined
     ? invStats.turnoverRate.toFixed(1) + "x" : "—";
-  document.getElementById("stockStalled").textContent = `${inv.stalledSkuCount ?? 0} variações (${inv.stalledUnits ?? 0} pçs)`;
+  const valor = inv.stalledValue ? ` · ${BRL(inv.stalledValue)}` : "";
+  document.getElementById("stockStalled").textContent = `${inv.stalledUnits ?? 0} peças${valor}`;
   document.getElementById("stockStockout").textContent = `${inv.stockoutSkuCount ?? 0} variações`;
 }
 
@@ -580,6 +627,126 @@ function computeCustom(startStr, endStr) {
   };
 }
 
+// ---- Listas detalhadas (peças paradas / variações zeradas / clientes) ----
+let MODAL_ROWS = [], MODAL_COLS = [], MODAL_NAME = "lista";
+
+function buildCustomerRows() {
+  const data = DASHBOARD_DATA;
+  const flat = data.ordersFlat || [];
+  const map = data.customersMap || {};
+  const p = LAST_PERIOD;
+  if (!p) return [];
+  const start = new Date(p.period.start + "T00:00:00Z");
+  const end = new Date(p.period.end + "T00:00:00Z");
+  end.setUTCDate(end.getUTCDate() + 1);
+
+  const pool = CURRENT_MODE === "confirmed" ? flat.filter(o => o.p === 1) : flat;
+  const agg = {};
+  for (const o of pool) {
+    const d = new Date(o.d);
+    if (d < start || d >= end || !o.c) continue;
+    if (!agg[o.c]) agg[o.c] = { id: o.c, pedidos: 0, total: 0, ultima: "", tipo: o.r ? "Recompra" : "Novo" };
+    agg[o.c].pedidos += 1;
+    agg[o.c].total += o.t;
+    if (o.d > agg[o.c].ultima) agg[o.c].ultima = o.d;
+  }
+  return Object.values(agg)
+    .map(c => ({
+      cliente: map[c.id]?.nome || "(sem cadastro)",
+      email: map[c.id]?.email || "—",
+      tipo: c.tipo,
+      pedidos: c.pedidos,
+      total: round2(c.total),
+      ultima: c.ultima.slice(0, 10),
+    }))
+    .sort((a, b) => b.total - a.total);
+}
+
+const LIST_DEFS = {
+  stalled: {
+    title: "Peças paradas há mais de 180 dias",
+    sub: "Ordenadas por dinheiro parado. Boas candidatas a promoção.",
+    cols: [
+      { k: "produto", t: "Produto" }, { k: "variacao", t: "Variação" }, { k: "sku", t: "SKU" },
+      { k: "qtd", t: "Qtd", num: true }, { k: "preco", t: "Preço", num: true, brl: true },
+      { k: "valorParado", t: "Valor parado", num: true, brl: true },
+      { k: "ultimaVenda", t: "Última venda" },
+    ],
+    rows: () => (DASHBOARD_DATA.inventory?.stalledList || []).map(r => ({
+      ...r, ultimaVenda: r.ultimaVenda || "nunca vendeu",
+    })),
+  },
+  stockout: {
+    title: "Produtos com variação zerada",
+    sub: "Variações (tamanho/cor) sem estoque. O produto segue à venda, mas essa opção não pode ser comprada.",
+    cols: [
+      { k: "produto", t: "Produto" }, { k: "variacao", t: "Variação" }, { k: "sku", t: "SKU" },
+      { k: "preco", t: "Preço", num: true, brl: true },
+      { k: "ultimaVenda", t: "Última venda" },
+      { k: "diasSemVender", t: "Dias sem vender", num: true },
+    ],
+    rows: () => (DASHBOARD_DATA.inventory?.stockoutList || []).map(r => ({
+      ...r,
+      ultimaVenda: r.ultimaVenda || "nunca vendeu",
+      diasSemVender: r.diasSemVender === null ? "—" : r.diasSemVender,
+    })),
+  },
+  customers: {
+    title: "Clientes que compraram no período",
+    sub: "E-mails aparecem mascarados por privacidade — o data.json é público. Para o e-mail completo, exporte pela Shopify.",
+    cols: [
+      { k: "cliente", t: "Cliente" }, { k: "email", t: "E-mail" }, { k: "tipo", t: "Tipo" },
+      { k: "pedidos", t: "Pedidos", num: true },
+      { k: "total", t: "Total gasto", num: true, brl: true },
+      { k: "ultima", t: "Última compra" },
+    ],
+    rows: buildCustomerRows,
+  },
+};
+
+function renderModalTable(filter) {
+  const table = document.getElementById("modalTable");
+  const q = (filter || "").toLowerCase().trim();
+  const rows = q
+    ? MODAL_ROWS.filter(r => MODAL_COLS.some(c => String(r[c.k] ?? "").toLowerCase().includes(q)))
+    : MODAL_ROWS;
+  table.querySelector("thead").innerHTML =
+    `<tr>${MODAL_COLS.map(c => `<th class="${c.num ? "num" : ""}">${c.t}</th>`).join("")}</tr>`;
+  table.querySelector("tbody").innerHTML = rows.length
+    ? rows.map(r => `<tr>${MODAL_COLS.map(c => {
+        const v = r[c.k];
+        const txt = c.brl && typeof v === "number" ? BRL(v) : (v === "" || v === null || v === undefined ? "—" : v);
+        return `<td class="${c.num ? "num" : ""}">${txt}</td>`;
+      }).join("")}</tr>`).join("")
+    : `<tr><td colspan="${MODAL_COLS.length}" style="color:var(--muted);padding:16px 0;">Nada encontrado.</td></tr>`;
+}
+
+function openList(kind) {
+  const def = LIST_DEFS[kind];
+  if (!def) return;
+  MODAL_ROWS = def.rows() || [];
+  MODAL_COLS = def.cols;
+  MODAL_NAME = kind;
+  document.getElementById("modalTitle").textContent = def.title;
+  document.getElementById("modalSub").textContent = `${MODAL_ROWS.length} registro(s). ${def.sub}`;
+  document.getElementById("modalSearch").value = "";
+  renderModalTable("");
+  document.getElementById("modalBackdrop").classList.add("open");
+}
+
+function downloadCsv() {
+  const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const lines = [MODAL_COLS.map(c => esc(c.t)).join(";")];
+  for (const r of MODAL_ROWS) lines.push(MODAL_COLS.map(c => esc(r[c.k])).join(";"));
+  const blob = new Blob(["\uFEFF" + lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${MODAL_NAME}-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+let LAST_PERIOD = null;
 let DASHBOARD_DATA = null;
 let CURRENT_MODE = "confirmed"; // "total" | "confirmed"
 
@@ -637,6 +804,7 @@ function renderPeriod(periodKey) {
   renderDelta(document.getElementById("kpiAovDelta"), p.kpis.aov.changePct);
 
   renderChart(p.revenueSeries);
+  LAST_PERIOD = p;
   renderTopProducts(p.topProducts);
   renderInventory(data.inventory || {}, p.inventoryStats);
   renderCustomers(p.customers);
@@ -693,6 +861,17 @@ async function load() {
 
   const updated = new Date(data.updatedAt);
   document.getElementById("updatedAt").textContent = "Atualizado em: " + updated.toLocaleString("pt-BR");
+
+  // Listas clicáveis
+  const backdrop = document.getElementById("modalBackdrop");
+  document.querySelectorAll(".stock-box.clickable").forEach((box) => {
+    box.addEventListener("click", () => openList(box.dataset.list));
+  });
+  document.getElementById("modalClose").addEventListener("click", () => backdrop.classList.remove("open"));
+  backdrop.addEventListener("click", (e) => { if (e.target === backdrop) backdrop.classList.remove("open"); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") backdrop.classList.remove("open"); });
+  document.getElementById("modalSearch").addEventListener("input", (e) => renderModalTable(e.target.value));
+  document.getElementById("btnCsv").addEventListener("click", downloadCsv);
 }
 
 load().catch(err => {
