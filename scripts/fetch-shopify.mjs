@@ -223,10 +223,14 @@ async function main() {
 
   const stalledWindowStart = daysAgo(now, STALLED_DAYS);
   const soldVariantIdsRecently = new Set();
+  const lastSoldByVariant = {}; // variant_id -> data da última venda (histórico completo)
   for (const o of confirmedOrders) {
-    if (new Date(o.created_at) < stalledWindowStart) continue;
+    const recent = new Date(o.created_at) >= stalledWindowStart;
     for (const li of o.line_items || []) {
-      if (li.variant_id) soldVariantIdsRecently.add(li.variant_id);
+      if (!li.variant_id) continue;
+      if (recent) soldVariantIdsRecently.add(li.variant_id);
+      const prev = lastSoldByVariant[li.variant_id];
+      if (!prev || o.created_at > prev) lastSoldByVariant[li.variant_id] = o.created_at;
     }
   }
 
@@ -234,21 +238,42 @@ async function main() {
   let stalledSkuCount = 0;
   let stalledUnits = 0;
   let stockoutSkuCount = 0;
+  const stalledList = [];  // detalhe das peças paradas (para decidir promoção)
+  const stockoutList = []; // detalhe das variações zeradas (para repor)
   for (const p of products) {
     if (p.status !== "active") continue;
     for (const v of p.variants || []) {
       const qty = v.inventory_quantity || 0;
       totalUnits += qty;
+      const lastSold = lastSoldByVariant[v.id] || null;
+      const daysSince = lastSold
+        ? Math.floor((now - new Date(lastSold)) / 86400000)
+        : null; // null = nunca vendeu
+      const price = parseFloat(v.price || "0");
+      const base = {
+        produto: p.title,
+        variacao: v.title && v.title !== "Default Title" ? v.title : "",
+        sku: v.sku || "",
+        preco: round2(price),
+        ultimaVenda: lastSold ? lastSold.slice(0, 10) : null,
+        diasSemVender: daysSince,
+      };
       if (qty <= 0) {
         stockoutSkuCount += 1;
+        stockoutList.push({ ...base, qtd: 0 });
         continue;
       }
       if (!soldVariantIdsRecently.has(v.id)) {
         stalledSkuCount += 1;
         stalledUnits += qty;
+        stalledList.push({ ...base, qtd: qty, valorParado: round2(price * qty) });
       }
     }
   }
+  // Mais dinheiro parado primeiro — é o que interessa pra decidir promoção
+  stalledList.sort((a, b) => b.valorParado - a.valorParado);
+  stockoutList.sort((a, b) => (a.diasSemVender ?? 99999) - (b.diasSemVender ?? 99999));
+  const stalledValue = round2(stalledList.reduce((s, i) => s + i.valorParado, 0));
 
   // Custos unitários informados manualmente em custos.json (opcional).
   // Busca por PALAVRA-CHAVE: a chave do JSON só precisa aparecer em algum
@@ -456,6 +481,30 @@ async function main() {
   });
   console.log(`[info] ${ordersFlat.length} pedidos exportados para o seletor de datas personalizado.`);
 
+  // Mapa de clientes (id -> identificação) para montar a lista de quem
+  // comprou em cada período. ATENÇÃO: o data.json é público (GitHub Pages),
+  // então NÃO exportamos e-mail/telefone completos — só primeiro nome e
+  // e-mail mascarado, o suficiente pra reconhecer o cliente. Para campanhas
+  // com o dado completo, exporte direto da Shopify (área logada).
+  const maskEmail = (email) => {
+    if (!email || !email.includes("@")) return null;
+    const [user, domain] = email.split("@");
+    const visible = user.slice(0, 2);
+    return `${visible}${"*".repeat(Math.max(user.length - 2, 1))}@${domain}`;
+  };
+  const customersMap = {};
+  for (const o of confirmedOrders) {
+    const c = o.customer;
+    if (!c || !c.id) continue;
+    const id = String(c.id);
+    if (!customersMap[id]) {
+      customersMap[id] = {
+        nome: [c.first_name, c.last_name ? c.last_name[0] + "." : ""].filter(Boolean).join(" ") || "(sem nome)",
+        email: maskEmail(c.email),
+      };
+    }
+  }
+
   const output = {
     updatedAt: now.toISOString(),
     defaultPeriod: "30d",
@@ -465,11 +514,15 @@ async function main() {
     periodsByMode,
     periods,
     ordersFlat,
+    customersMap,
     inventory: {
       totalUnits,
       stalledSkuCount,
       stalledUnits,
+      stalledValue,
       stockoutSkuCount,
+      stalledList,
+      stockoutList,
     },
     // Espelhos de compatibilidade: os scripts fetch-meta-ads.mjs e
     // compute-alerts.mjs (e qualquer versão antiga do dashboard) leem os
