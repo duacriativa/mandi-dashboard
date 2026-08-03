@@ -23,6 +23,39 @@ const MODEL = "claude-sonnet-5";
 
 const round2 = (n) => Math.round((n ?? 0) * 100) / 100;
 
+// Datas comerciais do varejo brasileiro nos próximos 60 dias — pra IA
+// conseguir sugerir campanha com antecedência ("o Dia dos Pais é em X").
+function proximasDatasComerciais(hoje) {
+  const segundoDomingo = (ano, mes) => {
+    const d = new Date(Date.UTC(ano, mes, 1));
+    const dow = d.getUTCDay();
+    return new Date(Date.UTC(ano, mes, (dow === 0 ? 1 : 8 - dow) + 7));
+  };
+  const ultimaSexta = (ano, mes) => {
+    const d = new Date(Date.UTC(ano, mes + 1, 0));
+    while (d.getUTCDay() !== 5) d.setUTCDate(d.getUTCDate() - 1);
+    return d;
+  };
+  const lista = [];
+  for (const ano of [hoje.getUTCFullYear(), hoje.getUTCFullYear() + 1]) {
+    lista.push(["Dia do Consumidor", new Date(Date.UTC(ano, 2, 15))]);
+    lista.push(["Dia das Mães", segundoDomingo(ano, 4)]);
+    lista.push(["Dia dos Namorados", new Date(Date.UTC(ano, 5, 12))]);
+    lista.push(["Dia dos Pais", segundoDomingo(ano, 7)]);
+    lista.push(["Semana do Brasil", new Date(Date.UTC(ano, 8, 5))]);
+    lista.push(["Dia do Cliente", new Date(Date.UTC(ano, 8, 15))]);
+    lista.push(["Dia das Crianças", new Date(Date.UTC(ano, 9, 12))]);
+    lista.push(["Black Friday", ultimaSexta(ano, 10)]);
+    lista.push(["Natal", new Date(Date.UTC(ano, 11, 25))]);
+  }
+  const limite = new Date(hoje);
+  limite.setUTCDate(limite.getUTCDate() + 60);
+  return lista
+    .filter(([, d]) => d >= hoje && d <= limite)
+    .sort((a, b) => a[1] - b[1])
+    .map(([nome, d]) => `${nome} (${d.toISOString().slice(0, 10)})`);
+}
+
 // Monta um resumo COMPACTO dos dados. Não mandamos o data.json inteiro:
 // ordersFlat e as séries diárias têm milhares de linhas que só encareceriam
 // a chamada sem melhorar a análise. Também não mandamos nomes de clientes.
@@ -107,6 +140,7 @@ function montarResumo(data) {
 
   return {
     hoje: new Date().toISOString().slice(0, 10),
+    datasComerciaisProximas: proximasDatasComerciais(new Date()),
     vendasConfirmadas: {
       ultimos7dias: fmtPeriodo(m("confirmed", "7d")),
       ultimos30dias: fmtPeriodo(m("confirmed", "30d")),
@@ -128,30 +162,30 @@ function montarResumo(data) {
   };
 }
 
-const PROMPT_SISTEMA = `Você é um consultor comercial sênior de e-commerce de moda no Brasil. Analise os dados da loja e produza recomendações ACIONÁVEIS.
+const PROMPT_SISTEMA = `Você é um consultor comercial sênior de e-commerce de moda no Brasil. Analise os dados e produza um PLANO DE AÇÃO pronto para executar — não um relatório.
 
 Responda APENAS com JSON válido, sem markdown, sem cercas de código, neste formato exato:
 {
-  "diagnostico": "2-4 frases resumindo a situação atual da loja, direto ao ponto",
+  "diagnostico": "no máximo 2 frases sobre a situação atual",
   "acoes": [
     {
       "titulo": "ação curta e imperativa (máx 60 caracteres)",
       "prioridade": "alta" | "media" | "baixa",
       "categoria": "vendas" | "estoque" | "trafego" | "checkout" | "clientes" | "margem",
-      "porque": "1-2 frases: qual dado justifica esta ação",
-      "como": "2-4 frases: passos práticos para executar"
+      "porque": "1 frase com o número que justifica (R$, %, qtd)",
+      "como": "a execução DECIDIDA: mecânica, valores e canal escolhidos, em 2-4 frases"
     }
   ]
 }
 
-Regras:
-- 4 a 7 ações, ordenadas por prioridade (alta primeiro)
-- Cite números concretos dos dados na justificativa (R$, %, quantidades)
-- Prefira ações específicas ("promova as camisetas X que têm R$Y parados") a genéricas ("melhore o marketing")
-- ROAS: o atribuído pelo Meta é a leitura conservadora; o da loja inteira é otimista. Considere os dois.
-- Estoque: produto 100% parado é candidato a promoção; variação zerada que vendia é reposição urgente
-- Se a taxa de recompra for baixa, considere ações de retenção/CRM
-- Escreva em português do Brasil, tom direto de consultor, sem bajulação`;
+REGRAS DE ESTILO — as mais importantes:
+- DECIDA TUDO. Nunca escreva "considere", "avalie", "pode ser interessante" ou termine com pergunta. Escolha o desconto, o canal, o público e o valor — e afirme. Se faltar informação, assuma a premissa mais provável e diga qual assumiu ("assumindo margem média de 55%...").
+- Se houver data comercial próxima (campo datasComerciaisProximas), a ação nº 1 deve ser uma campanha ancorada nela, com: tema, oferta exata (ex: "20% off ou frete grátis acima de R$200"), produtos escolhidos pelos dados, público e canal. Inclua uma sugestão de texto pronta, entre aspas, que a loja possa copiar (ex: post ou e-mail de 1-2 frases).
+- Máximo de 5 ações. Menos e melhor decidido vale mais que muito e vago.
+- Cite produtos PELO NOME quando os dados permitirem ("as 38 peças da Camiseta Vintage Azul"), nunca "os produtos parados" genérico.
+- ROAS atribuído pelo Meta = leitura conservadora; ROAS da loja = otimista. Use o conservador para decidir corte e o otimista só como teto.
+- Produto 100% parado → promoção com % sugerido compatível com a margem informada. Variação zerada que vendia → reposição com prazo ("pedir ao fornecedor esta semana").
+- Português do Brasil, tom direto de sócio experiente, zero enrolação.`;
 
 async function chamarClaude(resumo) {
   const res = await fetch("https://api.anthropic.com/v1/messages", {
