@@ -162,7 +162,7 @@ REGRAS DE ESTILO — as mais importantes:
 - Produto 100% parado → promoção com % compatível com a margem informada. Variação zerada que vendia → reposição com prazo.
 - Português do Brasil, tom direto de sócio experiente, zero enrolação.`;
 
-async function chamarClaude(resumo) {
+async function chamarClaude(resumo, promptExtra = "") {
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -176,7 +176,7 @@ async function chamarClaude(resumo) {
       // do limite de saída "pensando" antes de responder. Com limite
       // apertado, o JSON final sai cortado no meio.
       max_tokens: 8000,
-      system: PROMPT_SISTEMA,
+      system: PROMPT_SISTEMA + promptExtra,
       messages: [
         {
           role: "user",
@@ -256,10 +256,48 @@ async function main() {
   }
 
   const resumo = montarResumo(data, historicoAcoes);
+
+  // Pauta de stories: gerada só às SEGUNDAS, cobrindo de quarta a terça.
+  // Nos outros dias, a pauta da última segunda é preservada (ver adiante).
+  const hoje = new Date();
+  const ehSegunda = hoje.getUTCDay() === 1;
+  let promptExtra = "";
+  if (ehSegunda) {
+    const dias = [];
+    const NOMES = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+    for (let i = 2; i <= 8; i++) {
+      const d = new Date(hoje);
+      d.setUTCDate(d.getUTCDate() + i);
+      dias.push(`${d.toISOString().slice(0, 10)} (${NOMES[d.getUTCDay()]})`);
+    }
+    promptExtra = `
+
+PAUTA DE STORIES (só hoje, segunda-feira): inclua também no JSON o campo:
+"pautaStories": [ { "dia": "YYYY-MM-DD", "diaSemana": "quarta", "tema": "tópico curto" } ]
+- Um tema por dia, para estes 7 dias exatos: ${dias.join(", ")}.
+- APENAS o tópico sugestivo (máx 90 caracteres), não o roteiro — ex: "Bastidor da separação dos pedidos da campanha", "Prova social: print de cliente com a Pima Goiaba", "Contagem regressiva: último dia do frete grátis".
+- Baseie os temas nos DADOS: produtos campeões, campanha da data comercial, liquidação em andamento, peças que voltaram ao estoque, produtos mais abandonados no checkout (mostrar eles em uso ajuda a converter).
+- Varie os formatos ao longo da semana: produto, bastidor, prova social, oferta, enquete/interação.`;
+  }
   console.log(`Pedindo análise ao Claude (${MODEL})... (~${Math.round(JSON.stringify(resumo).length / 1024)} KB de dados)`);
 
   try {
-    const analise = await chamarClaude(resumo);
+    const analise = await chamarClaude(resumo, promptExtra);
+
+    // Pauta: nova às segundas; nos demais dias, carrega a da última segunda
+    // (expira depois de 8 dias pra nunca mostrar semana velha).
+    const anterior = data.insights?.pautaStories;
+    const anteriorEm = data.insights?.pautaGeradaEm;
+    let pautaStories = null;
+    let pautaGeradaEm = null;
+    if (ehSegunda && Array.isArray(analise.pautaStories) && analise.pautaStories.length) {
+      pautaStories = analise.pautaStories;
+      pautaGeradaEm = new Date().toISOString();
+    } else if (anterior && anteriorEm && (Date.now() - new Date(anteriorEm)) < 8 * 86400000) {
+      pautaStories = anterior;
+      pautaGeradaEm = anteriorEm;
+    }
+
     data.insights = {
       disponivel: true,
       geradoEm: new Date().toISOString(),
@@ -267,6 +305,7 @@ async function main() {
       diagnostico: analise.diagnostico,
       acoes: analise.acoes,
       cronograma: Array.isArray(analise.cronograma) ? analise.cronograma : [],
+      ...(pautaStories ? { pautaStories, pautaGeradaEm } : {}),
     };
     console.log(`Análise gerada: ${analise.acoes.length} ação(ões) sugerida(s).`);
   } catch (err) {
