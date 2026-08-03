@@ -34,14 +34,21 @@
     flex-shrink: 0;
   }
   .brand { font-weight: 800; letter-spacing: 0.08em; font-size: 20px; margin-bottom: 32px; }
-  .navitem {
-    padding: 10px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #cfcfcf;
-    margin-bottom: 4px;
-  }
+  .navitem { padding: 10px 12px; border-radius: 8px; font-size: 13px; color: #cfcfcf; margin-bottom: 4px; cursor: pointer; transition: background 0.12s, color 0.12s; }
+  .navitem:hover { background: #1a1a1a; color: #fff; }
   .navitem.active { background: #1c1c1c; color: #fff; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Abas horizontais para telas pequenas, já que a sidebar some */
+  .tabs-mobile { display: none; gap: 6px; overflow-x: auto; margin-bottom: 16px; padding-bottom: 2px; }
+  .tabs-mobile button {
+    border: 1px solid var(--line); background: #fff; border-radius: 20px;
+    padding: 7px 14px; font-size: 12px; font-weight: 600; font-family: inherit;
+    color: var(--muted); cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+  .tabs-mobile button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 
   main { flex: 1; padding: 28px 32px; }
   header.top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
@@ -163,6 +170,8 @@
     .kpi-grid { grid-template-columns: 1fr; }
     .grid-2, .grid-2.even, .grid-3 { grid-template-columns: 1fr; }
     nav.sidebar { display: none; }
+    .tabs-mobile { display: flex; }
+    main { padding: 18px 14px; }
   }
 </style>
 </head>
@@ -170,10 +179,11 @@
 <div class="layout">
   <nav class="sidebar">
     <div class="brand">LOJA</div>
-    <div class="navitem active">Visão geral</div>
-    <div class="navitem">Financeiro</div>
-    <div class="navitem">Comercial</div>
-    <div class="navitem">Estoque</div>
+    <div class="navitem active" data-page="visao">Visão geral</div>
+    <div class="navitem" data-page="financeiro">Financeiro</div>
+    <div class="navitem" data-page="estoque">Estoque</div>
+    <div class="navitem" data-page="checkout">Checkout</div>
+    <div class="navitem" data-page="trafego">Tráfego pago</div>
   </nav>
 
   <main>
@@ -206,6 +216,15 @@
       </div>
     </header>
 
+    <div class="tabs-mobile" id="tabsMobile">
+      <button type="button" class="active" data-page="visao">Visão geral</button>
+      <button type="button" data-page="financeiro">Financeiro</button>
+      <button type="button" data-page="estoque">Estoque</button>
+      <button type="button" data-page="checkout">Checkout</button>
+      <button type="button" data-page="trafego">Tráfego pago</button>
+    </div>
+
+    <div class="page active" id="page-visao">
     <section class="card" style="margin-bottom:16px;">
       <div class="section-title">Alertas do período (últimos 30 dias)</div>
       <div class="alerts-list" id="alertsList"></div>
@@ -251,8 +270,10 @@
         </table>
       </div>
     </section>
+    </div><!-- fim página Visão geral -->
 
-    <section class="grid-3">
+    <div class="page" id="page-estoque">
+    <section class="grid-2 even">
       <div class="card">
         <div class="section-title">Estoque</div>
         <div class="stock-grid">
@@ -290,7 +311,12 @@
           </div>
         </div>
       </div>
+      <div></div>
+    </section>
+    </div><!-- fim página Estoque -->
 
+    <div class="page" id="page-financeiro">
+    <section class="grid-2 even">
       <div class="card">
         <div class="section-title">Clientes</div>
         <div class="stock-grid cols-2">
@@ -310,7 +336,7 @@
           </div>
           <div class="stock-box">
             <div class="val small" id="custCac">—</div>
-            <div class="lbl">CAC (30 dias)</div>
+            <div class="lbl">CAC no período</div>
           </div>
         </div>
       </div>
@@ -331,8 +357,56 @@
         <div id="marginCoverageNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
       </div>
     </section>
+    </div><!-- fim página Financeiro -->
 
-    <section class="grid-2">
+    <div class="page" id="page-checkout">
+    <section class="grid-2 even">
+      <div class="card">
+        <div class="section-title">Funil de checkout</div>
+        <div class="stock-grid">
+          <div class="stock-box">
+            <div class="val" id="ckIniciados">—</div>
+            <div class="lbl">Checkouts iniciados</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="ckPedidos">—</div>
+            <div class="lbl">Viraram pedido</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="ckTaxa">—</div>
+            <div class="lbl">Taxa de abandono</div>
+          </div>
+        </div>
+        <div class="calc" id="ckFunil"></div>
+        <div id="ckNota" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Dinheiro deixado no checkout</div>
+        <div class="stock-grid cols-2">
+          <div class="stock-box clickable" data-list="abandonos">
+            <div class="val" id="ckValor">—</div>
+            <div class="lbl">Valor abandonado →</div>
+          </div>
+          <div class="stock-box">
+            <div class="val small" id="ckTicket">—</div>
+            <div class="lbl">Ticket médio abandonado</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="section-title" style="margin-bottom:8px;">Produtos mais abandonados no checkout</div>
+          <table id="ckProdutos">
+            <thead><tr><th>Produto</th><th class="num">Vezes</th><th class="num">Peças</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div id="ckSemProdutos" style="display:none;color:var(--muted);font-size:12px;">Nenhum abandono no período.</div>
+        </div>
+      </div>
+    </section>
+    </div><!-- fim página Checkout -->
+
+    <div class="page" id="page-trafego">
+    <section>
       <div class="card">
         <div class="section-title">Tráfego pago (Meta Ads)</div>
         <div class="stock-grid">
@@ -370,8 +444,8 @@
           <div style="margin-top:8px;font-size:11px;color:var(--muted);">Clique numa campanha para ver os públicos e criativos.</div>
         </div>
       </div>
-      <div></div>
     </section>
+    </div><!-- fim página Tráfego pago -->
 
     <div class="updated" id="updatedAt"></div>
   </main>
@@ -1006,6 +1080,29 @@ const LIST_DEFS = {
       ...r, ultimaVenda: r.ultimaVenda || "—",
     })),
   },
+  abandonos: {
+    title: "Checkouts abandonados no período",
+    sub: "Pessoas que informaram contato mas não concluíram. Sem e-mail nem link de recuperação aqui — o data.json é público; para recuperar, use o painel da Shopify.",
+    cols: [
+      { k: "data", t: "Data" },
+      { k: "valor", t: "Valor", num: true, brl: true },
+      { k: "itens", t: "Itens" },
+    ],
+    rows: () => {
+      const ck = DASHBOARD_DATA.checkout;
+      const p = LAST_PERIOD;
+      if (!ck || !p) return [];
+      const s = p.period.start, e = p.period.end;
+      return (ck.abandonedFlat || [])
+        .filter(c => { const d = c.d.slice(0, 10); return d >= s && d <= e; })
+        .sort((a, b) => b.t - a.t)
+        .map(c => ({
+          data: c.d.slice(0, 10).split("-").reverse().join("/"),
+          valor: c.t,
+          itens: (c.li || []).map(li => `${li.q}× ${li.n}`).join(", ") || "—",
+        }));
+    },
+  },
   customers: {
     title: "Clientes que compraram no período",
     sub: "E-mails aparecem mascarados por privacidade — o data.json é público. Para o e-mail completo, exporte pela Shopify.",
@@ -1059,6 +1156,96 @@ function downloadCsv() {
   a.download = `${MODAL_NAME}-${new Date().toISOString().slice(0, 10)}.csv`;
   a.click();
   URL.revokeObjectURL(a.href);
+}
+
+// ---- Funil de checkout / carrinhos abandonados ----
+function renderCheckout(period) {
+  const ck = DASHBOARD_DATA.checkout;
+  const nota = document.getElementById("ckNota");
+  const tbody = document.querySelector("#ckProdutos tbody");
+  const semProd = document.getElementById("ckSemProdutos");
+  const zerar = () => {
+    ["ckIniciados","ckPedidos","ckTaxa","ckValor","ckTicket"].forEach(id =>
+      document.getElementById(id).textContent = "—");
+    document.getElementById("ckFunil").innerHTML = "";
+    tbody.innerHTML = "";
+  };
+
+  if (!ck) {
+    zerar();
+    nota.textContent = "Rode o workflow para carregar os dados de checkout.";
+    semProd.style.display = "none";
+    return;
+  }
+  if (!ck.disponivel) {
+    zerar();
+    nota.textContent = "Não foi possível ler os checkouts abandonados — o token da Shopify precisa da permissão de checkouts abandonados. Veja o log do workflow.";
+    semProd.style.display = "none";
+    return;
+  }
+
+  const s = period.period.start, e = period.period.end;
+  const dentro = (item) => { const d = item.d.slice(0, 10); return d >= s && d <= e; };
+
+  const abandonados = (ck.abandonedFlat || []).filter(dentro);
+  const recuperados = (ck.recoveredFlat || []).filter(dentro);
+  const pedidos = period.kpis.orders.value || 0;
+
+  // "Checkouts iniciados" = quem chegou a informar contato. Os que viraram
+  // pedido + os que ficaram pelo caminho.
+  const iniciados = abandonados.length + pedidos;
+  const valorAbandonado = round2(abandonados.reduce((t, c) => t + c.t, 0));
+  const taxaAbandono = iniciados ? (abandonados.length / iniciados) * 100 : null;
+
+  document.getElementById("ckIniciados").textContent = iniciados || "—";
+  document.getElementById("ckPedidos").textContent = pedidos || "—";
+  document.getElementById("ckTaxa").textContent = taxaAbandono !== null ? taxaAbandono.toFixed(1) + "%" : "—";
+  document.getElementById("ckValor").textContent = BRL(valorAbandonado);
+  document.getElementById("ckTicket").textContent = abandonados.length
+    ? BRL(valorAbandonado / abandonados.length) : "—";
+
+  const receita = period.kpis.revenue.value || 0;
+  document.getElementById("ckFunil").innerHTML = `
+    <div class="calc-row"><span class="lab">Checkouts iniciados</span><span>${iniciados}</span></div>
+    <div class="calc-row"><span class="lab">Abandonaram</span><span class="neg">− ${abandonados.length}</span></div>
+    <div class="calc-row total"><span class="lab">Concluíram a compra</span><span>${pedidos}</span></div>
+    <div class="calc-row" style="border-bottom:none;margin-top:6px;">
+      <span class="lab">Receita realizada</span><span>${BRL(receita)}</span></div>
+    <div class="calc-row" style="border-bottom:none;">
+      <span class="lab">Receita perdida no checkout</span><span class="neg">${BRL(valorAbandonado)}</span></div>
+  `;
+
+  const recuperadoTxt = recuperados.length
+    ? ` ${recuperados.length} checkout(s) foram recuperados no período (a pessoa voltou e comprou).`
+    : "";
+  nota.textContent =
+    `Isto é abandono de CHECKOUT: quem já tinha informado contato e não pagou. ` +
+    `Não inclui quem abandonou o carrinho antes do checkout nem quem só navegou — esses a Shopify não expõe pela API, ` +
+    `então o número aqui é menor que o de "carrinhos criados" do painel dela.` +
+    recuperadoTxt +
+    ` Histórico desde ${ck.desde} (a Shopify guarda cerca de 3 meses).`;
+
+  // Produtos mais abandonados
+  const contagem = {};
+  for (const c of abandonados) {
+    for (const li of c.li || []) {
+      if (!contagem[li.n]) contagem[li.n] = { vezes: 0, pecas: 0 };
+      contagem[li.n].vezes += 1;
+      contagem[li.n].pecas += li.q || 0;
+    }
+  }
+  const lista = Object.entries(contagem).sort((a, b) => b[1].vezes - a[1].vezes).slice(0, 8);
+  tbody.innerHTML = "";
+  if (!lista.length) {
+    semProd.style.display = "block";
+  } else {
+    semProd.style.display = "none";
+    for (const [nome, v] of lista) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${nome}</td><td class="num">${v.vezes}</td><td class="num">${v.pecas}</td>`;
+      tbody.appendChild(tr);
+    }
+  }
 }
 
 let LAST_PERIOD = null;
@@ -1126,6 +1313,7 @@ function renderPeriod(periodKey) {
   renderMargin(p.margin);
   renderMarketingForPeriod(p);
   renderCampaigns(p);
+  renderCheckout(p);
 }
 
 async function load() {
@@ -1198,6 +1386,22 @@ async function load() {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") backdrop.classList.remove("open"); });
   document.getElementById("modalSearch").addEventListener("input", (e) => renderModalTable(e.target.value));
   document.getElementById("btnCsv").addEventListener("click", downloadCsv);
+
+  // Navegação entre páginas (sidebar no desktop, abas no celular)
+  function irPara(pagina) {
+    document.querySelectorAll(".page").forEach(p =>
+      p.classList.toggle("active", p.id === "page-" + pagina));
+    document.querySelectorAll(".navitem, #tabsMobile button").forEach(n =>
+      n.classList.toggle("active", n.dataset.page === pagina));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Guarda na URL: dá pra favoritar/compartilhar direto numa aba
+    history.replaceState(null, "", "#" + pagina);
+  }
+  document.querySelectorAll(".navitem, #tabsMobile button").forEach((el) => {
+    el.addEventListener("click", () => irPara(el.dataset.page));
+  });
+  const paginaInicial = (location.hash || "").replace("#", "");
+  if (["visao", "financeiro", "estoque", "checkout", "trafego"].includes(paginaInicial)) irPara(paginaInicial);
 
   // Toggle Receita / Peças nos mais vendidos
   document.querySelectorAll("#topToggle button").forEach((b) => {
