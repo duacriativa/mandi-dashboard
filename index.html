@@ -123,6 +123,17 @@
   .thumb-empty { display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--muted); text-align: center; line-height: 1.2; }
   #campaignsTable tbody tr:hover { background: #fafafa; }
 
+  .ai-acao { border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+  .ai-acao-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .ai-acao-titulo { font-weight: 700; font-size: 14px; }
+  .ai-acao-detalhe { font-size: 13px; line-height: 1.5; color: #333; }
+  .ai-tags { display: flex; gap: 6px; flex-shrink: 0; }
+  .ai-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; }
+  .ai-tag.alta { background: var(--bad-bg); color: #8f2a20; }
+  .ai-tag.media { background: var(--warn-bg); color: #7a5308; }
+  .ai-tag.baixa { background: #eef0f4; color: #4a5568; }
+  .ai-tag.cat { background: #f0f0f0; color: var(--muted); }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -184,6 +195,7 @@
     <div class="navitem" data-page="estoque">Estoque</div>
     <div class="navitem" data-page="checkout">Checkout</div>
     <div class="navitem" data-page="trafego">Tráfego pago</div>
+    <div class="navitem" data-page="analise">Análise IA</div>
   </nav>
 
   <main>
@@ -222,11 +234,12 @@
       <button type="button" data-page="estoque">Estoque</button>
       <button type="button" data-page="checkout">Checkout</button>
       <button type="button" data-page="trafego">Tráfego pago</button>
+      <button type="button" data-page="analise">Análise IA</button>
     </div>
 
     <div class="page active" id="page-visao">
     <section class="card" style="margin-bottom:16px;">
-      <div class="section-title">Alertas do período (últimos 30 dias)</div>
+      <div class="section-title">Alertas — últimos 30 dias (pagamentos confirmados)</div>
       <div class="alerts-list" id="alertsList"></div>
     </section>
 
@@ -446,6 +459,23 @@
       </div>
     </section>
     </div><!-- fim página Tráfego pago -->
+
+    <div class="page" id="page-analise">
+    <section>
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+          <div class="section-title">Análise comercial (IA)</div>
+          <div id="aiMeta" style="font-size:11px; color:var(--muted); text-align:right;"></div>
+        </div>
+        <div id="aiResumo" style="font-size:14px; line-height:1.5; margin-bottom:16px;"></div>
+        <div id="aiAcoes"></div>
+        <div id="aiVazio" style="color:var(--muted); font-size:13px;"></div>
+        <div style="margin-top:14px; font-size:11px; color:var(--muted);">
+          Gerada automaticamente uma vez por dia a partir dos números do dashboard. Sugestões são um ponto de partida — a decisão é sua.
+        </div>
+      </div>
+    </section>
+    </div><!-- fim página Análise IA -->
 
     <div class="updated" id="updatedAt"></div>
   </main>
@@ -1248,6 +1278,54 @@ function renderCheckout(period) {
   }
 }
 
+// ---- Análise comercial gerada por IA ----
+const CAT_LABEL = {
+  vendas: "Vendas", estoque: "Estoque", trafego: "Tráfego",
+  checkout: "Checkout", clientes: "Clientes", margem: "Margem",
+};
+
+function renderInsights() {
+  const ins = DASHBOARD_DATA.insights;
+  const resumo = document.getElementById("aiResumo");
+  const acoes = document.getElementById("aiAcoes");
+  const vazio = document.getElementById("aiVazio");
+  const meta = document.getElementById("aiMeta");
+  resumo.textContent = ""; acoes.innerHTML = ""; meta.textContent = ""; vazio.textContent = "";
+
+  if (!ins) {
+    vazio.textContent = "Análise ainda não configurada. Cadastre o secret ANTHROPIC_API_KEY no GitHub e rode o workflow — a partir daí uma análise nova é gerada todo dia.";
+    return;
+  }
+  if (!ins.disponivel) {
+    vazio.textContent = ins.motivo || "Análise indisponível no momento.";
+    return;
+  }
+
+  const quando = new Date(ins.geradoEm);
+  meta.textContent = `Gerada em ${quando.toLocaleDateString("pt-BR")} às ${quando.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}` +
+    (ins.avisoDesatualizada ? ` · ⚠ ${ins.avisoDesatualizada}` : "");
+  resumo.textContent = ins.diagnostico || "";
+
+  const ordem = { alta: 0, media: 1, baixa: 2 };
+  const lista = [...(ins.acoes || [])].sort(
+    (a, b) => (ordem[a.prioridade] ?? 9) - (ordem[b.prioridade] ?? 9)
+  );
+
+  acoes.innerHTML = lista.map((a) => `
+    <div class="ai-acao">
+      <div class="ai-acao-top">
+        <div class="ai-acao-titulo">${a.titulo || ""}</div>
+        <div class="ai-tags">
+          ${a.categoria ? `<span class="ai-tag cat">${CAT_LABEL[a.categoria] || a.categoria}</span>` : ""}
+          ${a.prioridade ? `<span class="ai-tag ${a.prioridade}">${a.prioridade}</span>` : ""}
+        </div>
+      </div>
+      ${a.porque ? `<div class="ai-acao-detalhe"><b>Por quê:</b> ${a.porque}</div>` : ""}
+      ${a.como ? `<div class="ai-acao-detalhe"><b>Como:</b> ${a.como}</div>` : ""}
+    </div>
+  `).join("");
+}
+
 let LAST_PERIOD = null;
 let DASHBOARD_DATA = null;
 let CURRENT_MODE = "confirmed"; // "total" | "confirmed"
@@ -1360,6 +1438,7 @@ async function load() {
   }
 
   renderAlerts(data.alerts);
+  renderInsights();
 
   // Filtro de campanhas + fechar painel de detalhe
   document.querySelectorAll("#campFilter button").forEach((b) => {
@@ -1401,7 +1480,7 @@ async function load() {
     el.addEventListener("click", () => irPara(el.dataset.page));
   });
   const paginaInicial = (location.hash || "").replace("#", "");
-  if (["visao", "financeiro", "estoque", "checkout", "trafego"].includes(paginaInicial)) irPara(paginaInicial);
+  if (["visao", "financeiro", "estoque", "checkout", "trafego", "analise"].includes(paginaInicial)) irPara(paginaInicial);
 
   // Toggle Receita / Peças nos mais vendidos
   document.querySelectorAll("#topToggle button").forEach((b) => {
