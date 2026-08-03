@@ -54,6 +54,16 @@ jobs:
         run: |
           echo "::warning::A busca de dados da Meta Ads falhou. Os dados de vendas foram atualizados normalmente, mas os números de anúncio estão desatualizados. Veja o log do step 'Buscar dados da Meta Ads'."
 
+      # Instagram usa o MESMO token da Meta (precisa das permissões
+      # instagram_basic + instagram_manage_insights + pages_read_engagement)
+      - name: Buscar dados do Instagram
+        if: ${{ env.HAS_META == 'true' }}
+        continue-on-error: true
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+        run: node scripts/fetch-instagram.mjs
+
       - name: Calcular alertas automáticos
         run: node scripts/compute-alerts.mjs
 
