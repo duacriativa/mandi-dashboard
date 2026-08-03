@@ -157,6 +157,11 @@
   .ig-post-tipo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
   .ig-post-views { font-size: 13px; font-weight: 700; margin-top: 2px; }
   .ig-post-legenda { font-size: 11px; color: #555; margin-top: 3px; line-height: 1.35; }
+  .ig-delta { font-weight: 700; }
+  .ig-delta.up { color: var(--up); }
+  .ig-delta.down { color: var(--down); }
+  .ig-origem-bar { height: 14px; border-radius: 7px; background: #ddd; overflow: hidden; }
+  .ig-origem-bar > div { height: 100%; background: var(--ink); }
   @media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
 
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
@@ -488,24 +493,64 @@
     </div><!-- fim página Tráfego pago -->
 
     <div class="page" id="page-instagram">
-    <section class="grid-2 even">
-      <div class="card">
-        <div class="section-title" id="igTitulo">Perfil do Instagram</div>
-        <div class="stock-grid">
-          <div class="stock-box">
-            <div class="val" id="igSeguidores">—</div>
-            <div class="lbl">Seguidores</div>
-          </div>
-          <div class="stock-box">
-            <div class="val" id="igAlcance">—</div>
-            <div class="lbl">Alcance (28 dias)</div>
-          </div>
-          <div class="stock-box">
-            <div class="val" id="igPosts">—</div>
-            <div class="lbl">Posts publicados</div>
-          </div>
+    <section class="card" style="margin-bottom:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+        <div class="section-title" id="igTitulo">Instagram — últimos 30 dias</div>
+        <div id="igSemDados" style="color:var(--muted); font-size:12px; text-align:right; max-width:60%;"></div>
+      </div>
+      <div class="stock-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="stock-box">
+          <div class="val" id="igViews">—</div>
+          <div class="lbl">Visualizações <span class="ig-delta" id="igViewsD"></span></div>
         </div>
-        <div class="stock-grid cols-2" style="margin-top:10px;">
+        <div class="stock-box">
+          <div class="val" id="igAlcance">—</div>
+          <div class="lbl">Alcance <span class="ig-delta" id="igAlcanceD"></span></div>
+        </div>
+        <div class="stock-box">
+          <div class="val" id="igInteracoes">—</div>
+          <div class="lbl">Interações <span class="ig-delta" id="igInteracoesD"></span></div>
+        </div>
+        <div class="stock-box">
+          <div class="val" id="igCliques">—</div>
+          <div class="lbl">Cliques no link <span class="ig-delta" id="igCliquesD"></span></div>
+        </div>
+      </div>
+      <div class="stock-grid" style="grid-template-columns:repeat(3,1fr); margin-top:10px;">
+        <div class="stock-box">
+          <div class="val" id="igSeguidores">—</div>
+          <div class="lbl">Seguidores hoje</div>
+        </div>
+        <div class="stock-box">
+          <div class="val" id="igNovosSeg">—</div>
+          <div class="lbl">Novos seguidores (30d)</div>
+        </div>
+        <div class="stock-box">
+          <div class="val" id="igPostsMes">—</div>
+          <div class="lbl">Posts no período</div>
+        </div>
+      </div>
+      <div id="igOrigem" style="margin-top:14px; display:none;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#333; margin-bottom:6px;">De onde vieram as visualizações (estimativa)</div>
+        <div class="ig-origem-bar"><div id="igOrigemFill"></div></div>
+        <div id="igOrigemLegenda" style="font-size:12px; color:#444; margin-top:5px;"></div>
+        <div style="font-size:10px; color:var(--muted); margin-top:3px;">Estimado cruzando as views do Instagram com as impressões de anúncio da Meta — plataformas medem diferente, use como ordem de grandeza.</div>
+      </div>
+    </section>
+
+    <section class="grid-2 even" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="section-title">Desempenho por formato (30 dias)</div>
+        <table id="igFormatos">
+          <thead><tr><th>Formato</th><th class="num">Posts</th><th class="num">Views</th><th class="num">Alcance</th><th class="num">Interações</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div id="igSemFormatos" style="display:none; color:var(--muted); font-size:13px;">Nenhum post no período.</div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Quem é o público</div>
+        <div class="stock-grid cols-2">
           <div class="stock-box">
             <div class="val" id="igMulheres">—</div>
             <div class="lbl">Mulheres</div>
@@ -515,17 +560,13 @@
             <div class="lbl">Homens</div>
           </div>
         </div>
-        <div id="igFaixas" style="margin-top:10px; font-size:12px; color:#333;"></div>
-      </div>
-
-      <div class="card">
-        <div class="section-title">Principais cidades dos seguidores</div>
+        <div id="igFaixas" style="margin:10px 0; font-size:12px; color:#333;"></div>
+        <div class="section-title" style="margin-top:14px; margin-bottom:8px;">Principais cidades</div>
         <table id="igCidades"><tbody></tbody></table>
-        <div id="igSemDados" style="color:var(--muted); font-size:13px;"></div>
       </div>
     </section>
 
-    <section style="margin-top:16px;">
+    <section>
       <div class="card">
         <div class="section-title">Posts que mais alcançaram</div>
         <div class="ig-grid" id="igTopPosts"></div>
@@ -1472,15 +1513,56 @@ function renderInstagram() {
       : "Instagram ainda não configurado — o token da Meta precisa das permissões instagram_basic, instagram_manage_insights e pages_read_engagement, com a Página da loja atribuída ao system user.";
     return;
   }
-  sem.textContent = "";
+  sem.textContent = ig.avisoDesatualizado ? "⚠ dados da última atualização bem-sucedida" : "";
 
-  if (ig.username) document.getElementById("igTitulo").textContent = "Perfil do Instagram — @" + ig.username;
+  if (ig.username) document.getElementById("igTitulo").textContent = "@" + ig.username + " — últimos 30 dias";
+
+  const kpi = (idVal, idDelta, obj) => {
+    document.getElementById(idVal).textContent = obj ? fmt(obj.valor) : "—";
+    const d = document.getElementById(idDelta);
+    if (obj && obj.variacaoPct !== null && obj.variacaoPct !== undefined) {
+      const up = obj.variacaoPct >= 0;
+      d.className = "ig-delta " + (up ? "up" : "down");
+      d.textContent = (up ? "▲" : "▼") + Math.abs(obj.variacaoPct).toFixed(1).replace(".", ",") + "%";
+    } else d.textContent = "";
+  };
+  kpi("igViews", "igViewsD", ig.visualizacoes);
+  kpi("igAlcance", "igAlcanceD", ig.alcance);
+  kpi("igInteracoes", "igInteracoesD", ig.interacoes);
+  kpi("igCliques", "igCliquesD", ig.cliquesLink);
+
   document.getElementById("igSeguidores").textContent = fmt(ig.seguidores);
-  document.getElementById("igAlcance").textContent = fmt(ig.alcance28d);
-  document.getElementById("igPosts").textContent = fmt(ig.totalPosts);
+  document.getElementById("igNovosSeg").textContent =
+    ig.novosSeguidores30d !== undefined ? "+" + fmt(ig.novosSeguidores30d) : "—";
+  document.getElementById("igPostsMes").textContent = fmt(ig.postsNoMes);
+
+  // Origem estimada
+  const origem = document.getElementById("igOrigem");
+  if (ig.origemEstimada) {
+    origem.style.display = "block";
+    const o = ig.origemEstimada;
+    document.getElementById("igOrigemFill").style.width = (100 - o.anunciosPct) + "%";
+    document.getElementById("igOrigemLegenda").innerHTML =
+      `<b>Orgânico</b> — ${fmt(o.organico)} (${(100 - o.anunciosPct).toFixed(1).replace(".", ",")}%) · ` +
+      `<b>Anúncios</b> — ${fmt(o.anuncios)} (${o.anunciosPct.toFixed(1).replace(".", ",")}%)`;
+  } else origem.style.display = "none";
+
+  // Formatos
+  const ftbody = document.querySelector("#igFormatos tbody");
+  ftbody.innerHTML = "";
+  const formatos = ig.porFormato || [];
+  document.getElementById("igSemFormatos").style.display = formatos.length ? "none" : "block";
+  for (const f of formatos) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${f.formato}</td><td class="num">${f.posts}</td>
+      <td class="num">${fmt(f.views)}</td><td class="num">${fmt(f.alcance)}</td>
+      <td class="num">${fmt(f.interacoes)}</td>`;
+    ftbody.appendChild(tr);
+  }
+
+  // Público
   document.getElementById("igMulheres").textContent = ig.generoPct ? ig.generoPct.mulheres.toFixed(1).replace(".", ",") + "%" : "—";
   document.getElementById("igHomens").textContent = ig.generoPct ? ig.generoPct.homens.toFixed(1).replace(".", ",") + "%" : "—";
-
   document.getElementById("igFaixas").innerHTML = (ig.faixasEtarias || []).length
     ? "<b>Faixas etárias predominantes:</b> " + ig.faixasEtarias.map(f => f.valor).join(", ")
     : "";
@@ -1504,7 +1586,7 @@ function renderInstagram() {
         : `<div class="semimg">sem imagem</div>`}
       <div class="ig-post-info">
         <div class="ig-post-tipo">${p.tipo} · ${p.data ? p.data.split("-").reverse().slice(0,2).join("/") : ""}</div>
-        <div class="ig-post-views">${p.views !== null ? fmt(p.views) + " views" : (p.curtidas !== null ? fmt(p.curtidas) + " curtidas" : "—")}</div>
+        <div class="ig-post-views">${p.views !== null && p.views !== undefined ? fmt(p.views) + " views" : fmt(p.interacoes) + " interações"}</div>
         <div class="ig-post-legenda">${p.legenda || ""}</div>
       </div>
     </a>
