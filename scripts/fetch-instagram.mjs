@@ -50,11 +50,10 @@ async function descobrirContaIG() {
     );
   }
   if (comIG.length > 1) {
-    console.log(
-      `[aviso] ${comIG.length} contas de Instagram acessíveis: ${comIG
-        .map((p) => "@" + p.instagram_business_account.username)
-        .join(", ")}. Usando a primeira. Para fixar outra, defina o secret META_IG_USER_ID.`
-    );
+    console.log(`[aviso] ${comIG.length} contas de Instagram acessíveis. Usando a primeira. Para fixar outra, crie o secret META_IG_USER_ID com o ID correspondente:`);
+    for (const p of comIG) {
+      console.log(`[aviso]   @${p.instagram_business_account.username} -> ID ${p.instagram_business_account.id}`);
+    }
   }
   return comIG[0].instagram_business_account;
 }
