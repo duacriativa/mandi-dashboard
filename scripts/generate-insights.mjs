@@ -126,9 +126,87 @@ function montarResumo(data, historicoAcoes) {
       }
     : null;
 
+  // Meta do mês: realizado, ritmo e referências históricas — para a IA
+  // raciocinar sobre COMO fechar o gap (alavancas antes de verba).
+  const flatConf = (data.ordersFlat || []).filter((o) => o.p === 1);
+  const porMes = {};
+  for (const o of flatConf) {
+    const k = o.d.slice(0, 7);
+    if (!porMes[k]) porMes[k] = { receita: 0, pedidos: 0 };
+    porMes[k].receita += o.t;
+    porMes[k].pedidos += 1;
+  }
+  const hojeD = new Date();
+  const mesAtualK = hojeD.toISOString().slice(0, 7);
+  const chavesMes = Object.keys(porMes).sort().filter((k) => k !== mesAtualK);
+  const atualM = porMes[mesAtualK] || { receita: 0, pedidos: 0 };
+  const diasNoMes = new Date(hojeD.getUTCFullYear(), hojeD.getUTCMonth() + 1, 0).getUTCDate();
+  const diaHoje = hojeD.getUTCDate();
+  let cpa30 = null;
+  if (Array.isArray(data.marketing?.dailyAds)) {
+    const c = new Date(hojeD); c.setDate(c.getDate() - 30);
+    const cs = c.toISOString().slice(0, 10);
+    const jan = data.marketing.dailyAds.filter((d) => d.date >= cs);
+    const g = jan.reduce((s, d) => s + (d.spend || 0), 0);
+    const p = jan.reduce((s, d) => s + (d.purchases || 0), 0);
+    if (g > 0 && p > 0) cpa30 = round2(g / p);
+  }
+  const metaDoMes = {
+    mes: mesAtualK,
+    diaDeHoje: diaHoje,
+    diasRestantes: Math.max(diasNoMes - diaHoje, 0),
+    realizadoAteAgora: round2(atualM.receita),
+    pedidosAteAgora: atualM.pedidos,
+    ticketMedioMes: atualM.pedidos ? round2(atualM.receita / atualM.pedidos) : null,
+    mesAnterior: chavesMes.length ? round2(porMes[chavesMes[chavesMes.length - 1]].receita) : null,
+    melhorMesHistorico: chavesMes.length ? round2(Math.max(...chavesMes.map((k) => porMes[k].receita))) : null,
+    cpaMedio30d: cpa30,
+    metaDefinidaManualmente: data.metas?.[mesAtualK] ?? null,
+  };
+
+  // Alavancas de eficiência: melhorar estes números faz a loja faturar mais
+  // SEM aumentar investimento. A análise deve priorizar isso antes de
+  // sugerir escalar verba.
+  const p30 = data.periodsByMode?.confirmed?.["30d"];
+  let eficiencia = null;
+  if (p30) {
+    const receita = p30.kpis.revenue.value || 0;
+    const margemPct = p30.margin?.overallMarginPct ?? null;
+    const lucroBruto = margemPct !== null ? round2(receita * (margemPct / 100)) : null;
+
+    let cpa = null, investimento = null;
+    if (Array.isArray(data.marketing?.dailyAds)) {
+      const corte = new Date();
+      corte.setDate(corte.getDate() - 30);
+      const c = corte.toISOString().slice(0, 10);
+      const jan = data.marketing.dailyAds.filter((d) => d.date >= c);
+      investimento = round2(jan.reduce((s, d) => s + (d.spend || 0), 0));
+      const compras = jan.reduce((s, d) => s + (d.purchases || 0), 0);
+      if (investimento > 0 && compras > 0) cpa = round2(investimento / compras);
+    }
+
+    eficiencia = {
+      ticketMedio: p30.kpis.aov.value,
+      margemBrutaPct: margemPct,
+      lucroBrutoEstimado: lucroBruto,
+      investimentoEmAnuncio30d: investimento,
+      sobraDepoisDoAnuncio:
+        lucroBruto !== null && investimento !== null ? round2(lucroBruto - investimento) : null,
+      custoPorPedidoPagoCPA: cpa,
+      taxaRecompraPct: p30.customers?.recompraPct,
+      clientesNovos: p30.customers?.newCustomers,
+      clientesRecorrentes: p30.customers?.returningCustomers,
+      descontosConcedidos: p30.margin?.breakdown?.discounts ?? null,
+      observacao:
+        "Cada item aqui é uma alavanca: subir ticket médio ou recompra, reduzir abandono de checkout ou desconto médio aumenta o faturamento SEM aumentar investimento em anúncio.",
+    };
+  }
+
   return {
     hoje: new Date().toISOString().slice(0, 10),
+    metaDoMes,
     datasComerciaisProximas: proximasDatasComerciais(new Date()),
+    eficienciaDaOperacao: eficiencia,
     instagramOrganico,
     vendasConfirmadas: {
       ultimos7dias: fmtPeriodo(m("confirmed", "7d")),
@@ -176,6 +254,8 @@ REGRAS DE ESTILO — as mais importantes:
 - Se houver data comercial próxima (campo datasComerciaisProximas), a ação nº 1 deve ser uma campanha ancorada nela, com: tema, oferta exata (ex: "20% off ou frete grátis acima de R$200"), produtos escolhidos pelos dados, público e canal orgânico/CRM. Inclua uma sugestão de texto pronta, entre aspas, que a loja possa copiar.
 - Considere acoesJaExecutadas: NÃO sugira de novo o que já foi feito — construa em cima ("como a liquidação começou dia X, agora..."). Se uma ação executada pede acompanhamento, inclua o acompanhamento no cronograma.
 - CRONOGRAMA: distribua as ações (e seus acompanhamentos) em datas concretas dos próximos 14 dias, na ordem que faz sentido comercial. 5 a 10 entradas. Cada dia com tarefa objetiva ("subir os banners", "disparar o e-mail", "revisar o giro da liquidação").
+- EFICIÊNCIA ANTES DE VOLUME. Olhe o campo eficienciaDaOperacao: a meta da loja é que a "sobraDepoisDoAnuncio" fique perto de 50% do faturamento — é o que banca frete, taxas de pagamento, impostos, embalagem e estrutura. Se estiver abaixo disso, pelo menos DUAS ações devem atacar alavancas que aumentam faturamento SEM aumentar investimento: subir o ticket médio (combo, kit, frete grátis a partir de um valor ACIMA do ticket atual), aumentar a recompra (cliente que volta custa zero de aquisição), reduzir o abandono de checkout, ou reduzir o desconto médio concedido. Sempre estime o impacto em reais ("subir o ticket de R$X para R$Y nos mesmos pedidos gera +R$Z sem gastar mais").
+- Nunca sugira simplesmente "investir mais em anúncio" como caminho de crescimento sem antes confrontar com a margem: mostre o que sobra depois do custo do produto e do investimento.
 - Máximo de 5 ações. Cite produtos PELO NOME ("as 38 peças da Camiseta Vintage Azul"), nunca genérico.
 - Chame de "checkouts abandonados" (não "carrinhos") — são estágios diferentes do funil.
 - Produto 100% parado → promoção com % compatível com a margem informada. Variação zerada que vendia → reposição com prazo.
@@ -194,12 +274,12 @@ async function chamarClaude(resumo, promptExtra = "") {
       // Folga generosa: modelos com raciocínio adaptativo consomem parte
       // do limite de saída "pensando" antes de responder. Com limite
       // apertado, o JSON final sai cortado no meio.
-      max_tokens: 8000,
+      max_tokens: 16000,
       system: PROMPT_SISTEMA + promptExtra,
       messages: [
         {
           role: "user",
-          content: `Dados da loja (JSON):\n${JSON.stringify(resumo, null, 1)}`,
+          content: `Dados da loja (JSON):\n${JSON.stringify(resumo)}`,
         },
       ],
     }),
