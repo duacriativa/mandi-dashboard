@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HAS_META: ${{ secrets.META_ACCESS_TOKEN != '' && secrets.META_AD_ACCOUNT_ID != '' }}
+      HAS_AI: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
@@ -55,6 +56,14 @@ jobs:
 
       - name: Calcular alertas automáticos
         run: node scripts/compute-alerts.mjs
+
+      # Análise comercial por IA (opcional). continue-on-error: se a API
+      # falhar ou a chave não existir, os dados de venda seguem normais.
+      - name: Gerar análise comercial (IA)
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-insights.mjs
 
       - name: Publicar data.json atualizado
         run: |
