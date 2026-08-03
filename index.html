@@ -488,6 +488,10 @@
           <div class="section-title">Cronograma sugerido — próximos 14 dias</div>
           <div id="aiCrono"></div>
         </div>
+        <div id="aiPautaWrap" style="display:none; margin-top:20px;">
+          <div class="section-title" id="aiPautaTitulo">Pauta de stories da semana</div>
+          <div id="aiPauta"></div>
+        </div>
         <div id="aiVazio" style="color:var(--muted); font-size:13px;"></div>
         <div style="margin-top:14px; font-size:11px; color:var(--muted);">
           Gerada automaticamente uma vez por dia a partir dos números do dashboard. Sugestões são um ponto de partida — a decisão é sua.
@@ -1365,6 +1369,33 @@ function renderInsights() {
           <div class="crono-corpo">
             <div class="crono-titulo">${c.titulo || ""}${c.data === hoje ? ' <span class="crono-hoje-tag">hoje</span>' : ""}</div>
             <div class="crono-detalhe">${c.detalhe || ""}</div>
+          </div>
+        </div>`;
+    }).join("");
+  }
+
+  // Pauta de stories (gerada às segundas, cobre quarta a terça)
+  const pautaWrap = document.getElementById("aiPautaWrap");
+  const pauta = document.getElementById("aiPauta");
+  const temas = (ins.pautaStories || []).slice().sort((a, b) => (a.dia || "").localeCompare(b.dia || ""));
+  if (!temas.length) {
+    pautaWrap.style.display = "none";
+  } else {
+    pautaWrap.style.display = "block";
+    const hojeStr = new Date().toISOString().slice(0, 10);
+    if (ins.pautaGeradaEm) {
+      const g = new Date(ins.pautaGeradaEm);
+      document.getElementById("aiPautaTitulo").textContent =
+        `Pauta de stories da semana (gerada seg ${g.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })})`;
+    }
+    pauta.innerHTML = temas.map((t) => {
+      const passou = t.dia < hojeStr;
+      const [y, m, d] = (t.dia || "").split("-");
+      return `
+        <div class="crono-item ${passou ? "passou" : ""} ${t.dia === hojeStr ? "hoje" : ""}">
+          <div class="crono-data">${d}/${m}<br><span>${t.diaSemana || ""}</span></div>
+          <div class="crono-corpo">
+            <div class="crono-titulo">${t.tema || ""}${t.dia === hojeStr ? ' <span class="crono-hoje-tag">hoje</span>' : ""}</div>
           </div>
         </div>`;
     }).join("");
