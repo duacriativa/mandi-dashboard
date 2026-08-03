@@ -124,6 +124,32 @@ async function fetchAllProducts() {
   return products;
 }
 
+// Checkouts abandonados: cliente informou contato mas não finalizou a compra.
+// A Shopify guarda esse histórico por cerca de 3 meses.
+//
+// Esta busca é OPCIONAL: exige a permissão de checkouts abandonados no token.
+// Se falhar, seguimos sem esses dados — não faz sentido perder o dashboard de
+// vendas inteiro por causa de uma métrica complementar.
+async function fetchAbandonedCheckouts(sinceISO) {
+  try {
+    let checkouts = [];
+    await fetchAllPages(
+      `/checkouts.json?created_at_min=${encodeURIComponent(sinceISO)}&limit=250`,
+      (data) => {
+        checkouts = checkouts.concat(data.checkouts || []);
+      }
+    );
+    return { ok: true, checkouts };
+  } catch (err) {
+    console.log(
+      `[aviso] Não foi possível buscar checkouts abandonados (${err.message.slice(0, 120)}). ` +
+      `Provavelmente falta a permissão de checkouts abandonados no token. ` +
+      `O restante do dashboard continua normalmente.`
+    );
+    return { ok: false, checkouts: [] };
+  }
+}
+
 function dayKey(dateStr) {
   return dateStr.slice(0, 10); // YYYY-MM-DD
 }
@@ -550,6 +576,40 @@ async function main() {
   });
   console.log(`[info] ${ordersFlat.length} pedidos exportados para o seletor de datas personalizado.`);
 
+  // ---- Checkouts abandonados (últimos 90 dias — limite do que a Shopify guarda) ----
+  const abandonoDesde = daysAgo(now, 90);
+  console.log("Buscando checkouts abandonados...");
+  const { ok: abandonoOk, checkouts } = await fetchAbandonedCheckouts(abandonoDesde.toISOString());
+
+  // Só conta como abandonado o que NÃO virou pedido depois (a Shopify marca
+  // o checkout recuperado preenchendo completed_at).
+  const abandonados = checkouts.filter((c) => !c.completed_at);
+  const recuperados = checkouts.filter((c) => c.completed_at);
+
+  // Formato compacto (mesma lógica do ordersFlat): permite calcular qualquer
+  // período no dashboard. SEM e-mail, telefone ou link de recuperação — o
+  // data.json é público.
+  const abandonedFlat = abandonados.map((c) => ({
+    d: c.created_at,
+    t: round2(parseFloat(c.total_price || "0")),
+    li: (c.line_items || []).map((li) => ({
+      n: li.title || "Produto",
+      q: li.quantity || 0,
+    })),
+  }));
+  const recoveredFlat = recuperados.map((c) => ({
+    d: c.created_at,
+    t: round2(parseFloat(c.total_price || "0")),
+  }));
+
+  if (abandonoOk) {
+    console.log(
+      `[info] checkouts: ${abandonados.length} abandonados (R$ ${round2(
+        abandonedFlat.reduce((s, c) => s + c.t, 0)
+      )}) | ${recuperados.length} recuperados`
+    );
+  }
+
   // Mapa de clientes (id -> identificação) para montar a lista de quem
   // comprou em cada período. ATENÇÃO: o data.json é público (GitHub Pages),
   // então NÃO exportamos e-mail/telefone completos — só primeiro nome e
@@ -584,6 +644,12 @@ async function main() {
     periods,
     ordersFlat,
     customersMap,
+    checkout: {
+      disponivel: abandonoOk,
+      desde: abandonoDesde.toISOString().slice(0, 10),
+      abandonedFlat,
+      recoveredFlat,
+    },
     inventory: {
       totalUnits,
       stalledSkuCount,
