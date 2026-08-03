@@ -22,9 +22,11 @@ import { readFile, writeFile } from "node:fs/promises";
 // param de responder: developers.facebook.com/docs/graph-api/changelog
 const API_VERSION = "v25.0";
 
-// Histórico buscado. Quanto maior, maior o data.json — 180 dias cobre bem
-// as análises de campanha sem inchar o arquivo.
-const HISTORY_DAYS = 180;
+// Histórico buscado. Cada nível tem um alcance diferente de propósito:
+// o nível de anúncio multiplica o volume de requisições (são centenas de
+// anúncios × dias) e é o que dispara o limite de taxa da Meta.
+const HISTORY_DAYS = 120;      // conta, campanhas e conjuntos
+const AD_LEVEL_DAYS = 60;      // anúncios/criativos — detalhe recente basta
 
 const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
 const AD_ACCOUNT_ID = process.env.META_AD_ACCOUNT_ID;
@@ -37,23 +39,52 @@ if (!ACCESS_TOKEN || !AD_ACCOUNT_ID) {
 const accountId = AD_ACCOUNT_ID.startsWith("act_") ? AD_ACCOUNT_ID : `act_${AD_ACCOUNT_ID}`;
 const BASE_URL = `https://graph.facebook.com/${API_VERSION}`;
 
+const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// A Meta limita quantas chamadas um app pode fazer por hora (erro code 4 /
+// 17, "Application request limit reached"). É transitório: basta esperar.
+function ehLimiteDeTaxa(texto) {
+  return (
+    texto.includes("request limit reached") ||
+    texto.includes("User request limit reached") ||
+    texto.includes('"code":4,') ||
+    texto.includes('"code":17,') ||
+    texto.includes("rate limit")
+  );
+}
+
 // Token vai no header (não na URL) pra não vazar em log de erro.
-async function metaFetch(url) {
+async function metaFetch(url, tentativa = 1) {
   const full = url.startsWith("http") ? url : `${BASE_URL}${url}`;
   const res = await fetch(full, { headers: { Authorization: `Bearer ${ACCESS_TOKEN}` } });
   if (!res.ok) {
     const text = await res.text();
+
+    // Limite de taxa: espera progressivamente (30s, 60s, 120s, 240s) e insiste
+    if (ehLimiteDeTaxa(text) && tentativa <= 4) {
+      const segundos = 30 * Math.pow(2, tentativa - 1);
+      console.log(`[info] Limite de requisições da Meta atingido. Aguardando ${segundos}s antes de tentar de novo (tentativa ${tentativa}/4)...`);
+      await espera(segundos * 1000);
+      return metaFetch(url, tentativa + 1);
+    }
+
     if (text.includes("Unsupported get request") || text.includes("does not exist")) {
       throw new Error(`Recurso inacessível — verifique se o token tem acesso à conta ${accountId}. Resposta: ${text}`);
     }
     if (res.status === 400 && text.toLowerCase().includes("version")) {
       throw new Error(`Versão da API rejeitada (${API_VERSION}) — atualize API_VERSION no topo deste arquivo. Resposta: ${text}`);
     }
+    if (ehLimiteDeTaxa(text)) {
+      throw new Error(`Limite de requisições da Meta persistiu após 4 tentativas. Reduza HISTORY_DAYS no topo do arquivo ou rode o workflow menos vezes seguidas. Resposta: ${text.slice(0, 200)}`);
+    }
     if (text.includes("OAuthException") || res.status === 401) {
       throw new Error(`Token inválido/expirado ou sem permissão ads_read. Resposta: ${text}`);
     }
     throw new Error(`Meta API error ${res.status}: ${text}`);
   }
+  // Pausa curta entre chamadas: com centenas de anúncios, o volume de
+  // requisições seguidas é o que dispara o limite.
+  await espera(300);
   return res.json();
 }
 
@@ -249,9 +280,9 @@ async function main() {
   // ---- Séries diárias por nível ----
   // Buscadas em janelas de 30 dias: 180 dias de dados diários por anúncio
   // num pedido só é volume demais para a Meta aceitar.
-  async function serieDiaria(level, idField, label, diasPorJanela = 30) {
+  async function serieDiaria(level, idField, label, diasPorJanela = 30, desde = since) {
     let todas = [];
-    for (const j of janelas(since, until, diasPorJanela)) {
+    for (const j of janelas(desde, until, diasPorJanela)) {
       const tr = encodeURIComponent(JSON.stringify(j));
       const rows = await metaFetchAll(
         `/${accountId}/insights?level=${level}&fields=${idField},${insightFields}` +
@@ -277,9 +308,12 @@ async function main() {
       .filter((r) => r.s > 0);
   }
 
+  const inicioAds = new Date(now);
+  inicioAds.setDate(inicioAds.getDate() - AD_LEVEL_DAYS);
+
   const dailyByCampaign = await serieDiaria("campaign", "campaign_id", "dias × campanha", 60);
   const dailyByAdset = await serieDiaria("adset", "adset_id", "dias × conjunto", 30);
-  const dailyByAd = await serieDiaria("ad", "ad_id", "dias × anúncio", 15);
+  const dailyByAd = await serieDiaria("ad", "ad_id", "dias × anúncio", 30, toDateStr(inicioAds));
 
   // ---- Estruturas enxutas para o data.json ----
   const campaignsOut = campanhas.map((c) => ({
