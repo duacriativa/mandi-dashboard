@@ -108,9 +108,28 @@ function montarResumo(data, historicoAcoes) {
     };
   }
 
+  // Instagram ORGÂNICO (seguidores, formatos, top posts). Análise de
+  // conteúdo orgânico é permitida — a proibição vale só para campanhas pagas.
+  const ig = data.instagram;
+  const instagramOrganico = ig?.disponivel
+    ? {
+        seguidores: ig.seguidores,
+        novosSeguidores30d: ig.novosSeguidores30d,
+        visualizacoes30d: ig.visualizacoes,
+        alcance30d: ig.alcance,
+        interacoes30d: ig.interacoes,
+        cliquesNoLink30d: ig.cliquesLink,
+        desempenhoPorFormato: ig.porFormato,
+        top5Posts: (ig.topPosts || []).map((p) => ({
+          tipo: p.tipo, views: p.views, legenda: p.legenda,
+        })),
+      }
+    : null;
+
   return {
     hoje: new Date().toISOString().slice(0, 10),
     datasComerciaisProximas: proximasDatasComerciais(new Date()),
+    instagramOrganico,
     vendasConfirmadas: {
       ultimos7dias: fmtPeriodo(m("confirmed", "7d")),
       ultimos30dias: fmtPeriodo(m("confirmed", "30d")),
@@ -153,7 +172,7 @@ Responda APENAS com JSON válido, sem markdown, sem cercas de código, neste for
 
 REGRAS DE ESTILO — as mais importantes:
 - DECIDA TUDO. Nunca escreva "considere", "avalie", "pode ser interessante" ou termine com pergunta. Escolha o desconto, o canal, o público e o valor — e afirme. Se faltar informação, assuma a premissa mais provável e diga qual assumiu ("assumindo margem média de 55%...").
-- PROIBIDO analisar, citar ou julgar campanhas de tráfego pago / Meta Ads / anúncios. Isso é gerido por outra equipe com objetivos próprios (engajamento, alcance, conversão) e não faz parte desta análise. Nunca use palavras como "prejuízo" sobre investimento em anúncios. As ações podem PRESSUPOR divulgação ("divulgue no Instagram e para a base"), mas sem opinar sobre campanhas existentes.
+- PROIBIDO analisar, citar ou julgar campanhas de tráfego pago / Meta Ads / anúncios. Isso é gerido por outra equipe com objetivos próprios (engajamento, alcance, conversão) e não faz parte desta análise. Nunca use palavras como "prejuízo" sobre investimento em anúncios. As ações podem PRESSUPOR divulgação ("divulgue no Instagram e para a base"), mas sem opinar sobre campanhas existentes. Conteúdo ORGÂNICO do Instagram (campo instagramOrganico) PODE e DEVE ser analisado: formatos que performam, temas dos posts campeões, crescimento de seguidores — use isso nas ações e na pauta de stories.
 - Se houver data comercial próxima (campo datasComerciaisProximas), a ação nº 1 deve ser uma campanha ancorada nela, com: tema, oferta exata (ex: "20% off ou frete grátis acima de R$200"), produtos escolhidos pelos dados, público e canal orgânico/CRM. Inclua uma sugestão de texto pronta, entre aspas, que a loja possa copiar.
 - Considere acoesJaExecutadas: NÃO sugira de novo o que já foi feito — construa em cima ("como a liquidação começou dia X, agora..."). Se uma ação executada pede acompanhamento, inclua o acompanhamento no cronograma.
 - CRONOGRAMA: distribua as ações (e seus acompanhamentos) em datas concretas dos próximos 14 dias, na ordem que faz sentido comercial. 5 a 10 entradas. Cada dia com tarefa objetiva ("subir os banners", "disparar o e-mail", "revisar o giro da liquidação").
