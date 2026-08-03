@@ -149,6 +149,16 @@
     vertical-align: middle; margin-left: 4px;
   }
 
+  .ig-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .ig-post { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: block; }
+  .ig-post img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; background: #f0f0f0; }
+  .ig-post .semimg { width: 100%; aspect-ratio: 4/5; display:flex; align-items:center; justify-content:center; color: var(--muted); font-size: 11px; background:#fafafa; }
+  .ig-post-info { padding: 8px 10px; }
+  .ig-post-tipo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  .ig-post-views { font-size: 13px; font-weight: 700; margin-top: 2px; }
+  .ig-post-legenda { font-size: 11px; color: #555; margin-top: 3px; line-height: 1.35; }
+  @media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -210,6 +220,7 @@
     <div class="navitem" data-page="estoque">Estoque</div>
     <div class="navitem" data-page="checkout">Checkout</div>
     <div class="navitem" data-page="trafego">Tráfego pago</div>
+    <div class="navitem" data-page="instagram">Instagram</div>
     <div class="navitem" data-page="analise">Análise IA</div>
   </nav>
 
@@ -249,6 +260,7 @@
       <button type="button" data-page="estoque">Estoque</button>
       <button type="button" data-page="checkout">Checkout</button>
       <button type="button" data-page="trafego">Tráfego pago</button>
+      <button type="button" data-page="instagram">Instagram</button>
       <button type="button" data-page="analise">Análise IA</button>
     </div>
 
@@ -474,6 +486,52 @@
       </div>
     </section>
     </div><!-- fim página Tráfego pago -->
+
+    <div class="page" id="page-instagram">
+    <section class="grid-2 even">
+      <div class="card">
+        <div class="section-title" id="igTitulo">Perfil do Instagram</div>
+        <div class="stock-grid">
+          <div class="stock-box">
+            <div class="val" id="igSeguidores">—</div>
+            <div class="lbl">Seguidores</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="igAlcance">—</div>
+            <div class="lbl">Alcance (28 dias)</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="igPosts">—</div>
+            <div class="lbl">Posts publicados</div>
+          </div>
+        </div>
+        <div class="stock-grid cols-2" style="margin-top:10px;">
+          <div class="stock-box">
+            <div class="val" id="igMulheres">—</div>
+            <div class="lbl">Mulheres</div>
+          </div>
+          <div class="stock-box">
+            <div class="val" id="igHomens">—</div>
+            <div class="lbl">Homens</div>
+          </div>
+        </div>
+        <div id="igFaixas" style="margin-top:10px; font-size:12px; color:#333;"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Principais cidades dos seguidores</div>
+        <table id="igCidades"><tbody></tbody></table>
+        <div id="igSemDados" style="color:var(--muted); font-size:13px;"></div>
+      </div>
+    </section>
+
+    <section style="margin-top:16px;">
+      <div class="card">
+        <div class="section-title">Posts que mais alcançaram</div>
+        <div class="ig-grid" id="igTopPosts"></div>
+      </div>
+    </section>
+    </div><!-- fim página Instagram -->
 
     <div class="page" id="page-analise">
     <section>
@@ -1402,6 +1460,57 @@ function renderInsights() {
   }
 }
 
+// ---- Instagram ----
+function renderInstagram() {
+  const ig = DASHBOARD_DATA.instagram;
+  const sem = document.getElementById("igSemDados");
+  const fmt = (n) => (n === null || n === undefined) ? "—" : n.toLocaleString("pt-BR");
+
+  if (!ig || !ig.disponivel) {
+    sem.textContent = ig?.motivo
+      ? "Instagram indisponível: " + ig.motivo
+      : "Instagram ainda não configurado — o token da Meta precisa das permissões instagram_basic, instagram_manage_insights e pages_read_engagement, com a Página da loja atribuída ao system user.";
+    return;
+  }
+  sem.textContent = "";
+
+  if (ig.username) document.getElementById("igTitulo").textContent = "Perfil do Instagram — @" + ig.username;
+  document.getElementById("igSeguidores").textContent = fmt(ig.seguidores);
+  document.getElementById("igAlcance").textContent = fmt(ig.alcance28d);
+  document.getElementById("igPosts").textContent = fmt(ig.totalPosts);
+  document.getElementById("igMulheres").textContent = ig.generoPct ? ig.generoPct.mulheres.toFixed(1).replace(".", ",") + "%" : "—";
+  document.getElementById("igHomens").textContent = ig.generoPct ? ig.generoPct.homens.toFixed(1).replace(".", ",") + "%" : "—";
+
+  document.getElementById("igFaixas").innerHTML = (ig.faixasEtarias || []).length
+    ? "<b>Faixas etárias predominantes:</b> " + ig.faixasEtarias.map(f => f.valor).join(", ")
+    : "";
+
+  const tbody = document.querySelector("#igCidades tbody");
+  tbody.innerHTML = "";
+  const cidades = ig.cidades || [];
+  const maxPct = Math.max(...cidades.map(c => c.pct || 0), 1);
+  for (const c of cidades) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${c.cidade}</td>
+      <td class="num">${c.pct !== null ? c.pct.toFixed(1).replace(".", ",") + "%" : "—"}</td>
+      <td><span class="bar-bg"><span class="bar-fill" style="width:${((c.pct || 0) / maxPct * 100).toFixed(0)}%"></span></span></td>`;
+    tbody.appendChild(tr);
+  }
+
+  document.getElementById("igTopPosts").innerHTML = (ig.topPosts || []).map(p => `
+    <a class="ig-post" href="${p.link}" target="_blank" rel="noopener">
+      ${p.thumb
+        ? `<img src="${p.thumb}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;semimg&quot;>imagem expirada</div>'">`
+        : `<div class="semimg">sem imagem</div>`}
+      <div class="ig-post-info">
+        <div class="ig-post-tipo">${p.tipo} · ${p.data ? p.data.split("-").reverse().slice(0,2).join("/") : ""}</div>
+        <div class="ig-post-views">${p.views !== null ? fmt(p.views) + " views" : (p.curtidas !== null ? fmt(p.curtidas) + " curtidas" : "—")}</div>
+        <div class="ig-post-legenda">${p.legenda || ""}</div>
+      </div>
+    </a>
+  `).join("") || '<div style="color:var(--muted);font-size:13px;">Nenhum post disponível.</div>';
+}
+
 let LAST_PERIOD = null;
 let DASHBOARD_DATA = null;
 let CURRENT_MODE = "confirmed"; // "total" | "confirmed"
@@ -1514,6 +1623,7 @@ async function load() {
   }
 
   renderAlerts(data.alerts);
+  renderInstagram();
   renderInsights();
 
   // Filtro de campanhas + fechar painel de detalhe
@@ -1556,7 +1666,7 @@ async function load() {
     el.addEventListener("click", () => irPara(el.dataset.page));
   });
   const paginaInicial = (location.hash || "").replace("#", "");
-  if (["visao", "financeiro", "estoque", "checkout", "trafego", "analise"].includes(paginaInicial)) irPara(paginaInicial);
+  if (["visao", "financeiro", "estoque", "checkout", "trafego", "instagram", "analise"].includes(paginaInicial)) irPara(paginaInicial);
 
   // Toggle Receita / Peças nos mais vendidos
   document.querySelectorAll("#topToggle button").forEach((b) => {
