@@ -134,6 +134,21 @@
   .ai-tag.baixa { background: #eef0f4; color: #4a5568; }
   .ai-tag.cat { background: #f0f0f0; color: var(--muted); }
 
+  .crono-item { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+  .crono-item.passou { opacity: 0.45; }
+  .crono-data {
+    flex-shrink: 0; width: 52px; text-align: center; font-weight: 700; font-size: 14px;
+    line-height: 1.1; padding-top: 2px;
+  }
+  .crono-data span { font-size: 10px; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+  .crono-titulo { font-weight: 600; font-size: 13px; }
+  .crono-detalhe { font-size: 12px; color: #444; line-height: 1.45; margin-top: 2px; }
+  .crono-hoje-tag {
+    background: var(--ink); color: #fff; font-size: 9px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 9px;
+    vertical-align: middle; margin-left: 4px;
+  }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
   .card {
     background: var(--card);
@@ -469,9 +484,14 @@
         </div>
         <div id="aiResumo" style="font-size:14px; line-height:1.5; margin-bottom:16px;"></div>
         <div id="aiAcoes"></div>
+        <div id="aiCronoWrap" style="display:none; margin-top:20px;">
+          <div class="section-title">Cronograma sugerido — próximos 14 dias</div>
+          <div id="aiCrono"></div>
+        </div>
         <div id="aiVazio" style="color:var(--muted); font-size:13px;"></div>
         <div style="margin-top:14px; font-size:11px; color:var(--muted);">
           Gerada automaticamente uma vez por dia a partir dos números do dashboard. Sugestões são um ponto de partida — a decisão é sua.
+          Executou algo? Registre no arquivo <b>acoes.json</b> do repositório (mesmo esquema do custos.json): a próxima análise considera o que foi feito e ajusta o cronograma.
         </div>
       </div>
     </section>
@@ -1324,6 +1344,31 @@ function renderInsights() {
       ${a.como ? `<div class="ai-acao-detalhe"><b>Como:</b> ${a.como}</div>` : ""}
     </div>
   `).join("");
+
+  // Cronograma (linha do tempo dos próximos 14 dias)
+  const wrap = document.getElementById("aiCronoWrap");
+  const crono = document.getElementById("aiCrono");
+  const itens = (ins.cronograma || []).slice().sort((a, b) => (a.data || "").localeCompare(b.data || ""));
+  if (!itens.length) {
+    wrap.style.display = "none";
+  } else {
+    wrap.style.display = "block";
+    const hoje = new Date().toISOString().slice(0, 10);
+    const DIAS = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
+    crono.innerHTML = itens.map((c) => {
+      const passou = c.data < hoje;
+      const [y, m, d] = (c.data || "").split("-");
+      const diaSemana = c.data ? DIAS[new Date(c.data + "T12:00:00Z").getUTCDay()] : "";
+      return `
+        <div class="crono-item ${passou ? "passou" : ""} ${c.data === hoje ? "hoje" : ""}">
+          <div class="crono-data">${d}/${m}<br><span>${diaSemana}</span></div>
+          <div class="crono-corpo">
+            <div class="crono-titulo">${c.titulo || ""}${c.data === hoje ? ' <span class="crono-hoje-tag">hoje</span>' : ""}</div>
+            <div class="crono-detalhe">${c.detalhe || ""}</div>
+          </div>
+        </div>`;
+    }).join("");
+  }
 }
 
 let LAST_PERIOD = null;
