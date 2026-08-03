@@ -173,6 +173,33 @@
   .cenario-linha:last-child { border-bottom: none; }
   .cenario-linha .lab { color: var(--muted); }
   .cenario-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:2px 7px; border-radius:9px; background:var(--ink); color:#fff; margin-left:6px; }
+
+  /* Ajuda: "?" que explica o termo ao passar o mouse ou tocar */
+  .ajuda {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 14px; height: 14px; border-radius: 50%; border: 1px solid #c4c4c4;
+    color: #888; font-size: 9px; font-weight: 700; cursor: help;
+    vertical-align: middle; margin-left: 4px; position: relative; flex-shrink: 0;
+    font-family: inherit; background: transparent; padding: 0; line-height: 1;
+  }
+  .ajuda:hover, .ajuda:focus { border-color: var(--ink); color: var(--ink); outline: none; }
+  .ajuda::after {
+    content: attr(data-ajuda);
+    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: #fff; font-size: 11px; font-weight: 400;
+    line-height: 1.45; letter-spacing: 0; text-transform: none;
+    padding: 9px 11px; border-radius: 8px; width: 250px; text-align: left;
+    opacity: 0; visibility: hidden; transition: opacity 0.12s; z-index: 40; pointer-events: none;
+  }
+  .ajuda:hover::after, .ajuda:focus::after { opacity: 1; visibility: visible; }
+  /* Perto da borda direita, o balão abre para a esquerda */
+  .ajuda.esq::after { left: auto; right: 0; transform: none; }
+
+  .glossario { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 22px; }
+  .gl-item { font-size: 12px; line-height: 1.5; border-bottom: 1px solid #f2f2f2; padding-bottom: 10px; }
+  .gl-item b { display: block; font-size: 12.5px; margin-bottom: 2px; }
+  .gl-item span { color: #555; }
+  @media (max-width: 900px) { .glossario { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
 
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
@@ -300,7 +327,7 @@
         <div class="delta" id="kpiOrdersDelta"></div>
       </div>
       <div class="card">
-        <div class="kpi-label">Ticket médio</div>
+        <div class="kpi-label">Ticket médio <button type="button" class="ajuda esq" data-ajuda="Valor médio de cada pedido: faturamento dividido pelo número de pedidos. Subir o ticket é vender mais por pedido (combos, frete grátis acima de X).">?</button></div>
         <div class="kpi-value" id="kpiAov">—</div>
         <div class="delta" id="kpiAovDelta"></div>
       </div>
@@ -328,6 +355,28 @@
         </table>
       </div>
     </section>
+    <section style="margin-top:16px;">
+      <div class="card">
+        <div class="section-title">Glossário — o que significa cada indicador</div>
+        <div class="glossario">
+          <div class="gl-item"><b>Total em vendas</b><span>Todos os pedidos que não foram reembolsados, incluindo os que tiveram o pagamento expirado ou cancelado. É a mesma conta do relatório de vendas da Shopify.</span></div>
+          <div class="gl-item"><b>Pagamentos confirmados</b><span>Só os pedidos efetivamente pagos — o dinheiro que entrou no caixa. É menor que o "total em vendas" e é o número mais honesto para decisões financeiras.</span></div>
+          <div class="gl-item"><b>Ticket médio</b><span>Faturamento ÷ número de pedidos. Quanto cada pedido rende, em média.</span></div>
+          <div class="gl-item"><b>Margem bruta</b><span>O que sobra da venda depois de descontar apenas o custo dos produtos. Não inclui frete, taxa de pagamento, impostos nem despesas fixas.</span></div>
+          <div class="gl-item"><b>Lucro bruto</b><span>Faturamento menos o custo dos produtos vendidos, em reais. É o que sobra para pagar todo o resto do negócio.</span></div>
+          <div class="gl-item"><b>CAC</b><span>Custo de Aquisição de Cliente. Investimento em anúncio ÷ clientes novos. Se o CAC for maior que o lucro da primeira compra, o negócio só fecha se o cliente voltar.</span></div>
+          <div class="gl-item"><b>ROAS</b><span>Retorno Sobre o Investimento em Anúncio. Um ROAS de 3x significa R$3 de venda para cada R$1 investido. Atenção: não é lucro — não desconta o custo do produto.</span></div>
+          <div class="gl-item"><b>Taxa de recompra</b><span>Percentual de clientes do período que já haviam comprado antes. Quanto maior, menos o faturamento depende de anúncio.</span></div>
+          <div class="gl-item"><b>Cobertura de estoque</b><span>Por quantos dias o estoque atual dura no ritmo de venda do período.</span></div>
+          <div class="gl-item"><b>Giro de estoque</b><span>Quantas vezes o estoque inteiro foi vendido no período. Giro baixo é dinheiro parado na prateleira.</span></div>
+          <div class="gl-item"><b>Variação</b><span>Uma combinação específica de tamanho e cor (ex: Camiseta Pima Goiaba tamanho M). Um produto tem várias variações — por isso os números de variação são sempre maiores que os de produto.</span></div>
+          <div class="gl-item"><b>Checkout abandonado</b><span>Quem preencheu os dados de contato no checkout mas não pagou. Diferente de carrinho abandonado, que é quem saiu antes disso (esse a Shopify não informa pela API).</span></div>
+          <div class="gl-item"><b>Alcance</b><span>Quantas PESSOAS diferentes viram o conteúdo.</span></div>
+          <div class="gl-item"><b>Visualizações</b><span>Quantas VEZES o conteúdo foi visto. Sempre maior que o alcance, porque a mesma pessoa pode ver várias vezes.</span></div>
+          <div class="gl-item"><b>Interações</b><span>Curtidas, comentários, salvamentos e compartilhamentos somados.</span></div>
+        </div>
+      </div>
+    </section>
     </div><!-- fim página Visão geral -->
 
     <div class="page" id="page-estoque">
@@ -341,27 +390,27 @@
           </div>
           <div class="stock-box">
             <div class="val" id="stockCoverage">—</div>
-            <div class="lbl">Cobertura (dias)</div>
+            <div class="lbl">Cobertura (dias) <button type="button" class="ajuda" data-ajuda="Por quantos dias o estoque atual dura, mantido o ritmo de venda do período. Abaixo de 15 dias é sinal de repor.">?</button></div>
           </div>
           <div class="stock-box">
             <div class="val" id="stockTurnover">—</div>
-            <div class="lbl">Giro no período</div>
+            <div class="lbl">Giro no período <button type="button" class="ajuda esq" data-ajuda="Quantas vezes o estoque inteiro foi vendido no período. 0,5x significa que metade do estoque girou. Quanto maior, menos dinheiro parado.">?</button></div>
           </div>
         </div>
         <div class="stock-grid cols-2" style="margin-top:10px;">
           <div class="stock-box clickable" data-list="stalled">
             <div class="val small" id="stockStalled">—</div>
-            <div class="lbl">Peças paradas (180d+) →</div>
+            <div class="lbl">Peças paradas (180d+) <button type="button" class="ajuda" data-ajuda="Variações (tamanho/cor) que não vendem há mais de 180 dias, mesmo em produtos que ainda vendem em outros tamanhos. Costuma ser grade quebrada.">?</button> →</div>
           </div>
           <div class="stock-box clickable" data-list="stockout">
             <div class="val small" id="stockStockout">—</div>
-            <div class="lbl">Produtos com variação zerada →</div>
+            <div class="lbl">Produtos com variação zerada <button type="button" class="ajuda" data-ajuda="Tamanhos ou cores com estoque zerado. O produto continua à venda, mas quem usa aquele tamanho não consegue comprar — é venda perdida silenciosa.">?</button> →</div>
           </div>
         </div>
         <div class="stock-grid cols-2" style="margin-top:10px;">
           <div class="stock-box clickable" data-list="prodstalled">
             <div class="val small" id="stockProdStalled">—</div>
-            <div class="lbl">Produtos 100% parados →</div>
+            <div class="lbl">Produtos 100% parados <button type="button" class="ajuda esq" data-ajuda="Produtos em que NENHUMA variação vendeu nos últimos 180 dias. O produto inteiro parou — são os melhores candidatos a promoção ou descontinuação.">?</button> →</div>
           </div>
           <div class="stock-box clickable" id="lowStockBox" data-list="lowstock">
             <div class="val small" id="stockLow">—</div>
@@ -390,11 +439,11 @@
         <div class="stock-grid cols-2" style="margin-top:10px;">
           <div class="stock-box">
             <div class="val" id="custRecompraPct">—</div>
-            <div class="lbl">% recompra</div>
+            <div class="lbl">% recompra <button type="button" class="ajuda" data-ajuda="Percentual dos clientes do período que já haviam comprado antes. Recompra alta significa menos dependência de anúncio para faturar.">?</button></div>
           </div>
           <div class="stock-box">
             <div class="val small" id="custCac">—</div>
-            <div class="lbl">CAC no período</div>
+            <div class="lbl">CAC no período <button type="button" class="ajuda esq" data-ajuda="Custo de Aquisição de Cliente: quanto foi investido em anúncio para conseguir cada cliente NOVO (investimento ÷ clientes novos). Compare com o ticket médio e a margem: se o CAC for maior que o lucro da primeira compra, só compensa se o cliente voltar.">?</button></div>
           </div>
         </div>
       </div>
@@ -404,11 +453,11 @@
         <div class="stock-grid cols-2">
           <div class="stock-box">
             <div class="val" id="marginPct">—</div>
-            <div class="lbl">Margem bruta</div>
+            <div class="lbl">Margem bruta <button type="button" class="ajuda" data-ajuda="Percentual que sobra da venda depois de descontar só o custo dos produtos. NÃO inclui frete, taxa de pagamento, impostos nem despesas fixas — o lucro final é menor.">?</button></div>
           </div>
           <div class="stock-box">
             <div class="val small" id="marginProfit">—</div>
-            <div class="lbl">Lucro bruto</div>
+            <div class="lbl">Lucro bruto <button type="button" class="ajuda esq" data-ajuda="Faturamento menos o custo dos produtos vendidos, em reais. É o que sobra para pagar todo o resto (frete, taxas, impostos, salários, anúncio).">?</button></div>
           </div>
         </div>
         <div id="marginBreakdown" class="calc"></div>
@@ -424,7 +473,7 @@
         <div class="stock-grid">
           <div class="stock-box">
             <div class="val" id="ckIniciados">—</div>
-            <div class="lbl">Checkouts iniciados</div>
+            <div class="lbl">Checkouts iniciados <button type="button" class="ajuda" data-ajuda="Quantas pessoas chegaram a preencher os dados de contato no checkout. Não é o mesmo que carrinho: quem só adicionou ao carrinho e saiu antes disso não aparece aqui.">?</button></div>
           </div>
           <div class="stock-box">
             <div class="val" id="ckPedidos">—</div>
@@ -432,7 +481,7 @@
           </div>
           <div class="stock-box">
             <div class="val" id="ckTaxa">—</div>
-            <div class="lbl">Taxa de abandono</div>
+            <div class="lbl">Taxa de abandono <button type="button" class="ajuda esq" data-ajuda="Percentual de quem começou o checkout (já informou contato) e não concluiu a compra. Frete caro, poucas opções de pagamento e frete calculado só no fim são as causas mais comuns.">?</button></div>
           </div>
         </div>
         <div class="calc" id="ckFunil"></div>
@@ -448,7 +497,7 @@
           </div>
           <div class="stock-box">
             <div class="val small" id="ckTicket">—</div>
-            <div class="lbl">Ticket médio abandonado</div>
+            <div class="lbl">Ticket médio abandonado <button type="button" class="ajuda esq" data-ajuda="Valor médio dos checkouts abandonados. Se for bem maior que o ticket médio das vendas, algo trava os pedidos grandes: frete, limite de parcelamento ou desconfiança.">?</button></div>
           </div>
         </div>
         <div style="margin-top:14px;">
@@ -474,11 +523,11 @@
           </div>
           <div class="stock-box">
             <div class="val" id="marketingRoas">—</div>
-            <div class="lbl">ROAS (receita Shopify)</div>
+            <div class="lbl">ROAS (receita Shopify) <button type="button" class="ajuda" data-ajuda="ROAS = Retorno Sobre o Investimento em Anúncio. Aqui: TODA a receita da loja dividida pelo investimento. É a leitura otimista, porque inclui vendas que viriam sem anúncio (orgânico, clientes recorrentes).">?</button></div>
           </div>
           <div class="stock-box">
             <div class="val" id="marketingRoasMeta">—</div>
-            <div class="lbl">ROAS (atribuído Meta)</div>
+            <div class="lbl">ROAS (atribuído Meta) <button type="button" class="ajuda esq" data-ajuda="O retorno que o pixel do Meta credita aos anúncios: vendas atribuídas ÷ investimento. Leitura conservadora, mas ainda otimista — a Meta credita a si mesma vendas que aconteceriam de qualquer forma. A verdade fica entre os dois ROAS.">?</button></div>
           </div>
         </div>
         <div id="marketingNote" style="margin-top:10px;font-size:11px;color:var(--muted);"></div>
@@ -1778,7 +1827,35 @@ function renderMetas() {
       (m.diasRestantes > 0 ? ` — ${BRL(falta / m.diasRestantes)} por dia nos ${m.diasRestantes} dias restantes.` : ".");
   } else wrap.style.display = "none";
 
-  cont.innerHTML = m.cenarios.map((c, i) => `
+  const margemPct = DASHBOARD_DATA.periodsByMode?.[CURRENT_MODE]?.["30d"]?.margin?.overallMarginPct ?? null;
+  // Quanto do faturamento deve sobrar depois do custo do produto e do
+  // anúncio, para a operação bancar frete, taxas, impostos e estrutura.
+  const ALVO_SOBRA_PCT = 50;
+
+  cont.innerHTML = m.cenarios.map((c, i) => {
+    // Viabilidade: o que sobra depois do custo do produto e do anúncio.
+    // É o teste que separa "crescer" de "crescer ganhando dinheiro".
+    let viab = "";
+    if (margemPct !== null && c.investimento !== null) {
+      const lucroBruto = c.valor * (margemPct / 100);
+      const sobra = lucroBruto - c.investimento;
+      const sobraPct = c.valor ? (sobra / c.valor) * 100 : 0;
+      const alvo = c.valor * (ALVO_SOBRA_PCT / 100);
+      // Teto de investimento para atingir o alvo de sobra
+      const tetoInvest = Math.max(lucroBruto - alvo, 0);
+      const abaixoDoAlvo = sobraPct < ALVO_SOBRA_PCT;
+      viab = `
+        <div style="margin-top:10px; padding-top:8px; border-top:1px solid var(--line);">
+          <div class="cenario-linha"><span class="lab">Lucro bruto (${margemPct.toFixed(0)}%)</span><span>${BRL(lucroBruto)}</span></div>
+          <div class="cenario-linha"><span class="lab">− Investimento em anúncio</span><span style="color:var(--down)">${BRL(c.investimento)}</span></div>
+          <div class="cenario-linha" style="font-weight:700;"><span class="lab" style="color:var(--ink)">= Sobra antes das despesas</span><span style="color:${abaixoDoAlvo ? "var(--down)" : "var(--up)"}">${BRL(sobra)} · ${sobraPct.toFixed(0)}%</span></div>
+          ${abaixoDoAlvo ? `<div style="font-size:10px;color:var(--down);margin-top:5px;line-height:1.45;">
+            Abaixo do alvo de ${ALVO_SOBRA_PCT}%. Para chegar lá neste faturamento, o investimento teria que ficar em <b>${BRL(tetoInvest)}</b> (${c.valor ? ((tetoInvest / c.valor) * 100).toFixed(0) : 0}% da receita, ROAS de ${tetoInvest > 0 ? (c.valor / tetoInvest).toFixed(1).replace(".", ",") : "—"}x).
+            Como isso é exigente, o caminho costuma ser o outro lado da conta: subir ticket médio, recompra e margem, ou reduzir abandono — assim o mesmo faturamento sai com menos verba.
+          </div>` : `<div style="font-size:10px;color:var(--up);margin-top:5px;">Acima do alvo de ${ALVO_SOBRA_PCT}% — operação saudável neste cenário.</div>`}
+        </div>`;
+    }
+    return `
     <div class="cenario ${i === 1 ? "destaque" : ""}">
       <div class="cenario-nome">${c.nome}${i === 1 ? '<span class="cenario-tag">sugerida</span>' : ""}</div>
       <div class="cenario-valor">${BRL(c.valor)}</div>
@@ -1788,8 +1865,9 @@ function renderMetas() {
       ${c.pedidosTotais !== null ? `<div class="cenario-linha"><span class="lab">Pedidos no mês</span><span>${c.pedidosTotais}</span></div>` : ""}
       ${c.pedidosPorDia !== null ? `<div class="cenario-linha"><span class="lab">Pedidos por dia</span><span>${c.pedidosPorDia.toFixed(1).replace(".", ",")}</span></div>` : ""}
       ${c.investimento !== null ? `<div class="cenario-linha"><span class="lab">Investimento estimado</span><span>${BRL(c.investimento)}</span></div>` : ""}
-    </div>
-  `).join("");
+      ${viab}
+    </div>`;
+  }).join("");
 
   tbody.innerHTML = m.historico.slice().reverse().map(h => {
     const [a, ms] = h.mes.split("-");
