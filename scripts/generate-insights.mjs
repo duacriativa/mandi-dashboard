@@ -260,7 +260,7 @@ async function main() {
   // Pauta de stories: gerada só às SEGUNDAS, cobrindo de quarta a terça.
   // Nos outros dias, a pauta da última segunda é preservada (ver adiante).
   const hoje = new Date();
-  const ehSegunda = true;
+  const ehSegunda = hoje.getUTCDay() === 1;
   let promptExtra = "";
   if (ehSegunda) {
     const dias = [];
