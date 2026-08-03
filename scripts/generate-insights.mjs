@@ -163,7 +163,10 @@ async function chamarClaude(resumo) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 2000,
+      // Folga generosa: modelos com raciocínio adaptativo consomem parte
+      // do limite de saída "pensando" antes de responder. Com limite
+      // apertado, o JSON final sai cortado no meio.
+      max_tokens: 8000,
       system: PROMPT_SISTEMA,
       messages: [
         {
@@ -182,14 +185,34 @@ async function chamarClaude(resumo) {
   }
 
   const data = await res.json();
+
+  if (data.stop_reason === "max_tokens") {
+    throw new Error("Resposta cortada por limite de tokens — aumente max_tokens no script.");
+  }
+
   const textoResposta = (data.content || [])
     .filter((b) => b.type === "text")
     .map((b) => b.text)
     .join("\n");
 
-  // Remove cercas de código caso o modelo desobedeça o formato
+  if (!textoResposta.trim()) {
+    throw new Error(`Resposta sem bloco de texto. Blocos recebidos: ${(data.content || []).map((b) => b.type).join(", ") || "nenhum"}`);
+  }
+
+  // Extrai o objeto JSON mesmo que venha com cercas de código ou texto em volta
   const limpo = textoResposta.replace(/```json|```/g, "").trim();
-  const parsed = JSON.parse(limpo);
+  const ini = limpo.indexOf("{");
+  const fim = limpo.lastIndexOf("}");
+  if (ini === -1 || fim <= ini) {
+    throw new Error(`Resposta não contém JSON. Início do texto: "${limpo.slice(0, 150)}"`);
+  }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(limpo.slice(ini, fim + 1));
+  } catch (e) {
+    throw new Error(`JSON inválido na resposta (${e.message}). Fim do texto: "...${limpo.slice(-150)}"`);
+  }
 
   if (!parsed.diagnostico || !Array.isArray(parsed.acoes)) {
     throw new Error("Resposta da IA veio em formato inesperado.");
