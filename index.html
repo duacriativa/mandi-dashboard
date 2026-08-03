@@ -174,6 +174,19 @@
   .cenario-linha .lab { color: var(--muted); }
   .cenario-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:2px 7px; border-radius:9px; background:var(--ink); color:#fff; margin-left:6px; }
 
+  .premissas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 20px; }
+  .prem { border-bottom: 1px solid #f2f2f2; padding-bottom: 8px; }
+  .prem-val { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .prem-lab { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .cel-val { font-weight: 700; }
+  .cel-sub { font-size: 10px; color: var(--muted); }
+  .cel-ganho { font-size: 10px; color: var(--up); font-weight: 600; }
+  .base-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .base-box { background: var(--soft); border-radius: 10px; padding: 12px; }
+  .base-box .v { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .base-box .l { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  @media (max-width: 900px) { .premissas { grid-template-columns: repeat(2, 1fr); } .base-grid { grid-template-columns: repeat(2, 1fr); } }
+
   /* Ajuda: "?" que explica o termo ao passar o mouse ou tocar */
   .ajuda {
     display: inline-flex; align-items: center; justify-content: center;
@@ -578,7 +591,38 @@
       </div>
     </section>
 
-    <section class="grid-3" id="metaCenarios"></section>
+    <section class="card" style="margin-bottom:16px;">
+      <div class="section-title">Premissas atuais <button type="button" class="ajuda" data-ajuda="Calculadas com os últimos 90 dias. Sessões pagas e custo por sessão vêm dos cliques e do gasto do Meta Ads; a conversão paga é quantas dessas sessões viram pedido; o orgânico é o que a loja vende sem depender de anúncio.">?</button></div>
+      <div class="premissas" id="metaPremissas"></div>
+    </section>
+
+    <section class="card" style="margin-bottom:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+        <div class="section-title" style="margin:0;">Se investir em tráfego</div>
+        <div class="mode-toggle" id="metaInvest">
+          <button type="button" data-inv="2500">R$ 2.500</button>
+          <button type="button" data-inv="3000" class="active">R$ 3.000</button>
+          <button type="button" data-inv="3500">R$ 3.500</button>
+        </div>
+      </div>
+      <div id="metaBase" style="margin-top:12px;"></div>
+    </section>
+
+    <section class="card" style="margin-bottom:16px;">
+      <div class="section-title">O que muda ao melhorar cada alavanca</div>
+      <div style="overflow-x:auto;">
+        <table id="metaAlavancas">
+          <thead><tr>
+            <th>Alavanca</th>
+            <th class="num">Conservador</th>
+            <th class="num">Realista</th>
+            <th class="num">Otimista</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="metaAlavancasNota" style="margin-top:10px; font-size:11px; color:var(--muted);"></div>
+    </section>
 
     <section style="margin-top:16px;">
       <div class="card">
@@ -1693,202 +1737,203 @@ function renderInstagram() {
   `).join("") || '<div style="color:var(--muted);font-size:13px;">Nenhum post disponível.</div>';
 }
 
-// ---- Metas do mês ----
-// Projeta o fechamento do mês em três cenários, a partir do histórico real
-// de faturamento. Não usa taxa de conversão nem CPS (a Shopify não expõe
-// sessões pela API) — usa ticket médio e CPA, que temos com precisão.
-function calcularMetas() {
-  const flat = DASHBOARD_DATA.ordersFlat || [];
-  if (!flat.length) return null;
-  const pool = CURRENT_MODE === "confirmed" ? flat.filter(o => o.p === 1) : flat;
+// ---- Metas: modelo de funil (ticket x conversão x custo por sessão) ----
+// Premissas vêm dos últimos 90 dias. Sessões pagas = cliques do Meta;
+// o que a loja vende além do que o Meta atribui é tratado como orgânico.
+let META_INVESTIMENTO = 3000;
 
-  // Agrupa por mês
-  const meses = {};
-  for (const o of pool) {
-    const m = o.d.slice(0, 7);
-    if (!meses[m]) meses[m] = { receita: 0, pedidos: 0 };
-    meses[m].receita += o.t;
-    meses[m].pedidos += 1;
-  }
-  const chaves = Object.keys(meses).sort();
-  if (!chaves.length) return null;
+function premissasAtuais() {
+  const flat = DASHBOARD_DATA.ordersFlat || [];
+  const m = DASHBOARD_DATA.marketing;
+  if (!flat.length) return null;
 
   const hoje = new Date();
-  const mesAtual = hoje.toISOString().slice(0, 7);
-  const diasNoMes = new Date(hoje.getUTCFullYear(), hoje.getUTCMonth() + 1, 0).getUTCDate();
-  const diaDeHoje = hoje.getUTCDate();
-  const diasRestantes = Math.max(diasNoMes - diaDeHoje, 0);
+  const ini90 = new Date(hoje); ini90.setDate(ini90.getDate() - 90);
+  const corte = ini90.toISOString().slice(0, 10);
 
-  const atual = meses[mesAtual] || { receita: 0, pedidos: 0 };
-  const completos = chaves.filter(m => m !== mesAtual);
-  const ultimos3 = completos.slice(-3).map(m => meses[m].receita);
-  const media3 = ultimos3.length ? ultimos3.reduce((a, b) => a + b, 0) / ultimos3.length : 0;
-  const mesAnterior = completos.length ? meses[completos[completos.length - 1]].receita : 0;
-  const recorde = completos.length ? Math.max(...completos.map(m => meses[m].receita)) : 0;
+  const pool = (CURRENT_MODE === "confirmed" ? flat.filter(o => o.p === 1) : flat)
+    .filter(o => o.d.slice(0, 10) >= corte);
+  if (!pool.length) return null;
 
-  // Crescimento típico mês a mês (mediana das variações, limitada a ±30%
-  // pra um mês atípico não distorcer a projeção)
-  const variacoes = [];
-  for (let i = 1; i < completos.length; i++) {
-    const ant = meses[completos[i - 1]].receita, cur = meses[completos[i]].receita;
-    if (ant > 0) variacoes.push((cur - ant) / ant);
-  }
-  variacoes.sort((a, b) => a - b);
-  let crescimento = variacoes.length ? variacoes[Math.floor(variacoes.length / 2)] : 0;
-  crescimento = Math.max(-0.3, Math.min(0.3, crescimento));
+  const receita = pool.reduce((s, o) => s + o.t, 0);
+  const pedidos = pool.length;
+  const ticket = pedidos ? receita / pedidos : 0;
 
-  // Projeção pelo ritmo do mês (run-rate)
-  const runRate = diaDeHoje > 0 ? (atual.receita / diaDeHoje) * diasNoMes : 0;
-  const ticket = atual.pedidos ? atual.receita / atual.pedidos
-    : (completos.length ? meses[completos[completos.length - 1]].receita / Math.max(meses[completos[completos.length - 1]].pedidos, 1) : 0);
-
-  // CPA médio dos últimos 30 dias, se houver dados de anúncio
-  let cpa = null;
-  const m = DASHBOARD_DATA.marketing;
+  let cps = null, convPaga = null, pedidosPagosMes = 0, sessoesPagasMes = 0, investMes = 0;
   if (m && Array.isArray(m.dailyAds)) {
-    const corte = new Date(hoje); corte.setDate(corte.getDate() - 30);
-    const c = corte.toISOString().slice(0, 10);
-    const janela = m.dailyAds.filter(d => d.date >= c);
-    const gasto = janela.reduce((s, d) => s + (d.spend || 0), 0);
-    const compras = janela.reduce((s, d) => s + (d.purchases || 0), 0);
-    if (gasto > 0 && compras > 0) cpa = gasto / compras;
+    const jan = m.dailyAds.filter(d => d.date >= corte);
+    const gasto = jan.reduce((s, d) => s + (d.spend || 0), 0);
+    const cliques = jan.reduce((s, d) => s + (d.clicks || 0), 0);
+    const compras = jan.reduce((s, d) => s + (d.purchases || 0), 0);
+    if (cliques > 0) {
+      cps = gasto / cliques;
+      convPaga = compras / cliques;
+      sessoesPagasMes = cliques / 3;
+      pedidosPagosMes = compras / 3;
+      investMes = gasto / 3;
+    }
   }
 
-  // Os três cenários. Piso: nunca menor que o já realizado.
-  const conservador = Math.max(Math.min(runRate, media3 || runRate), atual.receita);
-  const realista = Math.max((runRate + (mesAnterior * (1 + crescimento))) / 2 || runRate, conservador);
-  const otimista = Math.max(recorde, realista * 1.15);
+  // Orgânico = tudo que a loja vendeu além do que o Meta atribuiu
+  const pedidosMes = pedidos / 3;
+  const pedidosOrganicosMes = Math.max(pedidosMes - pedidosPagosMes, 0);
+  const pctOrganico = pedidosMes ? (pedidosOrganicosMes / pedidosMes) * 100 : 100;
 
-  const montar = (nome, valor, explicacao) => {
-    const falta = Math.max(valor - atual.receita, 0);
-    const pedidosTotais = ticket ? Math.round(valor / ticket) : null;
-    const pedidosFaltam = ticket ? Math.ceil(falta / ticket) : null;
-    return {
-      nome, valor, explicacao,
-      falta,
-      porDia: diasRestantes > 0 ? falta / diasRestantes : falta,
-      pedidosTotais, pedidosFaltam,
-      pedidosPorDia: (pedidosFaltam !== null && diasRestantes > 0) ? pedidosFaltam / diasRestantes : null,
-      investimento: (cpa && pedidosFaltam !== null) ? cpa * pedidosFaltam : null,
-    };
-  };
+  const margemPct = DASHBOARD_DATA.periodsByMode?.[CURRENT_MODE]?.["30d"]?.margin?.overallMarginPct ?? null;
 
   return {
-    mesAtual, diasNoMes, diaDeHoje, diasRestantes,
-    realizado: atual.receita, pedidosFeitos: atual.pedidos,
-    ritmoDia: diaDeHoje > 0 ? atual.receita / diaDeHoje : 0,
-    ticket, cpa, crescimento, media3, mesAnterior, recorde,
-    cenarios: [
-      montar("Conservador", conservador, "Mantendo o ritmo atual, sem crescimento — o piso realista se nada mudar."),
-      montar("Realista", realista, "Média entre o ritmo atual e o mês anterior corrigido pelo seu crescimento típico."),
-      montar("Otimista", otimista, "Ancorado no seu melhor mês histórico, com margem de superação."),
-    ],
-    historico: chaves.slice(-12).map((k, i, arr) => {
-      const anterior = i > 0 ? meses[arr[i - 1]].receita : null;
-      return {
-        mes: k, ...meses[k],
-        ticket: meses[k].pedidos ? meses[k].receita / meses[k].pedidos : 0,
-        variacao: anterior ? ((meses[k].receita - anterior) / anterior) * 100 : null,
-        emAndamento: k === mesAtual,
-      };
-    }),
+    ticket, cps, convPaga, margemPct,
+    pedidosMes, pedidosOrganicosMes, pedidosPagosMes,
+    sessoesPagasMes, investMes, pctOrganico,
+    temAds: cps !== null && convPaga !== null && convPaga > 0,
   };
 }
 
+// Projeta um mês com um investimento e ajustes nas alavancas
+function projetar(p, investimento, { ticketX = 1, convX = 1, cpsX = 1, organicoX = 1 } = {}) {
+  const ticket = p.ticket * ticketX;
+  const receitaOrganica = p.pedidosOrganicosMes * organicoX * ticket;
+  let sessoes = 0, pedidosPagos = 0, receitaPaga = 0;
+  if (p.temAds) {
+    sessoes = investimento / (p.cps * cpsX);
+    pedidosPagos = sessoes * (p.convPaga * convX);
+    receitaPaga = pedidosPagos * ticket;
+  }
+  const receita = receitaPaga + receitaOrganica;
+  const lucroBruto = p.margemPct !== null ? receita * (p.margemPct / 100) : null;
+  const sobra = lucroBruto !== null ? lucroBruto - investimento : null;
+  return {
+    receita, receitaPaga, receitaOrganica, sessoes, ticket,
+    pedidos: pedidosPagos + p.pedidosOrganicosMes * organicoX,
+    lucroBruto, sobra,
+    sobraPct: (sobra !== null && receita) ? (sobra / receita) * 100 : null,
+    roas: investimento ? receita / investimento : null,
+  };
+}
+
+const ALAVANCAS = [
+  { chave: "ticketX", nome: "Ticket médio", niveis: [1.05, 1.12, 1.20],
+    como: "Combo, kit ou frete grátis a partir de um valor acima do ticket atual." },
+  { chave: "convX", nome: "Taxa de conversão", niveis: [1.10, 1.25, 1.45],
+    como: "Página de produto, prova social, checkout mais simples e recuperação de carrinho." },
+  { chave: "cpsX", nome: "Custo por sessão", niveis: [0.93, 0.85, 0.75], inverso: true,
+    como: "Criativos com melhor CTR e públicos mais qualificados fazem o clique custar menos." },
+  { chave: "organicoX", nome: "Visitas orgânicas", niveis: [1.15, 1.35, 1.60],
+    como: "Conteúdo, Instagram, e-mail e clientes recorrentes trazendo visita sem custo de mídia." },
+];
+
 function renderMetas() {
-  const m = calcularMetas();
-  const cont = document.getElementById("metaCenarios");
-  const tbody = document.querySelector("#metaHistorico tbody");
-  const nota = document.getElementById("metaNota");
-  if (!m) {
-    cont.innerHTML = '<div class="card" style="grid-column:1/-1;color:var(--muted);font-size:13px;">Rode o workflow para carregar o histórico de pedidos.</div>';
+  const p = premissasAtuais();
+  const prem = document.getElementById("metaPremissas");
+  const base = document.getElementById("metaBase");
+  const tbody = document.querySelector("#metaAlavancas tbody");
+  const nota = document.getElementById("metaAlavancasNota");
+  const hist = document.querySelector("#metaHistorico tbody");
+  if (!p) {
+    prem.innerHTML = '<div style="color:var(--muted);font-size:13px;">Rode o workflow para carregar o histórico.</div>';
     return;
   }
 
-  const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-  const [ano, mes] = m.mesAtual.split("-");
-  document.getElementById("metaTituloMes").textContent =
-    `Meta de ${MESES[parseInt(mes, 10) - 1]} de ${ano} — dia ${m.diaDeHoje} de ${m.diasNoMes}`;
-  document.getElementById("metaRealizado").textContent = BRL(m.realizado);
-  document.getElementById("metaDiasRest").textContent = m.diasRestantes;
-  document.getElementById("metaRitmo").textContent = BRL(m.ritmoDia);
+  const pctFmt = (n, casas = 2) => n.toFixed(casas).replace(".", ",") + "%";
+  prem.innerHTML = `
+    <div class="prem"><div class="prem-val">${BRL(p.ticket)}</div><div class="prem-lab">Ticket médio</div></div>
+    <div class="prem"><div class="prem-val">${p.temAds ? BRL(p.cps) : "—"}</div><div class="prem-lab">Custo por sessão paga</div></div>
+    <div class="prem"><div class="prem-val">${p.temAds ? pctFmt(p.convPaga * 100) : "—"}</div><div class="prem-lab">Conversão do tráfego pago</div></div>
+    <div class="prem"><div class="prem-val">${p.temAds ? Math.round(p.sessoesPagasMes).toLocaleString("pt-BR") : "—"}</div><div class="prem-lab">Sessões pagas por mês</div></div>
+    <div class="prem"><div class="prem-val">${pctFmt(p.pctOrganico, 0)}</div><div class="prem-lab">Dos pedidos vêm do orgânico</div></div>
+    <div class="prem"><div class="prem-val">${p.margemPct !== null ? pctFmt(p.margemPct, 1) : "—"}</div><div class="prem-lab">Margem bruta</div></div>`;
 
-  // Meta manual definida em metas.json
-  const manual = DASHBOARD_DATA.metas?.[m.mesAtual];
-  const wrap = document.getElementById("metaManualWrap");
-  if (manual) {
-    wrap.style.display = "block";
-    const pct = Math.min((m.realizado / manual) * 100, 100);
-    document.getElementById("metaManualValor").textContent = BRL(manual);
-    document.getElementById("metaManualBar").style.width = pct.toFixed(1) + "%";
-    const falta = Math.max(manual - m.realizado, 0);
-    document.getElementById("metaManualTxt").textContent =
-      `${pct.toFixed(1).replace(".", ",")}% da meta. Faltam ${BRL(falta)}` +
-      (m.diasRestantes > 0 ? ` — ${BRL(falta / m.diasRestantes)} por dia nos ${m.diasRestantes} dias restantes.` : ".");
-  } else wrap.style.display = "none";
+  const b = projetar(p, META_INVESTIMENTO);
+  document.querySelectorAll("#metaInvest button").forEach(x =>
+    x.classList.toggle("active", Number(x.dataset.inv) === META_INVESTIMENTO));
 
-  const margemPct = DASHBOARD_DATA.periodsByMode?.[CURRENT_MODE]?.["30d"]?.margin?.overallMarginPct ?? null;
-  // Quanto do faturamento deve sobrar depois do custo do produto e do
-  // anúncio, para a operação bancar frete, taxas, impostos e estrutura.
-  const ALVO_SOBRA_PCT = 50;
-
-  cont.innerHTML = m.cenarios.map((c, i) => {
-    // Viabilidade: o que sobra depois do custo do produto e do anúncio.
-    // É o teste que separa "crescer" de "crescer ganhando dinheiro".
-    let viab = "";
-    if (margemPct !== null && c.investimento !== null) {
-      const lucroBruto = c.valor * (margemPct / 100);
-      const sobra = lucroBruto - c.investimento;
-      const sobraPct = c.valor ? (sobra / c.valor) * 100 : 0;
-      const alvo = c.valor * (ALVO_SOBRA_PCT / 100);
-      // Teto de investimento para atingir o alvo de sobra
-      const tetoInvest = Math.max(lucroBruto - alvo, 0);
-      const abaixoDoAlvo = sobraPct < ALVO_SOBRA_PCT;
-      viab = `
-        <div style="margin-top:10px; padding-top:8px; border-top:1px solid var(--line);">
-          <div class="cenario-linha"><span class="lab">Lucro bruto (${margemPct.toFixed(0)}%)</span><span>${BRL(lucroBruto)}</span></div>
-          <div class="cenario-linha"><span class="lab">− Investimento em anúncio</span><span style="color:var(--down)">${BRL(c.investimento)}</span></div>
-          <div class="cenario-linha" style="font-weight:700;"><span class="lab" style="color:var(--ink)">= Sobra antes das despesas</span><span style="color:${abaixoDoAlvo ? "var(--down)" : "var(--up)"}">${BRL(sobra)} · ${sobraPct.toFixed(0)}%</span></div>
-          ${abaixoDoAlvo ? `<div style="font-size:10px;color:var(--down);margin-top:5px;line-height:1.45;">
-            Abaixo do alvo de ${ALVO_SOBRA_PCT}%. Para chegar lá neste faturamento, o investimento teria que ficar em <b>${BRL(tetoInvest)}</b> (${c.valor ? ((tetoInvest / c.valor) * 100).toFixed(0) : 0}% da receita, ROAS de ${tetoInvest > 0 ? (c.valor / tetoInvest).toFixed(1).replace(".", ",") : "—"}x).
-            Como isso é exigente, o caminho costuma ser o outro lado da conta: subir ticket médio, recompra e margem, ou reduzir abandono — assim o mesmo faturamento sai com menos verba.
-          </div>` : `<div style="font-size:10px;color:var(--up);margin-top:5px;">Acima do alvo de ${ALVO_SOBRA_PCT}% — operação saudável neste cenário.</div>`}
-        </div>`;
-    }
-    return `
-    <div class="cenario ${i === 1 ? "destaque" : ""}">
-      <div class="cenario-nome">${c.nome}${i === 1 ? '<span class="cenario-tag">sugerida</span>' : ""}</div>
-      <div class="cenario-valor">${BRL(c.valor)}</div>
-      <div class="cenario-sub">${c.explicacao}</div>
-      <div class="cenario-linha"><span class="lab">Falta faturar</span><span>${BRL(c.falta)}</span></div>
-      <div class="cenario-linha"><span class="lab">Por dia restante</span><span>${BRL(c.porDia)}</span></div>
-      ${c.pedidosTotais !== null ? `<div class="cenario-linha"><span class="lab">Pedidos no mês</span><span>${c.pedidosTotais}</span></div>` : ""}
-      ${c.pedidosPorDia !== null ? `<div class="cenario-linha"><span class="lab">Pedidos por dia</span><span>${c.pedidosPorDia.toFixed(1).replace(".", ",")}</span></div>` : ""}
-      ${c.investimento !== null ? `<div class="cenario-linha"><span class="lab">Investimento estimado</span><span>${BRL(c.investimento)}</span></div>` : ""}
-      ${viab}
+  base.innerHTML = `
+    <div class="base-grid">
+      <div class="base-box"><div class="v">${BRL(b.receita)}</div><div class="l">Faturamento projetado</div></div>
+      <div class="base-box"><div class="v">${Math.round(b.pedidos)}</div><div class="l">Pedidos no mês</div></div>
+      <div class="base-box"><div class="v">${b.roas ? b.roas.toFixed(1).replace(".", ",") + "x" : "—"}</div><div class="l">ROAS sobre a loja toda</div></div>
+      <div class="base-box"><div class="v">${b.sobra !== null ? BRL(b.sobra) : "—"}</div><div class="l">Sobra após produto e mídia</div></div>
+    </div>
+    <div style="margin-top:10px; font-size:12px; color:#444;">
+      Mantendo tudo como está hoje: <b>${BRL(b.receitaPaga)}</b> viriam do tráfego pago e
+      <b>${BRL(b.receitaOrganica)}</b> do orgânico (${p.pctOrganico.toFixed(0)}% dos pedidos hoje não dependem de anúncio).
     </div>`;
+
+  const NIVEIS = ["Conservador", "Realista", "Otimista"];
+  tbody.innerHTML = ALAVANCAS.map(al => {
+    const celulas = al.niveis.map(v => {
+      const r = projetar(p, META_INVESTIMENTO, { [al.chave]: v });
+      const ganho = r.receita - b.receita;
+      const delta = al.inverso ? `−${Math.round((1 - v) * 100)}%` : `+${Math.round((v - 1) * 100)}%`;
+      return `<td class="num">
+        <div class="cel-val">${BRL(r.receita)}</div>
+        <div class="cel-ganho">${ganho >= 0 ? "+" : ""}${BRL(ganho)}</div>
+        <div class="cel-sub">${delta} · sobra ${r.sobra !== null ? BRL(r.sobra) : "—"}</div>
+      </td>`;
+    }).join("");
+    return `<tr>
+      <td><b>${al.nome}</b><div class="cel-sub" style="max-width:230px;line-height:1.4;">${al.como}</div></td>
+      ${celulas}</tr>`;
   }).join("");
 
-  tbody.innerHTML = m.historico.slice().reverse().map(h => {
-    const [a, ms] = h.mes.split("-");
-    const cor = h.variacao === null ? "" : (h.variacao >= 0 ? "color:var(--up)" : "color:var(--down)");
+  document.querySelector("#metaAlavancas thead").innerHTML =
+    `<tr><th>Alavanca</th>${NIVEIS.map(n => `<th class="num">${n}</th>`).join("")}</tr>`;
+
+  nota.textContent =
+    `Cada linha mostra o faturamento do mês se APENAS aquela alavanca melhorar, mantendo o investimento de ${BRL(META_INVESTIMENTO)} e o resto igual. ` +
+    `O ganho em verde é a diferença sobre o cenário base acima. Premissas dos últimos 90 dias; sessões pagas e conversão vêm do Meta Ads, o orgânico é o que a loja vende além do que o anúncio atribui. ` +
+    `As melhorias não se somam diretamente: combiná-las tende a render mais que a soma, porque multiplicam entre si.`;
+
+  // Histórico mensal
+  const flat = DASHBOARD_DATA.ordersFlat || [];
+  const pool = CURRENT_MODE === "confirmed" ? flat.filter(o => o.p === 1) : flat;
+  const meses = {};
+  for (const o of pool) {
+    const k = o.d.slice(0, 7);
+    if (!meses[k]) meses[k] = { receita: 0, pedidos: 0 };
+    meses[k].receita += o.t; meses[k].pedidos += 1;
+  }
+  const MES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  const chaves = Object.keys(meses).sort().slice(-12);
+  const mesAtual = new Date().toISOString().slice(0, 7);
+  hist.innerHTML = chaves.slice().reverse().map((k, idx, arr) => {
+    const pos = chaves.indexOf(k);
+    const ant = pos > 0 ? meses[chaves[pos - 1]].receita : null;
+    const v = meses[k], [a, ms] = k.split("-");
+    const varia = ant ? ((v.receita - ant) / ant) * 100 : null;
+    const cor = varia === null ? "" : (varia >= 0 ? "color:var(--up)" : "color:var(--down)");
     return `<tr>
-      <td>${MESES[parseInt(ms, 10) - 1]}/${a.slice(2)}${h.emAndamento ? ' <span style="font-size:10px;color:var(--muted)">(em andamento)</span>' : ""}</td>
-      <td class="num">${BRL(h.receita)}</td>
-      <td class="num">${h.pedidos}</td>
-      <td class="num">${BRL(h.ticket)}</td>
-      <td class="num" style="${cor}">${h.variacao === null ? "—" : (h.variacao >= 0 ? "+" : "") + h.variacao.toFixed(1).replace(".", ",") + "%"}</td>
+      <td>${MES[parseInt(ms,10)-1]}/${a.slice(2)}${k === mesAtual ? ' <span style="font-size:10px;color:var(--muted)">(em andamento)</span>' : ""}</td>
+      <td class="num">${BRL(v.receita)}</td><td class="num">${v.pedidos}</td>
+      <td class="num">${BRL(v.pedidos ? v.receita / v.pedidos : 0)}</td>
+      <td class="num" style="${cor}">${varia === null ? "—" : (varia >= 0 ? "+" : "") + varia.toFixed(1).replace(".", ",") + "%"}</td>
     </tr>`;
   }).join("");
 
-  const partes = [
-    `Projeções sobre "${CURRENT_MODE === "confirmed" ? "Pagamentos confirmados" : "Total em vendas"}" — trocar no topo recalcula tudo.`,
-    `Ticket médio usado: ${BRL(m.ticket)}. Crescimento típico mês a mês: ${(m.crescimento * 100).toFixed(1).replace(".", ",")}%.`,
-  ];
-  if (m.cpa) partes.push(`Investimento estimado usa o CPA real dos últimos 30 dias (${BRL(m.cpa)} por pedido) e pressupõe que todo pedido adicional venha de anúncio — na prática parte vem do orgânico, então é um teto.`);
-  else partes.push("Sem dados de anúncio no período, então não há estimativa de investimento.");
-  partes.push("Para fixar sua própria meta, edite metas.json no repositório.");
-  nota.textContent = partes.join(" ");
+  // Progresso do mês
+  const atual = meses[mesAtual] || { receita: 0, pedidos: 0 };
+  const hoje = new Date();
+  const diasNoMes = new Date(hoje.getUTCFullYear(), hoje.getUTCMonth() + 1, 0).getUTCDate();
+  const dia = hoje.getUTCDate();
+  document.getElementById("metaTituloMes").textContent =
+    `${MES[hoje.getUTCMonth()]} de ${hoje.getUTCFullYear()} — dia ${dia} de ${diasNoMes}`;
+  document.getElementById("metaRealizado").textContent = BRL(atual.receita);
+  document.getElementById("metaDiasRest").textContent = Math.max(diasNoMes - dia, 0);
+  document.getElementById("metaRitmo").textContent = BRL(dia ? atual.receita / dia : 0);
+
+  const manual = DASHBOARD_DATA.metas?.[mesAtual];
+  const wrap = document.getElementById("metaManualWrap");
+  if (manual) {
+    wrap.style.display = "block";
+    const pct = Math.min((atual.receita / manual) * 100, 100);
+    document.getElementById("metaManualValor").textContent = BRL(manual);
+    document.getElementById("metaManualBar").style.width = pct.toFixed(1) + "%";
+    const falta = Math.max(manual - atual.receita, 0);
+    const rest = Math.max(diasNoMes - dia, 0);
+    document.getElementById("metaManualTxt").textContent =
+      `${pct.toFixed(1).replace(".", ",")}% da meta. Faltam ${BRL(falta)}` +
+      (rest > 0 ? ` — ${BRL(falta / rest)} por dia nos ${rest} dias restantes.` : ".");
+  } else wrap.style.display = "none";
 }
 
 let LAST_PERIOD = null;
@@ -2047,6 +2092,14 @@ async function load() {
   document.querySelectorAll(".navitem, #tabsMobile button").forEach((el) => {
     el.addEventListener("click", () => irPara(el.dataset.page));
   });
+  // Seletor de investimento em tráfego na aba Metas
+  document.querySelectorAll("#metaInvest button").forEach((b) => {
+    b.addEventListener("click", () => {
+      META_INVESTIMENTO = Number(b.dataset.inv);
+      renderMetas();
+    });
+  });
+
   const paginaInicial = (location.hash || "").replace("#", "");
   if (["visao", "financeiro", "metas", "estoque", "checkout", "trafego", "instagram", "analise"].includes(paginaInicial)) irPara(paginaInicial);
 
