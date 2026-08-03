@@ -59,7 +59,7 @@ function proximasDatasComerciais(hoje) {
 // Monta um resumo COMPACTO dos dados. Não mandamos o data.json inteiro:
 // ordersFlat e as séries diárias têm milhares de linhas que só encareceriam
 // a chamada sem melhorar a análise. Também não mandamos nomes de clientes.
-function montarResumo(data) {
+function montarResumo(data, historicoAcoes) {
   const m = (modo, chave) => data.periodsByMode?.[modo]?.[chave] || null;
   const fmtPeriodo = (p) =>
     p && {
@@ -82,41 +82,11 @@ function montarResumo(data) {
 
   const inv = data.inventory || {};
   const ck = data.checkout || {};
-  const mk = data.marketing || {};
 
-  // Meta Ads: agrega os últimos 30 dias e as 8 campanhas com mais gasto
-  let ads = null;
-  if (Array.isArray(mk.dailyAds) && mk.dailyAds.length) {
-    const corte = new Date();
-    corte.setDate(corte.getDate() - 30);
-    const c = corte.toISOString().slice(0, 10);
-    const janela = mk.dailyAds.filter((d) => d.date >= c);
-    const gasto = round2(janela.reduce((s, d) => s + (d.spend || 0), 0));
-    const receitaMeta = round2(janela.reduce((s, d) => s + (d.metaRevenue || 0), 0));
-    const porCampanha = {};
-    for (const r of mk.dailyByCampaign || []) {
-      if (r.d < c) continue;
-      if (!porCampanha[r.id]) porCampanha[r.id] = { gasto: 0, receitaMeta: 0, compras: 0 };
-      porCampanha[r.id].gasto += r.s || 0;
-      porCampanha[r.id].receitaMeta += r.v || 0;
-      porCampanha[r.id].compras += r.c || 0;
-    }
-    const nomes = Object.fromEntries((mk.campaigns || []).map((cp) => [cp.id, cp]));
-    ads = {
-      investimento30d: gasto,
-      roasAtribuidoMeta: gasto ? round2(receitaMeta / gasto) : null,
-      campanhas: Object.entries(porCampanha)
-        .sort((a, b) => b[1].gasto - a[1].gasto)
-        .slice(0, 8)
-        .map(([id, v]) => ({
-          nome: nomes[id]?.name || id,
-          status: nomes[id]?.status || "?",
-          gasto: round2(v.gasto),
-          comprasAtribuidas: v.compras,
-          roasMeta: v.gasto ? round2(v.receitaMeta / v.gasto) : null,
-        })),
-    };
-  }
+  // NOTA: dados de tráfego pago (campanhas, ROAS) ficam FORA da análise de
+  // propósito. Campanhas têm objetivos diferentes (engajamento, alcance,
+  // conversão) e julgá-las todas pela régua de ROAS de compra gera
+  // conclusões erradas — a gestão de tráfego é análise à parte.
 
   // Checkout abandonado: últimos 30 dias
   let checkout = null;
@@ -157,7 +127,7 @@ function montarResumo(data) {
       top10EstoqueBaixo: (inv.lowStockList || []).slice(0, 10),
     },
     checkoutAbandonado: checkout,
-    trafegoPago: ads,
+    acoesJaExecutadas: historicoAcoes,
     alertasAtuais: (data.alerts || []).map((a) => a.text),
   };
 }
@@ -171,20 +141,25 @@ Responda APENAS com JSON válido, sem markdown, sem cercas de código, neste for
     {
       "titulo": "ação curta e imperativa (máx 60 caracteres)",
       "prioridade": "alta" | "media" | "baixa",
-      "categoria": "vendas" | "estoque" | "trafego" | "checkout" | "clientes" | "margem",
+      "categoria": "vendas" | "estoque" | "checkout" | "clientes" | "margem",
       "porque": "1 frase com o número que justifica (R$, %, qtd)",
       "como": "a execução DECIDIDA: mecânica, valores e canal escolhidos, em 2-4 frases"
     }
+  ],
+  "cronograma": [
+    { "data": "YYYY-MM-DD", "titulo": "o que fazer nesse dia (máx 60 chars)", "detalhe": "1-2 frases práticas" }
   ]
 }
 
 REGRAS DE ESTILO — as mais importantes:
 - DECIDA TUDO. Nunca escreva "considere", "avalie", "pode ser interessante" ou termine com pergunta. Escolha o desconto, o canal, o público e o valor — e afirme. Se faltar informação, assuma a premissa mais provável e diga qual assumiu ("assumindo margem média de 55%...").
-- Se houver data comercial próxima (campo datasComerciaisProximas), a ação nº 1 deve ser uma campanha ancorada nela, com: tema, oferta exata (ex: "20% off ou frete grátis acima de R$200"), produtos escolhidos pelos dados, público e canal. Inclua uma sugestão de texto pronta, entre aspas, que a loja possa copiar (ex: post ou e-mail de 1-2 frases).
-- Máximo de 5 ações. Menos e melhor decidido vale mais que muito e vago.
-- Cite produtos PELO NOME quando os dados permitirem ("as 38 peças da Camiseta Vintage Azul"), nunca "os produtos parados" genérico.
-- ROAS atribuído pelo Meta = leitura conservadora; ROAS da loja = otimista. Use o conservador para decidir corte e o otimista só como teto.
-- Produto 100% parado → promoção com % sugerido compatível com a margem informada. Variação zerada que vendia → reposição com prazo ("pedir ao fornecedor esta semana").
+- PROIBIDO analisar, citar ou julgar campanhas de tráfego pago / Meta Ads / anúncios. Isso é gerido por outra equipe com objetivos próprios (engajamento, alcance, conversão) e não faz parte desta análise. Nunca use palavras como "prejuízo" sobre investimento em anúncios. As ações podem PRESSUPOR divulgação ("divulgue no Instagram e para a base"), mas sem opinar sobre campanhas existentes.
+- Se houver data comercial próxima (campo datasComerciaisProximas), a ação nº 1 deve ser uma campanha ancorada nela, com: tema, oferta exata (ex: "20% off ou frete grátis acima de R$200"), produtos escolhidos pelos dados, público e canal orgânico/CRM. Inclua uma sugestão de texto pronta, entre aspas, que a loja possa copiar.
+- Considere acoesJaExecutadas: NÃO sugira de novo o que já foi feito — construa em cima ("como a liquidação começou dia X, agora..."). Se uma ação executada pede acompanhamento, inclua o acompanhamento no cronograma.
+- CRONOGRAMA: distribua as ações (e seus acompanhamentos) em datas concretas dos próximos 14 dias, na ordem que faz sentido comercial. 5 a 10 entradas. Cada dia com tarefa objetiva ("subir os banners", "disparar o e-mail", "revisar o giro da liquidação").
+- Máximo de 5 ações. Cite produtos PELO NOME ("as 38 peças da Camiseta Vintage Azul"), nunca genérico.
+- Chame de "checkouts abandonados" (não "carrinhos") — são estágios diferentes do funil.
+- Produto 100% parado → promoção com % compatível com a margem informada. Variação zerada que vendia → reposição com prazo.
 - Português do Brasil, tom direto de sócio experiente, zero enrolação.`;
 
 async function chamarClaude(resumo) {
@@ -266,7 +241,21 @@ async function main() {
     return;
   }
 
-  const resumo = montarResumo(data);
+  // Histórico de ações que a loja registrou em acoes.json (mesmo padrão do
+  // custos.json: arquivo editável à mão no repositório). Opcional.
+  let historicoAcoes = [];
+  try {
+    const rawAcoes = await readFile("acoes.json", "utf-8");
+    const parsedAcoes = JSON.parse(rawAcoes);
+    historicoAcoes = (parsedAcoes.historico || [])
+      .filter((a) => a && a.acao)
+      .slice(-30); // as 30 mais recentes bastam
+    if (historicoAcoes.length) console.log(`[info] ${historicoAcoes.length} ação(ões) registradas em acoes.json.`);
+  } catch {
+    console.log("acoes.json não encontrado — seguindo sem histórico de ações.");
+  }
+
+  const resumo = montarResumo(data, historicoAcoes);
   console.log(`Pedindo análise ao Claude (${MODEL})... (~${Math.round(JSON.stringify(resumo).length / 1024)} KB de dados)`);
 
   try {
@@ -277,6 +266,7 @@ async function main() {
       modelo: MODEL,
       diagnostico: analise.diagnostico,
       acoes: analise.acoes,
+      cronograma: Array.isArray(analise.cronograma) ? analise.cronograma : [],
     };
     console.log(`Análise gerada: ${analise.acoes.length} ação(ões) sugerida(s).`);
   } catch (err) {
