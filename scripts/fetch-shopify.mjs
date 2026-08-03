@@ -634,6 +634,22 @@ async function main() {
     }
   }
 
+  // Metas mensais definidas manualmente em metas.json (opcional).
+  // Formato: { "2026-08": 15000, "2026-09": 18000 }
+  let metas = {};
+  try {
+    const fsSync2 = await import("node:fs/promises");
+    const rawMetas = await fsSync2.readFile("metas.json", "utf-8");
+    const parsedMetas = JSON.parse(rawMetas);
+    delete parsedMetas._comentario;
+    for (const [k, v] of Object.entries(parsedMetas)) {
+      if (/^\d{4}-\d{2}$/.test(k) && typeof v === "number") metas[k] = v;
+    }
+    if (Object.keys(metas).length) console.log(`[info] ${Object.keys(metas).length} meta(s) mensal(is) carregada(s).`);
+  } catch {
+    console.log("metas.json não encontrado — a aba Metas usará só as projeções automáticas.");
+  }
+
   const output = {
     updatedAt: now.toISOString(),
     defaultPeriod: "30d",
@@ -644,6 +660,7 @@ async function main() {
     periods,
     ordersFlat,
     customersMap,
+    metas,
     checkout: {
       disponivel: abandonoOk,
       desde: abandonoDesde.toISOString().slice(0, 10),
