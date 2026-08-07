@@ -47,7 +47,7 @@ const ALL_TIME_START = "2000-01-01T00:00:00Z";
 
 // Troca Client ID + Client secret por um Admin API access token válido por 24h.
 async function getAccessTokenViaClientCredentials() {
-  const res = await fetch(`https://${STORE_DOMAIN}/admin/oauth/access_token`, {
+  const res = await fetchComRetry(`https://${STORE_DOMAIN}/admin/oauth/access_token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
@@ -78,12 +78,53 @@ function authHeaders() {
   };
 }
 
+const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Falhas de rede acontecem: timeout de conexão (ETIMEDOUT), queda momentânea
+// da Shopify, instabilidade do runner. Como este script roda sozinho todo dia,
+// um tropeço de rede não pode custar um dia inteiro de dados desatualizados —
+// então tentamos de novo antes de desistir.
+//
+// Também tratamos 429 (limite de requisições) e erros 5xx, que são temporários
+// por definição. Erros 4xx (token inválido, permissão) NÃO são repetidos:
+// insistir não resolve e só atrasa o diagnóstico.
+async function fetchComRetry(url, opcoes, tentativa = 1) {
+  const MAX = 4;
+  try {
+    const res = await fetch(url, opcoes);
+
+    if (res.status === 429 || res.status >= 500) {
+      if (tentativa < MAX) {
+        const segundos = 5 * Math.pow(2, tentativa - 1); // 5s, 10s, 20s
+        console.log(`[info] Shopify respondeu ${res.status}. Nova tentativa em ${segundos}s (${tentativa}/${MAX - 1})...`);
+        await espera(segundos * 1000);
+        return fetchComRetry(url, opcoes, tentativa + 1);
+      }
+    }
+    return res;
+  } catch (err) {
+    // Erro de rede (ETIMEDOUT, ECONNRESET, socket hang up): a requisição nem
+    // chegou a ter resposta.
+    if (tentativa < MAX) {
+      const segundos = 5 * Math.pow(2, tentativa - 1);
+      console.log(`[info] Falha de rede ao falar com a Shopify (${err.cause?.code || err.message}). Nova tentativa em ${segundos}s (${tentativa}/${MAX - 1})...`);
+      await espera(segundos * 1000);
+      return fetchComRetry(url, opcoes, tentativa + 1);
+    }
+    throw new Error(
+      `Não foi possível conectar à Shopify após ${MAX} tentativas. ` +
+      `Último erro: ${err.cause?.code || err.message}. ` +
+      `Isso costuma ser instabilidade momentânea de rede — rodar o workflow de novo resolve.`
+    );
+  }
+}
+
 // Segue paginação por Link header, chamando `onPage(data)` a cada página.
 async function fetchAllPages(initialPath, onPage) {
   let path = initialPath;
   while (path) {
     const url = `${BASE_URL}${path}`;
-    const res = await fetch(url, { headers: authHeaders() });
+    const res = await fetchComRetry(url, { headers: authHeaders() });
     if (!res.ok) {
       const text = await res.text();
       throw new Error(`Shopify API error ${res.status}: ${text}`);
