@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-28T18:22:30.891Z",
+  "updatedAt": "2026-09-29T16:45:26.698Z",
   "defaultPeriod": "30d",
   "defaultRevenueMode": "confirmed",
   "periodsByMode": {
     "total": {
       "7d": {
         "period": {
-          "start": "2026-09-21",
-          "end": "2026-09-28"
+          "start": "2026-09-22",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
@@ -126,21 +126,21 @@
       },
       "30d": {
         "period": {
-          "start": "2026-08-29",
-          "end": "2026-09-28"
+          "start": "2026-08-30",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
             "value": 2171.91,
-            "changePct": -77.76727969552604
+            "changePct": -72.97637948110508
           },
           "orders": {
             "value": 7,
-            "changePct": -82.92682926829268
+            "changePct": -80
           },
           "aov": {
             "value": 310.27,
-            "changePct": 30.220218926204602
+            "changePct": 35.118102594474614
           }
         },
         "revenueSeries": [
@@ -266,31 +266,27 @@
       },
       "90d": {
         "period": {
-          "start": "2026-06-30",
-          "end": "2026-09-28"
+          "start": "2026-07-01",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
-            "value": 11940.89,
+            "value": 10208.99,
             "changePct": null
           },
           "orders": {
-            "value": 48,
+            "value": 42,
             "changePct": null
           },
           "aov": {
-            "value": 248.77,
+            "value": 243.07,
             "changePct": null
           }
         },
         "revenueSeries": [
           {
-            "date": "2026-07-30",
-            "revenue": 519.5
-          },
-          {
             "date": "2026-07-31",
-            "revenue": 1571.4
+            "revenue": 359
           },
           {
             "date": "2026-08-01",
@@ -383,99 +379,99 @@
         ],
         "topProducts": [
           {
-            "name": "CAMISETA PIMA | DEEP BLUE",
-            "revenue": 1678.8,
-            "pct": 14.1,
-            "units": 12,
-            "marginPct": 72.8
-          },
-          {
             "name": "CAMISETA PIMA - MASC - PRETO",
             "revenue": 1349.1,
-            "pct": 11.3,
+            "pct": 13.2,
             "units": 9,
             "marginPct": 74.6
           },
           {
-            "name": "CAMISETA PIMA | VERDE OLIVA",
-            "revenue": 699.5,
-            "pct": 5.9,
-            "units": 5,
+            "name": "CAMISETA PIMA | DEEP BLUE",
+            "revenue": 1259.1,
+            "pct": 12.3,
+            "units": 9,
             "marginPct": 72.8
-          },
-          {
-            "name": "CAMISETA PIMA | AREIA",
-            "revenue": 629.55,
-            "pct": 5.3,
-            "units": 7,
-            "marginPct": 57.7
           },
           {
             "name": "CAMISETA PIMA - MASC - BRANCO",
             "revenue": 599.6,
-            "pct": 5,
+            "pct": 5.9,
             "units": 4,
             "marginPct": 74.6
+          },
+          {
+            "name": "CAMISETA PIMA - MASC - DEEP BLUE",
+            "revenue": 589.6,
+            "pct": 5.8,
+            "units": 4,
+            "marginPct": 74.2
+          },
+          {
+            "name": "CAMISETA PIMA | VERDE OLIVA",
+            "revenue": 559.6,
+            "pct": 5.5,
+            "units": 4,
+            "marginPct": 72.8
           }
         ],
         "topProductsByUnits": [
           {
-            "name": "CAMISETA PIMA | DEEP BLUE",
-            "units": 12,
-            "revenue": 1678.8,
-            "pct": 8.3
-          },
-          {
             "name": "CAMISETA PIMA - MASC - PRETO",
             "units": 9,
             "revenue": 1349.1,
-            "pct": 6.2
+            "pct": 7.7
           },
           {
-            "name": "CAMISETA PIMA | GOIABA",
-            "units": 8,
-            "revenue": 559.6,
-            "pct": 5.5
+            "name": "CAMISETA PIMA | DEEP BLUE",
+            "units": 9,
+            "revenue": 1259.1,
+            "pct": 7.7
           },
           {
             "name": "CAMISETA PIMA | AREIA",
-            "units": 7,
-            "revenue": 629.55,
-            "pct": 4.8
+            "units": 5,
+            "revenue": 489.65,
+            "pct": 4.3
           },
           {
-            "name": "CAMISETA PIMA | VERDE OLIVA",
+            "name": "CAMISETA PIMA | GOIABA",
             "units": 5,
-            "revenue": 699.5,
+            "revenue": 349.75,
+            "pct": 4.3
+          },
+          {
+            "name": "CAMISETA PIMA - MASC - BRANCO",
+            "units": 4,
+            "revenue": 599.6,
             "pct": 3.4
           }
         ],
         "margin": {
-          "overallMarginPct": 66.2,
-          "grossProfit": 9065.77,
+          "overallMarginPct": 68.5,
+          "grossProfit": 8113.47,
           "costCoveragePct": 100,
           "breakdown": {
-            "grossSales": 16755.5,
-            "discounts": 3056.73,
-            "netSales": 13698.77,
-            "cost": 4633,
-            "profit": 9065.77
+            "grossSales": 13888.3,
+            "discounts": 2042.83,
+            "netSales": 11845.47,
+            "cost": 3732,
+            "profit": 8113.47
           }
         },
         "customers": {
-          "newCustomers": 40,
+          "newCustomers": 35,
           "returningCustomers": 3,
-          "recompraPct": 7
+          "recompraPct": 7.9
         },
         "inventoryStats": {
-          "coverageDays": 1187,
-          "turnoverRate": 0.08
+          "coverageDays": 1472,
+          "turnoverRate": 0.06
         }
       },
       "current_month": {
         "period": {
           "start": "2026-09-01",
-          "end": "2026-09-28"
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
@@ -604,7 +600,7 @@
           "recompraPct": 33.3
         },
         "inventoryStats": {
-          "coverageDays": 2656,
+          "coverageDays": 2745,
           "turnoverRate": 0.01
         }
       },
@@ -616,15 +612,15 @@
         "kpis": {
           "revenue": {
             "value": 7977.88,
-            "changePct": 281.5524415323545
+            "changePct": 2122.2506963788296
           },
           "orders": {
             "value": 35,
-            "changePct": 400
+            "changePct": 3400
           },
           "aov": {
             "value": 227.94,
-            "changePct": -23.68951169352909
+            "changePct": -36.50712296060486
           }
         },
         "revenueSeries": [
@@ -788,8 +784,8 @@
     "confirmed": {
       "7d": {
         "period": {
-          "start": "2026-09-21",
-          "end": "2026-09-28"
+          "start": "2026-09-22",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
@@ -908,21 +904,21 @@
       },
       "30d": {
         "period": {
-          "start": "2026-08-29",
-          "end": "2026-09-28"
+          "start": "2026-08-30",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
             "value": 2171.91,
-            "changePct": -72.39277606461275
+            "changePct": -69.03058285375327
           },
           "orders": {
             "value": 7,
-            "changePct": -79.41176470588235
+            "changePct": -76.66666666666667
           },
           "aov": {
             "value": 310.27,
-            "changePct": 34.09223054330956
+            "changePct": 32.72607348391453
           }
         },
         "revenueSeries": [
@@ -1048,31 +1044,27 @@
       },
       "90d": {
         "period": {
-          "start": "2026-06-30",
-          "end": "2026-09-28"
+          "start": "2026-07-01",
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
-            "value": 10039.09,
+            "value": 9184.99,
             "changePct": null
           },
           "orders": {
-            "value": 41,
+            "value": 37,
             "changePct": null
           },
           "aov": {
-            "value": 244.86,
+            "value": 248.24,
             "changePct": null
           }
         },
         "revenueSeries": [
           {
-            "date": "2026-07-30",
-            "revenue": 519.5
-          },
-          {
             "date": "2026-07-31",
-            "revenue": 693.6
+            "revenue": 359
           },
           {
             "date": "2026-08-01",
@@ -1167,37 +1159,37 @@
           {
             "name": "CAMISETA PIMA - MASC - PRETO",
             "revenue": 1349.1,
-            "pct": 13.4,
+            "pct": 14.7,
             "units": 9,
             "marginPct": 74.6
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "revenue": 1259.1,
-            "pct": 12.5,
+            "pct": 13.7,
             "units": 9,
             "marginPct": 72.8
           },
           {
-            "name": "CAMISETA PIMA | AREIA",
-            "revenue": 629.55,
-            "pct": 6.3,
-            "units": 7,
-            "marginPct": 57.7
-          },
-          {
             "name": "CAMISETA PIMA - MASC - BRANCO",
             "revenue": 599.6,
-            "pct": 6,
+            "pct": 6.5,
             "units": 4,
             "marginPct": 74.6
           },
           {
             "name": "CAMISETA PIMA - MASC - DEEP BLUE",
             "revenue": 589.6,
-            "pct": 5.9,
+            "pct": 6.4,
             "units": 4,
             "marginPct": 74.2
+          },
+          {
+            "name": "CAMISETA PIMA | AREIA",
+            "revenue": 489.65,
+            "pct": 5.3,
+            "units": 5,
+            "marginPct": 61.2
           }
         ],
         "topProductsByUnits": [
@@ -1205,59 +1197,59 @@
             "name": "CAMISETA PIMA - MASC - PRETO",
             "units": 9,
             "revenue": 1349.1,
-            "pct": 7.3
+            "pct": 8.6
           },
           {
             "name": "CAMISETA PIMA | DEEP BLUE",
             "units": 9,
             "revenue": 1259.1,
-            "pct": 7.3
-          },
-          {
-            "name": "CAMISETA PIMA | GOIABA",
-            "units": 8,
-            "revenue": 559.6,
-            "pct": 6.5
+            "pct": 8.6
           },
           {
             "name": "CAMISETA PIMA | AREIA",
-            "units": 7,
-            "revenue": 629.55,
-            "pct": 5.7
+            "units": 5,
+            "revenue": 489.65,
+            "pct": 4.8
+          },
+          {
+            "name": "CAMISETA PIMA | GOIABA",
+            "units": 5,
+            "revenue": 349.75,
+            "pct": 4.8
           },
           {
             "name": "CAMISETA PIMA - MASC - BRANCO",
             "units": 4,
             "revenue": 599.6,
-            "pct": 3.3
+            "pct": 3.8
           }
         ],
         "margin": {
-          "overallMarginPct": 66.5,
-          "grossProfit": 7774.47,
+          "overallMarginPct": 68.7,
+          "grossProfit": 7441.37,
           "costCoveragePct": 100,
           "breakdown": {
-            "grossSales": 14237.7,
-            "discounts": 2552.23,
-            "netSales": 11685.47,
-            "cost": 3911,
-            "profit": 7774.47
+            "grossSales": 12529.5,
+            "discounts": 1698.13,
+            "netSales": 10831.37,
+            "cost": 3390,
+            "profit": 7441.37
           }
         },
         "customers": {
-          "newCustomers": 35,
+          "newCustomers": 31,
           "returningCustomers": 3,
-          "recompraPct": 7.9
+          "recompraPct": 8.8
         },
         "inventoryStats": {
-          "coverageDays": 1400,
-          "turnoverRate": 0.06
+          "coverageDays": 1640,
+          "turnoverRate": 0.05
         }
       },
       "current_month": {
         "period": {
           "start": "2026-09-01",
-          "end": "2026-09-28"
+          "end": "2026-09-29"
         },
         "kpis": {
           "revenue": {
@@ -1386,7 +1378,7 @@
           "recompraPct": 33.3
         },
         "inventoryStats": {
-          "coverageDays": 2656,
+          "coverageDays": 2745,
           "turnoverRate": 0.01
         }
       },
@@ -1398,15 +1390,15 @@
         "kpis": {
           "revenue": {
             "value": 6953.88,
-            "changePct": 473.2322149863986
+            "changePct": 1837.0139275766019
           },
           "orders": {
             "value": 30,
-            "changePct": 500
+            "changePct": 2900
           },
           "aov": {
             "value": 231.8,
-            "changePct": -4.461297502266913
+            "changePct": -35.432869080779945
           }
         },
         "revenueSeries": [
@@ -1571,8 +1563,8 @@
   "periods": {
     "7d": {
       "period": {
-        "start": "2026-09-21",
-        "end": "2026-09-28"
+        "start": "2026-09-22",
+        "end": "2026-09-29"
       },
       "kpis": {
         "revenue": {
@@ -1691,21 +1683,21 @@
     },
     "30d": {
       "period": {
-        "start": "2026-08-29",
-        "end": "2026-09-28"
+        "start": "2026-08-30",
+        "end": "2026-09-29"
       },
       "kpis": {
         "revenue": {
           "value": 2171.91,
-          "changePct": -77.76727969552604
+          "changePct": -72.97637948110508
         },
         "orders": {
           "value": 7,
-          "changePct": -82.92682926829268
+          "changePct": -80
         },
         "aov": {
           "value": 310.27,
-          "changePct": 30.220218926204602
+          "changePct": 35.118102594474614
         }
       },
       "revenueSeries": [
@@ -1831,31 +1823,27 @@
     },
     "90d": {
       "period": {
-        "start": "2026-06-30",
-        "end": "2026-09-28"
+        "start": "2026-07-01",
+        "end": "2026-09-29"
       },
       "kpis": {
         "revenue": {
-          "value": 11940.89,
+          "value": 10208.99,
           "changePct": null
         },
         "orders": {
-          "value": 48,
+          "value": 42,
           "changePct": null
         },
         "aov": {
-          "value": 248.77,
+          "value": 243.07,
           "changePct": null
         }
       },
       "revenueSeries": [
         {
-          "date": "2026-07-30",
-          "revenue": 519.5
-        },
-        {
           "date": "2026-07-31",
-          "revenue": 1571.4
+          "revenue": 359
         },
         {
           "date": "2026-08-01",
@@ -1948,99 +1936,99 @@
       ],
       "topProducts": [
         {
-          "name": "CAMISETA PIMA | DEEP BLUE",
-          "revenue": 1678.8,
-          "pct": 14.1,
-          "units": 12,
-          "marginPct": 72.8
-        },
-        {
           "name": "CAMISETA PIMA - MASC - PRETO",
           "revenue": 1349.1,
-          "pct": 11.3,
+          "pct": 13.2,
           "units": 9,
           "marginPct": 74.6
         },
         {
-          "name": "CAMISETA PIMA | VERDE OLIVA",
-          "revenue": 699.5,
-          "pct": 5.9,
-          "units": 5,
+          "name": "CAMISETA PIMA | DEEP BLUE",
+          "revenue": 1259.1,
+          "pct": 12.3,
+          "units": 9,
           "marginPct": 72.8
-        },
-        {
-          "name": "CAMISETA PIMA | AREIA",
-          "revenue": 629.55,
-          "pct": 5.3,
-          "units": 7,
-          "marginPct": 57.7
         },
         {
           "name": "CAMISETA PIMA - MASC - BRANCO",
           "revenue": 599.6,
-          "pct": 5,
+          "pct": 5.9,
           "units": 4,
           "marginPct": 74.6
+        },
+        {
+          "name": "CAMISETA PIMA - MASC - DEEP BLUE",
+          "revenue": 589.6,
+          "pct": 5.8,
+          "units": 4,
+          "marginPct": 74.2
+        },
+        {
+          "name": "CAMISETA PIMA | VERDE OLIVA",
+          "revenue": 559.6,
+          "pct": 5.5,
+          "units": 4,
+          "marginPct": 72.8
         }
       ],
       "topProductsByUnits": [
         {
-          "name": "CAMISETA PIMA | DEEP BLUE",
-          "units": 12,
-          "revenue": 1678.8,
-          "pct": 8.3
-        },
-        {
           "name": "CAMISETA PIMA - MASC - PRETO",
           "units": 9,
           "revenue": 1349.1,
-          "pct": 6.2
+          "pct": 7.7
         },
         {
-          "name": "CAMISETA PIMA | GOIABA",
-          "units": 8,
-          "revenue": 559.6,
-          "pct": 5.5
+          "name": "CAMISETA PIMA | DEEP BLUE",
+          "units": 9,
+          "revenue": 1259.1,
+          "pct": 7.7
         },
         {
           "name": "CAMISETA PIMA | AREIA",
-          "units": 7,
-          "revenue": 629.55,
-          "pct": 4.8
+          "units": 5,
+          "revenue": 489.65,
+          "pct": 4.3
         },
         {
-          "name": "CAMISETA PIMA | VERDE OLIVA",
+          "name": "CAMISETA PIMA | GOIABA",
           "units": 5,
-          "revenue": 699.5,
+          "revenue": 349.75,
+          "pct": 4.3
+        },
+        {
+          "name": "CAMISETA PIMA - MASC - BRANCO",
+          "units": 4,
+          "revenue": 599.6,
           "pct": 3.4
         }
       ],
       "margin": {
-        "overallMarginPct": 66.2,
-        "grossProfit": 9065.77,
+        "overallMarginPct": 68.5,
+        "grossProfit": 8113.47,
         "costCoveragePct": 100,
         "breakdown": {
-          "grossSales": 16755.5,
-          "discounts": 3056.73,
-          "netSales": 13698.77,
-          "cost": 4633,
-          "profit": 9065.77
+          "grossSales": 13888.3,
+          "discounts": 2042.83,
+          "netSales": 11845.47,
+          "cost": 3732,
+          "profit": 8113.47
         }
       },
       "customers": {
-        "newCustomers": 40,
+        "newCustomers": 35,
         "returningCustomers": 3,
-        "recompraPct": 7
+        "recompraPct": 7.9
       },
       "inventoryStats": {
-        "coverageDays": 1187,
-        "turnoverRate": 0.08
+        "coverageDays": 1472,
+        "turnoverRate": 0.06
       }
     },
     "current_month": {
       "period": {
         "start": "2026-09-01",
-        "end": "2026-09-28"
+        "end": "2026-09-29"
       },
       "kpis": {
         "revenue": {
@@ -2169,7 +2157,7 @@
         "recompraPct": 33.3
       },
       "inventoryStats": {
-        "coverageDays": 2656,
+        "coverageDays": 2745,
         "turnoverRate": 0.01
       }
     },
@@ -2181,15 +2169,15 @@
       "kpis": {
         "revenue": {
           "value": 7977.88,
-          "changePct": 281.5524415323545
+          "changePct": 2122.2506963788296
         },
         "orders": {
           "value": 35,
-          "changePct": 400
+          "changePct": 3400
         },
         "aov": {
           "value": 227.94,
-          "changePct": -23.68951169352909
+          "changePct": -36.50712296060486
         }
       },
       "revenueSeries": [
@@ -3498,256 +3486,6 @@
           "c": 38
         }
       ]
-    },
-    {
-      "d": "2026-07-31T10:57:01-03:00",
-      "t": 518.8,
-      "p": 0,
-      "c": "9738440311041",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA PIMA | DEEP BLUE",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | DEEP BLUE",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | PRETO",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA KIDS | BRANCO",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA KIDS | BRANCO",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA KIDS | SELVA",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA KIDS | SELVA",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        }
-      ]
-    },
-    {
-      "d": "2026-07-31T09:43:12-03:00",
-      "t": 359,
-      "p": 0,
-      "c": "9750663528705",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA PIMA | DEEP BLUE",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | OFFWHITE",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | VERDE OLIVA",
-          "v": 139.9,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        }
-      ]
-    },
-    {
-      "d": "2026-07-31T08:43:15-03:00",
-      "t": 154.75,
-      "p": 1,
-      "c": "8830197170433",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA ALGODÃO PREMIUM // KIDS // AREIA",
-          "v": 24.95,
-          "g": 49.9,
-          "q": 1,
-          "c": 20
-        },
-        {
-          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | ATLÂNTICO",
-          "v": 24.95,
-          "g": 49.9,
-          "q": 1,
-          "c": 20
-        },
-        {
-          "n": "CAMISETA MODAL TECH - INF - BRANCO",
-          "v": 34.95,
-          "g": 69.9,
-          "q": 1,
-          "c": 25
-        },
-        {
-          "n": "CAMISETA MODAL TECH | KIDS | MARINHO",
-          "v": 34.95,
-          "g": 69.9,
-          "q": 1,
-          "c": 25
-        },
-        {
-          "n": "CAMISETA MODAL TECH | KIDS | PRETO",
-          "v": 34.95,
-          "g": 69.9,
-          "q": 1,
-          "c": 25
-        }
-      ]
-    },
-    {
-      "d": "2026-07-31T07:52:10-03:00",
-      "t": 179.85,
-      "p": 1,
-      "c": "9754587955457",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA MODAL TECH // AMETISTA",
-          "v": 54.95,
-          "g": 109.9,
-          "q": 1,
-          "c": 25
-        },
-        {
-          "n": "CAMISETA PIMA | GOIABA",
-          "v": 69.95,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA MODAL TECH | GREENISH",
-          "v": 54.95,
-          "g": 109.9,
-          "q": 1,
-          "c": 25
-        }
-      ]
-    },
-    {
-      "d": "2026-07-30T22:50:41-03:00",
-      "t": 324.65,
-      "p": 1,
-      "c": "9665286209793",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA ALGODÃO PREMIUM | KIDS | VERDE OLIVA",
-          "v": 24.95,
-          "g": 49.9,
-          "q": 1,
-          "c": 20
-        },
-        {
-          "n": "CAMISETA MODAL TECH | CINZA",
-          "v": 54.95,
-          "g": 109.9,
-          "q": 1,
-          "c": 25
-        },
-        {
-          "n": "CAMISETA ALGODÃO PREMIUM | KIDS |  BRANCO",
-          "v": 24.95,
-          "g": 49.9,
-          "q": 1,
-          "c": 20
-        },
-        {
-          "n": "CAMISETA PIMA| KIDS | COBRE",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | KIDS| PRETO",
-          "v": 39.95,
-          "g": 79.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | AREIA",
-          "v": 69.95,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA PIMA | GOIABA",
-          "v": 69.95,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        }
-      ]
-    },
-    {
-      "d": "2026-07-30T21:26:52-03:00",
-      "t": 194.85,
-      "p": 1,
-      "c": "9753894355201",
-      "r": 0,
-      "li": [
-        {
-          "n": "CAMISETA PIMA | AREIA",
-          "v": 69.95,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        },
-        {
-          "n": "CAMISETA MODAL TECH // SUNSET",
-          "v": 54.95,
-          "g": 109.9,
-          "q": 1,
-          "c": 25
-        },
-        {
-          "n": "CAMISETA PIMA | GOIABA",
-          "v": 69.95,
-          "g": 139.9,
-          "q": 1,
-          "c": 38
-        }
-      ]
     }
   ],
   "customersMap": {
@@ -3886,22 +3624,6 @@
     "9750663528705": {
       "nome": "Igor M.",
       "email": "ig********@hotmail.com"
-    },
-    "8830197170433": {
-      "nome": "Clarissa C.",
-      "email": "cl*****************@gmail.com"
-    },
-    "9754587955457": {
-      "nome": "Daniel V.",
-      "email": "da*********@gmail.com"
-    },
-    "9665286209793": {
-      "nome": "Rodrigo N.",
-      "email": "ro**********@gmail.com"
-    },
-    "9753894355201": {
-      "nome": "Danilo F.",
-      "email": "co********@gmail.com"
     }
   },
   "metas": {
@@ -3909,7 +3631,7 @@
   },
   "checkout": {
     "disponivel": true,
-    "desde": "2026-06-30",
+    "desde": "2026-07-01",
     "abandonedFlat": [
       {
         "d": "2026-07-17T16:47:04-03:00",
@@ -4866,6 +4588,24 @@
             "q": 2
           }
         ]
+      },
+      {
+        "d": "2026-09-28T18:02:02-03:00",
+        "t": 349,
+        "li": [
+          {
+            "n": "CAMISETA PIMA | FEMININA | PRETO",
+            "q": 1
+          },
+          {
+            "n": "CAMISETA PIMA - FEM - STONE",
+            "q": 1
+          },
+          {
+            "n": "CAMISETA PIMA | FEMININA | VERDE OLIVA",
+            "q": 1
+          }
+        ]
       }
     ],
     "recoveredFlat": [
@@ -4897,12 +4637,12 @@
   },
   "inventory": {
     "totalUnits": 1913,
-    "stalledSkuCount": 241,
-    "stalledUnits": 1464,
-    "stalledValue": 159743.6,
+    "stalledSkuCount": 252,
+    "stalledUnits": 1515,
+    "stalledValue": 165448.5,
     "stockoutSkuCount": 156,
     "lowStockThreshold": 3,
-    "lowStockCount": 21,
+    "lowStockCount": 16,
     "lowStockList": [
       {
         "produto": "CAMISETA ALGODÃO PREMIUM - MASC - OFF WHITE",
@@ -4910,7 +4650,7 @@
         "sku": "415",
         "preco": 79.9,
         "ultimaVenda": "2026-09-12",
-        "diasSemVender": 15,
+        "diasSemVender": 16,
         "qtd": 1
       },
       {
@@ -4919,7 +4659,7 @@
         "sku": "363",
         "preco": 149.9,
         "ultimaVenda": "2026-08-25",
-        "diasSemVender": 34,
+        "diasSemVender": 35,
         "qtd": 1
       },
       {
@@ -4928,7 +4668,7 @@
         "sku": "207",
         "preco": 149.9,
         "ultimaVenda": "2026-08-14",
-        "diasSemVender": 45,
+        "diasSemVender": 46,
         "qtd": 1
       },
       {
@@ -4937,7 +4677,7 @@
         "sku": "820",
         "preco": 149.9,
         "ultimaVenda": "2026-08-14",
-        "diasSemVender": 45,
+        "diasSemVender": 46,
         "qtd": 1
       },
       {
@@ -4946,7 +4686,7 @@
         "sku": "1012",
         "preco": 149.9,
         "ultimaVenda": "2026-08-12",
-        "diasSemVender": 47,
+        "diasSemVender": 48,
         "qtd": 1
       },
       {
@@ -4964,7 +4704,7 @@
         "sku": "747",
         "preco": 119.9,
         "ultimaVenda": "2026-08-02",
-        "diasSemVender": 56,
+        "diasSemVender": 57,
         "qtd": 1
       },
       {
@@ -4973,7 +4713,7 @@
         "sku": "608",
         "preco": 79.9,
         "ultimaVenda": "2026-08-02",
-        "diasSemVender": 56,
+        "diasSemVender": 57,
         "qtd": 1
       },
       {
@@ -4982,16 +4722,7 @@
         "sku": "614",
         "preco": 79.9,
         "ultimaVenda": "2026-08-02",
-        "diasSemVender": 56,
-        "qtd": 1
-      },
-      {
-        "produto": "CAMISETA ALGODÃO PREMIUM - INF - BRANCO",
-        "variacao": "12 / Branco",
-        "sku": "631",
-        "preco": 59.9,
-        "ultimaVenda": "2026-07-30",
-        "diasSemVender": 59,
+        "diasSemVender": 57,
         "qtd": 1
       },
       {
@@ -5009,7 +4740,7 @@
         "sku": "542",
         "preco": 149.9,
         "ultimaVenda": "2026-08-12",
-        "diasSemVender": 47,
+        "diasSemVender": 48,
         "qtd": 2
       },
       {
@@ -5018,7 +4749,7 @@
         "sku": "266",
         "preco": 149.9,
         "ultimaVenda": "2026-08-08",
-        "diasSemVender": 50,
+        "diasSemVender": 51,
         "qtd": 2
       },
       {
@@ -5027,34 +4758,7 @@
         "sku": "737",
         "preco": 59.9,
         "ultimaVenda": "2026-08-03",
-        "diasSemVender": 55,
-        "qtd": 2
-      },
-      {
-        "produto": "CAMISETA ALGODÃO PREMIUM - INF - AREIA",
-        "variacao": "4 / Areia",
-        "sku": "726",
-        "preco": 59.9,
-        "ultimaVenda": "2026-07-31",
-        "diasSemVender": 59,
-        "qtd": 2
-      },
-      {
-        "produto": "CAMISETA MODAL TECH - INF - PRETO",
-        "variacao": "8 / Preto",
-        "sku": "671",
-        "preco": 79.9,
-        "ultimaVenda": "2026-07-31",
-        "diasSemVender": 59,
-        "qtd": 2
-      },
-      {
-        "produto": "CAMISETA MODAL TECH - MASC - CINZA",
-        "variacao": "P",
-        "sku": "746",
-        "preco": 119.9,
-        "ultimaVenda": "2026-07-30",
-        "diasSemVender": 59,
+        "diasSemVender": 56,
         "qtd": 2
       },
       {
@@ -5063,7 +4767,7 @@
         "sku": "1014",
         "preco": 149.9,
         "ultimaVenda": "2026-09-19",
-        "diasSemVender": 8,
+        "diasSemVender": 9,
         "qtd": 3
       },
       {
@@ -5072,7 +4776,7 @@
         "sku": "203",
         "preco": 149.9,
         "ultimaVenda": "2026-08-28",
-        "diasSemVender": 30,
+        "diasSemVender": 31,
         "qtd": 3
       },
       {
@@ -5081,16 +4785,7 @@
         "sku": "1008",
         "preco": 149.9,
         "ultimaVenda": "2026-08-25",
-        "diasSemVender": 34,
-        "qtd": 3
-      },
-      {
-        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
-        "variacao": "08",
-        "sku": "1002",
-        "preco": 79.9,
-        "ultimaVenda": "2026-07-31",
-        "diasSemVender": 59,
+        "diasSemVender": 35,
         "qtd": 3
       }
     ],
@@ -5386,6 +5081,16 @@
         "valorParado": 1499
       },
       {
+        "produto": "CAMISETA MODAL TECH - MASC - AMETISTA",
+        "variacao": "G / Ametista",
+        "sku": "758",
+        "preco": 119.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 12,
+        "valorParado": 1438.8
+      },
+      {
         "produto": "CAMISETA MODAL TECH - MASC - MARINHO",
         "variacao": "Azul-marinho / G",
         "sku": "279",
@@ -5466,6 +5171,16 @@
         "valorParado": 1199.4
       },
       {
+        "produto": "CAMISETA PIMA - MASC - AREIA",
+        "variacao": "P / Areia",
+        "sku": "904",
+        "preco": 149.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 8,
+        "valorParado": 1199.2
+      },
+      {
         "produto": "CAMISETA ALGODÃO PREMIUM - MASC - AZUL MARINHO",
         "variacao": "Azul-marinho / P",
         "sku": "142",
@@ -5509,6 +5224,16 @@
         "produto": "CAMISETA PIMA - MASC - BRANCO",
         "variacao": "Branco / GG",
         "sku": "161",
+        "preco": 149.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 7,
+        "valorParado": 1049.3
+      },
+      {
+        "produto": "CAMISETA PIMA - MASC - GOIABA",
+        "variacao": "P / Goiaba",
+        "sku": "517",
         "preco": 149.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -5719,6 +5444,16 @@
         "produto": "CAMISETA MODAL TECH - MASC - AMETISTA",
         "variacao": "GG / Ametista",
         "sku": "759",
+        "preco": 119.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 6,
+        "valorParado": 719.4
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - MASC - GREENISH",
+        "variacao": "G / Verde Greenish",
+        "sku": "484",
         "preco": 119.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -6566,6 +6301,16 @@
         "valorParado": 239.8
       },
       {
+        "produto": "CAMISETA MODAL TECH - MASC - CINZA",
+        "variacao": "P",
+        "sku": "746",
+        "preco": 119.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 239.8
+      },
+      {
         "produto": "MODAL TECH // FEMININO // BRANCO",
         "variacao": "GG / Branco",
         "sku": "937",
@@ -6679,6 +6424,16 @@
         "produto": "CAMISETA MODAL TECH - INF - BRANCO",
         "variacao": "02",
         "sku": "999",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 3,
+        "valorParado": 239.7
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacao": "08",
+        "sku": "1002",
         "preco": 79.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -6846,6 +6601,16 @@
         "valorParado": 239.6
       },
       {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - ATLÂNTICO",
+        "variacao": "4 / Atlântico",
+        "sku": "641",
+        "preco": 59.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 239.6
+      },
+      {
         "produto": "CAMISETA ALGODÃO PREMIUM - INF - BRANCO",
         "variacao": "8 / Branco",
         "sku": "629",
@@ -6879,6 +6644,16 @@
         "produto": "CAMISETA ALGODÃO PREMIUM - INF - VERDE OLIVA",
         "variacao": "2 / Verde Oliva",
         "sku": "633",
+        "preco": 59.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 4,
+        "valorParado": 239.6
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - VERDE OLIVA",
+        "variacao": "12 / Verde Oliva",
+        "sku": "638",
         "preco": 59.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -7086,6 +6861,16 @@
         "valorParado": 159.8
       },
       {
+        "produto": "CAMISETA MODAL TECH - INF - PRETO",
+        "variacao": "8 / Preto",
+        "sku": "671",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 159.8
+      },
+      {
         "produto": "CAMISETA MODAL TECH - INF - VERDE ALVORADA",
         "variacao": "8 / Verde Alvorada",
         "sku": "587",
@@ -7229,6 +7014,16 @@
         "produto": "CAMISETA ALGODÃO PREMIUM - INF - ALVORADA",
         "variacao": "2 / Organic",
         "sku": "732",
+        "preco": 59.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 2,
+        "valorParado": 119.8
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - AREIA",
+        "variacao": "4 / Areia",
+        "sku": "726",
         "preco": 59.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -7446,6 +7241,16 @@
         "valorParado": 59.9
       },
       {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - BRANCO",
+        "variacao": "12 / Branco",
+        "sku": "631",
+        "preco": 59.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 1,
+        "valorParado": 59.9
+      },
+      {
         "produto": "CAMISETA ALGODÃO PREMIUM - INF - CÉU ANTIGO",
         "variacao": "4 / Céu Antigo",
         "sku": "648",
@@ -7506,8 +7311,8 @@
         "valorParado": 59.9
       }
     ],
-    "productStalledCount": 42,
-    "productStalledValue": 81497.4,
+    "productStalledCount": 51,
+    "productStalledValue": 98956.7,
     "productStalledList": [
       {
         "produto": "CAMISETA MODAL TECH - MASC - MARINHO",
@@ -7566,10 +7371,26 @@
         "diasSemVender": null
       },
       {
+        "produto": "CAMISETA MODAL TECH - MASC - AMETISTA",
+        "variacoes": 4,
+        "qtd": 36,
+        "valorParado": 4316.4,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
         "produto": "CAMISETA PIMA | AZUL CELESTE",
         "variacoes": 4,
         "qtd": 30,
         "valorParado": 4197,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - MASC - GREENISH",
+        "variacoes": 4,
+        "qtd": 33,
+        "valorParado": 3956.7,
         "ultimaVenda": null,
         "diasSemVender": null
       },
@@ -7606,10 +7427,26 @@
         "diasSemVender": null
       },
       {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - ATLÂNTICO",
+        "variacoes": 6,
+        "qtd": 40,
+        "valorParado": 2396,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
         "produto": "CAMISETA ALGODÃO PREMIUM - INF - PRETO",
         "variacoes": 6,
         "qtd": 40,
         "valorParado": 2396,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - VERDE OLIVA",
+        "variacoes": 6,
+        "qtd": 34,
+        "valorParado": 2036.6,
         "ultimaVenda": null,
         "diasSemVender": null
       },
@@ -7634,6 +7471,14 @@
         "variacoes": 4,
         "qtd": 12,
         "valorParado": 1438.8,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - MARINHO",
+        "variacoes": 6,
+        "qtd": 18,
+        "valorParado": 1438.2,
         "ultimaVenda": null,
         "diasSemVender": null
       },
@@ -7666,6 +7511,22 @@
         "variacoes": 5,
         "qtd": 14,
         "valorParado": 1118.6,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA ALGODÃO PREMIUM - INF - AREIA",
+        "variacoes": 6,
+        "qtd": 18,
+        "valorParado": 1078.2,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - PRETO",
+        "variacoes": 6,
+        "qtd": 13,
+        "valorParado": 1038.7,
         "ultimaVenda": null,
         "diasSemVender": null
       },
@@ -7710,6 +7571,14 @@
         "diasSemVender": null
       },
       {
+        "produto": "CAMISETA PIMA - INF - PRETO",
+        "variacoes": 5,
+        "qtd": 8,
+        "valorParado": 639.2,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
         "produto": "Camiseta Oversized Branco",
         "variacoes": 5,
         "qtd": 3,
@@ -7728,6 +7597,14 @@
       {
         "produto": "CAMISETA ALGODÃO PREMIUM - MASC - AZUL CÉU",
         "variacoes": 5,
+        "qtd": 7,
+        "valorParado": 559.3,
+        "ultimaVenda": null,
+        "diasSemVender": null
+      },
+      {
+        "produto": "CAMISETA MODAL TECH - INF - BRANCO",
+        "variacoes": 6,
         "qtd": 7,
         "valorParado": 559.3,
         "ultimaVenda": null,
@@ -7853,7 +7730,7 @@
         "sku": "264",
         "preco": 149.9,
         "ultimaVenda": "2026-08-28",
-        "diasSemVender": 30,
+        "diasSemVender": 31,
         "qtd": 0
       },
       {
@@ -7862,16 +7739,7 @@
         "sku": "262",
         "preco": 149.9,
         "ultimaVenda": "2026-08-25",
-        "diasSemVender": 33,
-        "qtd": 0
-      },
-      {
-        "produto": "CAMISETA ALGODÃO PREMIUM -  MASC  - VERDE FLORESTA",
-        "variacao": "M / Verde Floresta",
-        "sku": "135",
-        "preco": 79.9,
-        "ultimaVenda": "2026-08-17",
-        "diasSemVender": 41,
+        "diasSemVender": 34,
         "qtd": 0
       },
       {
@@ -7884,12 +7752,21 @@
         "qtd": 0
       },
       {
+        "produto": "CAMISETA ALGODÃO PREMIUM -  MASC  - VERDE FLORESTA",
+        "variacao": "M / Verde Floresta",
+        "sku": "135",
+        "preco": 79.9,
+        "ultimaVenda": "2026-08-17",
+        "diasSemVender": 42,
+        "qtd": 0
+      },
+      {
         "produto": "CAMISETA PIMA - MASC - CREME",
         "variacao": "G / Creme",
         "sku": "514",
         "preco": 149.9,
         "ultimaVenda": "2026-08-14",
-        "diasSemVender": 45,
+        "diasSemVender": 46,
         "qtd": 0
       },
       {
@@ -7907,7 +7784,7 @@
         "sku": "474",
         "preco": 119.9,
         "ultimaVenda": "2026-08-03",
-        "diasSemVender": 55,
+        "diasSemVender": 56,
         "qtd": 0
       },
       {
@@ -7916,7 +7793,7 @@
         "sku": "607",
         "preco": 79.9,
         "ultimaVenda": "2026-08-02",
-        "diasSemVender": 56,
+        "diasSemVender": 57,
         "qtd": 0
       },
       {
@@ -7925,34 +7802,7 @@
         "sku": "819",
         "preco": 149.9,
         "ultimaVenda": "2026-08-02",
-        "diasSemVender": 56,
-        "qtd": 0
-      },
-      {
-        "produto": "CAMISETA MODAL TECH - INF - MARINHO",
-        "variacao": "12 / Azul-marinho",
-        "sku": "582",
-        "preco": 79.9,
-        "ultimaVenda": "2026-07-31",
-        "diasSemVender": 59,
-        "qtd": 0
-      },
-      {
-        "produto": "CAMISETA PIMA - INF - CAPUCCINO",
-        "variacao": "12 / CAPPUCCINO",
-        "sku": "610",
-        "preco": 79.9,
-        "ultimaVenda": "2026-07-30",
-        "diasSemVender": 59,
-        "qtd": 0
-      },
-      {
-        "produto": "CAMISETA PIMA - INF - PRETO",
-        "variacao": "12 / Preto",
-        "sku": "444",
-        "preco": 79.9,
-        "ultimaVenda": "2026-07-30",
-        "diasSemVender": 59,
+        "diasSemVender": 57,
         "qtd": 0
       },
       {
@@ -8739,6 +8589,15 @@
         "qtd": 0
       },
       {
+        "produto": "CAMISETA MODAL TECH - INF - MARINHO",
+        "variacao": "12 / Azul-marinho",
+        "sku": "582",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
         "produto": "CAMISETA MODAL TECH - INF - PRETO",
         "variacao": "6 / Preto",
         "sku": "670",
@@ -9063,6 +8922,15 @@
         "qtd": 0
       },
       {
+        "produto": "CAMISETA PIMA - INF - CAPUCCINO",
+        "variacao": "12 / CAPPUCCINO",
+        "sku": "610",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
         "produto": "CAMISETA PIMA - INF - CREME",
         "variacao": "2 / Creme",
         "sku": "612",
@@ -9102,6 +8970,15 @@
         "produto": "CAMISETA PIMA - INF - PRETO",
         "variacao": "10 / Preto",
         "sku": "443",
+        "preco": 79.9,
+        "ultimaVenda": null,
+        "diasSemVender": null,
+        "qtd": 0
+      },
+      {
+        "produto": "CAMISETA PIMA - INF - PRETO",
+        "variacao": "12 / Preto",
+        "sku": "444",
         "preco": 79.9,
         "ultimaVenda": null,
         "diasSemVender": null,
@@ -9256,15 +9133,15 @@
   "kpis": {
     "revenue": {
       "value": 2171.91,
-      "changePct": -77.76727969552604
+      "changePct": -72.97637948110508
     },
     "orders": {
       "value": 7,
-      "changePct": -82.92682926829268
+      "changePct": -80
     },
     "aov": {
       "value": 310.27,
-      "changePct": 30.220218926204602
+      "changePct": 35.118102594474614
     }
   },
   "revenueSeries": [
@@ -9936,6 +9813,22 @@
         "purchases": 0,
         "impressions": 1962,
         "clicks": 25
+      },
+      {
+        "date": "2026-09-28",
+        "spend": 17.87,
+        "metaRevenue": 0,
+        "purchases": 0,
+        "impressions": 1418,
+        "clicks": 5
+      },
+      {
+        "date": "2026-09-29",
+        "spend": 12.72,
+        "metaRevenue": 0,
+        "purchases": 0,
+        "impressions": 579,
+        "clicks": 8
       }
     ],
     "campaigns": [
@@ -12714,7 +12607,7 @@
         "campaignId": "120251136301990345",
         "status": "ACTIVE",
         "creativeName": "Já garantiu a sua MANDI para curtir o final de semana? 🔥\n\n🏍️💨 Temos um FRETE EXPRESSO para Salvador 2026-09-22-502c3b572b2e6febeeb766e0864d77cd",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/820428825_4186058128201825_4915923800570237539_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=DWMZCx_W9wgQ7kNvwE6rv3X&_nc_oc=AdqWQUy5FJmX_cd12gUFcecHvP5WqKtwovaaQroTEtg6srlFtQixFfTDaigz5jb0Hzw&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQKk-p5lvqWLZSXHC6MPof3gP5VjJa9MloZS8_09p7aHYjI4RUyPiP-BbwqGLoPPdRo5eQCzArSjoQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQNCbyz80CI02rpgcqAhJO5p3TRJW2ZHWdV053JZRZm5kw&oe=6AC071F2"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/820428825_4186058128201825_4915923800570237539_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=DWMZCx_W9wgQ7kNvwHUhQ4S&_nc_oc=AdrCYI-Hv31YshF2Q4S3XKmgyp01mDlP9qK9SPBpveARQzHrOgj4jBOwqXZsUQAEwMQ&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQJjhOJiYESRlkpKq6uoECNNIMmSwvM2dh_dO1RFqcM-tGYiXjbpz1-I3oTfh4oILy6qheX1-jYUdQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQOs7Ukd-7Bgom--sGIuaWuTz03Et16WFKRj8KovNNfnZg&oe=6AC1C372"
       },
       {
         "id": "120251136345120345",
@@ -12723,7 +12616,7 @@
         "campaignId": "120251136301990345",
         "status": "ACTIVE",
         "creativeName": "Para todos os lugares, nós temos uma MANDI perfeita para você! ⚡️ 2026-09-22-1305f5df8a34789c3eb9d067e0242abf",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/819963171_28580527424947387_3233200895693869329_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MXHAdyHlTQkQ7kNvwEMbVx7&_nc_oc=AdpW23MteSnMbK_CuRJConsH0v5ID3av-ClUv7hN8OUQxaV29xDN26T1brzFsk6H4P0&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQLE3EXxsSEqlGhxXMQObYtYgj33nOP2NjZm0UN5klq6dLQD9rYVB9kLf6JaNNEQpqPyTnROYNvvEg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQOHsOQ0r7GYdjOyOOavein-P2giiIUNIvpsT8rnSLWAVA&oe=6AC08003"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.5256-10/819963171_28580527424947387_3233200895693869329_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=MXHAdyHlTQkQ7kNvwEEJW4O&_nc_oc=AdqkEs4bgqd_rPyteoQYxLPpOMlPj29w2_ilKGG5E4WZr_9ovmL7kjR4tdUaH1VjChc&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQKhnl5zjD6HixG7UibesM_pVD65gptLcWfsa9vk_cj5CFlGC0ztyYeDBfLorSq4S95qwXtUHTQgAw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQOBaX47rS1mi_3O_VY0HtQhUvN_tDCt5uAUDPwYx1cnIQ&oe=6AC1D183"
       },
       {
         "id": "120251136345110345",
@@ -12732,7 +12625,7 @@
         "campaignId": "120251136301990345",
         "status": "ACTIVE",
         "creativeName": "Nós temos a peça perfeita para te vestir bem em todos os lugares. #vempraMANDI 🔥 2026-09-22-367d9dbb38f78652d5d50651249e196d",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/821421085_1070918345806181_4440480366473919180_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=6ymOLGIgeWUQ7kNvwEZGCwk&_nc_oc=AdoHx-raazIh51WI1MKAA5yRew_eMh7Q0kU24zJ4fDTYvcJ2H_eZG13lMzDcehe1PUY&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQLiYQwqBYJ_A3x6Tb8esNImeANIoyoaHNxJFOlSLF6wOvEk4PGzgYVAuEV-rNjD0Jw_HICcdojuGw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQNUTQgd5eXSBXhfA7IcISK4ZV4NQiXeLXOHUTFtSkR5Yg&oe=6AC09D35"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.5256-10/821421085_1070918345806181_4440480366473919180_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=6ymOLGIgeWUQ7kNvwGUu_j4&_nc_oc=Adq7bPRQWH7O5cqwMwAL-EGcqYG996vqfVqcHBeJYNWNLtpUd63rSwZLxO5KLodLFIs&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQL4w4aOAGSWOlGdW8NDhmCyaAv4ffkSEAcvsJb6YNW4BFsycydmXGHP6x_B63TQgqnK9TXPvC5klg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQN9qydB0ELFSbfYWh6gzVAevVY_Recn6f7fb1__N44zHQ&oe=6AC1B675"
       },
       {
         "id": "120251136345130345",
@@ -12741,7 +12634,7 @@
         "campaignId": "120251136301990345",
         "status": "ACTIVE",
         "creativeName": "A camisa que te veste com a modelagem perfeita em todos os lugares! #useMANDI 🔥 2026-09-22-0cffcfb11c727bd83cb66c2aa676a7ce",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/821083263_2226120764968012_3313040286050748891_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=xqKyUFDICSwQ7kNvwFKFUmm&_nc_oc=AdpqoC7l-ic6h2bJrajRaPktGtSH21z4uVczWQICpy0lMe54zyADqO9G1c0Ryx7xcj4&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQJITzR0gRJ_Per1eJy5BzR-YFCzR9miNVh8C7w8eoGzWohgAXtf_BFX7God8kba-l615rhmVrtbRQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQMn2xv0M-rId345aCSEltV8ruWuKLdtV0KfQAALe9lA7g&oe=6AC075B7"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/821083263_2226120764968012_3313040286050748891_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=xqKyUFDICSwQ7kNvwGRP-x8&_nc_oc=AdqXQNkDDVmRPhDIz7hJEPuX6lJY7yOOMFjxkZu5-1FZZfBVLDOwRnXcZZdNPNix71Q&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQK_S7-qBvGwrtDKxEJLJTpYdt9YXGNSQ6ooUW5Y9RSFfmhejGD2LhXO5YUVVFe21eiXyfbggAtmpQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQMFPB8f3NivRe97qNEJ9_QPLmzpJceQyaL-bKawDvSa1g&oe=6AC1C737"
       },
       {
         "id": "120250397945670345",
@@ -12750,7 +12643,7 @@
         "campaignId": "120246974598140345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Kit Camisetas a partir de R$45,98/un 2026-08-13-f5fdfc4275b48e1019e1f76bf6b666c3",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/15609996822592089422?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKlNpjf8jIfLPSL0Mv4FVUt5G-2c1TpoqcDZuea6WRgIVrAAgVd-Ulg6fhaolMXXzmzgHxzaTaTVUAAEzW7ASkCyzDLiKaNq166oDfi-ho0Oq_cHm4w_FieNN693OrN6DetnPr1HWiAtj0XD1hOPHhc&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJEFJ7HmOSeMBmtwaWZ1HT_yWOOe4NzcgWIlB8YvYPLM6KWpekWtfSn8cvOphoDdKGiN1B0VYTNfA&oh=06_Q3_DAT09dQvJRIlnSUMOjnHt5L8BuFjBMKuBzeAgI4Zlaavk&oe=6ABC8868"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/15609996822592089422?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKlNpjf8jIfLPSL0Mv4FVUt5G-2c1TpoqcDZuea6WRgIVrAAgVd-Ulg6fhaolMXXzmzgHxzaTaTVUAAEzW7ASkCyzDLiKaNq166oDfi-ho0Oq_cHm4w_FieNN693OrN6DetnPr1HWiAtj0XD1hOPHhc&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQK0kJJnEa5XdLD20Ojtfgz6Lq4rj8FrogMwqs9Z955v2kZ8Blm8MRKP3zGcBiHMr0sgpJjDSa1hgA&oh=06_Q3_DAU2aZh-7Ef4Jmc75qPPXApr7oYtzvB6YTdhIVbt35cKO&oe=6ABDD9E8"
       },
       {
         "id": "120250367450210345",
@@ -12759,7 +12652,7 @@
         "campaignId": "120246974598140345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Camisas Mandi 2026-08-12-27b40454be8a4a1588b9ea39ee8d9236",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/4358810575558274788?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKi_mFQlUpy85iG0ssqnoUYj97mms5M7njbkXMu7biE-wwMY10UjYB274-c1h_gP_A8Wii-t7VFbIfrXeB84zRJ-tY_FrT193oO9vdteuYgoeHOMo1HwpoQjqrEuSUfndT_0XxibLiU_BWPNHcrpM8P&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQLPdXWOkM5xvFNc0IcpCwANK6OsNcRw9pT8aBPibTK-ZAz7_FeSybCVnj6OpqO_igYt5x_PKk7OPQ&oh=06_Q3_DAbGOAUINueRiOVaMsdMQk9ZqBBzp8ZwykyLVp4m34e50&oe=6ABC753F"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/4358810575558274788?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKi_mFQlUpy85iG0ssqnoUYj97mms5M7njbkXMu7biE-wwMY10UjYB274-c1h_gP_A8Wii-t7VFbIfrXeB84zRJ-tY_FrT193oO9vdteuYgoeHOMo1HwpoQjqrEuSUfndT_0XxibLiU_BWPNHcrpM8P&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQLyYvqqi7vgNxQkfSvB1DtNtUQR2Vh4Jk3JohWs7va7wjakFIB03rrN8kN9-4pWgWzKd0X7SEblPQ&oh=06_Q3_DAepPfnocbJkOH5OSYJivd5IZOZ-X7aGqylQMehC0W6e0&oe=6ABDC6BF"
       },
       {
         "id": "120250366744790345",
@@ -12768,7 +12661,7 @@
         "campaignId": "120250366744780345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Até 40% OFF no Pix — peças selecionadas, por tempo limitado 2026-08-12-c1c3ba93da835640302dc73211111650",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/5349176364956330305?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJAVLpORuj4xtdYeU0-x4eOvlhYtkIYLAKo9e_i-2HSk8xMq1t_lADa5MeIpFOQkJTAZSDuvyK7_Ze_aMBF5uBWgLC03GzQ1JCNKMuxj_ZNZAiaNEQrh7eCmrfwC_-C6x6UPXh4bhoBsuAK-lTGKQPL&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQLH6Qi-CnosA9EAAtTtvxqYy8CLRypezpUX97mR3tWhtot1YCbvZ-WCl25egz_JHst3wQgYV1Biuw&oh=06_Q3_DAVLvxUvTsezqf6xz3So1Tjk4l-KzfA1Ii-Zru8sLH2Md&oe=6ABC897D"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/5349176364956330305?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJAVLpORuj4xtdYeU0-x4eOvlhYtkIYLAKo9e_i-2HSk8xMq1t_lADa5MeIpFOQkJTAZSDuvyK7_Ze_aMBF5uBWgLC03GzQ1JCNKMuxj_ZNZAiaNEQrh7eCmrfwC_-C6x6UPXh4bhoBsuAK-lTGKQPL&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQIbn9tKQeNm5IWEJmayisHqX95bik9KSV1FpUiIAqBFT1CiuEbjyoNLYbjibcvZkmsjI38MV1Y0FQ&oh=06_Q3_DAZHn1pzmaxuAqFWkyLr4Q1UhzRBgVzeNjNJLYqzY0UPk&oe=6ABDDAFD"
       },
       {
         "id": "120250185509540345",
@@ -12777,7 +12670,7 @@
         "campaignId": "120250185507420345",
         "status": "PAUSED",
         "creativeName": "Já garantiu a sua MANDI? ⚡️\nNo nosso site tem desconto para você.\n\nAcesse clicando o link da bio. 2026-08-06-25d978249cb5a2ab6662ed718426d7c0",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/768190782_1714577093182965_4128915852217694897_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=v50oOeS6KDkQ7kNvwGna3Bn&_nc_oc=Ado4oqAhKoDsqwJdErZS34eJDLce7PRs2uTPUKUEDtRFeQamz0P3xYLlqwaS67jUxro&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQIb3JbyVV4XS90ZJ0byfWBigkqcZOCDdE_uMOxNvYQW_sOwBXEwyjWFS2WYkOewyqgU2i-R3VGTWw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQNb5E7QSRm5MmfSPd-OY8qop6qt3Ruf-xA7_OUE2fTEzA&oe=6AC096B9"
+        "thumb": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/768190782_1714577093182965_4128915852217694897_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=v50oOeS6KDkQ7kNvwGS-tGj&_nc_oc=AdrDLWrtv-w1CDYM0ztauTtPWvmI_VuuG1-nPhwPkGBGx-_qtfvLqJCR5ZZmsc4zWLs&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQIVVoQRIGJrMBlKhZBTMssLUxe_3vwfZdnK1oxKXcBGNhLCheW-Ml05lQh_j4Po_10MPnKcCKHixA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQPxM8cnQ9vYx91IhzAsCwtmembtucnbusff3GmBpJ3GEQ&oe=6AC1AFF9"
       },
       {
         "id": "120250115680500345",
@@ -12786,7 +12679,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-06-8e3e17ee33f570edc4d0f27c937a4c43",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/12761698197614447066?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIQKd5WAvmLUT_679z0du-qiXOcJ0EoGiY3i6F9qhXY3AOyxZfqcmYXT7G-d4xKoKpoPWlWqYqpRar7-BHRU4Dgimz4MBKXbKx3i0LfYF0oAiEc0fk3UVd5wwYdOSxI7Uk41ig5Kcr4hEv6ftEcbJ_B&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJ2j2BKN5ilkqSHA_yUUfOr20mQhUFBD75QjTIcowbqf7bfvThIdF3lJHvpY-q3YYVz6SdkizHy-w&oh=06_Q3_DAQMTOIo796Hwadste-zQ-uKbSol5dhmRFH43T0tGFHwE&oe=6ABC9B5A"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/12761698197614447066?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIQKd5WAvmLUT_679z0du-qiXOcJ0EoGiY3i6F9qhXY3AOyxZfqcmYXT7G-d4xKoKpoPWlWqYqpRar7-BHRU4Dgimz4MBKXbKx3i0LfYF0oAiEc0fk3UVd5wwYdOSxI7Uk41ig5Kcr4hEv6ftEcbJ_B&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKchFaFFX8rhSMgI2L5nMilKjLcx9iusfqRviUYMKsQ_TixioFIjg-uxcCgT9KE1ct06LrM-DClTA&oh=06_Q3_DAUWj_1-g1M8GDpzi7nLrzRM6udp88ADjItEHRdZXyrJR&oe=6ABDB49A"
       },
       {
         "id": "120250185457150345",
@@ -12795,7 +12688,7 @@
         "campaignId": "120250185456120345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Mandi (@soumandi.br) • Instagram photos and videos 2026-08-06-bd40aa1a5b223a62ccb26aea4b3f1e8b",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/818548701503582607?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIqTPTBEOthiEDieX-Hsmbr4N7x-_XYxi5s1uMketIbYdhMqWD3tJPDNcLyckYfAnDgVhA0WGqPVLRYVCd7wSRU9-K9sF3FDLD2jUfOmA7qst_WJEjUj2_4lphs40ehUtrz52L-2Xhzn-8Wv5PtT2xS&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJiu0guI_LayKHMjo-HnQ5h9OCTuGBd5R9njUvdbtyMu7p0NKbZUBRLBHQB73bPlS1L00yF7XHmww&oh=06_Q3_DAbiyv05zDny0nZStKSwP-t3O-6Av1qVYADkXpCity786&oe=6ABCA8D3"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/818548701503582607?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIqTPTBEOthiEDieX-Hsmbr4N7x-_XYxi5s1uMketIbYdhMqWD3tJPDNcLyckYfAnDgVhA0WGqPVLRYVCd7wSRU9-K9sF3FDLD2jUfOmA7qst_WJEjUj2_4lphs40ehUtrz52L-2Xhzn-8Wv5PtT2xS&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKxULvJo8mjlZELlwBc41vagdAPaZqY8_w-yiXyAyPmCelp6GYW_BcUFP3eE7WLjKzvvjoHqNEMeg&oh=06_Q3_DAROdoeN3vZ2-DkoKiCg6V9n1twheHa2bem8wiAYACljq&oe=6ABDC213"
       },
       {
         "id": "120250185428400345",
@@ -12804,7 +12697,7 @@
         "campaignId": "120250185427210345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Dia dos Pais com a MANDI 👦🏻👨🏻\nConectar gerações, inspirar os pequenos e fazer parte de memórias afe 2026-08-06-683fdd6b8b23f2dceb0ba99c44e14972",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/767560348_1366649254907465_7750749028961125291_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=bzpJULLg244Q7kNvwHcy-SV&_nc_oc=Adp-b69F9m4J5rDnVOhnxYP4ojW31db21iydA7aOKzgpAYcAw-Q2n0Nq0syMC5udikE&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQKtYoqgPstE_-4gGieKRc7V_7ZvmnNTm3wEicasH-yOuBepkf1ys45WxwgFjuaBqnygIgvPLovh0g&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQNTqaY8h7AMjhqB67R1p0uasBd_Fgdm8IjYDQSRVWmfOA&oe=6AC06CFE"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/767560348_1366649254907465_7750749028961125291_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=bzpJULLg244Q7kNvwHVINKA&_nc_oc=Ado8EHfE0AseyA8ejyhM0_0IAEHTyk3HzqtKeCdrHZDPPqnqaGLGcefHor0V2TgItrk&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQI93WiEz7D19zyv1FEA0Aot6ykngksKNQ-vUNkBfkaetPmoZIZOljDAbJ1EPYbQTJI6DTq3G3S21Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AQO8bZO-ZcrWp2b9ibrZNxWzjYO8tqzUWgAs43X9JmgZrg&oe=6AC1BE7E"
       },
       {
         "id": "120249793041360345",
@@ -12813,7 +12706,7 @@
         "campaignId": "120246852085820345",
         "status": "PAUSED",
         "creativeName": "🚨 50% OFF É AGORA! 2026-07-23-3109e235b5120d536fbaf2195114e9f6",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/755463995_1034185689001548_6996385395842864454_n.jpg?_nc_cat=107&ccb=1-7&_nc_ohc=lOsAZciqPBYQ7kNvwEeYTBo&_nc_oc=AdpyMTWM9zTENIOv8lNzS2lFEICVYqO5lFaf84eVQqoGm4wqDTvFhkWHb57MrqouIqg&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQKaEAbAYFeMuZ0ZOwVb2RWUFTeUTTKFKyObP5nUbr-eWntwlvktOslKZVPbXgHTuGVscL-6RYoKOg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNvxMa8k1JuvwLzVr6snRwW8acPQJEh-hvoy5Gj1qixMQ&oe=6AC074B8"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/755463995_1034185689001548_6996385395842864454_n.jpg?_nc_cat=107&ccb=1-7&_nc_ohc=RVeiYP-c6kEQ7kNvwEvime-&_nc_oc=AdrgIDOPzBTXwh2ol01I0HOe4QCGrZ5elmvPER86NXvicSlhG8PJztXf0mhe14Je9x0&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQIm_mHvvBuCs_bQLQfSlCF4OFX9bu6OIjZHCd6Gq6s5SYNrO5RB-OMlRFSfm4AIN1nbIzcY9O0eAQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQOwe292z5GM-6r-TJshyk1RWNmCU3Q3o9MWmBWUSMSVYw&oe=6AC1C638"
       },
       {
         "id": "120249791693360345",
@@ -12822,7 +12715,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-04-6e330eec1ab6c9d423ae3daeb26aa53f",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/764975718_1511698137297398_5717739266570489762_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=IU0FN0Z_HZcQ7kNvwHmqaiy&_nc_oc=AdoZQ_y1SJm9V4Ols017BJ26TKJsHDkb6uyl6Hu22lYGhxKLPomJk8T9bRSKUtnhmTM&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQLJ1kRIlaMusfEju0zW_PukkTwOHcTC-wsg1ai7BiK5EJAAKa6uiOPLujVTsf4wI-UHuqGENfQyog&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQPKW6J_GBCZYxDGfQpfZDegTxjZ4GOFBtGZjMBHWglBXg&oe=6AC09CAD"
+        "thumb": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/764975718_1511698137297398_5717739266570489762_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=6pnRIA45MSkQ7kNvwE7My8R&_nc_oc=Adrcv55kfL4I9JZQAAawx6YcP_6j7DTwW63DYLsRkJ5-prC24A0Ybf6tUhHWeWgwBnk&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQLM5Xska-f6X8po7iT6Ua1yF6p8_oe7XbKa45QoeXiA6sd4TptdAIjvNgju6M8-18LdFBdv8gnhzg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNA10FX25S3N7qRjLEnoKb5bzZBtMbozLBzDS5Jsk491g&oe=6AC1B5ED"
       },
       {
         "id": "120250127067190345",
@@ -12831,7 +12724,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-04-c4bc7bf71c3bc8a4f493e07f50533476",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/761250328_1572469657790922_6277907865950465761_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=j5o7Jn_QAbkQ7kNvwHQDX6w&_nc_oc=AdotiWSCNthhWCDLHJfo7WDpYg6Kl7Lqgva3YLYJGC_eGxbBJ1Qow0_xV1cHnkHULoY&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQJHKyAqY7HFX1uNnSAL3HkqtZHf68DCMqlmYFyrEuDActGoHUHMQC1yiSCRtfgnbfHOUx0e3_0A9w&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQOd0M6RMZfZcO6W4FSDCJJTrVVoTpdk6MF9gpkJ7lvFqQ&oe=6AC084FD"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/761250328_1572469657790922_6277907865950465761_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=oCwORAvG0S4Q7kNvwGcB-zw&_nc_oc=AdrSRP2zMYumXIGCyPeQvh7jjb1QVRc12eE6utEyeAHRHBGhp9N02Is5s-brLfroSaM&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQJjSS3ZXWs-a5OEJcaqMhFz9fNZkm2Sp4hwYH-v9rtjBuVr8s62LgfVyMhDorwd1Lhh9-G93xVqUA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNX8FdwVLvnd5qO6EJkb5K4jDkVlxjIUVQ7indXpWYxig&oe=6AC1D67D"
       },
       {
         "id": "120250126969870345",
@@ -12840,7 +12733,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-04-66133a15982c17738b1509495a9d57b9",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/18106315415740320492?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIOHB9G21D1sl9Ztdu8fzLqbEie5eOepztyRxvH3-tjcb7u3oTrzOOQ-c_NPm1BNdjrY1ppJVnCwf2qDW4LczcaFs32NOttvs2k7iPliZDln58z3aeR_QDHCOSO_vmyMrQaHGtgqXihbe5WcTKVSaTe&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJrnQe35E6fXLzf7ws5zyrvT74dykatJSnUPU0j8yPjMnbefIYSBOiAOUPr15kbcm4fwTJnzCKfhw&oh=06_Q3_DAb8tEDqi47x5Bf5h8oDHUSE2nWIcepZknw_UCWqOVOCn&oe=6ABC7EE2"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/18106315415740320492?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIOHB9G21D1sl9Ztdu8fzLqbEie5eOepztyRxvH3-tjcb7u3oTrzOOQ-c_NPm1BNdjrY1ppJVnCwf2qDW4LczcaFs32NOttvs2k7iPliZDln58z3aeR_QDHCOSO_vmyMrQaHGtgqXihbe5WcTKVSaTe&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJe-pfnixLuYAvJmo6vhxRTQlv7j5z1p0AO0rtRnKA2iGj-zFEto5KVAoPH_DxO1D2Z3BJVv6eJnQ&oh=06_Q3_DAcnxzRDL8GKOjoJ72SW7Snp_ZvN26t0YtraK0T198-ZX&oe=6ABDD062"
       },
       {
         "id": "120250126959590345",
@@ -12849,7 +12742,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-04-84af041a97203c759a12a8697a6d5636",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/2276688493813888756?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJPro1DGIf3SgncjCGfdgcY-rnuqb5U1uvmXQgKCWDCN3DzF2Di-UN5ZwA6K6YStd4qcqZYrQAX7l3EM_LXbzvV77vzdYj6zJvMC0lB1_7TpegD4QA3Crvg4mvVZsrwD5YGGu7Q3_Kqw_pQ_g9FLnTo&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKTbwhbWLx7ToJgrdCBrZbVxer4Ue5zn1-HfgGP40MY7AmdRaMMF_1TUlVHL9KrIK5qtLjwe2DHGw&oh=06_Q3_DAaV0Q3zSZcNgyJ0Jk66r3_65pxZqDghfkXPzLz3yPtZh&oe=6ABCAA05"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/2276688493813888756?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJPro1DGIf3SgncjCGfdgcY-rnuqb5U1uvmXQgKCWDCN3DzF2Di-UN5ZwA6K6YStd4qcqZYrQAX7l3EM_LXbzvV77vzdYj6zJvMC0lB1_7TpegD4QA3Crvg4mvVZsrwD5YGGu7Q3_Kqw_pQ_g9FLnTo&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKvVX4_Fg_fAgWRqyPy1gE2cvx73W4PHu-WYs6cHu10KYVG_gdKaWrEvH_h7eNc_gKCYmgaSyr2pA&oh=06_Q3_DAZYO0X33-l4L_yOVnbA9zUErTVf-QZYAFKHzy-llXqeg&oe=6ABDC345"
       },
       {
         "id": "120250126932150345",
@@ -12858,7 +12751,7 @@
         "campaignId": "120249782298130345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "2 camisetas, 20% off no pedido. Simples assim. 2026-08-04-d33b0ee9a0d7d332b2438a388e0b4af9",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/8278769847213470952?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJ-gRPnzs9SVzSOyMQkvyicqI8YTgrR0kA04_GqVciTTSp5_ym6wJdNBTC73UCqgSU7lFTSZr3peKcAbxqanl8z3TA5wp3cyDyy-C37NdjoZqv-iIv0RwIzse8Wpa860bPFNgjyniGM5AYZfKIg0NwE&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQIkCeZZBIqNmVq80aeo7zbEdO_W5Eyl56V_gh7NkRFOsR0zK_0pzwwU6U3KAopEhyeEOpcVwe5zCQ&_nc_enc=QdhOE1BZN-pmOTOozrWQqrK_jgwkjjMJRxJC0iuz_cjPRIolUYKBgXRkGdRIWDIlI6CJ5kzcQxzAN1i5OJYw4ipaeZi0PaQqF5A&oh=06_Q3_DAQ2R2W6ZCaf3ZUeHsPNQcta4QzknKt3Lg01R3ofZiTw2&oe=6ABC9783"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/8278769847213470952?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJ-gRPnzs9SVzSOyMQkvyicqI8YTgrR0kA04_GqVciTTSp5_ym6wJdNBTC73UCqgSU7lFTSZr3peKcAbxqanl8z3TA5wp3cyDyy-C37NdjoZqv-iIv0RwIzse8Wpa860bPFNgjyniGM5AYZfKIg0NwE&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKiIGzIrth9sJY-fwaVvofurtrhcpJ9G0GxkLQdyspIG8XpTfv3VQDgfsvcQ6BL_XD0T9MUX22nHw&_nc_enc=QYTwZGg01ENCjh5yIxNN1FHpULGNA3kfUJrCrB1T7UWLrbHyHcXbHqorNJAyBqwmCJ-_Fy98uDEGI2d1c6CltOWM_cTnuR-VtQI&oh=06_Q3_DAYWm8j0xYP0jMAC8oC0MzfPPJQ8aHdtfRX_2k6oe39o6&oe=6ABDB0C3"
       },
       {
         "id": "120249792676630345",
@@ -12867,7 +12760,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "🚨 50% OFF É AGORA! 2026-07-23-0507267aefbae3b2a3b1063bd3c4772e",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/754497298_1509633747606612_5129274235320494248_n.jpg?_nc_cat=100&ccb=1-7&_nc_ohc=3IbSAUsW5XMQ7kNvwH3hk1c&_nc_oc=AdrlyK8rgtuk-MPt3ZK5oMKqwJDEdinNBzh4Urwu2C2g5y2sRifQfv3JqrEn34K3nkw&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQKVXMGouvwZN9FA40RUhyVQvRERQcTBLLoXZp71k-A9m5Vtw-ZlzbgYJUbkhNp7QBRQ4aRiq_P_Gg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQMvPYPd7ceZdJcgPdGMnzmeDToSb65OpXdXfxmNItB4GQ&oe=6AC09102"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/754497298_1509633747606612_5129274235320494248_n.jpg?_nc_cat=100&ccb=1-7&_nc_ohc=3IbSAUsW5XMQ7kNvwE65XQR&_nc_oc=AdohY8vfIbQJ2fTfuxdw4X8Bd3ZUSiGXEdc0kiTPwTR82emxdxFC5nuz1L7aDFtCM0E&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQLGd88sYRV-vUNSeERVBg1oo-OtSCwTvXUXxHCSqazaJuhR-imgBR15EyXNHLjjvCZ3HGimU7U4jg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQPkdmd-RFmhF7zgPo9uyFx_NrfGqht4TX67r844Jn0qyw&oe=6AC1AA42"
       },
       {
         "id": "120249956367430345",
@@ -12876,7 +12769,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "50% OFF no pix: a Mandi Kids espera pelo seu pequeno! 2026-07-29-4ccf89c0cba0397c89e152c17bdc7d9c",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/85868867913648429?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJziLf3fKkwqmKhuc4lLrjFotFbuDHUCzuYW37CuIOwvgiitJPJMTmXIFjrNull0DabwL9C5qp8UU5QAWRUUeCnvB_nY1H99l3nGE-4xQhRuwCtW1zsnCQB3Ig66x3z0KwZ2hGJOGqteHHRRAoPT9DB&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJIG8JZKyZ5OgsrqVx36PtWCaK_WHFCHJmz0fkMPamOAjXYIQXmLyDTVxxdGGF7NfHZ247j3eBoPw&oh=06_Q3_DARVFhaI3GvhIrkMMd5cYg7O59EQ7qsuy0cNJuT7oKA6i&oe=6ABC9054"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/85868867913648429?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJziLf3fKkwqmKhuc4lLrjFotFbuDHUCzuYW37CuIOwvgiitJPJMTmXIFjrNull0DabwL9C5qp8UU5QAWRUUeCnvB_nY1H99l3nGE-4xQhRuwCtW1zsnCQB3Ig66x3z0KwZ2hGJOGqteHHRRAoPT9DB&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQK48RyZtuQUnIk_XgW3Fi3-3d96CUPVM8ID6pVyZ2tTIVDY9bTSXyp8vP_OMX_a9jdTKB0f9dIEdA&oh=06_Q3_DATjajib-bOvHSXip02qD4Z1NAUgsPl3JMzwQMv1YXoPW&oe=6ABDE1D4"
       },
       {
         "id": "120249956505390345",
@@ -12885,7 +12778,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "50% OFF no pix: a Mandi Kids espera pelo seu pequeno! 2026-07-29-918dcfaa356e81effc8cc2f51779ff81",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/3502729191071583133?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJWBZKC8B7wgVv11QI4i7TBqdCp5I9ekLpnpqbTfMfvOZiGYuqpqPKDXeefo-QhUvUF7xbIa2B8azI3sC5dNNDVGWZn6DbBzZY7hci417qszsd7ZWE0bjl8Epd_ynalZ_xHR7BTTY6yyxkBsrtxfu9U&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJzsVam5vKQHLXvTAUPVVO1IsAUB8AugTH8mCw7qsemLi8wMAiZdJvJlscGkra1nkAUO2JJTySfjw&oh=06_Q3_DATrBbB6ibfb2rK8Iygb-YK9ov2F1ye6Da6VtJ32Nol9O&oe=6ABCA47E"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/3502729191071583133?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJWBZKC8B7wgVv11QI4i7TBqdCp5I9ekLpnpqbTfMfvOZiGYuqpqPKDXeefo-QhUvUF7xbIa2B8azI3sC5dNNDVGWZn6DbBzZY7hci417qszsd7ZWE0bjl8Epd_ynalZ_xHR7BTTY6yyxkBsrtxfu9U&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJ6kQeFRoiOUOtVmi6NaYdusbg6Gs3KAjT2Zr2rmaWCURDVCA3f_J9_y1gS20YjS4HGUpMkQLFyfg&oh=06_Q3_DAT_Men3FIpM2M64VUnCxAPz-Usl-FS0urfYC-O20vEsl&oe=6ABDBDBE"
       },
       {
         "id": "120249956053660345",
@@ -12894,7 +12787,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "Camisas Mandi 2026-07-29-6bb52af37b98e7247614c6fd3c8dacca",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/3780726111535408898?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIjblqKSjFQwieUAt56n-wfHKQXu8Gc8-D_WNSIRCO5coBpk0wf9cr008khGdrTaUpWvflaH50_OUhxi4jfB8dtXdHLYpipNamPTu4IoKdbaOQbXreKIfApTg6HBqSoxkFY3VknTxxotRQ_4L8LPjsn&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQI86nNJH9XTkEG-ch4nM96rQOARL_IFEVGF1WavE7nwCbGqrzYGbkZedHPc6jENIx6qtCfJTVHfQA&oh=06_Q3_DAeTlfmCHOZU2cALmBQ8brDznSwQqc5ebj-v1r9FnYB8-&oe=6ABC7CFE"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/3780726111535408898?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQIjblqKSjFQwieUAt56n-wfHKQXu8Gc8-D_WNSIRCO5coBpk0wf9cr008khGdrTaUpWvflaH50_OUhxi4jfB8dtXdHLYpipNamPTu4IoKdbaOQbXreKIfApTg6HBqSoxkFY3VknTxxotRQ_4L8LPjsn&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQI642mq3b0k9cgvZi6bvIA8q3OHxJs0yPQT68jFlUGVVH0Ltz1geyFbMiR9WO0pHcRPKjQZU8WChg&oh=06_Q3_DAUXHyfJzGzZ5v7-dM8uZrzvQQ4byGR4VTlP0QsE_OZS_&oe=6ABDCE7E"
       },
       {
         "id": "120249957430530345",
@@ -12903,7 +12796,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "🚨 50% OFF É AGORA! 2026-07-29-3f972a8929b9fb8bd1f429269b21161f",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/15333347085800469997?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJ1ul_31JBFMbTQz7CwYtZlSCg8IxyU0d9AGq8AiJdGsu8AAfQiq7nbKvX4so_D_JB6v9iNPUuVcayFJ_GXrrnzScMm3BDHy5jiJdZVa1FGfXp2mt5U7pkN9wcLu7s77zDtbAqQZouyMpA4unGJo89O&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=GglaxuEc-7-OrxbloNExfg&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQIIs1tlmmRfXlWKZzxeHENzVukTFMoGnCkxgMM5ZhTG4k-C4TBjfWXMMQgZ4QaKzlkE4nXa5tjgKw&oh=06_Q3_DAQ80KlzzM-jAPp-xfYSKDU9iDEEEt-hJHAZiLurReBh_&oe=6ABCA417"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/15333347085800469997?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQJ1ul_31JBFMbTQz7CwYtZlSCg8IxyU0d9AGq8AiJdGsu8AAfQiq7nbKvX4so_D_JB6v9iNPUuVcayFJ_GXrrnzScMm3BDHy5jiJdZVa1FGfXp2mt5U7pkN9wcLu7s77zDtbAqQZouyMpA4unGJo89O&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQK51OQ9lHao8OsazgGPcKardlxuS2yffWFzdg3Ye_J0owhYA-cbv05MsdmqN1LRc6wHF2s_tFOqNA&oh=06_Q3_DAYfdp-SUzn442FWsVDmybYmUbJN0S9zAp3XCpbMchVjV&oe=6ABDBD57"
       },
       {
         "id": "120249957098390345",
@@ -12912,7 +12805,7 @@
         "campaignId": "120249782298130345",
         "status": "PAUSED",
         "creativeName": "🚨 50% OFF É AGORA! 2026-07-29-9649cf52051591ab3171f5e220e4d7bb",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/758167586_1570161791282510_3487739090894121744_n.jpg?_nc_cat=109&ccb=1-7&_nc_ohc=tKnlfg_JYJMQ7kNvwGC-giY&_nc_oc=AdqYKsuDN-TF9ss1RenZOtIzipkGOqqyEeN-eGvIJK_gulO0o9GwbKBhLQgTzFEvRkk&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQK_OtKl_VET0MJN5fFi3QoDP17QvjoWaCboOZ_iVdE2uDuOpZZDVixA1qXHzYyJ2HDNPMfXC6MivQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQO05ltSGn5Aiv5FGJ6U86jTwPfkfqfQ1bHjqPTJ5NzqsQ&oe=6AC09674"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/758167586_1570161791282510_3487739090894121744_n.jpg?_nc_cat=109&ccb=1-7&_nc_ohc=tKnlfg_JYJMQ7kNvwG2v52q&_nc_oc=AdozbkXkcvjoZez88kMcOWCsCGHU46c8L7Nx23OXfXkvxV8_2E6nWpdHCXt3fu-PYWk&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQKuy5O0gaIfoRXCwCMbAnMfY_oYaXazbnsh5zeWhwfsZI7NvF64vbFCCSRcWkzletoykXxNkhSbhw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNXEM5NQ-YCkGM0ANIpofpb4nel48Ox9ahbUvZodfi5Pg&oe=6AC1AFB4"
       },
       {
         "id": "120249792971170345",
@@ -12921,7 +12814,7 @@
         "campaignId": "120246852085820345",
         "status": "ADSET_PAUSED",
         "creativeName": "💫Vista-se Bem em Qualquer Clima 2026-06-25-d57b8f77f6ead45542e834c3d2013b96",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/727407422_996656236408756_1381692529976544685_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=bYHNECLcANwQ7kNvwHNluma&_nc_oc=Adpp2egtQ2d9t6GAMib9IW1Jptt7r4wDIX6Phv7_rIq7CdBnPe6PeXJ5k1ZDijUDqqo&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQJutrcv8jPvq2XPBBa5EMleGmc7q7KXsSezTO89yXyavteSL5XaQmctDM5_ek21qlI3WoPxevOiTw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQO27nRWe0jmLhAPQ4_mtI9vDjq-JEJ0AhAFidjKXaoCNg&oe=6AC08D29"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/727407422_996656236408756_1381692529976544685_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=JXfI-POKnqgQ7kNvwG8ZJ-Z&_nc_oc=AdrOBDAhEFDjk25yH9-mGnVZODVPtIU_ECfbI1csfP0ELjtiPu2dWSidOtBzEQkOyJ4&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQJXobjwnftUoi8WuuTwrWo2EdwDpHLCNAp65lnmqqNMGrO-OcYaw1Dg9R0UrRqibWR7zDll59J3yA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQMieSZiWyvwYtWjeF6CrZ1IWtxBSHrBBGvtr-UzbbebHw&oe=6AC1A669"
       },
       {
         "id": "120249792971190345",
@@ -12930,7 +12823,7 @@
         "campaignId": "120246852085820345",
         "status": "ADSET_PAUSED",
         "creativeName": "💫Vista-se Bem em Qualquer Clima 2026-06-25-455f385d88cf96b7963a0f0b64a50373",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/731328466_4625276221025496_4578561075228066954_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=x6EQO5mr3E4Q7kNvwEuMca9&_nc_oc=AdpBLAlnhcBRL27w0LLSV6NNvs3Tk3Vu7xsVhzNM7sY7kCQOoB8wznrHKKUjFDi3pJw&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQKQJfMY720AOdHY0-TJ4yjqOLHslBz0eRAUINfwty3wOYhq1nzxyrNcsAuKidBuNX-tMCBsqo5jjQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNzXf2wt3SfKrhNZ94W8r5rcaKsMPuj-I3l5yJIU1-ISQ&oe=6AC066FC"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.5256-10/731328466_4625276221025496_4578561075228066954_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=x6EQO5mr3E4Q7kNvwESAKPW&_nc_oc=AdpCkjdjZdKwxz3n9VjkP4nXs0VtU-9nnlV8XVyylGdGxcvQR5S8JIJ-HH_CTked_S8&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQJ3jaAfyIidSdzez-7oqpk3CEYizmRuKxlLvB8NMH92h8fKjNj-BNUanekke-aXWtqd_lSZFGvo1A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQPGRPLe9eqn2-UkJ9oz2cEXVNzYepFP4MTbuVq_VD7kfQ&oe=6AC1B87C"
       },
       {
         "id": "120235595091920345",
@@ -12939,7 +12832,7 @@
         "campaignId": "120235277482860345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "O Básico bem feito 2025-10-26-30254db30771c858cea8b64511e5dd3e",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/567682784_751203111302391_7793882075932927417_n.jpg?_nc_cat=108&ccb=1-7&_nc_ohc=djRK0PnJJk0Q7kNvwEy4qgA&_nc_oc=AdqzSGbTcPrJdIXQ47TpxMrgL7Brdz3A08p5DlPPcOrg1nXYNh3TciWqzcxufHlMknM&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQI7gsEWyotMoq-pVXBZJRoedsdjtq2IlMGRGzH65plnNvSGMsQvIHEKiFLFaJOI7v33HF2x7hFGgw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQP3cWLLrN53pi9iJiBpPACPpFlzpeYKWuKSnMFFi_Aeag&oe=6AC06E13"
+        "thumb": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/567682784_751203111302391_7793882075932927417_n.jpg?_nc_cat=108&ccb=1-7&_nc_ohc=djRK0PnJJk0Q7kNvwHtLFAW&_nc_oc=Adp7ddlFy_yDQd7qoPJ04yibqH4_7DD9X_kjHVeXBHTLugpgw6w3ZrPvjrcq-3ObjsQ&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQIF915RAi7Ciye9gUGq3wmy0GmeBIFAf-jgOUN1BhZmWKNcZxP4HzW_78FGBig2uVS2y3bUS8hsYg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQN_4INw7IHg3xt8zCW4S06vBWrkJmdJY-nhqEChaM12jA&oe=6AC1BF93"
       },
       {
         "id": "120235594849900345",
@@ -12948,7 +12841,7 @@
         "campaignId": "120235277482860345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "O Básico bem feito 2025-10-26-30a587ba66428b3cb6677504bf386628",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.13418-10/568878937_845801567891764_4552922935022104282_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=O8dHtCoiu4EQ7kNvwEJLrV1&_nc_oc=AdrkWmQW1QO22dAhiOGDAP20fJYg6DtZtMfwmUETMlG2ieOjLmm41fT-hQM98eKKfvU&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=GglaxuEc-7-OrxbloNExfg&_nc_tpa=Q5bMBQI8fk4ulWWFXgF-cV4kkXBqzmDse9hR7aq9vzt1PCi-KbIkVElXVO1CxZgTYs4Z4erq2FYs26yuvA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=aaa768&_nc_sid=58080a&oh=00_AQNhWu3PMXlIN6R0_1dpfijJ56EkoQKaGpPq9nsma6_Kxw&oe=6AC09396"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.13418-10/568878937_845801567891764_4552922935022104282_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=ffuUlfaqssAQ7kNvwH-_EeR&_nc_oc=AdrX3AaOqr8UdvYVDJWEiuDSJGPTGjCnWiuDFNHD-OlxxVg6Gsl_m3RIKQMrkInd6n8&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=aetWDOFdA2pWMPk0F65AlQ&_nc_tpa=Q5bMBQKuy3Y2kpFxDJMqANE8GYO1CMCq3CbDdqAa-5tXhVOg1eh9ygKLM_2GrAqXKuNcuR9dOcNikv3j7g&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=aaa768&_nc_sid=58080a&oh=00_AQMFtSFWYt4iVbvu86xzgm0u97hT6kCBX_YDAqneNKddbA&oe=6AC1ACD6"
       },
       {
         "id": "120248366919260345",
@@ -12957,7 +12850,7 @@
         "campaignId": "120246852085820345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "A rotina não para e a roupa precisa acompanhar.\nNossa #TechModal é leve, respirável e vai do casual 2026-06-24-c65bbe8aa6d1ea8b7979049d3968e12e",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/728369737_2004336054291563_1333089983189583250_n.jpg?_nc_cat=104&ccb=1-7&_nc_ohc=ACoC6ZscIJoQ7kNvwF7c4SS&_nc_oc=AdqdoVwVfcaIa7dVvEb9gCes0VAqb9UmtqCgkmzJntVh4s2M79S0lcMdiVIN_xuI1Ss&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=svaPTgsAArt0sUXPOfGAig&_nc_tpa=Q5bMBQKdZIpHtfB7d1gKONtQgq5zEZL71MaqgrQ5uLRB-IqLP1SlC7HjFjq2JjF3IE4MX_MNt-WACVm37A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQM2UsQU311CW8i0r5YIOOdoiwuxdI3oy4aHoPgUjRPh7Q&oe=6AC070DE"
+        "thumb": "https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/728369737_2004336054291563_1333089983189583250_n.jpg?_nc_cat=104&ccb=1-7&_nc_ohc=ACoC6ZscIJoQ7kNvwFtaNPT&_nc_oc=AdpRnBu7G3Fmjbl5zK9w4DWGaIDXreQHp_MPXbrPDQs0SYO20ma2wxRRJaO0Ua7bV6I&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=9Ul5SBNLq78V2HIkXLVyAg&_nc_tpa=Q5bMBQIkRcxAdKG6a_xqweOt0qxU9alLLyGN9CaMsXJZfZ1nJyigo9jmfp759I7M0xM7mO8tVCMWMqxqTQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQM1ZdhyLpjT-iwBDw30YX-yhqYnRXEUWuZjbnElhn3UPA&oe=6AC1C25E"
       },
       {
         "id": "120248406622070345",
@@ -12966,7 +12859,7 @@
         "campaignId": "120246852085820345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "💫Conforto Premium em Todos os Momentos 2026-06-25-5d7068438a52dd953f46857160433cee",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/731328466_4625276221025496_4578561075228066954_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=x6EQO5mr3E4Q7kNvwEuMca9&_nc_oc=AdpBLAlnhcBRL27w0LLSV6NNvs3Tk3Vu7xsVhzNM7sY7kCQOoB8wznrHKKUjFDi3pJw&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=svaPTgsAArt0sUXPOfGAig&_nc_tpa=Q5bMBQIj5AgTE24yO-7s1q1xoKLs86V7UEdAZzPnYemBRUxVJ15ObdouEEe-6OW2ZFGLltP0qMQUhBKWAg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQM_Y1b2Iu_9UdPkyQqQA5OXNLFQl_lj62Pwm1I75ou-vQ&oe=6AC066FC"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.5256-10/731328466_4625276221025496_4578561075228066954_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=x6EQO5mr3E4Q7kNvwESAKPW&_nc_oc=AdpCkjdjZdKwxz3n9VjkP4nXs0VtU-9nnlV8XVyylGdGxcvQR5S8JIJ-HH_CTked_S8&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=9Ul5SBNLq78V2HIkXLVyAg&_nc_tpa=Q5bMBQJM1GWzqi9oqhX80W4Hzp443tul-vkmzSN5_yY9FiOjBf3DxsPxJFN1ZBaTCNG_7wFJ1JIHM7AZEA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQOo1KqzkJIIJiQFilCRriM1lWqJlmtAY9HVEoof-nzofA&oe=6AC1B87C"
       },
       {
         "id": "120248406622080345",
@@ -12975,7 +12868,7 @@
         "campaignId": "120246852085820345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "💫Mais Conforto. Mais Estilo. 2026-06-25-9f09e36e2d690f8df05d5c7d2f7d7825",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/727407422_996656236408756_1381692529976544685_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=bYHNECLcANwQ7kNvwHNluma&_nc_oc=Adpp2egtQ2d9t6GAMib9IW1Jptt7r4wDIX6Phv7_rIq7CdBnPe6PeXJ5k1ZDijUDqqo&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=svaPTgsAArt0sUXPOfGAig&_nc_tpa=Q5bMBQL4IhyrzYSG_CBBshzMWkpA0e2OUh9sqWYCn0EnzyWRJppPT-9ezsSA4rmNS919lkK2yVpCXUZPBQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQO4elGm59wMhRUYWJLJjSe-QC4SlfS6FPZo8pXoaVs8Ww&oe=6AC08D29"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/727407422_996656236408756_1381692529976544685_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=JXfI-POKnqgQ7kNvwG8ZJ-Z&_nc_oc=AdrOBDAhEFDjk25yH9-mGnVZODVPtIU_ECfbI1csfP0ELjtiPu2dWSidOtBzEQkOyJ4&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=9Ul5SBNLq78V2HIkXLVyAg&_nc_tpa=Q5bMBQIHvjfRgjKm_P1YS0Hrx_jv27b2h5VVoje9Wbwz0Sy6WgQjdK-jPF3c53pBDTM-OcaXttN8dV_1ww&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQOsKB6uZ6MSzRmHCcHUHe3ZxdZoJbd1gfGlhpoZl4ywyw&oe=6AC1A669"
       },
       {
         "id": "120248406622090345",
@@ -12984,7 +12877,7 @@
         "campaignId": "120246852085820345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "💫Conforto Premium em Todos os Momentos 2026-06-25-41ade7b6efbd2b809bf609cd815fbc1b",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/731379441_2551560301954038_4735168989062048808_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=OxQo4kR9GqMQ7kNvwEJegQg&_nc_oc=AdqdtMCgi2g2aTdtPX1fLZPrEaDb7XkmwCZYR-dajfImuNUcHp_7ZA-tf-knF6ssbZg&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=svaPTgsAArt0sUXPOfGAig&_nc_tpa=Q5bMBQJGeUtKHYmPT0fVY9wjCTYJQUi4ab9Y1cOLcLwpa77x3S17CjwrC9MrP-VrW4mnEwxGwdhlR_DGJA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQNcV2sAvv3TYzqaTRm6nvliFLh008k8faqaQXc0dTjYzw&oe=6AC09211"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/731379441_2551560301954038_4735168989062048808_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=OxQo4kR9GqMQ7kNvwGoWTMA&_nc_oc=Adqw29d3rrxmMKC2VQyGpKX1RThcWF-_T-XYZSKEC-Qes8iqg85PmJw_xB3fKM_M3kY&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=9Ul5SBNLq78V2HIkXLVyAg&_nc_tpa=Q5bMBQJwKMS62-U5V2sArUSF-LrFqkPu_IJJN8yHqU_idvwcy-ampn9VMOQwl2rZidVrWapVtEq4j8vthA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AQPUg2VabEx7Y0zd2Sx-3Mh7uDfdqYrwx_2nL15e83DmUQ&oe=6AC1AB51"
       },
       {
         "id": "120249332531700345",
@@ -12993,7 +12886,7 @@
         "campaignId": "120246974598140345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Camisas Mandi 2026-07-07-eed90908bde7d208fb80fc234cdd2c45",
-        "thumb": "https://scontent-sjc3-1.xx.fbcdn.net/v/t15.5256-10/739199955_1289610223253803_2251165286646941833_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=x0pOxxChL0cQ7kNvwFHLf73&_nc_oc=Adr2D9MamNfk_0PqDdbcN_mWudUqEhr53iAFOjTinqL5FXqJ5U9VLteeIzEocW2t3W8&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=cqA9DxhP2VS1c6H8M8xdGw&_nc_tpa=Q5bMBQL9kVzzkvB8IeeGhF2DFgc-OzPBiR6r7s2e6-X9zWN0Uv91807VWtGffcXb4L4GsU9ThdRQUrkRDg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a86139&_nc_sid=58080a&oh=00_AQPTpekC8vdVUFNkm2f9SOqr0f8JdMmwFjmg6sjl3WJnhw&oe=6AC08F0B"
+        "thumb": "https://scontent-iad3-2.xx.fbcdn.net/v/t15.5256-10/739199955_1289610223253803_2251165286646941833_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=wTF1P-84Fr0Q7kNvwHLMSQE&_nc_oc=Adqp8LBdJPcUEY87pxJV59Enj11AWCtj5CY2VLCfquIDCql6WOprO20-bStq6Fcv2ro&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&edm=AOgd6ZUEAAAA&_nc_gid=VukA5jy_zQWEnGQrOVh75A&_nc_tpa=Q5bMBQIUY1jRWDmPfZfClkStfXb_0jGI9ypM0-iaRnjQsRAlppE2H2F2qAn8eDPWTwDufOJKeagE6N0LXA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a86139&_nc_sid=58080a&oh=00_AQOxGnA3auKThfgJFP4MQswKp4iF4ysho4AUdRIXp6K-FA&oe=6AC1A84B"
       },
       {
         "id": "120248258647010345",
@@ -13002,7 +12895,7 @@
         "campaignId": "120246974598140345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Camisas Mandi 2026-06-24-aa3def84997acd5effee694f7d35f099",
-        "thumb": "https://scontent-sjc6-1.xx.fbcdn.net/v/t15.5256-10/729389689_1339829870848783_5980496085360216209_n.jpg?_nc_cat=107&ccb=1-7&_nc_ohc=ocu-kXhB1UUQ7kNvwEwF0wk&_nc_oc=AdqiO1XWkFbRAKWNwXz26McpPNuolKng3lP_gp-61nAhXIp45tRyP7RZgraSCD-OlbM&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=cqA9DxhP2VS1c6H8M8xdGw&_nc_tpa=Q5bMBQLEtqSAMMEJq45dkhua79bFA8VAGkURqJw2W015HzHe87jHrWjB5Jv5r19EZd-f7MoR0ASZMmaCEg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a86139&_nc_sid=58080a&oh=00_AQOd3-I9S7YLfDtWr-GBhuOvAhvOSId5bibB27HNd3igrQ&oe=6AC082FC"
+        "thumb": "https://scontent-iad6-1.xx.fbcdn.net/v/t15.5256-10/729389689_1339829870848783_5980496085360216209_n.jpg?_nc_cat=107&ccb=1-7&_nc_ohc=D8d-K19ElVAQ7kNvwFRqQQB&_nc_oc=Adp_fa9_l9wFbfb1t4efI5ybDH7i1My4XwxBXpTABhCm95ApqYQXLptCIHG6SOkIQAU&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AOgd6ZUEAAAA&_nc_gid=VukA5jy_zQWEnGQrOVh75A&_nc_tpa=Q5bMBQI4kTnOkdi0Fm-Ara_IYMx3px7tQKE4OLN3vS8TOHGgG14rq-tWbR_dokEhqQfnwapC1xuzyFJtuQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a86139&_nc_sid=58080a&oh=00_AQN2riPATmE6qio-D4mRi5KlloAYTAhHKLKMXW8vYqYzAw&oe=6AC1D47C"
       },
       {
         "id": "120248255091080345",
@@ -13011,7 +12904,7 @@
         "campaignId": "120246974598140345",
         "status": "CAMPAIGN_PAUSED",
         "creativeName": "Camisas Mandi 2026-06-24-0c7d134a8005e16604f77e23a6ab860b",
-        "thumb": "https://external-sjc3-1.xx.fbcdn.net/emg1/v/t13/17939761407130576185?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLQh9euvkKQtF-XWd60MsDA1mDNsCtXPTFuX3q3OdJNmXmcT_ZQbKkTDZln4QGtR-mcBUnjxscr5emTFZN5GV3uT3Sk2ucFvyKvXWlABeEoa01GsYMAP0zEzCZdbvC54qhvISuSIlwGAyubzfeBhasE&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-sjc3-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=cqA9DxhP2VS1c6H8M8xdGw&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQKtl_QMDyWr5iqQgUKlhQc-CaOoDxaekciEfOdNYXAGg7vaam2DtgUFejA24Fap2b7YxIz_itNNfA&oh=06_Q3_DAWHO7FHatf87HlRkgbK70SAKF_ObtM7KsMy0krYq_emU&oe=6ABC953F"
+        "thumb": "https://external-iad6-1.xx.fbcdn.net/emg1/v/t13/17939761407130576185?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLQh9euvkKQtF-XWd60MsDA1mDNsCtXPTFuX3q3OdJNmXmcT_ZQbKkTDZln4QGtR-mcBUnjxscr5emTFZN5GV3uT3Sk2ucFvyKvXWlABeEoa01GsYMAP0zEzCZdbvC54qhvISuSIlwGAyubzfeBhasE&fb_obo=1&utld=facebook.com&_nc_sid=58080a&_nc_ht=external-iad6-1.xx.fbcdn.net&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ccb=18-1&_nc_gid=VukA5jy_zQWEnGQrOVh75A&edm=AOgd6ZUEAAAA&_nc_zt=3&_nc_tpa=Q5bMBQJ-eGmAf4QJzr64zANr5B1BoMkJdqccVXpwCW_hSKwh42YGESqnnUp83ahHVGqh11yqgwosz5gNhw&oh=06_Q3_DAV32p051Smh9PL0NbxmCOLTpkHeBdXViRwALiC0QCi_4&oe=6ABDAE7F"
       }
     ],
     "dailyByCampaign": [
@@ -15561,6 +15454,24 @@
         "c": 0,
         "i": 1962,
         "k": 25
+      },
+      {
+        "d": "2026-09-28",
+        "id": "120251136301990345",
+        "s": 17.87,
+        "v": 0,
+        "c": 0,
+        "i": 1418,
+        "k": 5
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136301990345",
+        "s": 12.72,
+        "v": 0,
+        "c": 0,
+        "i": 579,
+        "k": 8
       }
     ],
     "dailyByAdset": [
@@ -19361,135 +19272,27 @@
         "c": 0,
         "i": 1962,
         "k": 25
+      },
+      {
+        "d": "2026-09-28",
+        "id": "120251136302100345",
+        "s": 17.87,
+        "v": 0,
+        "c": 0,
+        "i": 1418,
+        "k": 5
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136302100345",
+        "s": 13.08,
+        "v": 0,
+        "c": 0,
+        "i": 585,
+        "k": 8
       }
     ],
     "dailyByAd": [
-      {
-        "d": "2026-07-30",
-        "id": "120235594849900345",
-        "s": 0.71,
-        "v": 0,
-        "c": 0,
-        "i": 24,
-        "k": 0
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120235595091920345",
-        "s": 32.02,
-        "v": 0,
-        "c": 0,
-        "i": 1165,
-        "k": 15
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120248258647010345",
-        "s": 30.99,
-        "v": 324.65,
-        "c": 1,
-        "i": 799,
-        "k": 17
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249332531700345",
-        "s": 0.26,
-        "v": 0,
-        "c": 0,
-        "i": 13,
-        "k": 2
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249791693360345",
-        "s": 2.32,
-        "v": 0,
-        "c": 0,
-        "i": 71,
-        "k": 0
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249792676630345",
-        "s": 0.3,
-        "v": 0,
-        "c": 0,
-        "i": 9,
-        "k": 0
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249792971170345",
-        "s": 1.63,
-        "v": 0,
-        "c": 0,
-        "i": 921,
-        "k": 46
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249792971190345",
-        "s": 16.59,
-        "v": 0,
-        "c": 0,
-        "i": 7753,
-        "k": 362
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249793041360345",
-        "s": 0.57,
-        "v": 0,
-        "c": 0,
-        "i": 301,
-        "k": 15
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249956053660345",
-        "s": 2.36,
-        "v": 0,
-        "c": 0,
-        "i": 51,
-        "k": 2
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249956367430345",
-        "s": 0.5,
-        "v": 0,
-        "c": 0,
-        "i": 8,
-        "k": 0
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249956505390345",
-        "s": 3.57,
-        "v": 0,
-        "c": 0,
-        "i": 68,
-        "k": 1
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249957098390345",
-        "s": 5.7,
-        "v": 346.6,
-        "c": 1,
-        "i": 156,
-        "k": 1
-      },
-      {
-        "d": "2026-07-30",
-        "id": "120249957430530345",
-        "s": 23.53,
-        "v": 139.9,
-        "c": 1,
-        "i": 756,
-        "k": 16
-      },
       {
         "d": "2026-07-31",
         "id": "120235595091920345",
@@ -20794,46 +20597,109 @@
         "c": 0,
         "i": 243,
         "k": 1
+      },
+      {
+        "d": "2026-09-28",
+        "id": "120251136345110345",
+        "s": 11.88,
+        "v": 0,
+        "c": 0,
+        "i": 1093,
+        "k": 1
+      },
+      {
+        "d": "2026-09-28",
+        "id": "120251136345120345",
+        "s": 4.13,
+        "v": 0,
+        "c": 0,
+        "i": 192,
+        "k": 4
+      },
+      {
+        "d": "2026-09-28",
+        "id": "120251136345130345",
+        "s": 1.86,
+        "v": 0,
+        "c": 0,
+        "i": 133,
+        "k": 0
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136302200345",
+        "s": 7.01,
+        "v": 0,
+        "c": 0,
+        "i": 321,
+        "k": 8
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136345110345",
+        "s": 5.69,
+        "v": 0,
+        "c": 0,
+        "i": 253,
+        "k": 0
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136345120345",
+        "s": 0.26,
+        "v": 0,
+        "c": 0,
+        "i": 8,
+        "k": 0
+      },
+      {
+        "d": "2026-09-29",
+        "id": "120251136345130345",
+        "s": 0.12,
+        "v": 0,
+        "c": 0,
+        "i": 3,
+        "k": 0
       }
     ],
-    "updatedAt": "2026-09-28T18:22:37.037Z",
-    "historyStart": "2026-05-31",
-    "spend": 92.39,
-    "roas": 23.51,
-    "cac": 18.48
+    "updatedAt": "2026-09-29T16:45:32.309Z",
+    "historyStart": "2026-06-01",
+    "spend": 122.98,
+    "roas": 17.66,
+    "cac": 24.6
   },
   "instagram": {
     "disponivel": true,
     "username": "soumandi.br",
     "seguidores": 2894,
-    "totalPosts": 307,
+    "totalPosts": 308,
     "visualizacoes": {
-      "valor": 11441,
-      "variacaoPct": -93
+      "valor": 13498,
+      "variacaoPct": -90.9
     },
     "alcance": {
-      "valor": 4694,
-      "variacaoPct": -92.4
+      "valor": 5925,
+      "variacaoPct": -89.2
     },
     "interacoes": {
       "valor": 150,
-      "variacaoPct": -73.9
+      "variacaoPct": -71.2
     },
     "cliquesLink": {
       "valor": 0,
       "variacaoPct": null
     },
-    "novosSeguidores30d": 53,
+    "novosSeguidores30d": 55,
     "historicoSeguidores": [
       {
-        "d": "2026-09-28",
+        "d": "2026-09-29",
         "s": 2894
       }
     ],
     "origemEstimada": {
-      "anuncios": 5097,
-      "organico": 6344,
-      "anunciosPct": 44.6
+      "anuncios": 7094,
+      "organico": 6404,
+      "anunciosPct": 52.6
     },
     "generoPct": {
       "mulheres": 35,
@@ -20882,24 +20748,24 @@
     "porFormato": [
       {
         "formato": "Carrossel",
-        "posts": 7,
-        "views": 1231,
-        "alcance": 639,
-        "interacoes": 54
+        "posts": 6,
+        "views": 1128,
+        "alcance": 592,
+        "interacoes": 47
       },
       {
         "formato": "Reel",
         "posts": 2,
-        "views": 394,
-        "alcance": 298,
+        "views": 395,
+        "alcance": 299,
         "interacoes": 13
       },
       {
         "formato": "Post",
-        "posts": 3,
-        "views": 310,
-        "alcance": 145,
-        "interacoes": 16
+        "posts": 4,
+        "views": 350,
+        "alcance": 167,
+        "interacoes": 18
       }
     ],
     "postsNoMes": 12,
@@ -20908,7 +20774,7 @@
         "tipo": "Reel",
         "legenda": "5 motivos para você garantir agora mesmo a sua MANDI! Vem conferir! 💥\n\n🛒 Acesse o site c",
         "link": "https://www.instagram.com/reel/DbDvxbiRs8E/",
-        "thumb": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/753231582_18091720112387103_5565548859713988862_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=qILHpxApMbAQ7kNvwGszV37&_nc_oc=Adpl06m49CbKmwEgGvT5uvIzcxazFnu8LtAnchVy1epvP-cn_bi9lhg0zuPPjHfsYw4&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=W3HY62ffhn5O1E7wfJ_abA&_nc_tpa=Q5bMBQIjNexgaj-QF6wqvHVOAwLY19dFQrn3hhny8-4Tam-KusFfZzwGyHhI8iTgPYKEjaUin0Of7fDohQ&oh=00_AQP2Cb0HDKx0EJRkyYyd30hwjntyJerWO0M2SqHJXBYN1g&oe=6AC0992C",
+        "thumb": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/753231582_18091720112387103_5565548859713988862_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=qILHpxApMbAQ7kNvwFI6Rgm&_nc_oc=AdoiekU2UzRdnItBARnAvX_053RgxV6VSPAsb1q-mA4WafG-C-Frg-d2B86DICYUlJA&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ZjA9-IAta1PJJi2ucIabCg&_nc_tpa=Q5bMBQJU7GUkg7HdX3iKBReRoVK2mN0LyYNFceYFkBEk2rSyhIAAC0XxFqt47grm9NxDKa9m0XdydL_zyg&oh=00_AQPPMiBDjhYOwl0pl9TmKtuXDONU8Rl2z0gkDohDRD1BHw&oe=6AC1B26C",
         "data": "2026-07-21",
         "views": 3014,
         "interacoes": 180
@@ -20917,7 +20783,7 @@
         "tipo": "Reel",
         "legenda": "Dia dos Pais com a MANDI 👦🏻👨🏻\nConectar gerações, inspirar os pequenos e fazer parte de",
         "link": "https://www.instagram.com/reel/DbdWHPcxLAS/",
-        "thumb": "https://scontent-sjc3-1.cdninstagram.com/v/t51.82787-15/759253502_18092747024387103_942788349973182161_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=WbyD8Tiy1q4Q7kNvwFhT0Mz&_nc_oc=Adqsqj5WNAPIqXKp2h48bDfK3y1fDXNMA6YRTAXQc0xpkuUk-ayFb9jzpwAvNSJtBSg&_nc_zt=23&_nc_ht=scontent-sjc3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=W3HY62ffhn5O1E7wfJ_abA&_nc_tpa=Q5bMBQLpvuToEAHUJLf5nInpClS9uZPKne_zYAB5ruYMY4ZWMBZa0jQ94ODJYiK1rj2IWBA8HtdPh-Faug&oh=00_AQMyrHWABIdBQmccqyZN3LpTtcPFy8RRseMhPx8j1aw44w&oe=6AC09186",
+        "thumb": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/759253502_18092747024387103_942788349973182161_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=WbyD8Tiy1q4Q7kNvwHYMDpq&_nc_oc=AdpFAXxUrN0ARRoGajeD7qWf3Y6XqObO8j2KXeNMCg6z4GKW5tOWLEWEi9rZA8cCPGM&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ZjA9-IAta1PJJi2ucIabCg&_nc_tpa=Q5bMBQLvqEY-Q3_iagC1-PoCZHWFB4UeXSeLa3cyR-_dGIQ5tN7kKBZXEBpHJ9TEhJ_mQEMUIjJQJrXM8w&oh=00_AQO4ybGHF03whv3PsLGNyFrN4qJqJ1kDRv8YmA7jcUHUxw&oe=6AC1AAC6",
         "data": "2026-07-31",
         "views": 1866,
         "interacoes": 64
@@ -20926,7 +20792,7 @@
         "tipo": "Reel",
         "legenda": "Com você em todos os lugares! #useMANDI ⚡️",
         "link": "https://www.instagram.com/reel/DbYRXQXxIVH/",
-        "thumb": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/759611246_18092549855387103_1447244575034050428_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=O6cfqMaPf6oQ7kNvwE8HcQL&_nc_oc=AdrnLhFwLJvLeDBerxFyh60gLNh7kVMgjHIdXngqyqY3HDbyCfiVKcC_meuZ9eGI6Ns&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=W3HY62ffhn5O1E7wfJ_abA&_nc_tpa=Q5bMBQKAjDMartF3vUoteuKue3rYn814hvC48Sw0zX3vtpMW0_v4qYeUTRiC-j5JKde2Z2P9zC-OAyY-2w&oh=00_AQPuLK5QwSgoZPuM5U1oN7OWnMW0A3AHmj9REkRF1qLNfg&oe=6AC09BE6",
+        "thumb": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/759611246_18092549855387103_1447244575034050428_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=O6cfqMaPf6oQ7kNvwFLUUI2&_nc_oc=AdrdAqqGuVCpGeCbwSPs9V9V5BvlhNpvlC9ayT5p16eI5KczU89HNMgXne-i5rGUFrE&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ZjA9-IAta1PJJi2ucIabCg&_nc_tpa=Q5bMBQIeHM3aINjsmFMqya1opx65-SPlqjp-8gt4DuSWf2ZPJAbl5ImdKRiD7Wh9O2X8BWqvOGDY4wM4Ig&oh=00_AQPFV-Y-yhwrwTu6Nl-NJUkJ2-lc0s334vNRF5ldBeLwCQ&oe=6AC1B526",
         "data": "2026-07-29",
         "views": 923,
         "interacoes": 36
@@ -20935,7 +20801,7 @@
         "tipo": "Reel",
         "legenda": "A camisa que te veste com a modelagem perfeita em todos os lugares! #useMANDI 🔥",
         "link": "https://www.instagram.com/reel/DblbqdVxWYJ/",
-        "thumb": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/764844873_18093173435387103_2967572324917232530_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=_kwknGrFq4EQ7kNvwHcEMxd&_nc_oc=AdpEPBTyJnBdrDeTzjbXhbK9-GARMJw6O-CQP_JScRrQ37O7wv55j0g2iuyIhAgX4qI&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=W3HY62ffhn5O1E7wfJ_abA&_nc_tpa=Q5bMBQKIgZKrYYo3Q3Unhsz2Ps2K5Ah4OZCriZYmV_W14UrD9tLPnGwXXlesPbpmH1UVQAlBnO_4LCHqIA&oh=00_AQMM9hWTuqhFVBNTD8giATth1hFfPbhBmXgi_eqWxUT14Q&oe=6AC095A5",
+        "thumb": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/764844873_18093173435387103_2967572324917232530_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=_kwknGrFq4EQ7kNvwGvWVq-&_nc_oc=AdowHRfqLGWTHQLwoYHKYcsN4PpOHNCXJ_ZFU64d6oJKw_0YOFROhgAgSyygfmGVLek&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ZjA9-IAta1PJJi2ucIabCg&_nc_tpa=Q5bMBQKelMe_Ghc40r6ocSXljBXBGifSg7v93jrsgYNPQUYJXRWGHVj1dlOGOFzNdHEmUyTsjM6i1iTgQQ&oh=00_AQN-ZiWUW4HFXoO8gThNQpAwQkCDgq_sqU5YiSpGpWvfHQ&oe=6AC1AEE5",
         "data": "2026-08-03",
         "views": 890,
         "interacoes": 28
@@ -20944,30 +20810,30 @@
         "tipo": "Carrossel",
         "legenda": "A escolha certa para todos os dias. #useMANDI 💥",
         "link": "https://www.instagram.com/p/DcgUFttkWD5/",
-        "thumb": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/785944620_18095520671387103_8809943797211470363_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=wyR8eavr6DYQ7kNvwFW9KUk&_nc_oc=AdrroG4f6K_y37UAx72yne9_mCW4xN2DIlRj43hmg0eHM3oGMFwwmzMMG90e5DPj0jE&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=W3HY62ffhn5O1E7wfJ_abA&oh=00_AQNUMBQzDu0qIFaoHw1rigAgN3KwbbeR5vz-IoFYMbTyTQ&oe=6AC074D4",
+        "thumb": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/785944620_18095520671387103_8809943797211470363_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=wyR8eavr6DYQ7kNvwHL9wRF&_nc_oc=AdrJ4TJeL8gXpuNaqHJUGkYRkG1Re-VYwENFYoJ49n3DJW05BXN0qfMZIgBIPT8c498&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ZjA9-IAta1PJJi2ucIabCg&oh=00_AQPzbAmtumPuTFswEDedQ4OcrNGmds3rfz8qdWhzuv_nOA&oe=6AC1C654",
         "data": "2026-08-26",
         "views": 670,
         "interacoes": 7
       }
     ],
-    "atualizadoEm": "2026-09-28T18:23:36.947Z"
+    "atualizadoEm": "2026-09-29T16:46:26.596Z"
   },
   "alerts": [
     {
       "type": "bad",
-      "text": "Receita caiu 72,4% em relação ao período anterior."
+      "text": "Receita caiu 69,0% em relação ao período anterior."
     },
     {
       "type": "good",
-      "text": "Ticket médio subiu 34,1% em relação ao período anterior."
+      "text": "Ticket médio subiu 32,7% em relação ao período anterior."
     },
     {
       "type": "warning",
-      "text": "42 produto(s) sem vender nenhuma variação há mais de 180 dias — R$ 81.497,40 parados. Candidatos a promoção."
+      "text": "51 produto(s) sem vender nenhuma variação há mais de 180 dias — R$ 98.956,70 parados. Candidatos a promoção."
     },
     {
       "type": "warning",
-      "text": "21 variação(ões) vendendo bem e com 3 peças ou menos. Repor antes de zerar."
+      "text": "16 variação(ões) vendendo bem e com 3 peças ou menos. Repor antes de zerar."
     },
     {
       "type": "warning",
@@ -20979,143 +20845,105 @@
     },
     {
       "type": "bad",
-      "text": "74% dos checkouts iniciados foram abandonados (20), deixando R$ 5.182,22 pelo caminho."
+      "text": "74% dos checkouts iniciados foram abandonados (20), deixando R$ 5.172,22 pelo caminho."
     },
     {
       "type": "good",
-      "text": "ROAS de 23,5x nos últimos 30 dias — receita TOTAL da loja ÷ investimento, então inclui vendas que não vieram do anúncio."
+      "text": "ROAS de 17,7x nos últimos 30 dias — receita TOTAL da loja ÷ investimento, então inclui vendas que não vieram do anúncio."
     },
     {
       "type": "warning",
-      "text": "ROAS atribuído pelo Meta: 1,6x (R$ 149,90 de venda creditada a R$ 92,39 investidos). É a leitura mais conservadora."
+      "text": "ROAS atribuído pelo Meta: 1,2x (R$ 149,90 de venda creditada a R$ 122,98 investidos). É a leitura mais conservadora."
     }
   ],
   "insights": {
     "disponivel": true,
-    "geradoEm": "2026-09-28T18:25:44.691Z",
+    "geradoEm": "2026-09-29T16:49:06.493Z",
     "modelo": "claude-sonnet-5",
-    "diagnostico": "Setembro fecha com receita 73% menor que o mês anterior (R$1.872 vs R$6.953,88) e apenas 6 pedidos, mas o ticket médio subiu 34% para R$312 — a loja vende menos vezes, porém melhor por venda. Ao mesmo tempo, 74% dos checkouts iniciados foram abandonados (R$5.182,22 perdidos) e R$81.497,40 seguem parados em 42 produtos sem vender há mais de 180 dias.",
+    "diagnostico": "A loja fechou o mês com só 6 pedidos e receita 73% abaixo do mês anterior, mesmo com margem saudável de 73,4% — o problema é volume, não eficiência. 74% dos checkouts iniciados foram abandonados (R$5.172,22 perdidos) e R$98.956,70 estão parados em 51 produtos, boa parte na linha Modal Tech.",
     "acoes": [
       {
-        "titulo": "Lance campanha Dia das Crianças com linha infantil",
+        "titulo": "Lance campanha Dia das Crianças com kit família",
         "prioridade": "alta",
         "categoria": "vendas",
-        "porque": "Dia das Crianças cai em 12/10 e a CAMISETA MODAL TECH - INF - VERDE MILITAR já é a 2ª peça mais abandonada no checkout (4x), sinal de demanda represada.",
-        "como": "Reponha em até 5 dias a CAMISETA MODAL TECH - INF - VERDE MILITAR e ative a oferta 'leve 2 peças infantis e ganhe frete grátis para todo o Brasil', válida até 12/10. Divulgue em Reels no Instagram (formato que já entrega 3x mais alcance que post estático nesta conta) e dispare para a base via e-mail/WhatsApp a partir de 05/10. Use o texto: '🎉 Chegou a hora de vestir os pequenos com estilo! Na compra de 2 camisetas infantis MANDI, o frete é por nossa conta. Válido até 12/10 ou enquanto durarem os estoques. Corre! 👦👧'"
+        "porque": "Não houve nenhuma venda de linha infantil nos últimos 30 dias, mas a CAMISETA MODAL TECH - INF - VERDE MILITAR teve 4 checkouts abandonados, mostrando demanda represada.",
+        "como": "Crie o combo 'Kit Família MANDI': 1 peça adulta (Pima ou Algodão Premium) + 1 infantil com 20% off no total, frete grátis acima de R$250 (acima do ticket atual de R$310). Divulgue nos Stories e feed priorizando Reels (formato que rendeu até 3.014 views) e dispare para a base de 2.894 seguidores e clientes recorrentes via e-mail/WhatsApp a partir de 08/10. Texto pronto: 'Dia das Crianças chegando! Vista você e seu mini com a MANDI: compre 1 peça adulta + 1 infantil e ganhe 20% OFF no combo. Frete grátis acima de R$250. Corre, é por tempo limitado!'"
       },
       {
-        "titulo": "Recupere os R$5.182 em checkouts abandonados",
+        "titulo": "Recupere os 20 checkouts abandonados (R$5.172)",
         "prioridade": "alta",
         "categoria": "checkout",
-        "porque": "74% dos checkouts iniciados nos últimos 30 dias foram abandonados, somando R$5.182,22, com a CAMISETA PIMA MASC PRETO liderando (7x) — justamente o produto mais vendido da loja.",
-        "como": "Dispare já em 29/09 e-mail e WhatsApp automático de recuperação para os 20 checkouts abandonados, com cupom de 10% off válido por 48h, destacando a CAMISETA PIMA MASC PRETO disponível em estoque. Configure o gatilho para rodar sozinho daqui para frente, disparando 1h e 24h após cada abandono."
+        "porque": "74% dos checkouts iniciados foram abandonados nos últimos 30 dias, deixando R$5.172,22 na mesa, com a CAMISETA PIMA - MASC - PRETO puxando 6 abandonos.",
+        "como": "Configure disparo automático de e-mail/WhatsApp em 1h e 24h após o abandono, com cupom VOLTA10 (10% off, válido por 48h), priorizando quem abandonou a CAMISETA PIMA - MASC - PRETO e a CAMISETA MODAL TECH - INF - VERDE MILITAR. Recuperando só 30% desses casos (6 pedidos) já entram cerca de R$1.550 sem gastar um centavo extra em mídia."
       },
       {
-        "titulo": "Suba o ticket médio com frete grátis a partir de R$350",
+        "titulo": "Liquide a linha Modal Tech parada com 40% off",
         "prioridade": "alta",
-        "categoria": "margem",
-        "porque": "Assumindo margem média de 74% na linha Pima e ticket atual de R$312, empurrar o piso de frete grátis para R$350 estimula uma segunda peça no pedido, somando pelo menos +R$38 por venda sem gastar mais em anúncio.",
-        "como": "Configure o frete grátis a partir de R$350 e coloque um banner no checkout e na home 'Falta pouco para o frete grátis', sugerindo automaticamente a CAMISETA PIMA MASC BRANCO como complemento. Ative a partir de 08/10, já dentro da campanha do Dia das Crianças, para maximizar o tráfego que essa data traz."
+        "categoria": "estoque",
+        "porque": "A linha Modal Tech responde por R$47.720,20 dos R$98.956,70 parados em produtos sem venda há mais de 180 dias.",
+        "como": "Crie a vitrine 'Liquida Modal Tech' no site com cupom MODALTECH40, ativo de 30/09 a 15/10, cobrindo as cores Marinho, Creme, Azul Celeste, Verde Militar, Marrom, Alvorada, Ametista e Greenish. Assumindo margem de 75%, mesmo com 40% off ainda sobram cerca de 35 pontos de margem por peça — destaque nos Stories e no topo do site, sem depender de anúncio."
       },
       {
-        "titulo": "Liquide a linha CAMISETA MODAL TECH parada",
+        "titulo": "Reponha CAMISETA PIMA OFFWHITE (GG e M) em 7 dias",
         "prioridade": "media",
         "categoria": "estoque",
-        "porque": "As 6 cores da linha MODAL TECH somam mais de R$36.000 parados há mais de 180 dias, quase 45% de todo o valor parado em estoque da loja.",
-        "como": "Aplique 30% off nas cores Marinho, Creme, Azul Celeste, Verde Militar, Marrom e Alvorada a partir de 02/10 — ainda sobra cerca de 45% de margem sobre o custo. Crie uma coleção 'Liquidação Modal Tech' na home e envie um disparo único e exclusivo para a base, sem sobrepor a comunicação da campanha do Dia das Crianças."
+        "porque": "Essas variações venderam há 31 e 34 dias e estão zeradas, travando um produto com demanda comprovada.",
+        "como": "Abra hoje (29/09) o pedido de reposição com o fornecedor para CAMISETA PIMA - MASC - OFFWHITE nos tamanhos GG e M, com prazo de entrega até 07/10. Enquanto isso, ative o botão 'me avise quando chegar' na página do produto para não perder o interesse de quem já está pesquisando."
       },
       {
-        "titulo": "Reponha as 21 variações que vendem e vão zerar",
+        "titulo": "Ative cupom de recompra pós-entrega (15% off)",
         "prioridade": "media",
-        "categoria": "estoque",
-        "porque": "21 variações estão vendendo com 3 peças ou menos em estoque, incluindo a CAMISETA ALGODÃO PREMIUM OFF WHITE G (vendida há apenas 15 dias) — perder essas opções é perder venda certa.",
-        "como": "Abra em 30/09 o pedido de reposição com o fornecedor priorizando as 5 variações com venda mais recente: Off White G, Pima Fem Offwhite M, Pima Masc Deep Blue G, Pima Masc Stone G e Pima Fem Stone P. Exija prazo de entrega de até 7 dias corridos para não perder vendas durante a campanha do Dia das Crianças."
+        "categoria": "clientes",
+        "porque": "Só 2 dos 7 pedidos dos últimos 30 dias vieram de clientes recorrentes (taxa de recompra de 28,6%) — recompra é venda sem custo de aquisição.",
+        "como": "Configure automação de e-mail/WhatsApp disparada 7 dias após a entrega, com cupom RECOMPRA15 (15% off, válido por 10 dias, exceto na liquidação Modal Tech). Texto pronto: 'Você já é família MANDI! Ganhe 15% OFF na sua próxima compra, válido por 10 dias.'"
       }
     ],
     "cronograma": [
       {
         "data": "2026-09-29",
-        "titulo": "Disparar recuperação de checkout abandonado",
-        "detalhe": "Enviar e-mail/WhatsApp com cupom de 10% off para os 20 checkouts abandonados, destacando a Camiseta Pima Masc Preto."
+        "titulo": "Ativar recuperação de checkouts abandonados",
+        "detalhe": "Configurar e disparar cupom VOLTA10 para os 20 checkouts abandonados dos últimos 30 dias, priorizando a CAMISETA PIMA - MASC - PRETO."
       },
       {
         "data": "2026-09-30",
-        "titulo": "Abrir reposição das 21 variações críticas",
-        "detalhe": "Enviar pedido ao fornecedor priorizando Off White G, Deep Blue G e Stone G/P, prazo máximo 7 dias."
-      },
-      {
-        "data": "2026-10-01",
-        "titulo": "Subir banners da campanha Dia das Crianças",
-        "detalhe": "Atualizar home, Instagram e criativos com a oferta de frete grátis na linha infantil, teaser antes do disparo oficial."
+        "titulo": "Lançar liquidação Modal Tech e abrir reposição",
+        "detalhe": "Subir banners e cupom MODALTECH40 no site/Stories; abrir pedido de reposição da CAMISETA PIMA OFFWHITE GG e M com o fornecedor."
       },
       {
         "data": "2026-10-02",
-        "titulo": "Lançar liquidação da linha Modal Tech (30% off)",
-        "detalhe": "Publicar coleção especial no site e enviar e-mail exclusivo à base sobre a liquidação."
+        "titulo": "Configurar cupom de recompra pós-entrega",
+        "detalhe": "Ativar automação RECOMPRA15 para clientes com pedidos entregues há 7 dias."
       },
       {
         "data": "2026-10-05",
-        "titulo": "Disparar e-mail/WhatsApp da campanha Dia das Crianças",
-        "detalhe": "Enviar para toda a base o texto pronto com o cupom de frete grátis na linha infantil."
+        "titulo": "Revisar giro da liquidação Modal Tech",
+        "detalhe": "Checar quantas peças saíram e reforçar destaque nas cores que ainda não venderam."
       },
       {
-        "data": "2026-10-06",
-        "titulo": "Revisar giro da liquidação Modal Tech",
-        "detalhe": "Checar unidades vendidas e, se abaixo do esperado, reforçar com stories e um segundo disparo."
+        "data": "2026-10-07",
+        "titulo": "Receber e ativar reposição Offwhite GG/M",
+        "detalhe": "Conferir chegada do fornecedor e liberar as variações no site imediatamente."
       },
       {
         "data": "2026-10-08",
-        "titulo": "Ativar frete grátis acima de R$350",
-        "detalhe": "Subir o banner 'falta pouco para o frete grátis' no checkout e na home."
+        "titulo": "Preparar banners do Kit Família Dia das Crianças",
+        "detalhe": "Finalizar arte do combo adulto+infantil com 20% off e frete grátis acima de R$250."
       },
       {
         "data": "2026-10-10",
-        "titulo": "Reforçar campanha Dia das Crianças nos stories",
-        "detalhe": "Postar contagem regressiva e prova social de pedidos já enviados da linha infantil."
+        "titulo": "Disparar campanha Dia das Crianças",
+        "detalhe": "Enviar e-mail/WhatsApp para a base e postar Reels anunciando o Kit Família MANDI."
       },
       {
         "data": "2026-10-12",
-        "titulo": "Encerrar campanha Dia das Crianças",
-        "detalhe": "Último push de urgência no Instagram e e-mail, e avaliar estoque restante da linha infantil."
+        "titulo": "Pico da campanha Dia das Crianças",
+        "detalhe": "Reforçar Stories com contagem regressiva e destacar o combo no topo do site e do feed."
+      },
+      {
+        "data": "2026-10-13",
+        "titulo": "Revisar resultados da quinzena",
+        "detalhe": "Checar vendas do Kit Família, taxa de recuperação de checkout e giro da liquidação para ajustar os próximos cupons."
       }
-    ],
-    "pautaStories": [
-      {
-        "dia": "2026-09-30",
-        "diaSemana": "quarta",
-        "tema": "Bastidor da reposição das camisetas infantis para o Dia das Crianças"
-      },
-      {
-        "dia": "2026-10-01",
-        "diaSemana": "quinta",
-        "tema": "Produto: Camiseta Pima Masc Preto, a queridinha das vendas"
-      },
-      {
-        "dia": "2026-10-02",
-        "diaSemana": "sexta",
-        "tema": "Oferta: liquidação Camiseta Modal Tech com até 30% off"
-      },
-      {
-        "dia": "2026-10-03",
-        "diaSemana": "sábado",
-        "tema": "Prova social: print de cliente elogiando a Camiseta Pima"
-      },
-      {
-        "dia": "2026-10-04",
-        "diaSemana": "domingo",
-        "tema": "Enquete: qual cor de camiseta infantil combina com seu pequeno?"
-      },
-      {
-        "dia": "2026-10-05",
-        "diaSemana": "segunda",
-        "tema": "Contagem regressiva: começou o frete grátis do Dia das Crianças"
-      },
-      {
-        "dia": "2026-10-06",
-        "diaSemana": "terça",
-        "tema": "Produto: Camiseta Modal Tech Verde Militar de volta ao estoque"
-      }
-    ],
-    "pautaGeradaEm": "2026-09-28T18:25:44.691Z"
+    ]
   }
 }
